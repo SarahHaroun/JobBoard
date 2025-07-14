@@ -41,7 +41,6 @@ namespace JobBoard.Domain.Data
         public EmployerProfile Employer { get; set; }
 
         /*------------------------Skills--------------------------*/
-
         public List<Skill> Skills { get; set; }
     }
 }
