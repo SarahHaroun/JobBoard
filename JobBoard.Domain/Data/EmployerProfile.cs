@@ -18,8 +18,8 @@ namespace JobBoard.Domain.Data
 
         /*------------------------user--------------------------*/
         [ForeignKey("User")]
-        public string UserId { get; set; }
-        public User User { get; set; }
+        public string? UserId { get; set; }
+        public UserApplication User { get; set; }
 
         /*------------------------job--------------------------*/
         public List<Job>? PostedJobs { get; set; }

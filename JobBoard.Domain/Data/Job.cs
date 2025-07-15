@@ -29,11 +29,11 @@ namespace JobBoard.Domain.Data
         /*------------------------Category--------------------------*/
 
         [ForeignKey("Category")]
-        public int CategoryId { get; set; }
-        public Category Category { get; set; }
+        public int? CategoryId { get; set; }
+        public Category? Category { get; set; }
 
         /*------------------------Applications--------------------------*/
-        public List<Application> JobApplications { get; set; }
+        public List<Application>? JobApplications { get; set; }
 
         /*------------------------Employer--------------------------*/
         [ForeignKey("EmployerProfile")]
@@ -41,6 +41,6 @@ namespace JobBoard.Domain.Data
         public EmployerProfile Employer { get; set; }
 
         /*------------------------Skills--------------------------*/
-        public List<Skill> Skills { get; set; }
+        public List<Skill>? Skills { get; set; }
     }
 }
