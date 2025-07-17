@@ -32,13 +32,13 @@ namespace JobBoard.Repositories.Persistence
                 .HasOne(s => s.User)
                 .WithOne()
                 .HasForeignKey<SeekerProfile>(s => s.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.Entity<EmployerProfile>()
                .HasOne(s => s.User)
                .WithOne()
                .HasForeignKey<EmployerProfile>(s => s.UserId)
-               .OnDelete(DeleteBehavior.Cascade);
+               .OnDelete(DeleteBehavior.Restrict);
 
             builder.Entity<Application>()
                 .HasOne(a => a.Applicant)
