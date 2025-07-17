@@ -1,5 +1,7 @@
 ﻿using JobBoard.Domain.Data;
 using JobBoard.Repositories.Persistence;
+using JobBoard.Services._ِAuthService;
+using JobBoard.Services.EmployerService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -13,33 +15,30 @@ namespace JobBoard.API
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            
             var configuration = builder.Configuration;
 
-            // ----------------------------------
-            // Add DbContext
-            // ----------------------------------
+            /*------------------------Add DbContext--------------------------*/
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-            // ----------------------------------
-            // Add Identity
-            // ----------------------------------
+            /*------------------------Add Identity--------------------------*/
             builder.Services.AddIdentity<UserApplication, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders();
+                .AddEntityFrameworkStores<ApplicationDbContext>();
 
-            // ----------------------------------
-            // ✅ Add JWT Authentication
-            // ----------------------------------
+           
+            /*------------------------Add JWT Authentication--------------------------*/
             builder.Services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;  //return unAuthorized
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme; 
             })
-            .AddJwtBearer(options =>
+            .AddJwtBearer(options =>         /// Validate the token
             {
-                options.TokenValidationParameters = new TokenValidationParameters
+                options.RequireHttpsMetadata = true; // Use HTTPS for production
+                options.SaveToken = true; // Save the token in the request
+                options.TokenValidationParameters = new TokenValidationParameters    
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
@@ -47,9 +46,14 @@ namespace JobBoard.API
                     ValidateIssuerSigningKey = true,
                     ValidIssuer = configuration["JWT:ValidIssuer"],
                     ValidAudience = configuration["JWT:ValidAudience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"]))
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"])) // Secret key for signing the token
                 };
             });
+            
+            /*------------------------Add Services--------------------------*/
+            builder.Services.AddScoped<IAuthService, AuthService>();
+            builder.Services.AddScoped<IEmployerService, EmployerService>();
+
 
             builder.Services.AddAuthorization();
             builder.Services.AddControllers();
@@ -58,9 +62,7 @@ namespace JobBoard.API
 
             var app = builder.Build();
 
-            // ----------------------------------
             // Configure Middleware Pipeline
-            // ----------------------------------
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -69,12 +71,8 @@ namespace JobBoard.API
 
             app.UseHttpsRedirection();
             app.UseRouting();
-
-
             app.UseAuthentication();  
-
             app.UseAuthorization();
-
             app.MapControllers();
 
             app.Run();
