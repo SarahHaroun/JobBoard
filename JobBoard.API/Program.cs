@@ -12,7 +12,7 @@ namespace JobBoard.API
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
             
@@ -61,6 +61,23 @@ namespace JobBoard.API
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
+
+            //Update Database
+            using var scope = app.Services.CreateScope();
+            var services = scope.ServiceProvider;
+            var context = services.GetRequiredService<ApplicationDbContext>();
+            var loggerFactory = services.GetRequiredService<ILoggerFactory>();
+            try
+            {
+                var pendingMigrations = context.Database.GetPendingMigrations();
+                if(pendingMigrations.Any())
+				    await context.Database.MigrateAsync();
+            }
+            catch (Exception ex)
+            {
+                var logger = loggerFactory.CreateLogger<Program>();
+				logger.LogError(ex, "An error occurred while migrating the database.");
+			}
 
             // Configure Middleware Pipeline
             if (app.Environment.IsDevelopment())
