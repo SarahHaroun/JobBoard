@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JobBoard.Domain.Data.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -7,28 +8,27 @@ using System.Threading.Tasks;
 
 namespace JobBoard.Domain.Data
 {
-    public enum LocationJob
-    {
-        OnSite,Remote,Hyprid
-    }
-    public enum JobTime
-    {
-        FullTime,PartTime
-    }
     public class Job
     {
         public int Id { get; set; }
         public string JobTitle { get; set; }
         public string JobDescription { get; set; }
         public decimal? Salary { get; set; }
-        public LocationJob Job_Location { get; set; }
-        public JobTime Job_Time { get; set; }
+        public WorkplaceType WorkplaceType { get; set; }
+        public EmploymentType EmploymentType { get; set; }
         public DateTime PostedDate { get; set; }
         public DateTime? ExpireDate { get; set; }
 
-        /*------------------------Category--------------------------*/
+		public string Location { get; set; } // New: Ex: Cairo, Egypt 
 
-        [ForeignKey("Category")]
+		public int NumberOfPositions { get; set; } //New
+		public string CareerLevel { get; set; } //New
+		public string EducationLevel { get; set; } //New
+		public string? Requirements { get; set; } //New
+
+		/*------------------------Category--------------------------*/
+
+		[ForeignKey("Category")]
         public int? CategoryId { get; set; }
         public Category? Category { get; set; }
 
