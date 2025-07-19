@@ -7,21 +7,23 @@ using System.Threading.Tasks;
 
 namespace JobBoard.Domain.Data
 {
-    public class EmployerProfile 
+    public class EmployerProfile
     {
-        public int Id { get; set; }
-    
-        public string CompanyName { get; set; }
-        
-        public string? CompanyLocation { get; set; }
-     
+		public int Id { get; set; }
 
-        /*------------------------user--------------------------*/
-        [ForeignKey("User")]
-        public string? UserId { get; set; }
-        public UserApplication User { get; set; }
+		public string CompanyName { get; set; }
 
-        /*------------------------job--------------------------*/
-        public List<Job>? PostedJobs { get; set; }
-    }
+		public string? CompanyLocation { get; set; }
+		public string? Website { get; set; }
+		public int EstablishedYear { get; set; }
+
+
+		/*------------------------user--------------------------*/
+		[ForeignKey("User")]
+		public string? UserId { get; set; }
+		public ApplicationUser User { get; set; }
+
+		/*------------------------job--------------------------*/
+		public List<Job>? PostedJobs { get; set; }
+	}
 }

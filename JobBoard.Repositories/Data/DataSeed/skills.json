@@ -1,0 +1,12 @@
+[
+  { "SkillName": "C#" },
+  { "SkillName": "ASP.NET Core" },
+  { "SkillName": "SQL" },
+  { "SkillName": "Entity Framework" },
+  { "SkillName": "JavaScript" },
+  { "SkillName": "HTML" },
+  { "SkillName": "CSS" },
+  { "SkillName": "Angular" },
+  { "SkillName": "React" },
+  { "SkillName": "Git" }
+]

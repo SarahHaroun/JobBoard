@@ -11,7 +11,7 @@ namespace JobBoard.Domain.Data
     {
         Employer,Seeker
     }
-    public class UserApplication : IdentityUser
+    public class ApplicationUser : IdentityUser
     {
         public UserType User_Type { get; set; }
 

@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace JobBoard.Domain.Data.Enums
 {
-	public enum EmploymentType
+	public enum EducationLevel
 	{
-		FullTime,
-		PartTime,
-		Freelance,
-		Internship,
-		Temporary,
-		Contract
+		HighSchool,
+		Bachelor,
+		Diploma,
+		Master,
+		Doctorate,
+		NotSpecified
 	}
 
 }

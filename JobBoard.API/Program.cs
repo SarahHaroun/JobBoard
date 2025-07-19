@@ -1,4 +1,5 @@
 ﻿using JobBoard.Domain.Data;
+using JobBoard.Repositories;
 using JobBoard.Repositories.Persistence;
 using JobBoard.Services._ِAuthService;
 using JobBoard.Services.EmployerService;
@@ -23,7 +24,7 @@ namespace JobBoard.API
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             /*------------------------Add Identity--------------------------*/
-            builder.Services.AddIdentity<UserApplication, IdentityRole>()
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
            
@@ -72,7 +73,13 @@ namespace JobBoard.API
                 var pendingMigrations = context.Database.GetPendingMigrations();
                 if(pendingMigrations.Any())
 				    await context.Database.MigrateAsync();
-            }
+
+
+				var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+				await InitialDataSeeder.SeedEmployerWithProfile(services);  
+
+				await InitialDataSeeder.seedAsync(context);
+			}
             catch (Exception ex)
             {
                 var logger = loggerFactory.CreateLogger<Program>();

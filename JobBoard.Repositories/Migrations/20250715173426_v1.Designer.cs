@@ -75,7 +75,7 @@ namespace JobBoard.Repositories.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("categories");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("JobBoard.Domain.Data.EmployerProfile", b =>
@@ -214,7 +214,7 @@ namespace JobBoard.Repositories.Migrations
                     b.ToTable("Skills");
                 });
 
-            modelBuilder.Entity("JobBoard.Domain.Data.UserApplication", b =>
+            modelBuilder.Entity("JobBoard.Domain.Data.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -436,7 +436,7 @@ namespace JobBoard.Repositories.Migrations
 
             modelBuilder.Entity("JobBoard.Domain.Data.EmployerProfile", b =>
                 {
-                    b.HasOne("JobBoard.Domain.Data.UserApplication", "User")
+                    b.HasOne("JobBoard.Domain.Data.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -465,7 +465,7 @@ namespace JobBoard.Repositories.Migrations
 
             modelBuilder.Entity("JobBoard.Domain.Data.SeekerProfile", b =>
                 {
-                    b.HasOne("JobBoard.Domain.Data.UserApplication", "User")
+                    b.HasOne("JobBoard.Domain.Data.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -498,7 +498,7 @@ namespace JobBoard.Repositories.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("JobBoard.Domain.Data.UserApplication", null)
+                    b.HasOne("JobBoard.Domain.Data.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -507,7 +507,7 @@ namespace JobBoard.Repositories.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("JobBoard.Domain.Data.UserApplication", null)
+                    b.HasOne("JobBoard.Domain.Data.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -522,7 +522,7 @@ namespace JobBoard.Repositories.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("JobBoard.Domain.Data.UserApplication", null)
+                    b.HasOne("JobBoard.Domain.Data.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -531,7 +531,7 @@ namespace JobBoard.Repositories.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("JobBoard.Domain.Data.UserApplication", null)
+                    b.HasOne("JobBoard.Domain.Data.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

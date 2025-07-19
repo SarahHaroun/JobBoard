@@ -12,11 +12,9 @@ namespace JobBoard.Domain.Data
         public int Id { get; set; }
         public string SkillName { get; set; }
 
-        /*------------------------job--------------------------*/
-        [ForeignKey("Job")]
-        public int? JobId { get; set; }
-        public Job Job { get; set; }
+		/*------------------------job--------------------------*/
 
-
-    }
+		public ICollection<Job> Jobs { get; set; }
+		public ICollection<SeekerProfile> Seekers { get; set; }
+	}
 }

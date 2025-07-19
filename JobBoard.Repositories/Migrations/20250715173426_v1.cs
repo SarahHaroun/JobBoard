@@ -52,7 +52,7 @@ namespace JobBoard.Repositories.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "categories",
+                name: "Categories",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -244,7 +244,7 @@ namespace JobBoard.Repositories.Migrations
                     table.ForeignKey(
                         name: "FK_Jobs_categories_CategoryId",
                         column: x => x.CategoryId,
-                        principalTable: "categories",
+                        principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.SetNull);
                 });
@@ -421,7 +421,7 @@ namespace JobBoard.Repositories.Migrations
                 name: "EmployerProfiles");
 
             migrationBuilder.DropTable(
-                name: "categories");
+                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

@@ -1,0 +1,18 @@
+[
+  {
+    "CompanyName": "Tech Solutions Ltd.",
+    "CompanyLocation": "Cairo, Egypt",
+    //"UserId": "user-001"
+  },
+  {
+    "CompanyName": "SmartVision",
+    "CompanyLocation": "Alexandria, Egypt",
+    //"UserId": "user-002"
+  },
+  {
+    "CompanyName": "FutureSoft",
+    "CompanyLocation": "Giza, Egypt",
+    //"UserId": "user-003"
+  },
+
+]

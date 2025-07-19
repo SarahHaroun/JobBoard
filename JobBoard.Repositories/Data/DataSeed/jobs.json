@@ -1,0 +1,123 @@
+[
+  {
+    "title": "Junior .NET Developer",
+    "description": "Work with a team to build and maintain .NET applications.",
+    "salary": 8000,
+    "workplaceType": "OnSite",
+    "jobType": "FullTime",
+    "postedDate": "2025-07-01T00:00:00",
+    "expireDate": "2025-08-01T00:00:00",
+    "educationLevel": "Bachelor",
+    "numberOfPositions": 2,
+    "experienceLevel": "EntryLevel",
+    "requirements": "Basic knowledge of C#, ASP.NET, and SQL.",
+    "isActive": true,
+    "employerId": 3,
+    "categories": [ { "id": 1 } ],
+    "skills": [
+      { "id": 1 },
+      { "id": 2 }
+    ]
+  },
+  {
+    "title": "Senior Frontend Developer",
+    "description": "Lead frontend development with React and TypeScript.",
+    "salary": 18000,
+    "workplaceType": "Remote",
+    "jobType": "FullTime",
+    "postedDate": "2025-07-05T00:00:00",
+    "expireDate": "2025-08-05T00:00:00",
+    "educationLevel": "Master",
+    "numberOfPositions": 1,
+    "experienceLevel": "Experienced",
+    "requirements": "React, Redux, TypeScript, UI performance tuning.",
+    "isActive": true,
+    "employerId": 3,
+    "categories": [ { "id": 2 } ],
+    "skills": [
+      { "id": 3 },
+      { "id": 4 }
+    ]
+  },
+  {
+    "title": "UI/UX Designer",
+    "description": "Create elegant and usable designs for web platforms.",
+    "salary": 12000,
+    "workplaceType": "Hybrid",
+    "jobType": "PartTime",
+    "postedDate": "2025-07-10T00:00:00",
+    "expireDate": "2025-08-10T00:00:00",
+    "educationLevel": "Bachelor",
+    "numberOfPositions": 1,
+    "experienceLevel": "TeamLeader",
+    "requirements": "Strong portfolio, Figma, Adobe XD.",
+    "isActive": true,
+    "employerId": 3,
+    "categories": [ { "id": 3 } ],
+    "skills": [
+      { "id": 5 },
+      { "id": 6 }
+    ]
+  },
+  {
+    "title": "DevOps Engineer",
+    "description": "Manage CI/CD pipelines and infrastructure automation.",
+    "salary": 20000,
+    "workplaceType": "Remote",
+    "jobType": "FullTime",
+    "postedDate": "2025-07-03T00:00:00",
+    "expireDate": "2025-08-03T00:00:00",
+    "educationLevel": "Master",
+    "numberOfPositions": 1,
+    "experienceLevel": "Experienced",
+    "requirements": "Docker, Kubernetes, Azure, GitHub Actions.",
+    "isActive": true,
+    "employerId": 3,
+    "categories": [ { "id": 1 } ],
+    "skills": [
+      { "id": 2 },
+      { "id": 7 },
+      { "id": 8 }
+    ]
+  },
+  {
+    "title": "QA Tester",
+    "description": "Ensure application quality through manual and automated tests.",
+    "salary": 9000,
+    "workplaceType": "OnSite",
+    "jobType": "Contract",
+    "postedDate": "2025-07-12T00:00:00",
+    "expireDate": "2025-08-12T00:00:00",
+    "educationLevel": "Diploma",
+    "numberOfPositions": 2,
+    "experienceLevel": "Internship",
+    "requirements": "Selenium, Postman, TestRail.",
+    "isActive": true,
+    "employerId": 3,
+    "categories": [ { "id": 2 } ],
+    "skills": [
+      { "id": 9 },
+      { "id": 10 }
+    ]
+  },
+  {
+    "title": "Data Analyst",
+    "description": "Interpret complex data to support decision making.",
+    "salary": 13000,
+    "workplaceType": "Hybrid",
+    "jobType": "FullTime",
+    "postedDate": "2025-07-06T00:00:00",
+    "expireDate": "2025-08-06T00:00:00",
+    "educationLevel": "Doctorate",
+    "numberOfPositions": 1,
+    "experienceLevel": "Manager",
+    "requirements": "SQL, Excel, Power BI, statistical modeling.",
+    "isActive": true,
+    "employerId": 3,
+    "categories": [ { "id": 4 } ],
+    "skills": [
+      { "id": 11 },
+      { "id": 12 }
+    ]
+  }
+]
