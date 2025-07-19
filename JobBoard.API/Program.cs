@@ -1,5 +1,5 @@
 ﻿using JobBoard.Domain.Data;
-using JobBoard.Repositories;
+using JobBoard.Repositories.Data;
 using JobBoard.Repositories.Persistence;
 using JobBoard.Services._ِAuthService;
 using JobBoard.Services.EmployerService;

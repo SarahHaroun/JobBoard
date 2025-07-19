@@ -11,7 +11,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 
-namespace JobBoard.Repositories
+namespace JobBoard.Repositories.Data
 {
     public static class InitialDataSeeder
     {
