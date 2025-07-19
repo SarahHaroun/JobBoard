@@ -116,8 +116,8 @@
     "employerId": 3,
     "categories": [ { "id": 4 } ],
     "skills": [
-      { "id": 11 },
-      { "id": 12 }
+      { "id": 3 },
+      { "id": 10 }
     ]
   }
 ]

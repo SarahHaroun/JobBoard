@@ -1,6 +1,7 @@
 ﻿using JobBoard.Domain.Data;
 using JobBoard.Repositories.Persistence;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -99,19 +100,39 @@ namespace JobBoard.Repositories.Data
                 await context.SaveChangesAsync();
             }
 
-            ///if (!context.EmployerProfiles.Any())
-            ///{
-            ///    var employersData = File.ReadAllText("../JobBoard.Repositories/Data/DataSeed/employers.json");
-            ///    var employers = JsonSerializer.Deserialize<List<EmployerProfile>>(employersData);
-            ///    if (employers is not null && employers.Count() > 0)
-            ///        await context.EmployerProfiles.AddRangeAsync(employers);
-            ///    await context.SaveChangesAsync();
-            ///}
+
+			if (!context.Jobs.Any())
+			{
+				var jobsData = File.ReadAllText("../JobBoard.Repositories/Data/DataSeed/jobs.json");
+				var jobs = JsonSerializer.Deserialize<List<Job>>(jobsData);
+				
+				if (jobs is not null && jobs.Count() > 0)
+					await context.Jobs.AddRangeAsync(jobs);
+				try
+				{
+					await context.SaveChangesAsync();
+				}
+				catch (DbUpdateException ex)
+				{
+					Console.WriteLine("ERROR:", ex.InnerException?.Message);
+					throw;
+				}
+
+			}
+
+			///if (!context.EmployerProfiles.Any())
+			///{
+			///    var employersData = File.ReadAllText("../JobBoard.Repositories/Data/DataSeed/employers.json");
+			///    var employers = JsonSerializer.Deserialize<List<EmployerProfile>>(employersData);
+			///    if (employers is not null && employers.Count() > 0)
+			///        await context.EmployerProfiles.AddRangeAsync(employers);
+			///    await context.SaveChangesAsync();
+			///}
 
 
 
 
 
-        }
-    }
+		}
+		}
 }

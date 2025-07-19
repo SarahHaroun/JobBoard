@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace JobBoard.Repositories
 {
-	class UnitOfWork : IUnitOfWork
+	public class UnitOfWork : IUnitOfWork
 	{
 		private readonly ApplicationDbContext _context;
 		private readonly Hashtable _repositories;
@@ -31,7 +31,7 @@ namespace JobBoard.Repositories
 			//Check if the repository already exists in the hashtable
 			if (!_repositories.ContainsKey(repoType)) { 
 				var repo = new GenericRepository<TEntity>(_context);
-				_repositories.Add(repo, repoType);
+				_repositories.Add(repoType, repo);
 			}
 			return _repositories[repoType] as IGenericRepository<TEntity>;
 		}
