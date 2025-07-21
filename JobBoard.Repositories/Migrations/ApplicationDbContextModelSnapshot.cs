@@ -222,7 +222,10 @@ namespace JobBoard.Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("NumberOfPositions")
+                    b.Property<int?>("MaxTeamSize")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MinTeamSize")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("PostedDate")

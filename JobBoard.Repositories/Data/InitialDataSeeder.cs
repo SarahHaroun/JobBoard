@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace JobBoard.Repositories.Data
@@ -104,21 +105,19 @@ namespace JobBoard.Repositories.Data
 			if (!context.Jobs.Any())
 			{
 				var jobsData = File.ReadAllText("../JobBoard.Repositories/Data/DataSeed/jobs.json");
-				var jobs = JsonSerializer.Deserialize<List<Job>>(jobsData);
-				
+
+				var options = new JsonSerializerOptions
+				{
+					PropertyNameCaseInsensitive = true,
+					Converters = { new JsonStringEnumConverter() }
+				};
+
+				var jobs = JsonSerializer.Deserialize<List<Job>>(jobsData, options);
+
 				if (jobs is not null && jobs.Count() > 0)
 					await context.Jobs.AddRangeAsync(jobs);
-				try
-				{
-					await context.SaveChangesAsync();
-				}
-				catch (DbUpdateException ex)
-				{
-					Console.WriteLine("ERROR:", ex.InnerException?.Message);
-					throw;
-				}
 
-			}
+				await context.SaveChangesAsync();				}
 
 			///if (!context.EmployerProfiles.Any())
 			///{
@@ -130,9 +129,6 @@ namespace JobBoard.Repositories.Data
 			///}
 
 
-
-
-
 		}
-		}
+	}
 }

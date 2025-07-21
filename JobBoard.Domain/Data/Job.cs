@@ -19,7 +19,8 @@ namespace JobBoard.Domain.Data
         public DateTime PostedDate { get; set; }
         public DateTime? ExpireDate { get; set; }
 		public EducationLevel? EducationLevel { get; set; } 
-		public int? NumberOfPositions { get; set; } //New
+		public int? MinTeamSize { get; set; } //New
+		public int? MaxTeamSize { get; set; } //New
 		public ExperienceLevel? ExperienceLevel { get; set; } //New
 		public string? Requirements { get; set; } //New
 		public bool IsActive { get; set; } = true; //New
