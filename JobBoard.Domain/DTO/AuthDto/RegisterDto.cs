@@ -1,4 +1,4 @@
-﻿using JobBoard.Domain.Data;
+﻿using JobBoard.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

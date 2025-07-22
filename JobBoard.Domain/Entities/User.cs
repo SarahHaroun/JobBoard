@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
-namespace JobBoard.Domain.Data
+namespace JobBoard.Domain.Entities
 {
     public enum UserType
     {
         Employer,Seeker
     }
-    public class UserApplication : IdentityUser
+    public class ApplicationUser : IdentityUser
     {
         public UserType User_Type { get; set; }
 
