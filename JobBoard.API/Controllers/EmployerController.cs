@@ -57,6 +57,7 @@ namespace JobBoard.API.Controllers
             dto.UserId = userId;
 
             var result = await employerService.Create(dto);
+            //return create("URLNAME of Employer" , EmployerCreated)
             return Ok(result);
         }
 

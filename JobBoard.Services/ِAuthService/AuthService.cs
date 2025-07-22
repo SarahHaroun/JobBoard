@@ -1,4 +1,4 @@
-﻿using JobBoard.Domain.Data;
+﻿using JobBoard.Domain.Entities;
 using JobBoard.Domain.DTO.AuthDto;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
