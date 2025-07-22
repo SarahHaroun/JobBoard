@@ -1,5 +1,11 @@
 ﻿using JobBoard.Domain.Entities;
+using JobBoard.Domain.Mapping;
+using JobBoard.Domain.Repositories.Contract;
+using JobBoard.Domain.Services.Contract;
+using JobBoard.Repositories;
+using JobBoard.Repositories.Data;
 using JobBoard.Repositories.Persistence;
+using JobBoard.Services;
 using JobBoard.Services._ِAuthService;
 using JobBoard.Services.EmployerService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -12,7 +18,7 @@ namespace JobBoard.API
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
             
@@ -23,7 +29,7 @@ namespace JobBoard.API
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             /*------------------------Add Identity--------------------------*/
-            builder.Services.AddIdentity<UserApplication, IdentityRole>()
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
            
@@ -53,14 +59,40 @@ namespace JobBoard.API
             /*------------------------Add Services--------------------------*/
             builder.Services.AddScoped<IAuthService, AuthService>();
             builder.Services.AddScoped<IEmployerService, EmployerService>();
+            builder.Services.AddScoped<IJobService, JobService>();
 
+			builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+			builder.Services.AddAutoMapper(M => M.AddProfile(new JobProfile()));
 
-            builder.Services.AddAuthorization();
+			builder.Services.AddAuthorization();
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
+
+            //Update Database
+            using var scope = app.Services.CreateScope();
+            var services = scope.ServiceProvider;
+            var context = services.GetRequiredService<ApplicationDbContext>();
+            var loggerFactory = services.GetRequiredService<ILoggerFactory>();
+            try
+            {
+                var pendingMigrations = context.Database.GetPendingMigrations();
+                if(pendingMigrations.Any())
+				    await context.Database.MigrateAsync();
+
+
+				var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+				await InitialDataSeeder.SeedEmployerWithProfile(services);  
+
+				await InitialDataSeeder.seedAsync(context);
+			}
+            catch (Exception ex)
+            {
+                var logger = loggerFactory.CreateLogger<Program>();
+				logger.LogError(ex, "An error occurred while migrating the database.");
+			}
 
             // Configure Middleware Pipeline
             if (app.Environment.IsDevelopment())

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JobBoard.Domain.Entities.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -7,10 +8,6 @@ using System.Threading.Tasks;
 
 namespace JobBoard.Domain.Entities
 {
-    public enum ExperienceLevel
-    {
-        EntryLevel,MidLevel,Experienced
-    }
     public class SeekerProfile 
     {
         public int Id { get; set; }
@@ -25,13 +22,13 @@ namespace JobBoard.Domain.Entities
 
         [ForeignKey("User")]
         public string? UserId { get; set; }
-        public UserApplication User { get; set; }
+        public ApplicationUser User { get; set; }
 
         /*------------------------Application--------------------------*/
         public List<Application>? UserApplications { get; set; }
 
-        /*------------------------Skills--------------------------*/
-        public List<Skill>? Skills { get; set; }
-       
-    }
+		/*------------------------Skills--------------------------*/
+		public ICollection<Skill> Skills { get; set; } = new List<Skill>();
+
+	}
 }

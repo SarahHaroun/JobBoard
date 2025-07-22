@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JobBoard.Domain.Entities.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -7,30 +8,26 @@ using System.Threading.Tasks;
 
 namespace JobBoard.Domain.Entities
 {
-    public enum LocationJob
-    {
-        OnSite,Remote,Hyprid
-    }
-    public enum JobTime
-    {
-        FullTime,PartTime
-    }
     public class Job
     {
         public int Id { get; set; }
-        public string JobTitle { get; set; }
-        public string JobDescription { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
         public decimal? Salary { get; set; }
-        public LocationJob Job_Location { get; set; }
-        public JobTime Job_Time { get; set; }
+        public WorkplaceType WorkplaceType { get; set; }
+        public JobType JobType { get; set; }
         public DateTime PostedDate { get; set; }
         public DateTime? ExpireDate { get; set; }
+		public EducationLevel? EducationLevel { get; set; } 
+		public int? MinTeamSize { get; set; } //New
+		public int? MaxTeamSize { get; set; } //New
+		public ExperienceLevel? ExperienceLevel { get; set; } //New
+		public string? Requirements { get; set; } //New
+		public bool IsActive { get; set; } = true; //New
 
         /*------------------------Category--------------------------*/
+        public List<Category>? Categories { get; set; }
 
-        [ForeignKey("Category")]
-        public int? CategoryId { get; set; }
-        public Category? Category { get; set; }
 
         /*------------------------Applications--------------------------*/
         public List<Application>? JobApplications { get; set; }
@@ -41,6 +38,6 @@ namespace JobBoard.Domain.Entities
         public EmployerProfile Employer { get; set; }
 
         /*------------------------Skills--------------------------*/
-        public List<Skill>? Skills { get; set; }
-    }
+        public ICollection<Skill> Skills { get; set; } = new List<Skill>();
+	}
 }

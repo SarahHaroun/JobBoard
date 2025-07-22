@@ -23,17 +23,17 @@ namespace JobBoard.Services.EmployerService
         {
             //check if employer exist
             var existUser = await context.EmployerProfiles.FirstOrDefaultAsync(u => u.UserId == model.UserId);
-             if (existUser != null)
+            if (existUser != null)
                 return "Employer profile already exists";
 
             //if the employer not exist before, create new profile
-           var newEmployer = new EmployerProfile();
-            newEmployer.CompanyName= model.CompanyName;
+            var newEmployer = new EmployerProfile();
+            newEmployer.CompanyName = model.CompanyName;
             newEmployer.CompanyLocation = model.CompanyLocation;
             newEmployer.UserId = model.UserId;
 
             context.EmployerProfiles.Add(newEmployer);
-            await  context.SaveChangesAsync();
+            await context.SaveChangesAsync();
 
             return "Employer created successfully";
 
@@ -42,29 +42,29 @@ namespace JobBoard.Services.EmployerService
         public async Task<bool> DeleteById(int id)
         {
             var employer = await context.EmployerProfiles.FirstOrDefaultAsync(e => e.Id == id);
-            if(employer == null)
+            if (employer == null)
             {
                 return false;
             }
-             context.EmployerProfiles.Remove(employer);
-             await context.SaveChangesAsync();
-             return true;
+            context.EmployerProfiles.Remove(employer);
+            await context.SaveChangesAsync();
+            return true;
         }
 
         public async Task<List<EmpProfileDto>> GetAll()
         {
             var employers = await context.EmployerProfiles.ToListAsync();
 
-            var empDtoList= new List<EmpProfileDto>();
+            var empDtoList = new List<EmpProfileDto>();
 
-            foreach(var emp in employers)
+            foreach (var emp in employers)
             {
                 empDtoList.Add(new EmpProfileDto
                 {
                     Id = emp.Id,
                     CompanyName = emp.CompanyName,
                     CompanyLocation = emp.CompanyLocation,
-                    UserId= emp.UserId
+                    UserId = emp.UserId
                 });
             }
             return empDtoList;
