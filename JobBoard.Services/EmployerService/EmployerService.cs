@@ -1,4 +1,4 @@
-﻿using JobBoard.Domain.Data;
+﻿using JobBoard.Domain.Entities;
 using JobBoard.Domain.DTO;
 using JobBoard.Domain.DTO.EmployerDto;
 using JobBoard.Repositories.Persistence;

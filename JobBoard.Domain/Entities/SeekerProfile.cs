@@ -1,4 +1,4 @@
-﻿using JobBoard.Domain.Data.Enums;
+﻿using JobBoard.Domain.Entities.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JobBoard.Domain.Data
+namespace JobBoard.Domain.Entities
 {
     public class SeekerProfile 
     {

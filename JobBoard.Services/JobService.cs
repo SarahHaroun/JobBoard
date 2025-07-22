@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using JobBoard.Domain.Data;
+using JobBoard.Domain.Entities;
 using JobBoard.Domain.DTO.JobDto;
 using JobBoard.Domain.Repositories.Contract;
 using JobBoard.Domain.Services.Contract;

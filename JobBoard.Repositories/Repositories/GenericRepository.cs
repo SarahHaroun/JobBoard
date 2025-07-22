@@ -1,4 +1,4 @@
-﻿using JobBoard.Domain.Data;
+﻿using JobBoard.Domain.Entities;
 using JobBoard.Domain.Repositories.Contract;
 using JobBoard.Repositories.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -23,8 +23,8 @@ namespace JobBoard.Repositories.Repositories
 			if(typeof(TEntity) == typeof(Job))
 			{
 				var jobs = await _context.Jobs.Include(j => j.Employer)
-					.Include(j => j.Categories).
-					Include(j => j.Skills).ToListAsync();
+					.Include(j => j.Categories)
+					.Include(j => j.Skills).ToListAsync();
 				return (IEnumerable<TEntity>) jobs;
 			}
 			return await _context.Set<TEntity>().ToListAsync();

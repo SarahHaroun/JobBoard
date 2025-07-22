@@ -1,4 +1,4 @@
-﻿using JobBoard.Domain.Data;
+﻿using JobBoard.Domain.Entities;
 using JobBoard.Domain.Mapping;
 using JobBoard.Domain.Repositories.Contract;
 using JobBoard.Domain.Services.Contract;

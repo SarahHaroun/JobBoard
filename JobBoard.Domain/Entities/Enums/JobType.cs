@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JobBoard.Domain.Data.Enums
+namespace JobBoard.Domain.Entities.Enums
 {
 	public enum JobType
 	{

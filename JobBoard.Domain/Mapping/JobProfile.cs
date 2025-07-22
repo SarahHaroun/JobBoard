@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using JobBoard.Domain.Data;
+using JobBoard.Domain.Entities;
 using JobBoard.Domain.DTO.JobDto;
 using System;
 using System.Collections.Generic;

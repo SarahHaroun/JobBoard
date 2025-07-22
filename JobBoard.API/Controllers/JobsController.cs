@@ -1,7 +1,5 @@
 ﻿using JobBoard.Domain.Services.Contract;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace JobBoard.API.Controllers
 {
