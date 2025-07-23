@@ -4,6 +4,7 @@ using JobBoard.Repositories.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobBoard.Repositories.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250723110227_V3")]
+    partial class V3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -125,6 +128,12 @@ namespace JobBoard.Repositories.Data.Migrations
                     b.Property<int>("User_Type")
                         .HasColumnType("int");
 
+                    b.Property<int>("employerProfileId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("seekerProfileId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
@@ -134,6 +143,10 @@ namespace JobBoard.Repositories.Data.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.HasIndex("employerProfileId");
+
+                    b.HasIndex("seekerProfileId");
 
                     b.ToTable("AspNetUsers", (string)null);
                 });
@@ -508,10 +521,29 @@ namespace JobBoard.Repositories.Data.Migrations
                     b.Navigation("Job");
                 });
 
+            modelBuilder.Entity("JobBoard.Domain.Entities.ApplicationUser", b =>
+                {
+                    b.HasOne("JobBoard.Domain.Entities.EmployerProfile", "employerProfile")
+                        .WithMany()
+                        .HasForeignKey("employerProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("JobBoard.Domain.Entities.SeekerProfile", "seekerProfile")
+                        .WithMany()
+                        .HasForeignKey("seekerProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("employerProfile");
+
+                    b.Navigation("seekerProfile");
+                });
+
             modelBuilder.Entity("JobBoard.Domain.Entities.EmployerProfile", b =>
                 {
                     b.HasOne("JobBoard.Domain.Entities.ApplicationUser", "User")
-                        .WithOne("employerProfile")
+                        .WithOne()
                         .HasForeignKey("JobBoard.Domain.Entities.EmployerProfile", "UserId")
                         .OnDelete(DeleteBehavior.Restrict);
 
@@ -532,7 +564,7 @@ namespace JobBoard.Repositories.Data.Migrations
             modelBuilder.Entity("JobBoard.Domain.Entities.SeekerProfile", b =>
                 {
                     b.HasOne("JobBoard.Domain.Entities.ApplicationUser", "User")
-                        .WithOne("seekerProfile")
+                        .WithOne()
                         .HasForeignKey("JobBoard.Domain.Entities.SeekerProfile", "UserId")
                         .OnDelete(DeleteBehavior.Restrict);
 
@@ -617,15 +649,6 @@ namespace JobBoard.Repositories.Data.Migrations
                         .WithMany()
                         .HasForeignKey("SkillsId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("JobBoard.Domain.Entities.ApplicationUser", b =>
-                {
-                    b.Navigation("employerProfile")
-                        .IsRequired();
-
-                    b.Navigation("seekerProfile")
                         .IsRequired();
                 });
 

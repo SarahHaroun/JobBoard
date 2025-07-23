@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobBoard.Repositories.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250722171003_v1")]
-    partial class v1
+    [Migration("20250723111025_V4")]
+    partial class V4
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -278,6 +278,9 @@ namespace JobBoard.Repositories.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -511,7 +514,7 @@ namespace JobBoard.Repositories.Data.Migrations
             modelBuilder.Entity("JobBoard.Domain.Entities.EmployerProfile", b =>
                 {
                     b.HasOne("JobBoard.Domain.Entities.ApplicationUser", "User")
-                        .WithOne()
+                        .WithOne("employerProfile")
                         .HasForeignKey("JobBoard.Domain.Entities.EmployerProfile", "UserId")
                         .OnDelete(DeleteBehavior.Restrict);
 
@@ -532,7 +535,7 @@ namespace JobBoard.Repositories.Data.Migrations
             modelBuilder.Entity("JobBoard.Domain.Entities.SeekerProfile", b =>
                 {
                     b.HasOne("JobBoard.Domain.Entities.ApplicationUser", "User")
-                        .WithOne()
+                        .WithOne("seekerProfile")
                         .HasForeignKey("JobBoard.Domain.Entities.SeekerProfile", "UserId")
                         .OnDelete(DeleteBehavior.Restrict);
 
@@ -617,6 +620,15 @@ namespace JobBoard.Repositories.Data.Migrations
                         .WithMany()
                         .HasForeignKey("SkillsId")
                         .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("JobBoard.Domain.Entities.ApplicationUser", b =>
+                {
+                    b.Navigation("employerProfile")
+                        .IsRequired();
+
+                    b.Navigation("seekerProfile")
                         .IsRequired();
                 });
 

@@ -63,8 +63,9 @@ namespace JobBoard.API
             builder.Services.AddScoped<IAuthService, AuthService>();
             builder.Services.AddScoped<IEmployerService, EmployerService>();
             builder.Services.AddScoped<IJobService, JobService>();
+            builder.Services.AddScoped<ISeekerService, SeekerService>();
 
-			builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 			builder.Services.AddAutoMapper(M => M.AddProfile(new JobProfile()));
 
 			builder.Services.AddAuthorization();
