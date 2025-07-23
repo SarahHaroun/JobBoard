@@ -275,6 +275,12 @@ namespace JobBoard.Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+<<<<<<< HEAD
+=======
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
+>>>>>>> origin/master
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -299,12 +305,15 @@ namespace JobBoard.Repositories.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+<<<<<<< HEAD
                     b.Property<int>("JobId")
                         .HasColumnType("int");
 
                     b.Property<int?>("SeekerProfileId")
                         .HasColumnType("int");
 
+=======
+>>>>>>> origin/master
                     b.Property<string>("SkillName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -637,6 +646,18 @@ namespace JobBoard.Repositories.Migrations
                 {
                     b.Navigation("UserApplications");
                 });
+<<<<<<< HEAD
+=======
+
+            modelBuilder.Entity("JobBoard.Domain.Data.UserApplication", b =>
+                {
+                    b.Navigation("employerProfile")
+                        .IsRequired();
+
+                    b.Navigation("seekerProfile")
+                        .IsRequired();
+                });
+>>>>>>> origin/master
 #pragma warning restore 612, 618
         }
     }

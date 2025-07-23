@@ -1,4 +1,5 @@
-﻿using JobBoard.Domain.Entities;
+﻿using FoolProof.Core;
+using JobBoard.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -29,6 +30,19 @@ namespace JobBoard.Domain.DTO.AuthDto
         [Required(ErrorMessage = "User type is required")]
         [EnumDataType(typeof(UserType), ErrorMessage = "Invalid user type")]
         public UserType user_type { get; set; }  // UserType can be Employer or Seeker
+
+        /*------------------------Employer--------------------------*/
+
+        [RequiredIf("user_type", UserType.Employer, ErrorMessage = "CompanyName is required for Employer")]
+        [StringLength(100, ErrorMessage = "CompanyName must be between 3 and 100 characters", MinimumLength = 2)]
+        public string? CompanyName { get; set; }  // Only for Employer
+
+
+        [RequiredIf("user_type", UserType.Employer, ErrorMessage = "CompanyLocation is required for Employer")]
+        [StringLength(200, ErrorMessage = "CompanyLocation must be between 3 and 200 characters", MinimumLength = 3)]
+        public string? CompanyLocation { get; set; }  // Only for Employer
+
+
 
 
     }

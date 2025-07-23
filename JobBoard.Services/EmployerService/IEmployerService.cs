@@ -1,5 +1,4 @@
-﻿using JobBoard.Domain.DTO;
-using JobBoard.Domain.DTO.EmployerDto;
+﻿using JobBoard.Domain.DTO.EmployerDto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +10,10 @@ namespace JobBoard.Services.EmployerService
     public interface IEmployerService
     {
         Task<List<EmpProfileDto>> GetAll();
-        Task<EmpProfileDto> GetById(int id);
-        Task<string> Create(CreateEmpProfileDto empProfile);
-        Task<bool> Update(int id, UpdateEmpProfileDto empProfile);
-
+        Task<EmpProfileDto> GetByUserId(string userId);
+        //Task<string> Create(EmpProfileDto empProfile);
+        Task<bool> Update(int id, EmpProfileDto empProfile);
         Task<bool> DeleteById(int id);
-        Task<EmpProfileDto?> GetByUserIdAsync(string userId);
 
     }
 }
