@@ -1,9 +1,11 @@
 ﻿using JobBoard.Domain.Entities;
+
 using JobBoard.Domain.Mapping;
 using JobBoard.Domain.Repositories.Contract;
 using JobBoard.Domain.Services.Contract;
 using JobBoard.Repositories;
 using JobBoard.Repositories.Data;
+
 using JobBoard.Repositories.Persistence;
 using JobBoard.Services;
 using JobBoard.Services._ِAuthService;
@@ -61,8 +63,9 @@ namespace JobBoard.API
             builder.Services.AddScoped<IAuthService, AuthService>();
             builder.Services.AddScoped<IEmployerService, EmployerService>();
             builder.Services.AddScoped<IJobService, JobService>();
+            builder.Services.AddScoped<ISeekerService, SeekerService>();
 
-			builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 			builder.Services.AddAutoMapper(M => M.AddProfile(new JobProfile()));
 
 			builder.Services.AddAuthorization();

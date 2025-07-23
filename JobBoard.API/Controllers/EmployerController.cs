@@ -58,11 +58,6 @@ namespace JobBoard.API.Controllers
         //    if (existingProfile != null)
         //        return BadRequest("Employer profile already exists");
 
-        //    dto.UserId = userId;
-
-        //    var result = await employerService.Create(dto);
-        //    return Ok(result);
-        //}
 
 
         /*------------------------Update --------------------------*/
