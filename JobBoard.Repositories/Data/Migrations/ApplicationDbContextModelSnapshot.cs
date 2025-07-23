@@ -275,6 +275,9 @@ namespace JobBoard.Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -630,6 +633,15 @@ namespace JobBoard.Repositories.Migrations
             modelBuilder.Entity("JobBoard.Domain.Data.SeekerProfile", b =>
                 {
                     b.Navigation("UserApplications");
+                });
+
+            modelBuilder.Entity("JobBoard.Domain.Data.UserApplication", b =>
+                {
+                    b.Navigation("employerProfile")
+                        .IsRequired();
+
+                    b.Navigation("seekerProfile")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

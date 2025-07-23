@@ -1,5 +1,6 @@
 ﻿using JobBoard.Domain.Entities;
 using JobBoard.Domain.DTO.AuthDto;
+using JobBoard.Repositories.Persistence;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -18,12 +19,14 @@ namespace JobBoard.Services._ِAuthService
         private readonly UserManager<ApplicationUser> userManager;
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly IConfiguration config;
+        private readonly ApplicationDbContext context;
 
         public AuthService(UserManager<ApplicationUser> userManager , RoleManager<IdentityRole> roleManager , IConfiguration config )
         {
             this.userManager = userManager;
             this.roleManager = roleManager;
             this.config = config;
+            this.context = context;
         }
 
         /*------------------------Login Service--------------------------*/
@@ -43,7 +46,7 @@ namespace JobBoard.Services._ِAuthService
             List<Claim> userClaims = new List<Claim>();
             userClaims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id));
             userClaims.Add(new Claim(ClaimTypes.Name, user.UserName));
-            userClaims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
+            userClaims.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())); // Unique identifier for the token
             userClaims.Add(new Claim(ClaimTypes.Role, userRole.FirstOrDefault()?? ""));
 
 
@@ -87,20 +90,11 @@ namespace JobBoard.Services._ِAuthService
             newUser.Email = model.Email;
             newUser.User_Type = model.user_type;
 
-            var result = await userManager.CreateAsync(newUser, model.Password);
-            if (result.Succeeded)
-            {
-                var roleName = model.user_type.ToString(); // Seeker or Employer
-                if (!await roleManager.RoleExistsAsync(roleName))
-                    await roleManager.CreateAsync(new IdentityRole(roleName));
 
-                await userManager.AddToRoleAsync(newUser, roleName);
-                return new ResultDto(
-                    succeeded: true,
-                    message: "User registered successfully. Please login and complete your profile."
-                    );
-            }
-            else
+            var result = await userManager.CreateAsync(newUser, model.Password);
+
+            // Check if the user creation was successful
+            if (!result.Succeeded)
             {
                 var errors = string.Join(", ", result.Errors.Select(e => e.Description));
                 return new ResultDto(
@@ -108,8 +102,35 @@ namespace JobBoard.Services._ِAuthService
                     message: $"Registration failed: {errors}"
                     );
             }
+                        
+             var roleName = model.user_type.ToString(); // Seeker or Employer
+               if (!await roleManager.RoleExistsAsync(roleName))
+                    await roleManager.CreateAsync(new IdentityRole(roleName));
+
+                await userManager.AddToRoleAsync(newUser, roleName);
+
+            // If the user is an Employer, set additional properties
+            if (model.user_type == UserType.Employer)
+            {
+                var empProfile= new EmployerProfile
+                {
+                    CompanyName = model.CompanyName,
+                    CompanyLocation = model.CompanyLocation,
+                    UserId = newUser.Id
+                };
+               await context.EmployerProfiles.AddAsync(empProfile);
+               await context.SaveChangesAsync();
+            }
+            return new ResultDto(
+                    succeeded: true,
+                    message: "User registered successfully. Please login and complete your profile."
+                    );
+            }
+
+
+
 
 
         }
     }
-}
+
