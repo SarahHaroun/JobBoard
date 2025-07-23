@@ -1,5 +1,5 @@
-﻿using JobBoard.Domain.Data;
-using JobBoard.Domain.DTO.SeekerDto;
+﻿using JobBoard.Domain.DTO.SeekerDto;
+using JobBoard.Domain.Entities;
 using JobBoard.Repositories.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -36,8 +36,6 @@ namespace JobBoard.Services.SeekerService
                 LastName = seekerProfile.LastName,
                 Address = seekerProfile.Address,
                 CV_Url = seekerProfile.CV_Url,
-                Experience_Level = seekerProfile.Experience_Level,
-                Gender = seekerProfile.Gender,
                 UserId = seekerProfile.UserId,
 
             };
@@ -131,8 +129,6 @@ namespace JobBoard.Services.SeekerService
             existingProfile.LastName = seekerProfile.LastName;
             existingProfile.Address = seekerProfile.Address;
             existingProfile.CV_Url = seekerProfile.CV_Url;
-            existingProfile.Experience_Level = seekerProfile.Experience_Level;
-            existingProfile.Gender = seekerProfile.Gender;
 
             context.SeekerProfiles.Update(existingProfile);
             await context.SaveChangesAsync();
@@ -163,7 +159,6 @@ namespace JobBoard.Services.SeekerService
                 LastName = seeker.LastName,
                 Address = seeker.Address,
                 CV_Url = seeker.CV_Url,
-                Experience_Level = seeker.Experience_Level,
             };
         }
 

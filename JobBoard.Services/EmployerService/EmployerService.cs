@@ -19,25 +19,25 @@ namespace JobBoard.Services.EmployerService
         {
             this.context = context;
         }
-        public async Task<string> Create(CreateEmpProfileDto model)
-        {
-            //check if employer exist
-            var existUser = await context.EmployerProfiles.FirstOrDefaultAsync(u => u.UserId == model.UserId);
-            if (existUser != null)
-                return "Employer profile already exists";
+        //public async Task<string> Create(CreateEmpProfileDto model)
+        //{
+        //    //check if employer exist
+        //    var existUser = await context.EmployerProfiles.FirstOrDefaultAsync(u => u.UserId == model.UserId);
+        //    if (existUser != null)
+        //        return "Employer profile already exists";
 
-            //if the employer not exist before, create new profile
-            var newEmployer = new EmployerProfile();
-            newEmployer.CompanyName = model.CompanyName;
-            newEmployer.CompanyLocation = model.CompanyLocation;
-            newEmployer.UserId = model.UserId;
+        //    //if the employer not exist before, create new profile
+        //    var newEmployer = new EmployerProfile();
+        //    newEmployer.CompanyName = model.CompanyName;
+        //    newEmployer.CompanyLocation = model.CompanyLocation;
+        //    newEmployer.UserId = model.UserId;
 
-            context.EmployerProfiles.Add(newEmployer);
-            await context.SaveChangesAsync();
+        //    context.EmployerProfiles.Add(newEmployer);
+        //    await context.SaveChangesAsync();
 
-        //    return "Employer created successfully";
+        ////    return "Employer created successfully";
 
-        //}
+        ////}
 
         public async Task<bool> DeleteById(int id)
         {

@@ -1,4 +1,5 @@
-﻿using JobBoard.Domain.Entities;
+﻿using FoolProof.Core;
+using JobBoard.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
