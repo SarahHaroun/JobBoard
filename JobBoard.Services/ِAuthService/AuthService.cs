@@ -1,4 +1,4 @@
-﻿using JobBoard.Domain.Data;
+﻿using JobBoard.Domain.Entities;
 using JobBoard.Domain.DTO.AuthDto;
 using JobBoard.Repositories.Persistence;
 using Microsoft.AspNetCore.Identity;
@@ -16,15 +16,12 @@ namespace JobBoard.Services._ِAuthService
 {
     public class AuthService : IAuthService
     {
-        private readonly UserManager<UserApplication> userManager;
+        private readonly UserManager<ApplicationUser> userManager;
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly IConfiguration config;
         private readonly ApplicationDbContext context;
 
-        public AuthService(UserManager<UserApplication> userManager 
-            , RoleManager<IdentityRole> roleManager
-             ,  IConfiguration config
-            , ApplicationDbContext context)
+        public AuthService(UserManager<ApplicationUser> userManager , RoleManager<IdentityRole> roleManager , IConfiguration config )
         {
             this.userManager = userManager;
             this.roleManager = roleManager;
@@ -88,8 +85,7 @@ namespace JobBoard.Services._ِAuthService
                     succeeded: false,
                     message: "Invalid user type."
                     );
-            // Create a new user instance
-            UserApplication newUser = new UserApplication();
+            ApplicationUser newUser = new ApplicationUser();
             newUser.UserName = model.UserName;
             newUser.Email = model.Email;
             newUser.User_Type = model.user_type;

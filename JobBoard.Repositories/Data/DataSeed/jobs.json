@@ -1,0 +1,243 @@
+[
+  {
+    "Title": "Senior Full Stack Developer",
+    "Description": "We are seeking an experienced full stack developer to join our growing team. You will be responsible for developing and maintaining web applications using modern technologies. The ideal candidate should have strong problem-solving skills and experience with both frontend and backend development.",
+    "Salary": 85000.00,
+    "WorkplaceType": "OnSite",
+    "JobType": "FullTime",
+    "PostedDate": "2024-01-15T00:00:00",
+    "ExpireDate": "2024-03-15T00:00:00",
+    "EducationLevel": "Bachelor",
+    "MinTeamSize": 5,
+    "MaxTeamSize": 12,
+    "ExperienceLevel": "Experienced",
+    "Requirements": "5+ years of experience in web development, strong knowledge of C# and JavaScript frameworks, experience with database design and API development.",
+    "IsActive": true,
+    "EmployerId": 1,
+    "Skills": [
+      { "SkillName": "C#" },
+      { "SkillName": "ASP.NET Core" },
+      { "SkillName": "JavaScript" },
+      { "SkillName": "React" },
+      { "SkillName": "SQL" }
+    ],
+    "Categories": [
+      { "CategoryName": "Software Development" }
+    ]
+  },
+  {
+    "Title": "Data Scientist - Machine Learning",
+    "Description": "Join our data science team to develop cutting-edge machine learning models and algorithms. You will work with large datasets to extract meaningful insights and build predictive models. This role requires strong analytical skills and experience with data visualization tools.",
+    "Salary": 95000.00,
+    "WorkplaceType": "Remote",
+    "JobType": "FullTime",
+    "PostedDate": "2024-01-20T00:00:00",
+    "ExpireDate": "2024-04-20T00:00:00",
+    "EducationLevel": "Master",
+    "MinTeamSize": 3,
+    "MaxTeamSize": 8,
+    "ExperienceLevel": "Experienced",
+    "Requirements": "Advanced degree in Data Science or related field, experience with Python/R, knowledge of machine learning algorithms, strong statistical analysis skills.",
+    "IsActive": true,
+    "EmployerId": 1,
+    "Skills": [
+      { "SkillName": "SQL" },
+      { "SkillName": "JavaScript" }
+    ],
+    "Categories": [
+      { "CategoryName": "Data Science" }
+    ]
+  },
+  {
+    "Title": "UI/UX Designer",
+    "Description": "We're looking for a creative UI/UX designer to create engaging and user-friendly interfaces. You will collaborate with our development team to design intuitive user experiences across web and mobile platforms. Experience with design tools and user research is essential.",
+    "Salary": 65000.00,
+    "WorkplaceType": "OnSite",
+    "JobType": "FullTime",
+    "PostedDate": "2024-01-25T00:00:00",
+    "ExpireDate": "2024-03-25T00:00:00",
+    "EducationLevel": "Bachelor",
+    "MinTeamSize": 2,
+    "MaxTeamSize": 6,
+    "ExperienceLevel": "EntryLevel",
+    "Requirements": "Portfolio demonstrating UI/UX design skills, proficiency in design tools like Figma or Adobe XD, understanding of user-centered design principles.",
+    "IsActive": true,
+    "EmployerId": 1,
+    "Skills": [
+      { "SkillName": "HTML" },
+      { "SkillName": "CSS" },
+      { "SkillName": "JavaScript" }
+    ],
+    "Categories": [
+      { "CategoryName": "UI/UX Design" }
+    ]
+  },
+  {
+    "Title": "Cybersecurity Analyst",
+    "Description": "Protect our organization's digital assets by monitoring and analyzing security threats. You will implement security measures, conduct vulnerability assessments, and respond to security incidents. Strong knowledge of cybersecurity frameworks and tools is required.",
+    "Salary": 78000.00,
+    "WorkplaceType": "Hybrid",
+    "JobType": "FullTime",
+    "PostedDate": "2024-02-01T00:00:00",
+    "ExpireDate": "2024-04-01T00:00:00",
+    "EducationLevel": "Bachelor",
+    "MinTeamSize": 4,
+    "MaxTeamSize": 10,
+    "ExperienceLevel": "Experienced",
+    "Requirements": "3+ years in cybersecurity, knowledge of security frameworks (NIST, ISO 27001), experience with SIEM tools, relevant certifications preferred.",
+    "IsActive": true,
+    "EmployerId": 1,
+    "Skills": [
+      { "SkillName": "SQL" },
+      { "SkillName": "Git" }
+    ],
+    "Categories": [
+      { "CategoryName": "Cybersecurity" }
+    ]
+  },
+  {
+    "Title": "Project Manager - Software Development",
+    "Description": "Lead cross-functional teams to deliver software projects on time and within budget. You will coordinate with stakeholders, manage project timelines, and ensure quality deliverables. Strong communication and leadership skills are essential for this role.",
+    "Salary": 72000.00,
+    "WorkplaceType": "OnSite",
+    "JobType": "FullTime",
+    "PostedDate": "2024-02-05T00:00:00",
+    "ExpireDate": "2024-05-05T00:00:00",
+    "EducationLevel": "Bachelor",
+    "MinTeamSize": 8,
+    "MaxTeamSize": 15,
+    "ExperienceLevel": "Manager",
+    "Requirements": "PMP certification preferred, 5+ years of project management experience, experience in software development lifecycle, excellent communication skills.",
+    "IsActive": true,
+    "EmployerId": 1,
+    "Skills": [
+      { "SkillName": "Git" }
+    ],
+    "Categories": [
+      { "CategoryName": "Project Management" },
+      { "CategoryName": "Software Development" }
+    ]
+  },
+  {
+    "Title": "Frontend Developer Intern",
+    "Description": "Gain hands-on experience in frontend development while working on real projects. You will learn modern web technologies and collaborate with senior developers to build user interfaces. This is a great opportunity for students to start their career in web development.",
+    "Salary": 2500.00,
+    "WorkplaceType": "Hybrid",
+    "JobType": "Internship",
+    "PostedDate": "2024-02-10T00:00:00",
+    "ExpireDate": "2024-04-10T00:00:00",
+    "EducationLevel": "HighSchool",
+    "MinTeamSize": 3,
+    "MaxTeamSize": 7,
+    "ExperienceLevel": "Student",
+    "Requirements": "Currently enrolled in Computer Science or related field, basic knowledge of HTML, CSS, JavaScript, eager to learn and grow.",
+    "IsActive": true,
+    "EmployerId": 1,
+    "Skills": [
+      { "SkillName": "HTML" },
+      { "SkillName": "CSS" },
+      { "SkillName": "JavaScript" },
+      { "SkillName": "React" }
+    ],
+    "Categories": [
+      { "CategoryName": "Software Development" }
+    ]
+  },
+  {
+    "Title": "Backend Developer - .NET Core",
+    "Description": "Develop and maintain server-side applications using .NET Core and related technologies. You will work on API development, database design, and system architecture. Strong understanding of software engineering principles and database management is required.",
+    "Salary": 75000.00,
+    "WorkplaceType": "Remote",
+    "JobType": "FullTime",
+    "PostedDate": "2024-02-15T00:00:00",
+    "ExpireDate": "2024-04-15T00:00:00",
+    "EducationLevel": "Bachelor",
+    "MinTeamSize": 4,
+    "MaxTeamSize": 10,
+    "ExperienceLevel": "Experienced",
+    "Requirements": "4+ years experience with .NET Core, strong SQL skills, experience with Entity Framework, knowledge of RESTful API design, cloud platform experience preferred.",
+    "IsActive": true,
+    "EmployerId": 1,
+    "Skills": [
+      { "SkillName": "C#" },
+      { "SkillName": "ASP.NET Core" },
+      { "SkillName": "SQL" },
+      { "SkillName": "Entity Framework" }
+    ],
+    "Categories": [
+      { "CategoryName": "Software Development" }
+    ]
+  },
+  {
+    "Title": "Freelance Web Developer",
+    "Description": "Work on exciting web development projects on a freelance basis with flexible schedules. You will create responsive websites and web applications for various clients across different industries. Strong portfolio and self-motivation are essential for success.",
+    "Salary": 45.00,
+    "WorkplaceType": "Remote",
+    "JobType": "Freelance",
+    "PostedDate": "2024-02-20T00:00:00",
+    "ExpireDate": "2024-06-20T00:00:00",
+    "EducationLevel": "Diploma",
+    "MinTeamSize": 1,
+    "MaxTeamSize": 3,
+    "ExperienceLevel": "EntryLevel",
+    "Requirements": "2+ years of web development experience, proficiency in HTML, CSS, JavaScript, experience with modern frameworks, strong portfolio of completed projects.",
+    "IsActive": true,
+    "EmployerId": 1,
+    "Skills": [
+      { "SkillName": "HTML" },
+      { "SkillName": "CSS" },
+      { "SkillName": "JavaScript" },
+      { "SkillName": "Angular" },
+      { "SkillName": "Git" }
+    ],
+    "Categories": [
+      { "CategoryName": "Software Development" }
+    ]
+  },
+  {
+    "Title": "Senior Security Engineer",
+    "Description": "Lead our cybersecurity initiatives and protect organizational assets from evolving threats. You will design security architectures, conduct penetration testing, and mentor junior security professionals. Advanced knowledge of security tools and frameworks is required.",
+    "Salary": 105000.00,
+    "WorkplaceType": "OnSite",
+    "JobType": "FullTime",
+    "PostedDate": "2024-02-25T00:00:00",
+    "ExpireDate": "2024-05-25T00:00:00",
+    "EducationLevel": "Master",
+    "MinTeamSize": 6,
+    "MaxTeamSize": 12,
+    "ExperienceLevel": "TeamLeader",
+    "Requirements": "7+ years in cybersecurity, advanced certifications (CISSP, CEH), experience with penetration testing, leadership experience, knowledge of compliance frameworks.",
+    "IsActive": true,
+    "EmployerId": 1,
+    "Skills": [
+      { "SkillName": "SQL" },
+      { "SkillName": "Git" }
+    ],
+    "Categories": [
+      { "CategoryName": "Cybersecurity" }
+    ]
+  },
+  {
+    "Title": "Junior Data Analyst",
+    "Description": "Start your career in data analysis by working with business data to generate actionable insights. You will create reports, perform statistical analysis, and support data-driven decision making. Training and mentorship will be provided for career growth.",
+    "Salary": 48000.00,
+    "WorkplaceType": "Hybrid",
+    "JobType": "FullTime",
+    "PostedDate": "2024-03-01T00:00:00",
+    "ExpireDate": "2024-05-01T00:00:00",
+    "EducationLevel": "Bachelor",
+    "MinTeamSize": 3,
+    "MaxTeamSize": 8,
+    "ExperienceLevel": "EntryLevel",
+    "Requirements": "Degree in Statistics, Mathematics, or related field, basic knowledge of SQL and Excel, analytical thinking skills, willingness to learn data visualization tools.",
+    "IsActive": true,
+    "EmployerId": 1,
+    "Skills": [
+      { "SkillName": "SQL" },
+      { "SkillName": "JavaScript" }
+    ],
+    "Categories": [
+      { "CategoryName": "Data Science" }
+    ]
+  }
+]

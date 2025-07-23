@@ -1,0 +1,22 @@
+[
+  {
+    "CategoryName": "Software Development",
+    "CategoryDescription": "Jobs related to building applications and software systems."
+  },
+  {
+    "CategoryName": "Data Science",
+    "CategoryDescription": "Jobs involving data analysis, machine learning, and AI."
+  },
+  {
+    "CategoryName": "UI/UX Design",
+    "CategoryDescription": "Design roles focused on user interface and user experience."
+  },
+  {
+    "CategoryName": "Cybersecurity",
+    "CategoryDescription": "Roles that focus on securing systems and data."
+  },
+  {
+    "CategoryName": "Project Management",
+    "CategoryDescription": "Jobs involving planning, execution, and management of projects."
+  }
+]

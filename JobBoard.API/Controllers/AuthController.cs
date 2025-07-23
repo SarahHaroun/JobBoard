@@ -1,4 +1,4 @@
-﻿using JobBoard.Domain.Data;
+﻿using JobBoard.Domain.Entities;
 using JobBoard.Domain.DTO.AuthDto;
 using JobBoard.Services._ِAuthService;
 using Microsoft.AspNetCore.Http;
