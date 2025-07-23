@@ -60,6 +60,7 @@ namespace JobBoard.API
             /*------------------------Add Services--------------------------*/
             builder.Services.AddScoped<IAuthService, AuthService>();
             builder.Services.AddScoped<IEmployerService, EmployerService>();
+            builder.Services.AddScoped<ISeekerService, SeekerService>();
             builder.Services.AddScoped<IJobService, JobService>();
 
 			builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();

@@ -4,6 +4,7 @@ using JobBoard.Repositories.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobBoard.Repositories.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250723064009_fix-relation")]
+    partial class fixrelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,7 +40,7 @@ namespace JobBoard.Repositories.Migrations
                     b.ToTable("CategoryJob");
                 });
 
-            modelBuilder.Entity("JobBoard.Domain.Data.Application", b =>
+            modelBuilder.Entity("JobBoard.Domain.Entities.Application", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -70,7 +73,7 @@ namespace JobBoard.Repositories.Migrations
                     b.ToTable("Applications");
                 });
 
-            modelBuilder.Entity("JobBoard.Domain.Data.ApplicationUser", b =>
+            modelBuilder.Entity("JobBoard.Domain.Entities.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -138,7 +141,7 @@ namespace JobBoard.Repositories.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("JobBoard.Domain.Data.Category", b =>
+            modelBuilder.Entity("JobBoard.Domain.Entities.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -158,7 +161,7 @@ namespace JobBoard.Repositories.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("JobBoard.Domain.Data.EmployerProfile", b =>
+            modelBuilder.Entity("JobBoard.Domain.Entities.EmployerProfile", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -191,7 +194,7 @@ namespace JobBoard.Repositories.Migrations
                     b.ToTable("EmployerProfiles");
                 });
 
-            modelBuilder.Entity("JobBoard.Domain.Data.Job", b =>
+            modelBuilder.Entity("JobBoard.Domain.Entities.Job", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -253,7 +256,7 @@ namespace JobBoard.Repositories.Migrations
                     b.ToTable("Jobs");
                 });
 
-            modelBuilder.Entity("JobBoard.Domain.Data.SeekerProfile", b =>
+            modelBuilder.Entity("JobBoard.Domain.Entities.SeekerProfile", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -294,7 +297,7 @@ namespace JobBoard.Repositories.Migrations
                     b.ToTable("SeekerProfiles");
                 });
 
-            modelBuilder.Entity("JobBoard.Domain.Data.Skill", b =>
+            modelBuilder.Entity("JobBoard.Domain.Entities.Skill", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -476,28 +479,28 @@ namespace JobBoard.Repositories.Migrations
 
             modelBuilder.Entity("CategoryJob", b =>
                 {
-                    b.HasOne("JobBoard.Domain.Data.Category", null)
+                    b.HasOne("JobBoard.Domain.Entities.Category", null)
                         .WithMany()
                         .HasForeignKey("CategoriesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("JobBoard.Domain.Data.Job", null)
+                    b.HasOne("JobBoard.Domain.Entities.Job", null)
                         .WithMany()
                         .HasForeignKey("JobsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("JobBoard.Domain.Data.Application", b =>
+            modelBuilder.Entity("JobBoard.Domain.Entities.Application", b =>
                 {
-                    b.HasOne("JobBoard.Domain.Data.SeekerProfile", "Applicant")
+                    b.HasOne("JobBoard.Domain.Entities.SeekerProfile", "Applicant")
                         .WithMany("UserApplications")
                         .HasForeignKey("ApplicantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("JobBoard.Domain.Data.Job", "Job")
+                    b.HasOne("JobBoard.Domain.Entities.Job", "Job")
                         .WithMany("JobApplications")
                         .HasForeignKey("JobId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -508,19 +511,19 @@ namespace JobBoard.Repositories.Migrations
                     b.Navigation("Job");
                 });
 
-            modelBuilder.Entity("JobBoard.Domain.Data.EmployerProfile", b =>
+            modelBuilder.Entity("JobBoard.Domain.Entities.EmployerProfile", b =>
                 {
-                    b.HasOne("JobBoard.Domain.Data.ApplicationUser", "User")
-                        .WithOne()
-                        .HasForeignKey("JobBoard.Domain.Data.EmployerProfile", "UserId")
+                    b.HasOne("JobBoard.Domain.Entities.ApplicationUser", "User")
+                        .WithOne("employerProfile")
+                        .HasForeignKey("JobBoard.Domain.Entities.EmployerProfile", "UserId")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("JobBoard.Domain.Data.Job", b =>
+            modelBuilder.Entity("JobBoard.Domain.Entities.Job", b =>
                 {
-                    b.HasOne("JobBoard.Domain.Data.EmployerProfile", "Employer")
+                    b.HasOne("JobBoard.Domain.Entities.EmployerProfile", "Employer")
                         .WithMany("PostedJobs")
                         .HasForeignKey("EmployerId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -529,11 +532,11 @@ namespace JobBoard.Repositories.Migrations
                     b.Navigation("Employer");
                 });
 
-            modelBuilder.Entity("JobBoard.Domain.Data.SeekerProfile", b =>
+            modelBuilder.Entity("JobBoard.Domain.Entities.SeekerProfile", b =>
                 {
-                    b.HasOne("JobBoard.Domain.Data.ApplicationUser", "User")
-                        .WithOne()
-                        .HasForeignKey("JobBoard.Domain.Data.SeekerProfile", "UserId")
+                    b.HasOne("JobBoard.Domain.Entities.ApplicationUser", "User")
+                        .WithOne("seekerProfile")
+                        .HasForeignKey("JobBoard.Domain.Entities.SeekerProfile", "UserId")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("User");
@@ -541,13 +544,13 @@ namespace JobBoard.Repositories.Migrations
 
             modelBuilder.Entity("JobSkill", b =>
                 {
-                    b.HasOne("JobBoard.Domain.Data.Job", null)
+                    b.HasOne("JobBoard.Domain.Entities.Job", null)
                         .WithMany()
                         .HasForeignKey("JobsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("JobBoard.Domain.Data.Skill", null)
+                    b.HasOne("JobBoard.Domain.Entities.Skill", null)
                         .WithMany()
                         .HasForeignKey("SkillsId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -565,7 +568,7 @@ namespace JobBoard.Repositories.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("JobBoard.Domain.Data.ApplicationUser", null)
+                    b.HasOne("JobBoard.Domain.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -574,7 +577,7 @@ namespace JobBoard.Repositories.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("JobBoard.Domain.Data.ApplicationUser", null)
+                    b.HasOne("JobBoard.Domain.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -589,7 +592,7 @@ namespace JobBoard.Repositories.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("JobBoard.Domain.Data.ApplicationUser", null)
+                    b.HasOne("JobBoard.Domain.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -598,7 +601,7 @@ namespace JobBoard.Repositories.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("JobBoard.Domain.Data.ApplicationUser", null)
+                    b.HasOne("JobBoard.Domain.Entities.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -607,41 +610,41 @@ namespace JobBoard.Repositories.Migrations
 
             modelBuilder.Entity("SeekerProfileSkill", b =>
                 {
-                    b.HasOne("JobBoard.Domain.Data.SeekerProfile", null)
+                    b.HasOne("JobBoard.Domain.Entities.SeekerProfile", null)
                         .WithMany()
                         .HasForeignKey("SeekersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("JobBoard.Domain.Data.Skill", null)
+                    b.HasOne("JobBoard.Domain.Entities.Skill", null)
                         .WithMany()
                         .HasForeignKey("SkillsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("JobBoard.Domain.Data.EmployerProfile", b =>
-                {
-                    b.Navigation("PostedJobs");
-                });
-
-            modelBuilder.Entity("JobBoard.Domain.Data.Job", b =>
-                {
-                    b.Navigation("JobApplications");
-                });
-
-            modelBuilder.Entity("JobBoard.Domain.Data.SeekerProfile", b =>
-                {
-                    b.Navigation("UserApplications");
-                });
-
-            modelBuilder.Entity("JobBoard.Domain.Data.UserApplication", b =>
+            modelBuilder.Entity("JobBoard.Domain.Entities.ApplicationUser", b =>
                 {
                     b.Navigation("employerProfile")
                         .IsRequired();
 
                     b.Navigation("seekerProfile")
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("JobBoard.Domain.Entities.EmployerProfile", b =>
+                {
+                    b.Navigation("PostedJobs");
+                });
+
+            modelBuilder.Entity("JobBoard.Domain.Entities.Job", b =>
+                {
+                    b.Navigation("JobApplications");
+                });
+
+            modelBuilder.Entity("JobBoard.Domain.Entities.SeekerProfile", b =>
+                {
+                    b.Navigation("UserApplications");
                 });
 #pragma warning restore 612, 618
         }
