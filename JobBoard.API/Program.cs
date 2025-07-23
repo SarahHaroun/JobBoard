@@ -1,9 +1,11 @@
 ﻿using JobBoard.Domain.Entities;
+
 using JobBoard.Domain.Mapping;
 using JobBoard.Domain.Repositories.Contract;
 using JobBoard.Domain.Services.Contract;
 using JobBoard.Repositories;
 using JobBoard.Repositories.Data;
+
 using JobBoard.Repositories.Persistence;
 using JobBoard.Services;
 using JobBoard.Services._ِAuthService;
