@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace JobBoard.Domain.DTO.EmployerDto
 {
-    public class UpdateEmpProfileDto
+    public class EmpProfileDto
     {
+        public int Id { get; set; }
         public string CompanyName { get; set; }
+
+        public string? CompanyLocation { get; set; }
+        public string? UserId { get; set; }
+
 
     }
 }

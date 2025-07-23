@@ -1,5 +1,4 @@
 ﻿using JobBoard.Domain.Data;
-using JobBoard.Domain.DTO;
 using JobBoard.Domain.DTO.EmployerDto;
 using JobBoard.Repositories.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -19,25 +18,25 @@ namespace JobBoard.Services.EmployerService
         {
             this.context = context;
         }
-        public async Task<string> Create(CreateEmpProfileDto model)
-        {
-            //check if employer exist
-            var existUser = await context.EmployerProfiles.FirstOrDefaultAsync(u => u.UserId == model.UserId);
-             if (existUser != null)
-                return "Employer profile already exists";
+        //public async Task<string> Create(EmpProfileDto model)
+        //{
+        //    //check if employer exist
+        //    var existUser = await context.EmployerProfiles.FirstOrDefaultAsync(u => u.UserId == model.UserId);
+        //     if (existUser != null)
+        //        return "Employer profile already exists";
 
-            //if the employer not exist before, create new profile
-           var newEmployer = new EmployerProfile();
-            newEmployer.CompanyName= model.CompanyName;
-            newEmployer.CompanyLocation = model.CompanyLocation;
-            newEmployer.UserId = model.UserId;
+        //    //if the employer not exist before, create new profile
+        //   var newEmployer = new EmployerProfile();
+        //    newEmployer.CompanyName= model.CompanyName;
+        //    newEmployer.CompanyLocation = model.CompanyLocation;
+        //    newEmployer.UserId = model.UserId;
 
-            context.EmployerProfiles.Add(newEmployer);
-            await  context.SaveChangesAsync();
+        //    await context.EmployerProfiles.AddAsync(newEmployer);
+        //    await  context.SaveChangesAsync();
 
-            return "Employer created successfully";
+        //    return "Employer created successfully";
 
-        }
+        //}
 
         public async Task<bool> DeleteById(int id)
         {
@@ -70,37 +69,27 @@ namespace JobBoard.Services.EmployerService
             return empDtoList;
         }
 
-        public async Task<EmpProfileDto> GetById(int id)
-        {
-            var employer = await context.EmployerProfiles.FirstOrDefaultAsync(e => e.Id == id);
-            if (employer == null)
-                return null;
-
-            return new EmpProfileDto
-            {
-                Id = employer.Id,
-                CompanyName = employer.CompanyName,
-                CompanyLocation = employer.CompanyLocation,
-                UserId = employer.UserId
-            };
-        }
-
-        public async Task<bool> Update(int id, UpdateEmpProfileDto empProfile)
+        
+        public async Task<bool> Update(int id, EmpProfileDto empProfile)
         {
             var employer = await context.EmployerProfiles.FirstOrDefaultAsync(e => e.Id == id);
             if (employer == null)
                 return false;
 
+            // Update the employer profile
             employer.CompanyName = empProfile.CompanyName;
+            employer.CompanyLocation = empProfile.CompanyLocation;
+
             context.EmployerProfiles.Update(employer);
             await context.SaveChangesAsync();
             return true;
         }
 
-        public async Task<EmpProfileDto?> GetByUserIdAsync(string userId)
+        public async Task<EmpProfileDto?> GetByUserId(string userId)
         {
             var emp = await context.EmployerProfiles.FirstOrDefaultAsync(e => e.UserId == userId);
-            if (emp == null) return null;
+            if (emp == null)
+                return null;
 
             return new EmpProfileDto
             {

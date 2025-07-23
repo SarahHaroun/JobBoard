@@ -15,5 +15,9 @@ namespace JobBoard.Domain.Data
     {
         public UserType User_Type { get; set; }
 
+        // Navigation properties
+        public EmployerProfile employerProfile { get; set; }
+        public SeekerProfile seekerProfile { get; set; }
+
     }
 }

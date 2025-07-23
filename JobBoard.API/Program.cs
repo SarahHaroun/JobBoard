@@ -2,6 +2,7 @@
 using JobBoard.Repositories.Persistence;
 using JobBoard.Services._ِAuthService;
 using JobBoard.Services.EmployerService;
+using JobBoard.Services.SeekerService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -53,6 +54,7 @@ namespace JobBoard.API
             /*------------------------Add Services--------------------------*/
             builder.Services.AddScoped<IAuthService, AuthService>();
             builder.Services.AddScoped<IEmployerService, EmployerService>();
+            builder.Services.AddScoped<ISeekerService, SeekerService>();
 
 
             builder.Services.AddAuthorization();

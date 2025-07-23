@@ -11,6 +11,12 @@ namespace JobBoard.Domain.Data
     {
         EntryLevel,MidLevel,Experienced
     }
+    public enum Gender
+    {
+        female,
+        male,
+        other
+    }
     public class SeekerProfile 
     {
         public int Id { get; set; }
@@ -19,7 +25,10 @@ namespace JobBoard.Domain.Data
         public string LastName {  get; set; }
         public string? Address {  get; set; }
         public string CV_Url { get; set; }
+
         public ExperienceLevel Experience_Level { get; set; }
+
+        public Gender Gender { get; set; }
 
         /*------------------------user--------------------------*/
 
