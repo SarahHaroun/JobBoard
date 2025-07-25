@@ -17,9 +17,10 @@ namespace JobBoard.Domain.DTO.JobDto
 		public DateTime PostedDate { get; set; }
 		public DateTime? ExpireDate { get; set; }
 		public string? Requirements { get; set; }
+		public int? MinTeamSize { get; set; } //New
+		public int? MaxTeamSize { get; set; }
 		public string? EducationLevel { get; set; } // Enum as string
 		public string? ExperienceLevel { get; set; } // Enum as string
-		public int? NumberOfPositions { get; set; }
 		public bool IsActive { get; set; }
 
 		// Employer Info (summary)
