@@ -22,7 +22,8 @@ namespace JobBoard.Domain.Mapping
                 .ForMember(dest => dest.CompanyLocation, op => op.MapFrom(src => src.Employer.CompanyLocation))
                 .ForMember(dest => dest.Website, op => op.MapFrom(src => src.Employer.Website))
                 .ForMember(dest => dest.Categories, op => op.MapFrom(src => src.Categories.Select(c => c.CategoryName).ToList()))
-                .ForMember(dest => dest.Skills, op => op.MapFrom(src => src.Skills.Select(s => s.SkillName).ToList()));
+                .ForMember(dest => dest.Skills, op => op.MapFrom(src => src.Skills.Select(s => s.SkillName).ToList()))
+                .ReverseMap();
 		}
     }
 }

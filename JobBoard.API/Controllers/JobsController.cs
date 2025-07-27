@@ -1,4 +1,5 @@
 ﻿using JobBoard.Domain.Services.Contract;
+using JobBoard.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JobBoard.API.Controllers
@@ -34,5 +35,13 @@ namespace JobBoard.API.Controllers
 
 			return Ok(result);
 		}
-	}
+
+        [HttpGet("category/{categoryId}")]
+        public async Task<IActionResult> GetJobsByCategoryId(int categoryId)
+        {
+            var jobs = await _jobService.GetJobsByCategoryIdAsync(categoryId);
+            return Ok(jobs);
+        }
+
+    }
 }

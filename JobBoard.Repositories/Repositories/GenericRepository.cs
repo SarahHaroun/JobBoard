@@ -42,7 +42,20 @@ namespace JobBoard.Repositories.Repositories
 			}
 			return await _context.Set<TEntity>().FindAsync(id);
 		}
-		public async Task AddAsync(TEntity entity)
+
+        public async Task<TEntity> GetByIdWithIncludeAsync(int id, params string[] includeProperties)
+        {
+            IQueryable<TEntity> query = _context.Set<TEntity>();
+
+            foreach (var includeProperty in includeProperties)
+            {
+                query = query.Include(includeProperty);
+            }
+
+            return await query.FirstOrDefaultAsync(e => EF.Property<int>(e, "Id") == id);
+        }
+
+        public async Task AddAsync(TEntity entity)
 		{
 			await _context.AddAsync(entity);
 		}

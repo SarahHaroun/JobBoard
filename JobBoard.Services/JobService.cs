@@ -35,5 +35,21 @@ namespace JobBoard.Services
 			var mappedJob = _mapper.Map<JobDto>(job);
 			return mappedJob;
 		}
-	}
+
+
+        public async Task<IEnumerable<JobDto>> GetJobsByCategoryIdAsync(int categoryId)
+        {
+            // Get all jobs (includes Category navigation property)
+            var jobs = await _unitOfWork.Repository<Job>().GetAllAsync();
+
+            // Filter by categoryId
+            var filteredJobs = jobs
+                .Where(j => j.Categories.Any(c => c.Id == categoryId));
+
+            // Map to DTO
+            var jobDtos = _mapper.Map<IEnumerable<JobDto>>(filteredJobs);
+
+            return jobDtos;
+        }
+    }
 }
