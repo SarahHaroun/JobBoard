@@ -9,6 +9,8 @@ using JobBoard.Repositories.Data;
 using JobBoard.Repositories.Persistence;
 using JobBoard.Services;
 using JobBoard.Services._ِAuthService;
+using JobBoard.Services.AIServices;
+using JobBoard.Services.CategoryService;
 using JobBoard.Services.EmployerService;
 using JobBoard.Services.SeekerService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -64,9 +66,19 @@ namespace JobBoard.API
             builder.Services.AddScoped<IEmployerService, EmployerService>();
             builder.Services.AddScoped<IJobService, JobService>();
             builder.Services.AddScoped<ISeekerService, SeekerService>();
+            builder.Services.AddScoped<ICategoryService, CategoryService>();
+
 
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-			builder.Services.AddAutoMapper(M => M.AddProfile(new JobProfile()));
+
+            /*-------------------- Add Ai Service ---------------------*/
+
+            builder.Services.AddSingleton<IGeminiChatService, GeminiChatService>();
+
+
+            /*--------------- Add Services AutoMappper Profiles ---------------*/
+            builder.Services.AddAutoMapper(M => M.AddProfile(new JobProfile()));
+			builder.Services.AddAutoMapper(M => M.AddProfile(new CategoryProfile()));
 
 			builder.Services.AddAuthorization();
             builder.Services.AddControllers();

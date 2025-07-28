@@ -11,6 +11,8 @@ namespace JobBoard.Domain.Services.Contract
     public interface IJobService
     {
         Task<IEnumerable<JobListDto>> GetAllJobsAsync();
-        Task<JobDto> GetJobByIdAsync(int id); 
+        Task<JobDto> GetJobByIdAsync(int id);
+
+        public Task<IEnumerable<JobDto>> GetJobsByCategoryIdAsync(int categoryId);
     }
 }

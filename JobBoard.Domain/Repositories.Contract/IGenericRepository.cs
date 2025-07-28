@@ -10,7 +10,9 @@ namespace JobBoard.Domain.Repositories.Contract
     {
 		Task<IEnumerable<TEntity>> GetAllAsync();
 		Task<TEntity> GetByIdAsync(int id);
-		Task AddAsync(TEntity entity);
+		public  Task<TEntity> GetByIdWithIncludeAsync(int id, params string[] includeProperties);
+
+        Task AddAsync(TEntity entity);
 		void Update(TEntity entity);
 		void Delete(TEntity entity);
 	}
