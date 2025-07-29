@@ -22,5 +22,19 @@ namespace JobBoard.API.Controllers
             await _aiEmbeddingService.GenerateEmbeddingsForJobsAsync();
             return Ok("Job embeddings generated successfully.");
         }
+
+
+        [HttpGet("search")]
+        public async Task<IActionResult> SearchJobsByMeaning([FromQuery] string query, [FromQuery] int topK = 5)
+        {
+            if (string.IsNullOrWhiteSpace(query))
+                return BadRequest("Query cannot be empty.");
+
+            var results = await _aiEmbeddingService.SearchJobsByMeaningAsync(query, topK);
+
+            return Ok(results);
+        }
+
+
     }
 }

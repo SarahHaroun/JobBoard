@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using GenerativeAI;
+using JobBoard.Domain.DTO.AIEmbeddingDto;
 using JobBoard.Domain.DTO.JobDto;
 using JobBoard.Domain.Entities;
 using JobBoard.Domain.Repositories.Contract;
@@ -93,5 +94,87 @@ namespace JobBoard.Services.AIEmbeddingService
             Website: {job.Website}
             """;
         }
+
+        /*Find the functions that are closest in meaning to a given word or phrase using embedding.*/
+
+        /* We use the query typed by the user, generate an embedding vector for it,
+         * calculate the cosine similarity between it and all the embeddings stored in the database,
+         * and then return the top K results as functions that are similar in meaning.*/
+        public async Task<List<SemanticSearchResultDto>> SearchJobsByMeaningAsync(string query, int topK)
+        {
+            // Step 1: Generate embedding for the query
+
+            var queryResponse = await _embeddingModel.EmbedContentAsync(query);
+            if (queryResponse?.Embedding?.Values == null || !queryResponse.Embedding.Values.Any())
+                return new List<SemanticSearchResultDto>();
+
+            var queryVector = queryResponse.Embedding.Values.Select(v => (float)v).ToArray();
+
+            // Step 2: Get all job embeddings from the DB
+
+            var embeddingRepo = _unitOfWork.Repository<AIEmbedding>();
+            var allEmbeddings = await embeddingRepo.GetAllAsync();
+            var jobEmbeddings = allEmbeddings.Where(e => e.EntityType == "Job" && e.EmbeddingVector != null).ToList();
+
+            // Step 3: Compute similarity between query and each job
+
+            var similarities = new List<(AIEmbedding Embedding, float Score)>();
+
+            foreach (var jobEmbedding in jobEmbeddings)
+            {
+                var score = CosineSimilarity(queryVector, jobEmbedding.EmbeddingVector);
+                similarities.Add((jobEmbedding, score));
+            }
+
+
+            // Step 4: Order by similarity and return top K
+
+            var topResults = similarities
+            .OrderByDescending(x => x.Score)
+            .Take(topK)
+            .ToList();
+
+            // Load the actual job data and prepare result DTOs
+
+            var jobRepo = _unitOfWork.Repository<Job>();
+            var resultDtos = new List<SemanticSearchResultDto>();
+
+            foreach (var (embedding, score) in topResults)
+            {
+                var job = await jobRepo.GetByIdAsync(embedding.EntityId);
+                if (job == null) continue;
+
+                var dto = _mapper.Map<JobDto>(job);
+
+                resultDtos.Add(new SemanticSearchResultDto
+                {
+                    Job = dto,
+                    Similarity = score
+                });
+            }
+
+            return resultDtos;
+
+        }
+
+        private float CosineSimilarity(float[] vectorA, float[] vectorB)
+        {
+            float dotProduct = 0;
+            float magnitudeA = 0;
+            float magnitudeB = 0;
+
+            for (int i = 0; i < vectorA.Length; i++)
+            {
+                dotProduct += vectorA[i] * vectorB[i];
+                magnitudeA += vectorA[i] * vectorA[i];
+                magnitudeB += vectorB[i] * vectorB[i];
+            }
+
+            if (magnitudeA == 0 || magnitudeB == 0)
+                return 0;
+
+            return dotProduct / (float)(Math.Sqrt(magnitudeA) * Math.Sqrt(magnitudeB));
+        }
+
     }
 }
