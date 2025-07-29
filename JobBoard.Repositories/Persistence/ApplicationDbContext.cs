@@ -22,6 +22,9 @@ namespace JobBoard.Repositories.Persistence
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Category> Categories { get; set; }
 
+        public DbSet<AIEmbedding> AIEmbeddings { get; set; }
+
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

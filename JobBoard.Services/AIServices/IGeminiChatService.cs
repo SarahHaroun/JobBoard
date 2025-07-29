@@ -9,5 +9,6 @@ namespace JobBoard.Services.AIServices
     public interface IGeminiChatService
     {
         Task<string> AskGeminiAsync(string prompt);
+        string GetApiKey();
     }
 }
