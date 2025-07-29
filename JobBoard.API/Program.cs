@@ -9,6 +9,7 @@ using JobBoard.Repositories.Data;
 using JobBoard.Repositories.Persistence;
 using JobBoard.Services;
 using JobBoard.Services._ِAuthService;
+using JobBoard.Services.AIEmbeddingService;
 using JobBoard.Services.AIServices;
 using JobBoard.Services.CategoryService;
 using JobBoard.Services.EmployerService;
@@ -74,7 +75,7 @@ namespace JobBoard.API
             /*-------------------- Add Ai Service ---------------------*/
 
             builder.Services.AddSingleton<IGeminiChatService, GeminiChatService>();
-
+            builder.Services.AddScoped<IAIEmbeddingService, AIEmbeddingService>();
 
             /*--------------- Add Services AutoMappper Profiles ---------------*/
             builder.Services.AddAutoMapper(M => M.AddProfile(new JobProfile()));

@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Google.Cloud.AIPlatform.V1" Version="3.39.0" />
     <PackageReference Include="Google_GenerativeAI" Version="3.0.0" />
   </ItemGroup>
 
