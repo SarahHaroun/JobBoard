@@ -1,4 +1,5 @@
-﻿using JobBoard.Domain.Services.Contract;
+﻿using JobBoard.Domain.DTO.JobDto;
+using JobBoard.Domain.Services.Contract;
 using JobBoard.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -43,5 +44,14 @@ namespace JobBoard.API.Controllers
             return Ok(jobs);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> AddJob([FromBody] JobDto jobDto)
+        {
+            if (jobDto == null)
+                return BadRequest("Job data is required.");
+
+            var createdJob = await _jobService.AddJobAsync(jobDto);
+            return CreatedAtAction(nameof(GetJob), new { id = createdJob.Id }, createdJob);
+        }
     }
 }

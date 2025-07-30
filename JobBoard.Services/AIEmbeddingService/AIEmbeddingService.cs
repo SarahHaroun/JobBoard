@@ -20,12 +20,13 @@ namespace JobBoard.Services.AIEmbeddingService
         private readonly IUnitOfWork _unitOfWork;
         private readonly EmbeddingModel _embeddingModel;
         private readonly IMapper _mapper;
+        private readonly IGeminiChatService _chatService;
 
         public AIEmbeddingService(IUnitOfWork unitOfWork, IGeminiChatService chatService, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
-
+            _chatService = chatService;
             var apiKey = chatService.GetApiKey();
             _embeddingModel = new EmbeddingModel(apiKey, "text-embedding-004");
 
@@ -174,6 +175,74 @@ namespace JobBoard.Services.AIEmbeddingService
                 return 0;
 
             return dotProduct / (float)(Math.Sqrt(magnitudeA) * Math.Sqrt(magnitudeB));
+        }
+
+        public async Task<string> GetJobAnswerFromGeminiAsync(string userQuestion)
+        {
+            //use semantic search to pull similar jobs (most top 3 , TopK=3)
+            var topJobs = await SearchJobsByMeaningAsync(userQuestion, 3);
+
+            if (topJobs == null || !topJobs.Any())
+                return "Sorry, I couldn't find any jobs matching your query.";
+
+            var contextBuilder = new StringBuilder();
+
+            foreach (var result in topJobs)
+            {
+                var job = result.Job;
+                contextBuilder.AppendLine($"""
+                Job Title: {job.Title}
+                Description: {job.Description}
+                Requirements: {job.Requirements}
+                Skills: {string.Join(", ", job.Skills)}
+                Location: {job.CompanyLocation}
+                """);
+            }
+
+
+            //prepare the prompt
+            var finalPrompt = $"""
+                    You are a job assistant. Based on the following job listings, answer the user's question:
+
+                    {contextBuilder}
+
+                    User's question: {userQuestion}
+                    """;
+
+            var response = await _chatService.AskGeminiAsync(finalPrompt);
+
+            return response ?? "Error throgh Generation";
+        }
+
+        public async Task GenerateEmbeddingForJobAsync(Job job)
+        {
+            var embeddingRepo = _unitOfWork.Repository<AIEmbedding>();
+
+            // skip if already exists
+            var exists = await embeddingRepo.FindAsync(e =>
+                e.EntityType == "Job" && e.EntityId == job.Id);
+            if (exists != null) return;
+
+            var dto = _mapper.Map<JobDto>(job);
+            var content = BuildJobContent(dto);
+
+            var response = await _embeddingModel.EmbedContentAsync(content);
+            if (response?.Embedding?.Values == null || !response.Embedding.Values.Any())
+                return;
+
+            var vector = response.Embedding.Values.Select(v => (float)v).ToArray();
+
+            var embedding = new AIEmbedding
+            {
+                EntityType = "Job",
+                EntityId = job.Id,
+                Content = content,
+                EmbeddingVector = vector,
+                CreatedAt = DateTime.UtcNow
+            };
+
+            await embeddingRepo.AddAsync(embedding);
+            await _unitOfWork.CompleteAsync();
         }
 
     }
