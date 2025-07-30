@@ -12,6 +12,7 @@ namespace JobBoard.Domain.Repositories.Contract
 		Task<IEnumerable<TEntity>> GetAllAsync();
 		Task<TEntity> GetByIdAsync(int id);
 		public  Task<TEntity> GetByIdWithIncludeAsync(int id, params string[] includeProperties);
+		public Task<IEnumerable<TEntity>> GetAllWithIncludesAsync(params string[] includeProperties);
         public Task<TEntity?> FindAsync(Expression<Func<TEntity, bool>> predicate);
 
 

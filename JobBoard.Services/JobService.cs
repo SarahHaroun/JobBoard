@@ -31,6 +31,8 @@ namespace JobBoard.Services
 
 		}
 
+
+
 		public async Task<JobDto> GetJobByIdAsync(int id)
 		{
 			var job = await _unitOfWork.Repository<Job>().GetByIdAsync(id);
@@ -68,6 +70,18 @@ namespace JobBoard.Services
             // Map the saved job back to DTO and return
             return _mapper.Map<JobDto>(job);
         }
+
+        public async Task<JobDetailsDto> GetJobDetailsByIdAsync(int id)
+        {
+            var job = await _unitOfWork.Repository<Job>().GetByIdAsync(id);
+            if (job == null)
+                return null;
+
+            var result = _mapper.Map<JobDetailsDto>(job);
+            return result;
+        }
+
+
 
     }
 }

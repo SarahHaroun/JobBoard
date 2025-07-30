@@ -53,5 +53,18 @@ namespace JobBoard.API.Controllers
             var createdJob = await _jobService.AddJobAsync(jobDto);
             return CreatedAtAction(nameof(GetJob), new { id = createdJob.Id }, createdJob);
         }
+
+        [HttpGet("details/{id:int}")]
+        public async Task<IActionResult> GetJobDetailsById(int id)
+        {
+            if (id <= 0)
+                return BadRequest("Invalid job ID.");
+
+            var job = await _jobService.GetJobDetailsByIdAsync(id);
+            if (job == null)
+                return NotFound("Job not found.");
+
+            return Ok(job);
+        }
     }
 }
