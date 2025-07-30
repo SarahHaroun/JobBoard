@@ -61,8 +61,21 @@ namespace JobBoard.API
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"])) // Secret key for signing the token
                 };
             });
-            
+
             /*------------------------Add Services--------------------------*/
+
+            /*-------------------- Cors Policy --------------------*/
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAngularApp", policy =>
+                {
+                    policy.WithOrigins("http://localhost:4200") 
+                          .AllowAnyHeader()
+                          .AllowAnyMethod()
+                          .AllowCredentials();
+                });
+            });
+
             builder.Services.AddScoped<IAuthService, AuthService>();
             builder.Services.AddScoped<IEmployerService, EmployerService>();
             builder.Services.AddScoped<IJobService, JobService>();
@@ -118,6 +131,7 @@ namespace JobBoard.API
                 app.UseSwaggerUI();
             }
 
+            app.UseCors("AllowAngularApp");
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthentication();  
