@@ -10,3 +10,12 @@ obj/
 *.suo
 *.userosscache
 *.sln.docstates
+
+# Ignore NuGet related cache
+project.assets.json
+*.nuget.dgspec.json
+*.nuget.cache
+
+# OS files
+.DS_Store
+Thumbs.db

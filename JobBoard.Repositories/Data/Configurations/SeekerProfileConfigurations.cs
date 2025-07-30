@@ -16,7 +16,7 @@ namespace JobBoard.Repositories.Data.Configurations
 			builder.HasKey(s => s.Id);    
 			
 			builder.HasOne(s => s.User)
-					.WithOne()
+					.WithOne(u=>u.seekerProfile)
 					.HasForeignKey<SeekerProfile>(s => s.UserId)
 					.OnDelete(DeleteBehavior.Restrict);
 

@@ -38,7 +38,7 @@ namespace JobBoard.API.Controllers
             if (userId == null)
                 return Unauthorized();
 
-            var result =await employerService.GetByUserIdAsync(userId);
+            var result =await employerService.GetByUserId(userId);
 
             if (result == null)
                 return NotFound();
@@ -48,47 +48,46 @@ namespace JobBoard.API.Controllers
 
 
         /*------------------------create --------------------------*/
-        [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CreateEmpProfileDto dto)
-        {
-            if (userId == null)
-                return Unauthorized();
+        //[HttpPost]
+        //public async Task<IActionResult> Create([FromBody] EmpProfileDto dto)
+        //{
+        //    if (userId == null)
+        //        return Unauthorized();
 
-            dto.UserId = userId;
+        //    var existingProfile = await employerService.GetByUserId(userId);
+        //    if (existingProfile != null)
+        //        return BadRequest("Employer profile already exists");
 
-            var result = await employerService.Create(dto);
-            return Ok(result);
-        }
 
 
         /*------------------------Update --------------------------*/
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] UpdateEmpProfileDto dto)
+        public async Task<IActionResult> Update([FromBody] EmpProfileDto dto)
         {
             if (userId == null)
                 return Unauthorized();
 
-            var myProfile = await employerService.GetByUserIdAsync(userId);
-            if (myProfile == null)
+            var updatedProfile = await employerService.GetByUserId(userId);
+            if (updatedProfile == null)
                 return NotFound();
 
-            var result = await employerService.Update(myProfile.Id, dto);
-            if (result)
-                return Ok("updated");
+            bool updated = await employerService.Update(updatedProfile.Id, dto);
 
-            return NotFound();
+            return updated? Ok("updated") : NotFound();
         }
 
         /*------------------------Delete --------------------------*/
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            if (userId == null) return Unauthorized();
+            if (userId == null) 
+                return Unauthorized();
 
-            var myProfile = employerService.GetByUserIdAsync(userId);
-            if (myProfile == null) return NotFound();
+            var deletedProfile =await employerService.GetByUserId(userId);
+            if (deletedProfile == null) 
+                return NotFound();
 
-            var deleted = await employerService.DeleteById(myProfile.Id);
+            bool deleted = await employerService.DeleteById(deletedProfile.Id);
             return deleted ? Ok("Deleted") : BadRequest();
         }
 

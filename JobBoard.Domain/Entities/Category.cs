@@ -14,5 +14,6 @@ namespace JobBoard.Domain.Entities
 
 		/*------------------------job--------------------------*/
 		public ICollection<Job> Jobs { get; set; }
+
 	}
 }
