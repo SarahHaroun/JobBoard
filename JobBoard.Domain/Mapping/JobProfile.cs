@@ -24,6 +24,12 @@ namespace JobBoard.Domain.Mapping
                 .ForMember(dest => dest.Categories, op => op.MapFrom(src => src.Categories.Select(c => c.CategoryName).ToList()))
                 .ForMember(dest => dest.Skills, op => op.MapFrom(src => src.Skills.Select(s => s.SkillName).ToList()))
                 .ReverseMap();
-		}
+
+            CreateMap<string, Category>()
+           .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src));
+
+            CreateMap<string, Skill>()
+                .ForMember(dest => dest.SkillName, opt => opt.MapFrom(src => src));
+        }
     }
 }
