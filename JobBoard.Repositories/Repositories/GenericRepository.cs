@@ -56,6 +56,18 @@ namespace JobBoard.Repositories.Repositories
             return await query.FirstOrDefaultAsync(e => EF.Property<int>(e, "Id") == id);
         }
 
+        public async Task<IEnumerable<TEntity>> GetAllWithIncludesAsync(params string[] includeProperties)
+        {
+            IQueryable<TEntity> query = _context.Set<TEntity>();
+
+            foreach (var includeProperty in includeProperties)
+            {
+                query = query.Include(includeProperty);
+            }
+
+            return await query.ToListAsync();
+        }
+
         public async Task<TEntity?> FindAsync(Expression<Func<TEntity, bool>> predicate)
         {
             return await _context.Set<TEntity>().FirstOrDefaultAsync(predicate);
