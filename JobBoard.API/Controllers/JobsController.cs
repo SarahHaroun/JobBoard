@@ -23,6 +23,7 @@ namespace JobBoard.API.Controllers
 			return Ok(result);
 
 		}
+
 		[HttpGet("{id:int}")]
 		public async Task<IActionResult> GetJob(int id)
 		{
@@ -30,8 +31,8 @@ namespace JobBoard.API.Controllers
 				return BadRequest("Invalid job ID.");
 
 			var result = await _jobService.GetJobByIdAsync(id);
+			
 			if (result == null)
-
 				return NotFound();
 
 			return Ok(result);

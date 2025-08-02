@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using JobBoard.Services.AIEmbeddingService;
+using JobBoard.Repositories.Specifications;
 
 namespace JobBoard.Services
 {
@@ -25,7 +26,8 @@ namespace JobBoard.Services
         }
 		public async Task<IEnumerable<JobListDto>> GetAllJobsAsync()
 		{
-			var jobs = await _unitOfWork.Repository<Job>().GetAllAsync();
+            var spec = new JobsWithFilterSpecifications();
+			var jobs = await _unitOfWork.Repository<Job>().GetAllAsync(spec);
 			var mappedJobs = _mapper.Map<IEnumerable<JobListDto>>(jobs);
 			return mappedJobs;
 
@@ -35,7 +37,8 @@ namespace JobBoard.Services
 
 		public async Task<JobDto> GetJobByIdAsync(int id)
 		{
-			var job = await _unitOfWork.Repository<Job>().GetByIdAsync(id);
+			var spec = new JobsWithFilterSpecifications(id);
+			var job = await _unitOfWork.Repository<Job>().GetByIdAsync(spec);
 			var mappedJob = _mapper.Map<JobDto>(job);
 			return mappedJob;
 		}
