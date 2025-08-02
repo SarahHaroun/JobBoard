@@ -16,13 +16,26 @@ namespace JobBoard.Repositories.Specifications
 		}
 
 		public Expression<Func<TEntity, bool>>? Criteria { get; private set; }
-
 		public List<Expression<Func<TEntity, object>>> Includes { get; } = [];
+		public Expression<Func<TEntity, object>> Order { get; private set; }
+		public Expression<Func<TEntity, object>> OrderDesc { get; private set; }
 
 		protected void AddIncludes(Expression<Func<TEntity, object>> include)
 		{
 			if(include is not null) 
 				Includes.Add(include);
+		}
+
+		protected void AddOrderBy(Expression<Func<TEntity, object>> order)
+		{
+			if (order is not null)
+				Order = order;
+		}
+
+		protected void AddOrderByDesc(Expression<Func<TEntity, object>> orderDesc)
+		{
+			if (orderDesc is not null)
+				OrderDesc = orderDesc;
 		}
 	}
 }

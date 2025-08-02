@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using JobBoard.Services.AIEmbeddingService;
 using JobBoard.Repositories.Specifications;
+using JobBoard.Domain.Shared;
 
 namespace JobBoard.Services
 {
@@ -24,9 +25,9 @@ namespace JobBoard.Services
 			_mapper = mapper;
             _aiEmbeddingService = aiEmbeddingService;
         }
-		public async Task<IEnumerable<JobListDto>> GetAllJobsAsync()
+		public async Task<IEnumerable<JobListDto>> GetAllJobsAsync(JobFilterParams filterParams)
 		{
-            var spec = new JobsWithFilterSpecifications();
+            var spec = new JobsWithFilterSpecifications(filterParams);
 			var jobs = await _unitOfWork.Repository<Job>().GetAllAsync(spec);
 			var mappedJobs = _mapper.Map<IEnumerable<JobListDto>>(jobs);
 			return mappedJobs;

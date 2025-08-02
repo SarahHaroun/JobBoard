@@ -1,5 +1,6 @@
 ﻿using JobBoard.Domain.DTO.JobDto;
 using JobBoard.Domain.Services.Contract;
+using JobBoard.Domain.Shared;
 using JobBoard.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,9 +18,9 @@ namespace JobBoard.API.Controllers
 		}
 
 		[HttpGet]
-		public async Task<IActionResult> GetAllJobs()
+		public async Task<IActionResult> GetAllJobs([FromQuery] JobFilterParams filterParams)
 		{
-			var result = await _jobService.GetAllJobsAsync();
+			var result = await _jobService.GetAllJobsAsync(filterParams);
 			return Ok(result);
 
 		}

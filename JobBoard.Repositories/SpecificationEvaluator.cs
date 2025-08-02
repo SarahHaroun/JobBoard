@@ -18,7 +18,14 @@ namespace JobBoard.Repositories
             if(specifications.Criteria is not null)
                 query = query.Where(specifications.Criteria);
 
-            if (specifications.Includes is not null && specifications.Includes.Count > 0)
+			if (specifications.Order is not null)
+				query = query.OrderBy(specifications.Order);
+
+			if (specifications.OrderDesc is not null)
+				query = query.OrderByDescending(specifications.OrderDesc);
+
+
+			if (specifications.Includes is not null && specifications.Includes.Count > 0)
                 query = specifications.Includes.Aggregate(query, (currQuery, include) => currQuery.Include(include));
 
             return query;
