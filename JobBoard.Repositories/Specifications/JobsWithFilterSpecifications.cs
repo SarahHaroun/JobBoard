@@ -12,9 +12,10 @@ namespace JobBoard.Repositories.Specifications
 	{
 		public JobsWithFilterSpecifications(JobFilterParams filterParams)
 			: base(j =>
-			(!filterParams.categoryId.HasValue || j.Categories.Any(jc => jc.Id == filterParams.categoryId)) &&
-			(!filterParams.skillId.HasValue || j.Skills.Any(js => js.Id == filterParams.skillId)) &&
-			(!filterParams.employerId.HasValue || j.EmployerId == filterParams.employerId) &&
+			(string.IsNullOrWhiteSpace(filterParams.SearchValue) || j.Title.ToLower().Contains(filterParams.SearchValue.ToLower())) &&
+			(!filterParams.CategoryId.HasValue || j.Categories.Any(jc => jc.Id == filterParams.CategoryId)) &&
+			(!filterParams.SkillId.HasValue || j.Skills.Any(js => js.Id == filterParams.SkillId)) &&
+			(!filterParams.EmployerId.HasValue || j.EmployerId == filterParams.EmployerId) &&
 			(!filterParams.WorkplaceType.HasValue || j.WorkplaceType == filterParams.WorkplaceType) &&
 			(!filterParams.JobType.HasValue || j.JobType == filterParams.JobType) &&
 			(!filterParams.ExperienceLevel.HasValue || j.ExperienceLevel == filterParams.ExperienceLevel) &&
@@ -24,7 +25,7 @@ namespace JobBoard.Repositories.Specifications
 			AddIncludes(j => j.Skills);
 			AddIncludes(j => j.Employer);
 
-			switch (filterParams.sortingOption)
+			switch (filterParams.SortingOption)
 			{
 				case SortingOptions.SalaryAsc:
 					AddOrderBy(j => j.Salary);

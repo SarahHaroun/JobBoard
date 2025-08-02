@@ -39,7 +39,7 @@ namespace JobBoard.API.Controllers
 			return Ok(result);
 		}
 
-        [HttpGet("category/{categoryId}")]
+        [HttpGet("category/{CategoryId}")]
         public async Task<IActionResult> GetJobsByCategoryId(int categoryId)
         {
             var jobs = await _jobService.GetJobsByCategoryIdAsync(categoryId);
