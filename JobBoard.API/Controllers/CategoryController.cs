@@ -18,18 +18,10 @@ namespace JobBoard.API.Controllers
         }
 
         [HttpGet]
-
         public async Task<IActionResult> GetAllCategories(int? jobId)
         {
             var result = await categoryService.GetAllCategoryAsync(jobId);
             return Ok(result);
-        }
-
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetAllJobsByCategorieIdAsync(int id)
-        {
-            var jobs = await categoryService.GetJobsByCategoryIdAsync(id);
-            return Ok(jobs);
         }
 
     }

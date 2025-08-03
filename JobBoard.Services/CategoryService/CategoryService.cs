@@ -28,23 +28,5 @@ namespace JobBoard.Services.CategoryService
             var mapCategory = mapper.Map<List<CategoryDto>>(categories);
             return mapCategory;
         }
-
-        public async Task<IEnumerable<JobDto>> GetJobsByCategoryIdAsync(int categoryId)
-        {
-            var jobs = await unitOfWork.Repository<Job>().GetAllAsync();
-
-            // Filter jobs where this category exists
-            var filteredJobs = jobs
-                .Where(j => j.Categories.Any(c => c.Id == categoryId));
-
-            var jobDtos = mapper.Map<IEnumerable<JobDto>>(filteredJobs);
-            return jobDtos;
-        }
-
-        public Task<categoryNameDto> GetAllCategoryNameAsync()
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }
