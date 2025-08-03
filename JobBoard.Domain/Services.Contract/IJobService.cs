@@ -5,12 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JobBoard.Domain.Repositories.Contract;
+using JobBoard.Domain.Shared;
 
 namespace JobBoard.Domain.Services.Contract
 {
     public interface IJobService
     {
-        Task<IEnumerable<JobListDto>> GetAllJobsAsync();
+        Task<IEnumerable<JobListDto>> GetAllJobsAsync(JobFilterParams filterParams);
         Task<JobDto> GetJobByIdAsync(int id);
 
         public Task<IEnumerable<JobDto>> GetJobsByCategoryIdAsync(int categoryId);

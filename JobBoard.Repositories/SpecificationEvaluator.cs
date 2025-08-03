@@ -1,0 +1,35 @@
+﻿using JobBoard.Domain.Repositories.Contract;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace JobBoard.Repositories
+{
+    class SpecificationEvaluator
+    {
+        
+        public static IQueryable<TEntity> CreateQuery<TEntity>(IQueryable<TEntity> inputQuery, ISpecifications<TEntity> specifications)
+            where TEntity : class
+        {
+            var query = inputQuery;
+
+            if(specifications.Criteria is not null)
+                query = query.Where(specifications.Criteria);
+
+			if (specifications.Order is not null)
+				query = query.OrderBy(specifications.Order);
+
+			if (specifications.OrderDesc is not null)
+				query = query.OrderByDescending(specifications.OrderDesc);
+
+
+			if (specifications.Includes is not null && specifications.Includes.Count > 0)
+                query = specifications.Includes.Aggregate(query, (currQuery, include) => currQuery.Include(include));
+
+            return query;
+        }
+    }
+}

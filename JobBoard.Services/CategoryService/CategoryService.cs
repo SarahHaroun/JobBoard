@@ -8,6 +8,7 @@ using JobBoard.Domain.DTO.CategoryDto;
 using JobBoard.Domain.DTO.JobDto;
 using JobBoard.Domain.Entities;
 using JobBoard.Domain.Repositories.Contract;
+using JobBoard.Repositories.Specifications;
 
 namespace JobBoard.Services.CategoryService
 {
@@ -21,7 +22,7 @@ namespace JobBoard.Services.CategoryService
             this.mapper = mapper;
             this.unitOfWork = unitOfWork;
         }
-        public async Task<List<CategoryDto>> GetAllCategoryAsync()
+        public async Task<List<CategoryDto>> GetAllCategoryAsync(int? jobId)
         {
             var categories = await unitOfWork.Repository<Category>().GetAllAsync();
             var mapCategory = mapper.Map<List<CategoryDto>>(categories);

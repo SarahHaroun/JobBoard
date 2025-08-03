@@ -1,5 +1,6 @@
 ﻿using JobBoard.Domain.DTO.JobDto;
 using JobBoard.Domain.Services.Contract;
+using JobBoard.Domain.Shared;
 using JobBoard.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,17 +13,18 @@ namespace JobBoard.API.Controllers
 		private readonly IJobService _jobService;
 
 		public JobsController(IJobService jobService)
-		{
+		{ 
 			_jobService = jobService;
 		}
 
 		[HttpGet]
-		public async Task<IActionResult> GetAllJobs()
+		public async Task<IActionResult> GetAllJobs([FromQuery] JobFilterParams filterParams)
 		{
-			var result = await _jobService.GetAllJobsAsync();
+			var result = await _jobService.GetAllJobsAsync(filterParams);
 			return Ok(result);
 
 		}
+
 		[HttpGet("{id:int}")]
 		public async Task<IActionResult> GetJob(int id)
 		{
@@ -30,14 +32,14 @@ namespace JobBoard.API.Controllers
 				return BadRequest("Invalid job ID.");
 
 			var result = await _jobService.GetJobByIdAsync(id);
+			
 			if (result == null)
-
 				return NotFound();
 
 			return Ok(result);
 		}
 
-        [HttpGet("category/{categoryId}")]
+        [HttpGet("category/{CategoryId}")]
         public async Task<IActionResult> GetJobsByCategoryId(int categoryId)
         {
             var jobs = await _jobService.GetJobsByCategoryIdAsync(categoryId);

@@ -21,30 +21,43 @@ namespace JobBoard.Repositories.Repositories
 		}
 		public async Task<IEnumerable<TEntity>> GetAllAsync()
 		{
-			if(typeof(TEntity) == typeof(Job))
+			if (typeof(TEntity) == typeof(Job))
 			{
-				var jobs = await _context.Jobs.Include(j => j.Employer)
-					.Include(j => j.Categories)
-					.Include(j => j.Skills).ToListAsync();
-				return (IEnumerable<TEntity>) jobs;
+			 var jobs = await _context.Jobs.Include(j => j.Employer)
+			       .Include(j => j.Categories)
+			       .Include(j => j.Skills).ToListAsync();
+			   return (IEnumerable<TEntity>)jobs;
 			}
+			
 			return await _context.Set<TEntity>().ToListAsync();
 		}
 
 		public async Task<TEntity> GetByIdAsync(int id)
 		{
-			if (typeof(TEntity) == typeof(Job) && id is int jobId)
-			{
-				var job = await _context.Jobs.Include(j => j.Employer)
-					.Include(j => j.Categories)
-					.Include(j => j.Skills)
-					.FirstOrDefaultAsync(j => j.Id == jobId);
-				return job as TEntity;
-			}
+			///if (typeof(TEntity) == typeof(Job) && id is int jobId)
+			///{
+			///	var job = await _context.Jobs.Include(j => j.Employer)
+			///		.Include(j => j.Categories)
+			///		.Include(j => j.Skills)
+			///		.FirstOrDefaultAsync(j => j.Id == jobId);
+			///	return job as TEntity;
+			///}
 			return await _context.Set<TEntity>().FindAsync(id);
 		}
 
-        public async Task<TEntity> GetByIdWithIncludeAsync(int id, params string[] includeProperties)
+
+		#region With Specifications
+
+		public async Task<IEnumerable<TEntity>> GetAllAsync(ISpecifications<TEntity> specifications)
+			=> await SpecificationEvaluator.CreateQuery(_context.Set<TEntity>(), specifications).ToListAsync();	
+
+		public async Task<TEntity> GetByIdAsync(ISpecifications<TEntity> specifications)
+			=> await SpecificationEvaluator.CreateQuery(_context.Set<TEntity>(), specifications).SingleOrDefaultAsync();
+
+		#endregion
+
+
+		public async Task<TEntity> GetByIdWithIncludeAsync(int id, params string[] includeProperties)
         {
             IQueryable<TEntity> query = _context.Set<TEntity>();
 
@@ -87,5 +100,6 @@ namespace JobBoard.Repositories.Repositories
 		{
 			_context.Remove(entity);
 		}
+
 	}
 }
