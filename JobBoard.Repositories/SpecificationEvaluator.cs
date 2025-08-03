@@ -10,6 +10,7 @@ namespace JobBoard.Repositories
 {
     class SpecificationEvaluator
     {
+        
         public static IQueryable<TEntity> CreateQuery<TEntity>(IQueryable<TEntity> inputQuery, ISpecifications<TEntity> specifications)
             where TEntity : class
         {

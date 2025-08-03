@@ -21,13 +21,14 @@ namespace JobBoard.Repositories.Repositories
 		}
 		public async Task<IEnumerable<TEntity>> GetAllAsync()
 		{
-			///if(typeof(TEntity) == typeof(Job))
-			///{
-			///	var jobs = await _context.Jobs.Include(j => j.Employer)
-			///		.Include(j => j.Categories)
-			///		.Include(j => j.Skills).ToListAsync();
-			///	return (IEnumerable<TEntity>) jobs;
-			///}
+			if (typeof(TEntity) == typeof(Job))
+			{
+			 var jobs = await _context.Jobs.Include(j => j.Employer)
+			       .Include(j => j.Categories)
+			       .Include(j => j.Skills).ToListAsync();
+			   return (IEnumerable<TEntity>)jobs;
+			}
+			
 			return await _context.Set<TEntity>().ToListAsync();
 		}
 

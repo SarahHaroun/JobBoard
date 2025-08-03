@@ -13,7 +13,7 @@ namespace JobBoard.API.Controllers
 		private readonly IJobService _jobService;
 
 		public JobsController(IJobService jobService)
-		{
+		{ 
 			_jobService = jobService;
 		}
 

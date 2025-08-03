@@ -10,8 +10,7 @@ namespace JobBoard.Repositories.Specifications
 {
 	public abstract class BaseSpecifications<TEntity> : ISpecifications<TEntity> where TEntity : class
 	{
-		public BaseSpecifications() { }
-		public BaseSpecifications(Expression<Func<TEntity, bool>> criteriaExp) {
+		protected BaseSpecifications(Expression<Func<TEntity, bool>> criteriaExp) {
 			Criteria = criteriaExp;
 		}
 
