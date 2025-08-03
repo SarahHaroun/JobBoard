@@ -21,13 +21,13 @@ namespace JobBoard.Repositories.Repositories
 		}
 		public async Task<IEnumerable<TEntity>> GetAllAsync()
 		{
-			if (typeof(TEntity) == typeof(Job))
-			{
-			 var jobs = await _context.Jobs.Include(j => j.Employer)
-			       .Include(j => j.Categories)
-			       .Include(j => j.Skills).ToListAsync();
-			   return (IEnumerable<TEntity>)jobs;
-			}
+			///if (typeof(TEntity) == typeof(Job))
+			///{
+			/// var jobs = await _context.Jobs.Include(j => j.Employer)
+			///       .Include(j => j.Categories)
+			///       .Include(j => j.Skills).ToListAsync();
+			///   return (IEnumerable<TEntity>)jobs;
+			///}
 			
 			return await _context.Set<TEntity>().ToListAsync();
 		}
@@ -45,7 +45,6 @@ namespace JobBoard.Repositories.Repositories
 			return await _context.Set<TEntity>().FindAsync(id);
 		}
 
-
 		#region With Specifications
 
 		public async Task<IEnumerable<TEntity>> GetAllAsync(ISpecifications<TEntity> specifications)
@@ -56,46 +55,18 @@ namespace JobBoard.Repositories.Repositories
 
 		#endregion
 
-
-		public async Task<TEntity> GetByIdWithIncludeAsync(int id, params string[] includeProperties)
-        {
-            IQueryable<TEntity> query = _context.Set<TEntity>();
-
-            foreach (var includeProperty in includeProperties)
-            {
-                query = query.Include(includeProperty);
-            }
-
-            return await query.FirstOrDefaultAsync(e => EF.Property<int>(e, "Id") == id);
-        }
-
-        public async Task<IEnumerable<TEntity>> GetAllWithIncludesAsync(params string[] includeProperties)
-        {
-            IQueryable<TEntity> query = _context.Set<TEntity>();
-
-            foreach (var includeProperty in includeProperties)
-            {
-                query = query.Include(includeProperty);
-            }
-
-            return await query.ToListAsync();
-        }
-
         public async Task<TEntity?> FindAsync(Expression<Func<TEntity, bool>> predicate)
         {
             return await _context.Set<TEntity>().FirstOrDefaultAsync(predicate);
         }
-
         public async Task AddAsync(TEntity entity)
 		{
 			await _context.AddAsync(entity);
 		}
-
 		public void Update(TEntity entity)
 		{
 			_context.Update(entity);
 		}
-
 		public void Delete(TEntity entity)
 		{
 			_context.Remove(entity);

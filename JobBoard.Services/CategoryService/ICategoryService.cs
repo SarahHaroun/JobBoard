@@ -12,10 +12,6 @@ namespace JobBoard.Services.CategoryService
     public interface ICategoryService
     {
         public Task<List<CategoryDto>> GetAllCategoryAsync(int? jobId);
-        public Task<categoryNameDto> GetAllCategoryNameAsync();
-        public Task<IEnumerable<JobDto>> GetJobsByCategoryIdAsync(int categoryId);
-
-
 
     }
 }
