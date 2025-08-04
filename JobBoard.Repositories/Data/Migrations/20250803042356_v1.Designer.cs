@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobBoard.Repositories.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250723110227_V3")]
-    partial class V3
+    [Migration("20250803042356_v1")]
+    partial class v1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,6 +38,39 @@ namespace JobBoard.Repositories.Data.Migrations
                     b.HasIndex("JobsId");
 
                     b.ToTable("CategoryJob");
+                });
+
+            modelBuilder.Entity("JobBoard.Domain.Entities.AIEmbedding", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<string>("EmbeddingVector")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EntityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EntityType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AIEmbeddings");
                 });
 
             modelBuilder.Entity("JobBoard.Domain.Entities.Application", b =>
@@ -128,12 +161,6 @@ namespace JobBoard.Repositories.Data.Migrations
                     b.Property<int>("User_Type")
                         .HasColumnType("int");
 
-                    b.Property<int>("employerProfileId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("seekerProfileId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
@@ -143,10 +170,6 @@ namespace JobBoard.Repositories.Data.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.HasIndex("employerProfileId");
-
-                    b.HasIndex("seekerProfileId");
 
                     b.ToTable("AspNetUsers", (string)null);
                 });
@@ -179,6 +202,12 @@ namespace JobBoard.Repositories.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("CompanyDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompanyImage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CompanyLocation")
                         .HasColumnType("nvarchar(max)");
 
@@ -186,8 +215,20 @@ namespace JobBoard.Repositories.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Companylogo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Companymission")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("EmployeesNumber")
+                        .HasColumnType("int");
+
                     b.Property<int>("EstablishedYear")
                         .HasColumnType("int");
+
+                    b.Property<string>("Industry")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -521,29 +562,10 @@ namespace JobBoard.Repositories.Data.Migrations
                     b.Navigation("Job");
                 });
 
-            modelBuilder.Entity("JobBoard.Domain.Entities.ApplicationUser", b =>
-                {
-                    b.HasOne("JobBoard.Domain.Entities.EmployerProfile", "employerProfile")
-                        .WithMany()
-                        .HasForeignKey("employerProfileId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("JobBoard.Domain.Entities.SeekerProfile", "seekerProfile")
-                        .WithMany()
-                        .HasForeignKey("seekerProfileId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("employerProfile");
-
-                    b.Navigation("seekerProfile");
-                });
-
             modelBuilder.Entity("JobBoard.Domain.Entities.EmployerProfile", b =>
                 {
                     b.HasOne("JobBoard.Domain.Entities.ApplicationUser", "User")
-                        .WithOne()
+                        .WithOne("employerProfile")
                         .HasForeignKey("JobBoard.Domain.Entities.EmployerProfile", "UserId")
                         .OnDelete(DeleteBehavior.Restrict);
 
@@ -564,7 +586,7 @@ namespace JobBoard.Repositories.Data.Migrations
             modelBuilder.Entity("JobBoard.Domain.Entities.SeekerProfile", b =>
                 {
                     b.HasOne("JobBoard.Domain.Entities.ApplicationUser", "User")
-                        .WithOne()
+                        .WithOne("seekerProfile")
                         .HasForeignKey("JobBoard.Domain.Entities.SeekerProfile", "UserId")
                         .OnDelete(DeleteBehavior.Restrict);
 
@@ -649,6 +671,15 @@ namespace JobBoard.Repositories.Data.Migrations
                         .WithMany()
                         .HasForeignKey("SkillsId")
                         .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("JobBoard.Domain.Entities.ApplicationUser", b =>
+                {
+                    b.Navigation("employerProfile")
+                        .IsRequired();
+
+                    b.Navigation("seekerProfile")
                         .IsRequired();
                 });
 

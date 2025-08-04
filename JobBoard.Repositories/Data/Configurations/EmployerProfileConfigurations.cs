@@ -19,6 +19,7 @@ namespace JobBoard.Repositories.Data.Configurations
 			   .WithOne(u=>u.employerProfile)
 			   .HasForeignKey<EmployerProfile>(e => e.UserId)
 			   .OnDelete(DeleteBehavior.Restrict);
-		}
-	}
+
+        }
+    }
 }

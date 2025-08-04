@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace JobBoard.Domain.DTO.EmployerDto
 {
-    public class EmpProfileDto
+    public class EmpProfileUpdateDto
     {
-        public int Id { get; set; }
 
         [Required(ErrorMessage = "Company name is required")]
         [StringLength(100, ErrorMessage = "Company name must be less than 100 characters")]
@@ -43,6 +46,5 @@ namespace JobBoard.Domain.DTO.EmployerDto
 
         [Phone(ErrorMessage = "Invalid phone number")]
         public string? Phone { get; set; }
-        public string? UserId { get; set; }
     }
 }
