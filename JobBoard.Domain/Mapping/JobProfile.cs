@@ -24,6 +24,14 @@ namespace JobBoard.Domain.Mapping
                 .ForMember(dest => dest.Categories, op => op.MapFrom(src => src.Categories.Select(c => c.CategoryName).ToList()))
                 .ForMember(dest => dest.Skills, op => op.MapFrom(src => src.Skills.Select(s => s.SkillName).ToList()))
                 .ReverseMap();
-        }
-    }
+
+			CreateMap<JobSeedDto, Job>()
+				.ForMember(dest => dest.Skills, opt => opt.Ignore())
+				.ForMember(dest => dest.Categories, opt => opt.Ignore())
+				.ForMember(dest => dest.Id, opt => opt.Ignore()) // Don't map ID for new entities
+				.ForMember(dest => dest.Employer, opt => opt.Ignore()) // Will be loaded by EF
+				.ForMember(dest => dest.JobApplications, opt => opt.Ignore());
+		}
+	}
+    
 }

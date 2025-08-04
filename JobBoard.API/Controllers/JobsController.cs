@@ -22,7 +22,6 @@ namespace JobBoard.API.Controllers
 		{
 			var result = await _jobService.GetAllJobsAsync(filterParams);
 			return Ok(result);
-
 		}
 
 		[HttpGet("{id:int}")]
@@ -39,13 +38,6 @@ namespace JobBoard.API.Controllers
 			return Ok(result);
 		}
 
-        [HttpGet("category/{CategoryId}")]
-        public async Task<IActionResult> GetJobsByCategoryId(int categoryId)
-        {
-            var jobs = await _jobService.GetJobsByCategoryIdAsync(categoryId);
-            return Ok(jobs);
-        }
-
         [HttpPost]
         public async Task<IActionResult> AddJob([FromBody] JobDto jobDto)
         {
@@ -54,19 +46,6 @@ namespace JobBoard.API.Controllers
 
             var createdJob = await _jobService.AddJobAsync(jobDto);
             return CreatedAtAction(nameof(GetJob), new { id = createdJob.Id }, createdJob);
-        }
-
-        [HttpGet("details/{id:int}")]
-        public async Task<IActionResult> GetJobDetailsById(int id)
-        {
-            if (id <= 0)
-                return BadRequest("Invalid job ID.");
-
-            var job = await _jobService.GetJobDetailsByIdAsync(id);
-            if (job == null)
-                return NotFound("Job not found.");
-
-            return Ok(job);
         }
     }
 }

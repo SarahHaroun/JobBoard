@@ -75,17 +75,6 @@ namespace JobBoard.Services
             return _mapper.Map<JobDto>(job);
         }
 
-        public async Task<JobDetailsDto> GetJobDetailsByIdAsync(int id)
-        {
-            var job = await _unitOfWork.Repository<Job>().GetByIdAsync(id);
-            if (job == null)
-                return null;
-
-            var result = _mapper.Map<JobDetailsDto>(job);
-            return result;
-        }
-
-
 
     }
 }

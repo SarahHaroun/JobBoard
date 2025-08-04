@@ -1,4 +1,6 @@
-﻿using JobBoard.Domain.Entities;
+﻿using AutoMapper;
+using JobBoard.Domain.DTO.JobDto;
+using JobBoard.Domain.Entities;
 using JobBoard.Repositories.Persistence;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -73,62 +75,91 @@ namespace JobBoard.Repositories.Data
 			}
 		}
 
-		public static async Task seedAsync(ApplicationDbContext context)
-        {
-            if (!context.Skills.Any())
-            {
-                //Read Data from file
-                var skillsData = File.ReadAllText("../JobBoard.Repositories/Data/DataSeed/skills.json");
-
-                //2. Convert Json string to list<T>
-                var skills = JsonSerializer.Deserialize<List<Skill>>(skillsData);
-
-                //3. Seed Data to Database
-                if(skills is not null && skills.Count() > 0)
+		public static async Task SeedAsync(ApplicationDbContext context, IMapper mapper)
+		{
+			// Seed Skills 
+			if (!context.Skills.Any())
+			{
+				var skillsData = File.ReadAllText("../JobBoard.Repositories/Data/DataSeed/skills.json");
+				var skills = JsonSerializer.Deserialize<List<Skill>>(skillsData);
+				if (skills is not null && skills.Count() > 0)
+				{
 					await context.Skills.AddRangeAsync(skills);
-
-                await context.SaveChangesAsync();
+					await context.SaveChangesAsync();
+				}
 			}
 
-            if (!context.Categories.Any())
-            {
-                var categoriesData = File.ReadAllText("../JobBoard.Repositories/Data/DataSeed/categories.json");
-
+			// Seed Categories 
+			if (!context.Categories.Any())
+			{
+				var categoriesData = File.ReadAllText("../JobBoard.Repositories/Data/DataSeed/categories.json");
 				var categories = JsonSerializer.Deserialize<List<Category>>(categoriesData);
+				if (categories is not null && categories.Count() > 0)
+				{
+					await context.Categories.AddRangeAsync(categories);
+					await context.SaveChangesAsync();
+				}
+			}
 
-                if (categories is not null && categories.Count() > 0)
-                    await context.Categories.AddRangeAsync(categories);
-                await context.SaveChangesAsync();
-            }
-
-
+			// Seed Jobs with relationships
 			if (!context.Jobs.Any())
 			{
 				var jobsData = File.ReadAllText("../JobBoard.Repositories/Data/DataSeed/jobs.json");
-
 				var options = new JsonSerializerOptions
 				{
 					PropertyNameCaseInsensitive = true,
 					Converters = { new JsonStringEnumConverter() }
 				};
 
-				var jobs = JsonSerializer.Deserialize<List<Job>>(jobsData, options);
+				// Deserialize to JobSeedDto (not JobDto)
+				var jobSeedDtos = JsonSerializer.Deserialize<List<JobSeedDto>>(jobsData, options);
 
-				if (jobs is not null && jobs.Count() > 0)
+				if (jobSeedDtos is not null && jobSeedDtos.Count() > 0)
+				{
+					// Get existing skills and categories from database
+					var allSkills = await context.Skills.ToListAsync();
+					var allCategories = await context.Categories.ToListAsync();
+
+					var jobs = new List<Job>();
+
+					foreach (var jobSeedDto in jobSeedDtos)
+					{
+						// Use AutoMapper for basic property mapping
+						var job = mapper.Map<Job>(jobSeedDto);
+
+						// Initialize collections
+						job.Skills = new List<Skill>();
+						job.Categories = new List<Category>();
+
+						// Add skills using SkillIds
+						if (jobSeedDto.SkillIds != null && jobSeedDto.SkillIds.Any())
+						{
+							foreach (var skillId in jobSeedDto.SkillIds)
+							{
+								var skill = allSkills.FirstOrDefault(s => s.Id == skillId);
+								if (skill != null)
+									job.Skills.Add(skill);
+							}
+						}
+
+						// Add categories using CategoryIds
+						if (jobSeedDto.CategoryIds != null && jobSeedDto.CategoryIds.Any())
+						{
+							foreach (var categoryId in jobSeedDto.CategoryIds)
+							{
+								var category = allCategories.FirstOrDefault(c => c.Id == categoryId);
+								if (category != null)
+									job.Categories.Add(category);
+							}
+						}
+
+						jobs.Add(job);
+					}
+
 					await context.Jobs.AddRangeAsync(jobs);
-
-				await context.SaveChangesAsync();				}
-
-			///if (!context.EmployerProfiles.Any())
-			///{
-			///    var employersData = File.ReadAllText("../JobBoard.Repositories/Data/DataSeed/employers.json");
-			///    var employers = JsonSerializer.Deserialize<List<EmployerProfile>>(employersData);
-			///    if (employers is not null && employers.Count() > 0)
-			///        await context.EmployerProfiles.AddRangeAsync(employers);
-			///    await context.SaveChangesAsync();
-			///}
-
-
+					await context.SaveChangesAsync();
+				}
+			}
 		}
 	}
 }
