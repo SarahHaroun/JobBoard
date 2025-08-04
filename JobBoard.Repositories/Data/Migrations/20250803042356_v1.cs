@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace JobBoard.Repositories.Migrations
+namespace JobBoard.Repositories.Data.Migrations
 {
     /// <inheritdoc />
     public partial class v1 : Migration
@@ -11,6 +11,23 @@ namespace JobBoard.Repositories.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "AIEmbeddings",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EntityType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EntityId = table.Column<int>(type: "int", nullable: false),
+                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    EmbeddingVector = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETUTCDATE()")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AIEmbeddings", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -192,7 +209,13 @@ namespace JobBoard.Repositories.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CompanyLocation = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CompanyImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Companylogo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Website = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Industry = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CompanyDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Companymission = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmployeesNumber = table.Column<int>(type: "int", nullable: true),
                     EstablishedYear = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
@@ -452,6 +475,9 @@ namespace JobBoard.Repositories.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "AIEmbeddings");
+
             migrationBuilder.DropTable(
                 name: "Applications");
 

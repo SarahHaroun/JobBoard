@@ -21,7 +21,7 @@ namespace JobBoard.Services._ِAuthService
         private readonly IConfiguration config;
         private readonly ApplicationDbContext context;
 
-        public AuthService(UserManager<ApplicationUser> userManager , RoleManager<IdentityRole> roleManager , IConfiguration config )
+        public AuthService(UserManager<ApplicationUser> userManager , RoleManager<IdentityRole> roleManager , IConfiguration config , ApplicationDbContext context)
         {
             this.userManager = userManager;
             this.roleManager = roleManager;

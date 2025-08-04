@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace JobBoard.Repositories.Migrations
+namespace JobBoard.Repositories.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -35,6 +35,39 @@ namespace JobBoard.Repositories.Migrations
                     b.HasIndex("JobsId");
 
                     b.ToTable("CategoryJob");
+                });
+
+            modelBuilder.Entity("JobBoard.Domain.Entities.AIEmbedding", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<string>("EmbeddingVector")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EntityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EntityType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AIEmbeddings");
                 });
 
             modelBuilder.Entity("JobBoard.Domain.Entities.Application", b =>
@@ -166,6 +199,12 @@ namespace JobBoard.Repositories.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("CompanyDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompanyImage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CompanyLocation")
                         .HasColumnType("nvarchar(max)");
 
@@ -173,8 +212,20 @@ namespace JobBoard.Repositories.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Companylogo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Companymission")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("EmployeesNumber")
+                        .HasColumnType("int");
+
                     b.Property<int>("EstablishedYear")
                         .HasColumnType("int");
+
+                    b.Property<string>("Industry")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");

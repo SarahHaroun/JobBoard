@@ -9,6 +9,9 @@ using JobBoard.Repositories.Data;
 using JobBoard.Repositories.Persistence;
 using JobBoard.Services;
 using JobBoard.Services._ِAuthService;
+using JobBoard.Services.AIEmbeddingService;
+using JobBoard.Services.AIServices;
+using JobBoard.Services.CategoryService;
 using JobBoard.Services.EmployerService;
 using JobBoard.Services.SeekerService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -59,15 +62,40 @@ namespace JobBoard.API
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"])) // Secret key for signing the token
                 };
             });
-            
+
             /*------------------------Add Services--------------------------*/
+
+            /*-------------------- Cors Policy --------------------*/
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAngularApp", policy =>
+                {
+                    policy.WithOrigins("http://localhost:4200") 
+                          .AllowAnyHeader()
+                          .AllowAnyMethod()
+                          .AllowCredentials();
+                });
+            });
+
             builder.Services.AddScoped<IAuthService, AuthService>();
             builder.Services.AddScoped<IEmployerService, EmployerService>();
             builder.Services.AddScoped<ISeekerService, SeekerService>();
             builder.Services.AddScoped<IJobService, JobService>();
+            builder.Services.AddScoped<ISeekerService, SeekerService>();
+            builder.Services.AddScoped<ICategoryService, CategoryService>();
+
 
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            /*-------------------- Add Ai Service ---------------------*/
+
+            builder.Services.AddSingleton<IGeminiChatService, GeminiChatService>();
+            builder.Services.AddScoped<IAIEmbeddingService, AIEmbeddingService>();
+
+            /*--------------- Add Services AutoMappper Profiles ---------------*/
             builder.Services.AddAutoMapper(M => M.AddProfile(new JobProfile()));
+			builder.Services.AddAutoMapper(M => M.AddProfile(new CategoryProfile()));
+			builder.Services.AddAutoMapper(M => M.AddProfile(new EmployerProfileMapping()));
 
 
             builder.Services.AddAuthorization();
@@ -107,6 +135,7 @@ namespace JobBoard.API
                 app.UseSwaggerUI();
             }
 
+            app.UseCors("AllowAngularApp");
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthentication();  
