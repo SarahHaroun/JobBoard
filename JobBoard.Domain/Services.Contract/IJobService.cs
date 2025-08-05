@@ -14,9 +14,8 @@ namespace JobBoard.Domain.Services.Contract
     {
         Task<IEnumerable<JobListDto>> GetAllJobsAsync(JobFilterParams filterParams);
         Task<JobDto> GetJobByIdAsync(int id);
-
-        public Task<IEnumerable<JobDto>> GetJobsByCategoryIdAsync(int categoryId);
-        public Task<JobDto> AddJobAsync(JobDto jobDto);
-
-    }
+        Task<JobDto> AddJobAsync(CreateUpdateJobDto jobDto, int employerId);
+        Task<JobDto> UpdateJobAsync(int id, CreateUpdateJobDto jobDto);
+		Task<bool> DeleteJobAsync(int id);
+	}
 }

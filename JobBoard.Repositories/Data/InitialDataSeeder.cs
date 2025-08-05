@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using JobBoard.Domain.DTO.EmployerDto;
 using JobBoard.Domain.DTO.JobDto;
 using JobBoard.Domain.Entities;
 using JobBoard.Repositories.Persistence;
@@ -74,6 +75,7 @@ namespace JobBoard.Repositories.Data
 				}
 			}
 		}
+
 
 		public static async Task SeedAsync(ApplicationDbContext context, IMapper mapper)
 		{

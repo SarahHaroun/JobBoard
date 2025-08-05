@@ -38,9 +38,9 @@
   {
     "Title": "UI/UX Designer",
     "Description": "We're looking for a creative UI/UX designer...",
-    "Salary": 65000.00,
+    "Salary": 23000.00,
     "WorkplaceType": "OnSite",
-    "JobType": "FullTime",
+    "JobType": "PartTime",
     "PostedDate": "2024-01-25T00:00:00",
     "ExpireDate": "2024-03-25T00:00:00",
     "EducationLevel": "Bachelor",
@@ -74,7 +74,7 @@
   {
     "Title": "Project Manager - Software Development",
     "Description": "Lead cross-functional teams...",
-    "Salary": 72000.00,
+    "Salary": 42000.00,
     "WorkplaceType": "OnSite",
     "JobType": "FullTime",
     "PostedDate": "2024-02-05T00:00:00",
@@ -112,7 +112,7 @@
     "Description": "Develop and maintain server-side applications...",
     "Salary": 75000.00,
     "WorkplaceType": "Remote",
-    "JobType": "FullTime",
+    "JobType": "PartTime",
     "PostedDate": "2024-02-15T00:00:00",
     "ExpireDate": "2024-04-15T00:00:00",
     "EducationLevel": "Bachelor",
@@ -128,7 +128,7 @@
   {
     "Title": "Freelance Web Developer",
     "Description": "Work on exciting web development projects...",
-    "Salary": 45.00,
+    "Salary": 15000,
     "WorkplaceType": "Remote",
     "JobType": "Freelance",
     "PostedDate": "2024-02-20T00:00:00",

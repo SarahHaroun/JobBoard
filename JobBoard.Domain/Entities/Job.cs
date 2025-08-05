@@ -33,7 +33,7 @@ namespace JobBoard.Domain.Entities
         public ICollection<Application>? JobApplications { get; set; }
 
         /*------------------------Employer--------------------------*/
-        [ForeignKey("EmployerProfile")]
+        [ForeignKey("UserProfile")]
         public int EmployerId { get; set; }
         public EmployerProfile Employer { get; set; }
 

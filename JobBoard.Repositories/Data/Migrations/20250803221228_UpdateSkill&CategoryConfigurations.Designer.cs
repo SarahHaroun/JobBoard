@@ -197,7 +197,7 @@ namespace JobBoard.Repositories.Data.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("JobBoard.Domain.Entities.EmployerProfile", b =>
+            modelBuilder.Entity("JobBoard.Domain.Entities.UserProfile", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -550,11 +550,11 @@ namespace JobBoard.Repositories.Data.Migrations
                     b.Navigation("Job");
                 });
 
-            modelBuilder.Entity("JobBoard.Domain.Entities.EmployerProfile", b =>
+            modelBuilder.Entity("JobBoard.Domain.Entities.UserProfile", b =>
                 {
                     b.HasOne("JobBoard.Domain.Entities.ApplicationUser", "User")
                         .WithOne("employerProfile")
-                        .HasForeignKey("JobBoard.Domain.Entities.EmployerProfile", "UserId")
+                        .HasForeignKey("JobBoard.Domain.Entities.UserProfile", "UserId")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("User");
@@ -562,7 +562,7 @@ namespace JobBoard.Repositories.Data.Migrations
 
             modelBuilder.Entity("JobBoard.Domain.Entities.Job", b =>
                 {
-                    b.HasOne("JobBoard.Domain.Entities.EmployerProfile", "Employer")
+                    b.HasOne("JobBoard.Domain.Entities.UserProfile", "Employer")
                         .WithMany("PostedJobs")
                         .HasForeignKey("EmployerId")
                         .OnDelete(DeleteBehavior.Restrict)
@@ -671,7 +671,7 @@ namespace JobBoard.Repositories.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("JobBoard.Domain.Entities.EmployerProfile", b =>
+            modelBuilder.Entity("JobBoard.Domain.Entities.UserProfile", b =>
                 {
                     b.Navigation("PostedJobs");
                 });
