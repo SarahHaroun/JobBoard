@@ -99,7 +99,7 @@ namespace JobBoard.Repositories.Data
 			}
 
 			var jsonData = await File.ReadAllTextAsync(filePath);
-			var employers = JsonSerializer.Deserialize<List<EmployerSeedDto>>(jsonData);
+			var employers = JsonSerializer.Deserialize<List<EmpProfileUpdateDto>>(jsonData);
 
 			if (employers == null || !employers.Any())
 			{
@@ -117,6 +117,7 @@ namespace JobBoard.Repositories.Data
 					{
 						UserName = dto.Email,
 						Email = dto.Email,
+						PhoneNumber= dto.Phone,
 						EmailConfirmed = true,
 						User_Type = UserType.Employer
 					};

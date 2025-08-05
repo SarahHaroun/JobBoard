@@ -12,7 +12,6 @@ namespace JobBoard.Domain.DTO.AuthDto
 
         [Required(ErrorMessage = "UserName is required")]
         [StringLength(50, ErrorMessage = "UserName must be between 3 and 50 characters", MinimumLength = 3)]
-        [RegularExpression(@"^[a-zA-Z0-9]+$", ErrorMessage = "UserName can only contain letters and numbers")]
         public string UserName { get; set; }
 
         [Required(ErrorMessage = "Email is required")]
