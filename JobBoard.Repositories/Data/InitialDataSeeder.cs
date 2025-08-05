@@ -21,61 +21,128 @@ namespace JobBoard.Repositories.Data
     public static class InitialDataSeeder
     {
 
-		public static async Task SeedEmployerWithProfile(IServiceProvider serviceProvider)
+		//public static async Task SeedEmployerWithProfile(IServiceProvider serviceProvider)
+		//{
+		//	var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+		//	var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+		//	var context = serviceProvider.GetRequiredService<ApplicationDbContext>();
+
+		//	string email = "employer1@example.com";
+		//	string password = "Test@123";
+		//	string role = "Employer";
+
+		//	// 1. Ensure Role is existed
+		//	if (!await roleManager.RoleExistsAsync(role))
+		//	{
+		//		await roleManager.CreateAsync(new IdentityRole(role));
+		//	}
+
+		//	// 2.  Ensure User is not existed
+		//	var user = await userManager.FindByEmailAsync(email);
+		//	if (user == null)
+		//	{
+		//		user = new ApplicationUser
+		//		{
+		//			UserName = email,
+		//			Email = email,
+		//			EmailConfirmed = true,
+		//			User_Type = UserType.Employer
+		//		};
+
+		//		var result = await userManager.CreateAsync(user, password);
+
+		//		if (result.Succeeded)
+		//		{
+		//			await userManager.AddToRoleAsync(user, role);
+
+		//			// 3. Add EmployerProfile
+		//			var profile = new EmployerProfile
+		//			{
+		//				UserId = user.Id,
+		//				CompanyName = "Tech Corp",
+		//				Website = "https://techcorp.com",
+		//				CompanyLocation = "Cairo, Egypt",
+		//				EstablishedYear = 2010
+		//			};
+
+		//			context.EmployerProfiles.Add(profile);
+		//			await context.SaveChangesAsync();
+		//		}
+		//		else
+		//		{
+		//			foreach (var error in result.Errors)
+		//				Console.WriteLine($"Error: {error.Description}");
+		//		}
+		//	}
+		//}
+
+		public static async Task SeedEmployersWithProfiles(IServiceProvider serviceProvider, IMapper mapper)
 		{
 			var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 			var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 			var context = serviceProvider.GetRequiredService<ApplicationDbContext>();
 
-			string email = "employer1@example.com";
-			string password = "Test@123";
 			string role = "Employer";
 
-			// 1. Ensure Role is existed
+			// Ensure Role exists
 			if (!await roleManager.RoleExistsAsync(role))
 			{
 				await roleManager.CreateAsync(new IdentityRole(role));
 			}
 
-			// 2.  Ensure User is not existed
-			var user = await userManager.FindByEmailAsync(email);
-			if (user == null)
+			// Load JSON file
+			var filePath = "../JobBoard.Repositories/Data/DataSeed/employers.json";
+			if (!File.Exists(filePath))
 			{
-				user = new ApplicationUser
+				Console.WriteLine("Employers JSON file not found.");
+				return;
+			}
+
+			var jsonData = await File.ReadAllTextAsync(filePath);
+			var employers = JsonSerializer.Deserialize<List<EmployerSeedDto>>(jsonData);
+
+			if (employers == null || !employers.Any())
+			{
+				Console.WriteLine("No employer data found in JSON.");
+				return;
+			}
+
+			foreach (var dto in employers)
+			{
+				var user = await userManager.FindByEmailAsync(dto.Email);
+
+				if (user == null)
 				{
-					UserName = email,
-					Email = email,
-					EmailConfirmed = true,
-					User_Type = UserType.Employer
-				};
-
-				var result = await userManager.CreateAsync(user, password);
-
-				if (result.Succeeded)
-				{
-					await userManager.AddToRoleAsync(user, role);
-
-					// 3. Add EmployerProfile
-					var profile = new EmployerProfile
+					user = new ApplicationUser
 					{
-						UserId = user.Id,
-						CompanyName = "Tech Corp",
-						Website = "https://techcorp.com",
-						CompanyLocation = "Cairo, Egypt",
-						EstablishedYear = 2010
+						UserName = dto.Email,
+						Email = dto.Email,
+						EmailConfirmed = true,
+						User_Type = UserType.Employer
 					};
 
-					context.EmployerProfiles.Add(profile);
-					await context.SaveChangesAsync();
-				}
-				else
-				{
-					foreach (var error in result.Errors)
-						Console.WriteLine($"Error: {error.Description}");
+					var result = await userManager.CreateAsync(user, dto.Password);
+
+					if (result.Succeeded)
+					{
+						await userManager.AddToRoleAsync(user, role);
+
+						// Auto-map from DTO to EmployerProfile
+						var profile = mapper.Map<EmployerProfile>(dto);
+						profile.UserId = user.Id;
+
+						context.EmployerProfiles.Add(profile);
+					}
+					else
+					{
+						foreach (var error in result.Errors)
+							Console.WriteLine($"Error for {dto.Email}: {error.Description}");
+					}
 				}
 			}
-		}
 
+			await context.SaveChangesAsync();
+		}
 
 		public static async Task SeedAsync(ApplicationDbContext context, IMapper mapper)
 		{

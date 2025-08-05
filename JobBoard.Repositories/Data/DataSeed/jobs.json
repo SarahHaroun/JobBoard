@@ -13,7 +13,7 @@
     "ExperienceLevel": "Experienced",
     "Requirements": "5+ years of experience in web development...",
     "IsActive": true,
-    "EmployerId": 1,
+    "EmployerId": 7,
     "SkillIds": [ 1, 2, 5, 9, 3 ],
     "CategoryIds": [ 1 ]
   },
@@ -31,7 +31,7 @@
     "ExperienceLevel": "Experienced",
     "Requirements": "Advanced degree in Data Science...",
     "IsActive": true,
-    "EmployerId": 1,
+    "EmployerId": 11,
     "SkillIds": [ 3, 5 ],
     "CategoryIds": [ 2 ]
   },
@@ -59,15 +59,15 @@
     "Salary": 78000.00,
     "WorkplaceType": "Hybrid",
     "JobType": "FullTime",
-    "PostedDate": "2024-02-01T00:00:00",
-    "ExpireDate": "2024-04-01T00:00:00",
+    "PostedDate": "2025-02-01T00:00:00",
+    "ExpireDate": "2025-04-01T00:00:00",
     "EducationLevel": "Bachelor",
     "MinTeamSize": 4,
     "MaxTeamSize": 10,
     "ExperienceLevel": "Experienced",
     "Requirements": "3+ years in cybersecurity...",
     "IsActive": true,
-    "EmployerId": 1,
+    "EmployerId": 3,
     "SkillIds": [ 3, 10 ],
     "CategoryIds": [ 4 ]
   },
@@ -85,7 +85,7 @@
     "ExperienceLevel": "Manager",
     "Requirements": "PMP certification preferred...",
     "IsActive": true,
-    "EmployerId": 1,
+    "EmployerId": 12,
     "SkillIds": [ 10 ],
     "CategoryIds": [ 5, 1 ]
   },
@@ -103,7 +103,7 @@
     "ExperienceLevel": "Student",
     "Requirements": "Currently enrolled in Computer Science...",
     "IsActive": true,
-    "EmployerId": 1,
+    "EmployerId": 6,
     "SkillIds": [ 6, 7, 5, 9 ],
     "CategoryIds": [ 1 ]
   },
@@ -121,7 +121,7 @@
     "ExperienceLevel": "Experienced",
     "Requirements": "4+ years experience with .NET Core...",
     "IsActive": true,
-    "EmployerId": 1,
+    "EmployerId": 5,
     "SkillIds": [ 1, 2, 3, 4 ],
     "CategoryIds": [ 1 ]
   },
@@ -139,7 +139,7 @@
     "ExperienceLevel": "EntryLevel",
     "Requirements": "2+ years of web development experience...",
     "IsActive": true,
-    "EmployerId": 1,
+    "EmployerId": 3,
     "SkillIds": [ 6, 7, 5, 8, 10 ],
     "CategoryIds": [ 1 ]
   },
@@ -175,7 +175,7 @@
     "ExperienceLevel": "EntryLevel",
     "Requirements": "Degree in Statistics...",
     "IsActive": true,
-    "EmployerId": 1,
+    "EmployerId": 12,
     "SkillIds": [ 3, 5 ],
     "CategoryIds": [ 2 ]
   }

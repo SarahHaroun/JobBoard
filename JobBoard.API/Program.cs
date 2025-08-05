@@ -93,6 +93,7 @@ namespace JobBoard.API
 
             /*--------------- Add Services AutoMappper Profiles ---------------*/
             builder.Services.AddAutoMapper(M => M.AddProfile(new JobProfile()));
+            builder.Services.AddAutoMapper(M => M.AddProfile(new UserProfile()));
 
             builder.Services.AddAuthorization();
             builder.Services.AddControllers();
@@ -114,9 +115,9 @@ namespace JobBoard.API
 
 
 				var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
-				await InitialDataSeeder.SeedEmployerWithProfile(services);
-
 				var mapper = services.GetRequiredService<IMapper>();
+				await InitialDataSeeder.SeedEmployersWithProfiles(services, mapper);
+
 				await InitialDataSeeder.SeedAsync(context, mapper);
 			}
             catch (Exception ex)
