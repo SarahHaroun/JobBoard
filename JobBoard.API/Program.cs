@@ -1,11 +1,10 @@
-﻿using JobBoard.Domain.Entities;
-
+﻿using AutoMapper;
+using JobBoard.Domain.Entities;
 using JobBoard.Domain.Mapping;
 using JobBoard.Domain.Repositories.Contract;
 using JobBoard.Domain.Services.Contract;
 using JobBoard.Repositories;
 using JobBoard.Repositories.Data;
-
 using JobBoard.Repositories.Persistence;
 using JobBoard.Services;
 using JobBoard.Services._ِAuthService;
@@ -94,9 +93,7 @@ namespace JobBoard.API
 
             /*--------------- Add Services AutoMappper Profiles ---------------*/
             builder.Services.AddAutoMapper(M => M.AddProfile(new JobProfile()));
-			builder.Services.AddAutoMapper(M => M.AddProfile(new CategoryProfile()));
-			builder.Services.AddAutoMapper(M => M.AddProfile(new EmployerProfileMapping()));
-
+            builder.Services.AddAutoMapper(M => M.AddProfile(new UserProfile()));
 
             builder.Services.AddAuthorization();
             builder.Services.AddControllers();
@@ -118,9 +115,10 @@ namespace JobBoard.API
 
 
 				var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
-				await InitialDataSeeder.SeedEmployerWithProfile(services);  
+				var mapper = services.GetRequiredService<IMapper>();
+				await InitialDataSeeder.SeedEmployersWithProfiles(services, mapper);
 
-				await InitialDataSeeder.seedAsync(context);
+				await InitialDataSeeder.SeedAsync(context, mapper);
 			}
             catch (Exception ex)
             {

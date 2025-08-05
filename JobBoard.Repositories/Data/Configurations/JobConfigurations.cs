@@ -35,6 +35,10 @@ namespace JobBoard.Repositories.Data.Configurations
 			builder.HasMany(j => j.Skills)
 				   .WithMany(s => s.Jobs)
 				   .UsingEntity(j => j.ToTable("JobSkills"));
+			
+			builder.HasMany(j => j.Categories)
+				   .WithMany(s => s.Jobs)
+				   .UsingEntity(j => j.ToTable("JobCategories"));
 
 		}
 	}

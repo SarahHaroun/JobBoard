@@ -26,14 +26,14 @@ namespace JobBoard.Domain.Entities
 		public bool IsActive { get; set; } = true; //New
 
         /*------------------------Category--------------------------*/
-        public List<Category>? Categories { get; set; }
+        public ICollection<Category>? Categories { get; set; }
 
 
         /*------------------------Applications--------------------------*/
-        public List<Application>? JobApplications { get; set; }
+        public ICollection<Application>? JobApplications { get; set; }
 
         /*------------------------Employer--------------------------*/
-        [ForeignKey("EmployerProfile")]
+        [ForeignKey("UserProfile")]
         public int EmployerId { get; set; }
         public EmployerProfile Employer { get; set; }
 
