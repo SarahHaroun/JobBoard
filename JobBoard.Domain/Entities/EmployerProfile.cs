@@ -10,9 +10,7 @@ namespace JobBoard.Domain.Entities
     public class EmployerProfile
     {
 		public int Id { get; set; }
-
 		public string CompanyName { get; set; }
-
 		public string? CompanyLocation { get; set; }
 		public string? CompanyImage  { get; set; }
 		public string? Companylogo  { get; set; }

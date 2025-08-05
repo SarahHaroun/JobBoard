@@ -1,4 +1,7 @@
-﻿using JobBoard.Domain.Entities;
+﻿using AutoMapper;
+using JobBoard.Domain.DTO.EmployerDto;
+using JobBoard.Domain.DTO.JobDto;
+using JobBoard.Domain.Entities;
 using JobBoard.Repositories.Persistence;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -18,117 +21,214 @@ namespace JobBoard.Repositories.Data
     public static class InitialDataSeeder
     {
 
-		public static async Task SeedEmployerWithProfile(IServiceProvider serviceProvider)
+		//public static async Task SeedEmployerWithProfile(IServiceProvider serviceProvider)
+		//{
+		//	var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+		//	var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+		//	var context = serviceProvider.GetRequiredService<ApplicationDbContext>();
+
+		//	string email = "employer1@example.com";
+		//	string password = "Test@123";
+		//	string role = "Employer";
+
+		//	// 1. Ensure Role is existed
+		//	if (!await roleManager.RoleExistsAsync(role))
+		//	{
+		//		await roleManager.CreateAsync(new IdentityRole(role));
+		//	}
+
+		//	// 2.  Ensure User is not existed
+		//	var user = await userManager.FindByEmailAsync(email);
+		//	if (user == null)
+		//	{
+		//		user = new ApplicationUser
+		//		{
+		//			UserName = email,
+		//			Email = email,
+		//			EmailConfirmed = true,
+		//			User_Type = UserType.Employer
+		//		};
+
+		//		var result = await userManager.CreateAsync(user, password);
+
+		//		if (result.Succeeded)
+		//		{
+		//			await userManager.AddToRoleAsync(user, role);
+
+		//			// 3. Add EmployerProfile
+		//			var profile = new EmployerProfile
+		//			{
+		//				UserId = user.Id,
+		//				CompanyName = "Tech Corp",
+		//				Website = "https://techcorp.com",
+		//				CompanyLocation = "Cairo, Egypt",
+		//				EstablishedYear = 2010
+		//			};
+
+		//			context.EmployerProfiles.Add(profile);
+		//			await context.SaveChangesAsync();
+		//		}
+		//		else
+		//		{
+		//			foreach (var error in result.Errors)
+		//				Console.WriteLine($"Error: {error.Description}");
+		//		}
+		//	}
+		//}
+
+		public static async Task SeedEmployersWithProfiles(IServiceProvider serviceProvider, IMapper mapper)
 		{
 			var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 			var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 			var context = serviceProvider.GetRequiredService<ApplicationDbContext>();
 
-			string email = "employer1@example.com";
-			string password = "Test@123";
 			string role = "Employer";
 
-			// 1. Ensure Role is existed
+			// Ensure Role exists
 			if (!await roleManager.RoleExistsAsync(role))
 			{
 				await roleManager.CreateAsync(new IdentityRole(role));
 			}
 
-			// 2.  Ensure User is not existed
-			var user = await userManager.FindByEmailAsync(email);
-			if (user == null)
+			// Load JSON file
+			var filePath = "../JobBoard.Repositories/Data/DataSeed/employers.json";
+			if (!File.Exists(filePath))
 			{
-				user = new ApplicationUser
+				Console.WriteLine("Employers JSON file not found.");
+				return;
+			}
+
+			var jsonData = await File.ReadAllTextAsync(filePath);
+			var employers = JsonSerializer.Deserialize<List<EmployerSeedDto>>(jsonData);
+
+			if (employers == null || !employers.Any())
+			{
+				Console.WriteLine("No employer data found in JSON.");
+				return;
+			}
+
+			foreach (var dto in employers)
+			{
+				var user = await userManager.FindByEmailAsync(dto.Email);
+
+				if (user == null)
 				{
-					UserName = email,
-					Email = email,
-					EmailConfirmed = true,
-					User_Type = UserType.Employer
-				};
-
-				var result = await userManager.CreateAsync(user, password);
-
-				if (result.Succeeded)
-				{
-					await userManager.AddToRoleAsync(user, role);
-
-					// 3. Add EmployerProfile
-					var profile = new EmployerProfile
+					user = new ApplicationUser
 					{
-						UserId = user.Id,
-						CompanyName = "Tech Corp",
-						Website = "https://techcorp.com",
-						CompanyLocation = "Cairo, Egypt",
-						EstablishedYear = 2010
+						UserName = dto.Email,
+						Email = dto.Email,
+						EmailConfirmed = true,
+						User_Type = UserType.Employer
 					};
 
-					context.EmployerProfiles.Add(profile);
-					await context.SaveChangesAsync();
-				}
-				else
-				{
-					foreach (var error in result.Errors)
-						Console.WriteLine($"Error: {error.Description}");
+					var result = await userManager.CreateAsync(user, dto.Password);
+
+					if (result.Succeeded)
+					{
+						await userManager.AddToRoleAsync(user, role);
+
+						// Auto-map from DTO to EmployerProfile
+						var profile = mapper.Map<EmployerProfile>(dto);
+						profile.UserId = user.Id;
+
+						context.EmployerProfiles.Add(profile);
+					}
+					else
+					{
+						foreach (var error in result.Errors)
+							Console.WriteLine($"Error for {dto.Email}: {error.Description}");
+					}
 				}
 			}
+
+			await context.SaveChangesAsync();
 		}
 
-		public static async Task seedAsync(ApplicationDbContext context)
-        {
-            if (!context.Skills.Any())
-            {
-                //Read Data from file
-                var skillsData = File.ReadAllText("../JobBoard.Repositories/Data/DataSeed/skills.json");
-
-                //2. Convert Json string to list<T>
-                var skills = JsonSerializer.Deserialize<List<Skill>>(skillsData);
-
-                //3. Seed Data to Database
-                if(skills is not null && skills.Count() > 0)
+		public static async Task SeedAsync(ApplicationDbContext context, IMapper mapper)
+		{
+			// Seed Skills 
+			if (!context.Skills.Any())
+			{
+				var skillsData = File.ReadAllText("../JobBoard.Repositories/Data/DataSeed/skills.json");
+				var skills = JsonSerializer.Deserialize<List<Skill>>(skillsData);
+				if (skills is not null && skills.Count() > 0)
+				{
 					await context.Skills.AddRangeAsync(skills);
-
-                await context.SaveChangesAsync();
+					await context.SaveChangesAsync();
+				}
 			}
 
-            if (!context.Categories.Any())
-            {
-                var categoriesData = File.ReadAllText("../JobBoard.Repositories/Data/DataSeed/categories.json");
-
+			// Seed Categories 
+			if (!context.Categories.Any())
+			{
+				var categoriesData = File.ReadAllText("../JobBoard.Repositories/Data/DataSeed/categories.json");
 				var categories = JsonSerializer.Deserialize<List<Category>>(categoriesData);
+				if (categories is not null && categories.Count() > 0)
+				{
+					await context.Categories.AddRangeAsync(categories);
+					await context.SaveChangesAsync();
+				}
+			}
 
-                if (categories is not null && categories.Count() > 0)
-                    await context.Categories.AddRangeAsync(categories);
-                await context.SaveChangesAsync();
-            }
-
-
+			// Seed Jobs with relationships
 			if (!context.Jobs.Any())
 			{
 				var jobsData = File.ReadAllText("../JobBoard.Repositories/Data/DataSeed/jobs.json");
-
 				var options = new JsonSerializerOptions
 				{
 					PropertyNameCaseInsensitive = true,
 					Converters = { new JsonStringEnumConverter() }
 				};
 
-				var jobs = JsonSerializer.Deserialize<List<Job>>(jobsData, options);
+				// Deserialize to JobSeedDto (not JobDto)
+				var jobSeedDtos = JsonSerializer.Deserialize<List<JobSeedDto>>(jobsData, options);
 
-				if (jobs is not null && jobs.Count() > 0)
+				if (jobSeedDtos is not null && jobSeedDtos.Count() > 0)
+				{
+					// Get existing skills and categories from database
+					var allSkills = await context.Skills.ToListAsync();
+					var allCategories = await context.Categories.ToListAsync();
+
+					var jobs = new List<Job>();
+
+					foreach (var jobSeedDto in jobSeedDtos)
+					{
+						// Use AutoMapper for basic property mapping
+						var job = mapper.Map<Job>(jobSeedDto);
+
+						// Initialize collections
+						job.Skills = new List<Skill>();
+						job.Categories = new List<Category>();
+
+						// Add skills using SkillIds
+						if (jobSeedDto.SkillIds != null && jobSeedDto.SkillIds.Any())
+						{
+							foreach (var skillId in jobSeedDto.SkillIds)
+							{
+								var skill = allSkills.FirstOrDefault(s => s.Id == skillId);
+								if (skill != null)
+									job.Skills.Add(skill);
+							}
+						}
+
+						// Add categories using CategoryIds
+						if (jobSeedDto.CategoryIds != null && jobSeedDto.CategoryIds.Any())
+						{
+							foreach (var categoryId in jobSeedDto.CategoryIds)
+							{
+								var category = allCategories.FirstOrDefault(c => c.Id == categoryId);
+								if (category != null)
+									job.Categories.Add(category);
+							}
+						}
+
+						jobs.Add(job);
+					}
+
 					await context.Jobs.AddRangeAsync(jobs);
-
-				await context.SaveChangesAsync();				}
-
-			///if (!context.EmployerProfiles.Any())
-			///{
-			///    var employersData = File.ReadAllText("../JobBoard.Repositories/Data/DataSeed/employers.json");
-			///    var employers = JsonSerializer.Deserialize<List<EmployerProfile>>(employersData);
-			///    if (employers is not null && employers.Count() > 0)
-			///        await context.EmployerProfiles.AddRangeAsync(employers);
-			///    await context.SaveChangesAsync();
-			///}
-
-
+					await context.SaveChangesAsync();
+				}
+			}
 		}
 	}
 }
