@@ -46,5 +46,6 @@ namespace JobBoard.Domain.DTO.EmployerDto
 
         [Phone(ErrorMessage = "Invalid phone number")]
         public string? Phone { get; set; }
+        public string? Password { get; set; }
     }
 }

@@ -93,7 +93,9 @@ namespace JobBoard.API
 
             /*--------------- Add Services AutoMappper Profiles ---------------*/
             builder.Services.AddAutoMapper(M => M.AddProfile(new JobProfile()));
-            builder.Services.AddAutoMapper(M => M.AddProfile(new UserProfile()));
+            builder.Services.AddAutoMapper(M => M.AddProfile(new EmployerProfileMapping()));
+
+
 
             builder.Services.AddAuthorization();
             builder.Services.AddControllers();
