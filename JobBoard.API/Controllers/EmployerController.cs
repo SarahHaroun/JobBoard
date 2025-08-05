@@ -62,7 +62,7 @@ namespace JobBoard.API.Controllers
 
         /*------------------------Update --------------------------*/
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] EmpProfileDto dto)
+        public async Task<IActionResult> Update([FromBody] EmpProfileUpdateDto dto)
         {
             if (userId == null)
                 return Unauthorized();

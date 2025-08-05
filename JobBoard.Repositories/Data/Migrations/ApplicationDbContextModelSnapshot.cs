@@ -202,6 +202,12 @@ namespace JobBoard.Repositories.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("CompanyDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompanyImage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CompanyLocation")
                         .HasColumnType("nvarchar(max)");
 
@@ -209,8 +215,20 @@ namespace JobBoard.Repositories.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Companylogo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Companymission")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("EmployeesNumber")
+                        .HasColumnType("int");
+
                     b.Property<int>("EstablishedYear")
                         .HasColumnType("int");
+
+                    b.Property<string>("Industry")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");

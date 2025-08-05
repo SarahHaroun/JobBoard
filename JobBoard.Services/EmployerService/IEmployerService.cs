@@ -12,7 +12,7 @@ namespace JobBoard.Services.EmployerService
         Task<List<EmpProfileDto>> GetAll();
         Task<EmpProfileDto> GetByUserId(string userId);
         //Task<string> Create(EmpProfileDto empProfile);
-        Task<bool> Update(int id, EmpProfileDto empProfile);
+        Task<bool> Update(int id, EmpProfileUpdateDto empProfile);
         Task<bool> DeleteById(int id);
 
     }

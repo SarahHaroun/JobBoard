@@ -16,6 +16,7 @@ using JobBoard.Services.SeekerService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
@@ -77,6 +78,7 @@ namespace JobBoard.API
 
             builder.Services.AddScoped<IAuthService, AuthService>();
             builder.Services.AddScoped<IEmployerService, EmployerService>();
+            builder.Services.AddScoped<ISeekerService, SeekerService>();
             builder.Services.AddScoped<IJobService, JobService>();
             builder.Services.AddScoped<ISeekerService, SeekerService>();
             builder.Services.AddScoped<ICategoryService, CategoryService>();
@@ -92,7 +94,7 @@ namespace JobBoard.API
             /*--------------- Add Services AutoMappper Profiles ---------------*/
             builder.Services.AddAutoMapper(M => M.AddProfile(new JobProfile()));
 
-			builder.Services.AddAuthorization();
+            builder.Services.AddAuthorization();
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

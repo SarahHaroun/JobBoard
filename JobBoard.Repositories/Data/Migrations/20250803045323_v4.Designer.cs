@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobBoard.Repositories.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250723111025_V4")]
-    partial class V4
+    [Migration("20250803045323_v4")]
+    partial class v4
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,6 +38,39 @@ namespace JobBoard.Repositories.Data.Migrations
                     b.HasIndex("JobsId");
 
                     b.ToTable("CategoryJob");
+                });
+
+            modelBuilder.Entity("JobBoard.Domain.Entities.AIEmbedding", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<string>("EmbeddingVector")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("EntityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EntityType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AIEmbeddings");
                 });
 
             modelBuilder.Entity("JobBoard.Domain.Entities.Application", b =>
@@ -169,6 +202,12 @@ namespace JobBoard.Repositories.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("CompanyDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompanyImage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CompanyLocation")
                         .HasColumnType("nvarchar(max)");
 
@@ -176,8 +215,20 @@ namespace JobBoard.Repositories.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Companylogo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Companymission")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("EmployeesNumber")
+                        .HasColumnType("int");
+
                     b.Property<int>("EstablishedYear")
                         .HasColumnType("int");
+
+                    b.Property<string>("Industry")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -511,11 +562,30 @@ namespace JobBoard.Repositories.Data.Migrations
                     b.Navigation("Job");
                 });
 
-            modelBuilder.Entity("JobBoard.Domain.Entities.UserProfile", b =>
+            modelBuilder.Entity("JobBoard.Domain.Entities.ApplicationUser", b =>
+                {
+                    b.HasOne("JobBoard.Domain.Entities.EmployerProfile", "employerProfile")
+                        .WithMany()
+                        .HasForeignKey("employerProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("JobBoard.Domain.Entities.SeekerProfile", "seekerProfile")
+                        .WithMany()
+                        .HasForeignKey("seekerProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("employerProfile");
+
+                    b.Navigation("seekerProfile");
+                });
+
+            modelBuilder.Entity("JobBoard.Domain.Entities.EmployerProfile", b =>
                 {
                     b.HasOne("JobBoard.Domain.Entities.ApplicationUser", "User")
-                        .WithOne("employerProfile")
-                        .HasForeignKey("JobBoard.Domain.Entities.UserProfile", "UserId")
+                        .WithOne()
+                        .HasForeignKey("JobBoard.Domain.Entities.EmployerProfile", "UserId")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("User");
@@ -623,16 +693,7 @@ namespace JobBoard.Repositories.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("JobBoard.Domain.Entities.ApplicationUser", b =>
-                {
-                    b.Navigation("employerProfile")
-                        .IsRequired();
-
-                    b.Navigation("seekerProfile")
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("JobBoard.Domain.Entities.UserProfile", b =>
+            modelBuilder.Entity("JobBoard.Domain.Entities.EmployerProfile", b =>
                 {
                     b.Navigation("PostedJobs");
                 });
