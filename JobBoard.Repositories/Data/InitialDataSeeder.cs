@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿﻿using AutoMapper;
 using JobBoard.Domain.DTO.EmployerDto;
 using JobBoard.Domain.DTO.JobDto;
 using JobBoard.Domain.DTO.SeekerDto;
@@ -24,11 +24,16 @@ namespace JobBoard.Repositories.Data
 		};
 
 		//Main method for seeding data
-		public static async Task SeedAsync(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IMapper mapper)
+		public static async Task SeedAsync(
+			ApplicationDbContext context,
+			UserManager<ApplicationUser> userManager,
+			RoleManager<IdentityRole> roleManager,  
+			IMapper mapper)
 		{
+			await SeedRolesAsync(roleManager);
 			await SeedDataAsync<Skill>(context, context.Skills, "skills.json");
 			await SeedDataAsync<Category>(context, context.Categories, "categories.json");
-			await SeedUsersAndProfilesAsync(context, userManager, mapper);
+			await SeedUsersAndProfilesAsync(context, userManager,roleManager, mapper);
 			await SeedJobsAsync(context, mapper);
 		}
 
@@ -75,9 +80,13 @@ namespace JobBoard.Repositories.Data
 		}
 
 		//Seeds Users and their related profiles (Employer or Seeker)
-		private static async Task SeedUsersAndProfilesAsync(ApplicationDbContext context, UserManager<ApplicationUser> userManager, IMapper mapper)
+		private static async Task SeedUsersAndProfilesAsync(
+			ApplicationDbContext context,
+			UserManager<ApplicationUser> userManager,
+			RoleManager<IdentityRole> roleManager,
+			IMapper mapper)
 		{
-			//Load users and profile data
+			// Load users and profile data
 			var users = await LoadJsonFileAsync<UserSeedDto>("users.json");
 			var employers = await LoadJsonFileAsync<EmployerSeedDto>("employers.json");
 			var seekers = await LoadJsonFileAsync<SeekerSeedDto>("seekers.json");
@@ -89,12 +98,19 @@ namespace JobBoard.Repositories.Data
 				if (await userManager.FindByEmailAsync(userDto.Email) is not null)
 					continue;
 
-				//Create ApplicationUser
+				// Create ApplicationUser
 				var user = mapper.Map<ApplicationUser>(userDto);
 				var result = await userManager.CreateAsync(user, userDto.Password);
 				if (!result.Succeeded) continue;
 
-				//Create EmployerProfile if user is Employer
+				// Assign role to user (e.g., "Employer", "Seeker")
+				var roleName = userDto.User_Type.ToString();
+				if (await roleManager.RoleExistsAsync(roleName))
+				{
+					await userManager.AddToRoleAsync(user, roleName);
+				}
+
+				// Create EmployerProfile if user is Employer
 				if (userDto.User_Type == UserType.Employer)
 				{
 					var employerDto = employers.FirstOrDefault(e => e.UserEmail == user.Email);
@@ -105,7 +121,7 @@ namespace JobBoard.Repositories.Data
 						context.EmployerProfiles.Add(employer);
 					}
 				}
-				//Create SeekerProfile if user is Seeker
+				// Create SeekerProfile if user is Seeker
 				else if (userDto.User_Type == UserType.Seeker)
 				{
 					var seekerDto = seekers.FirstOrDefault(s => s.UserEmail == user.Email);
@@ -114,7 +130,7 @@ namespace JobBoard.Repositories.Data
 						var seeker = mapper.Map<SeekerProfile>(seekerDto);
 						seeker.UserId = user.Id;
 
-						//Assign skills to seeker
+						// Assign skills to seeker
 						seeker.Skills = await context.Skills
 							.Where(skill => seekerDto.Skills.Contains(skill.Id))
 							.ToListAsync();
@@ -147,5 +163,19 @@ namespace JobBoard.Repositories.Data
 			await dbSet.AddRangeAsync(items);
 			await context.SaveChangesAsync();
 		}
+
+		private static async Task SeedRolesAsync(RoleManager<IdentityRole> roleManager)
+		{
+			var roles = new[] { "Admin", "Employer", "Seeker" };
+
+			foreach (var role in roles)
+			{
+				if (!await roleManager.RoleExistsAsync(role))
+				{
+					await roleManager.CreateAsync(new IdentityRole(role));
+				}
+			}
+		}
+
 	}
 }

@@ -25,6 +25,7 @@ namespace JobBoard.Domain.Mapping
                 .ForMember(dest => dest.Companylogo, op => op.MapFrom(src => src.Employer.Companylogo))
                 .ForMember(dest => dest.CompanyDescription, op => op.MapFrom(src => src.Employer.CompanyDescription))
                 .ForMember(dest => dest.Companymission, op => op.MapFrom(src => src.Employer.Companymission))
+                .ForMember(dest => dest.Industry, op => op.MapFrom(src => src.Employer.Industry))
                 .ForMember(dest => dest.EmployeesNumber, op => op.MapFrom(src => src.Employer.EmployeesNumber))
                 .ForMember(dest => dest.EstablishedYear, op => op.MapFrom(src => src.Employer.EstablishedYear))
                 .ForMember(dest => dest.Categories, op => op.MapFrom(src => src.Categories.Select(c => c.CategoryName).ToList()))

@@ -119,9 +119,10 @@ namespace JobBoard.API
 
 
 				var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+				var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
 				var mapper = services.GetRequiredService<IMapper>();
 
-				await InitialDataSeeder.SeedAsync(context, userManager, mapper);
+				await InitialDataSeeder.SeedAsync(context, userManager, roleManager, mapper);
 			}
 			catch (Exception ex)
 			{
