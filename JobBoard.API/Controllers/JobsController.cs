@@ -51,7 +51,7 @@ namespace JobBoard.API.Controllers
 
 		//POST: api/jobs
 		[HttpPost]
-		public async Task<IActionResult> Add([FromBody] CreateUpdateJobDto jobDto)
+		public async Task<IActionResult> AddJob([FromBody] CreateUpdateJobDto jobDto)
 		{
 			if (!ModelState.IsValid)
 				return BadRequest(ModelState);
