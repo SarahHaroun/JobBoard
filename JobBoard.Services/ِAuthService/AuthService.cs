@@ -51,12 +51,13 @@ namespace JobBoard.Services._ِAuthService
 
 
             var Key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["JWT:Secret"])); // Secret key for signing the token
+            var expiration = model.RememberMe? DateTime.Now.AddDays(7) : DateTime.Now.AddDays(1); // Token expiration time
             var signingCredentials = new SigningCredentials(Key, SecurityAlgorithms.HmacSha256);  // Signing credentials for the token
                 // Create the JWT token
             var token = new JwtSecurityToken(                   
                 issuer: config["JWT:ValidIssuer"],
                 audience: config["JWT:ValidAudience"],
-                expires: DateTime.Now.AddDays(1),
+                expires: expiration,
                 claims: userClaims,
                 signingCredentials: signingCredentials
             );
@@ -64,7 +65,7 @@ namespace JobBoard.Services._ِAuthService
             {
                 Succeeded = true,
                 Token = new JwtSecurityTokenHandler().WriteToken(token),
-                Expiration = DateTime.Now.AddDays(1),   //token.ValidTo,
+                Expiration = expiration,   //token.ValidTo,
                 Role = userRole.FirstOrDefault() ?? ""
             };
 
