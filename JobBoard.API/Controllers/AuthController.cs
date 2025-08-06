@@ -11,57 +11,57 @@ using System.Text;
 
 namespace JobBoard.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AuthController : ControllerBase
-    {
-        private readonly IAuthService authService;
+	[Route("api/[controller]")]
+	[ApiController]
+	public class AuthController : ControllerBase
+	{
+		private readonly IAuthService authService;
 
-        public AuthController(IAuthService authService)
-        {
-            this.authService = authService;
-        }
+		public AuthController(IAuthService authService)
+		{
+			this.authService = authService;
+		}
 
-        /*------------------------Register--------------------------*/
+		/*------------------------Register--------------------------*/
 
-        [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterDto model)
-        {
-            if (!ModelState.IsValid)
-            {              
-                return BadRequest(ModelState);
-            }
-            var result = await authService.RegisterAsync(model);
-            if (result.Succeeded)
-            {
-                return Ok(result);
-            }
-            else
-            {
-                return BadRequest(result.Message);
-            }
+		[HttpPost("register")]
+		public async Task<IActionResult> Register([FromBody] RegisterDto model)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
+			var result = await authService.RegisterAsync(model);
+			if (result.Succeeded)
+			{
+				return Ok(result);
+			}
+			else
+			{
+				return BadRequest(result.Message);
+			}
 
-        }
+		}
 
-        /*------------------------Login--------------------------*/
-        [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] LoginDto model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            var result = await authService.LoginAsync(model);
-            if (result.Succeeded)
-            {
-                return Ok(result);
-            }
-            else
-            {
-                return Unauthorized(result.Message);
-            }
-        }
-           
+		/*------------------------Login--------------------------*/
+		[HttpPost("login")]
+		public async Task<IActionResult> Login([FromBody] LoginDto model)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
+			var result = await authService.LoginAsync(model);
+			if (result.Succeeded)
+			{
+				return Ok(result);
+			}
+			else
+			{
+				return Unauthorized(result.Message);
+			}
+		}
 
-    }
+
+	}
 }

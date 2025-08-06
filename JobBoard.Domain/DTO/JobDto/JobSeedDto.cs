@@ -21,7 +21,7 @@ namespace JobBoard.Domain.DTO.JobDto
 		public string ExperienceLevel { get; set; }
 		public string Requirements { get; set; }
 		public bool IsActive { get; set; }
-		public int EmployerId { get; set; }
+		public int? EmployerId { get; set; }
 		// Use IDs for seeding relationships
 		public List<int> SkillIds { get; set; }
 		public List<int> CategoryIds { get; set; }

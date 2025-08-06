@@ -19,6 +19,7 @@ namespace JobBoard.Domain.Mapping
                 .ReverseMap();
 
             CreateMap<EmpProfileUpdateDto, EmployerProfile>();
+           
 
 
         }

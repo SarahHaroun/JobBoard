@@ -18,12 +18,12 @@ namespace JobBoard.Domain.Entities
         public JobType JobType { get; set; }
         public DateTime PostedDate { get; set; }
         public DateTime? ExpireDate { get; set; }
-		public EducationLevel? EducationLevel { get; set; } 
-		public int? MinTeamSize { get; set; } //New
-		public int? MaxTeamSize { get; set; } //New
-		public ExperienceLevel? ExperienceLevel { get; set; } //New
-		public string? Requirements { get; set; } //New
-		public bool IsActive { get; set; } = true; //New
+        public EducationLevel? EducationLevel { get; set; }
+        public int? MinTeamSize { get; set; } //New
+        public int? MaxTeamSize { get; set; } //New
+        public ExperienceLevel? ExperienceLevel { get; set; } //New
+        public string? Requirements { get; set; } //New
+        public bool IsActive { get; set; } = true; //New
 
         /*------------------------Category--------------------------*/
         public ICollection<Category>? Categories { get; set; }
@@ -39,5 +39,5 @@ namespace JobBoard.Domain.Entities
 
         /*------------------------Skills--------------------------*/
         public ICollection<Skill> Skills { get; set; } = new List<Skill>();
-	}
+    }
 }
