@@ -1,4 +1,4 @@
-﻿﻿using AutoMapper;
+﻿using AutoMapper;
 using JobBoard.Domain.DTO.EmployerDto;
 using JobBoard.Domain.DTO.JobDto;
 using JobBoard.Domain.DTO.SeekerDto;
@@ -27,13 +27,13 @@ namespace JobBoard.Repositories.Data
 		public static async Task SeedAsync(
 			ApplicationDbContext context,
 			UserManager<ApplicationUser> userManager,
-			RoleManager<IdentityRole> roleManager,  
+			RoleManager<IdentityRole> roleManager,
 			IMapper mapper)
 		{
 			await SeedRolesAsync(roleManager);
 			await SeedDataAsync<Skill>(context, context.Skills, "skills.json");
 			await SeedDataAsync<Category>(context, context.Categories, "categories.json");
-			await SeedUsersAndProfilesAsync(context, userManager,roleManager, mapper);
+			await SeedUsersAndProfilesAsync(context, userManager, roleManager, mapper);
 			await SeedJobsAsync(context, mapper);
 		}
 

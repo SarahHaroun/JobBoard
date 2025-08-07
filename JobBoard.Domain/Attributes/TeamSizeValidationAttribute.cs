@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JobBoard.Domain.Attributes
 {
-    class TeamSizeValidationAttribute : ValidationAttribute
+    public class TeamSizeValidationAttribute : ValidationAttribute
     {
 		public override bool IsValid(object? value)
 		{

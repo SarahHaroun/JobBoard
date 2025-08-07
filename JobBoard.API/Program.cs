@@ -20,7 +20,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Text.Json.Serialization;
+using JobBoard.Domain.Mapping;
 using System.Text.Json;
+using JobBoard.Domain.Mapping.Resolvers;
 
 namespace JobBoard.API
 {
@@ -101,6 +103,8 @@ namespace JobBoard.API
 				cfg.AddProfile<UserProfileMapping>();
 			});
 
+			builder.Services.AddScoped<CompanyImageUrlResolver>();
+
 			builder.Services.AddAuthorization();
 			builder.Services.AddControllers()
 				.AddJsonOptions(options =>
@@ -149,6 +153,8 @@ namespace JobBoard.API
 			app.UseRouting();
 			app.UseAuthentication();
 			app.UseAuthorization();
+
+			app.UseStaticFiles();
 			app.MapControllers();
 
 			app.Run();

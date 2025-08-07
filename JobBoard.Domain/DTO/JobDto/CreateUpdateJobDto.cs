@@ -11,7 +11,7 @@ using JobBoard.Domain.Attributes;
 
 namespace JobBoard.Domain.DTO.JobDto
 {
-	[TeamSizeValidationAttribute]
+	[TeamSizeValidation]
 	public class CreateUpdateJobDto
 	{
 		[Required]

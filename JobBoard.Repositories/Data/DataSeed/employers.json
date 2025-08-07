@@ -1,15 +1,15 @@
 [
-    {
-        "CompanyName": "Tech Solutions Ltd.",
-        "CompanyLocation": "Cairo, Egypt",
-        "CompanyImage": "https://example.com/company1/image.jpg",
-        "Companylogo": "https://example.com/company1/logo.png",
-        "Website": "https://techsolutions.com",
-        "Industry": "Software Development",
-        "CompanyDescription": "We build innovative software products.",
-        "Companymission": "Empowering businesses with technology.",
-        "EmployeesNumber": 120,
-        "EstablishedYear": 2010,
-        "UserEmail": "employer1@example.com"
-    }
+  {
+    "CompanyName": "Tech Solutions Ltd.",
+    "CompanyLocation": "Cairo, Egypt",
+    "CompanyImage": "images/covers/techsolutions.jpg",
+    "Companylogo": "images/logos/techsolutions_logo.jpg",
+    "Website": "https://techsolutions.com",
+    "Industry": "Software Development",
+    "CompanyDescription": "We build innovative software products.",
+    "Companymission": "Empowering businesses with technology.",
+    "EmployeesNumber": 120,
+    "EstablishedYear": 2010,
+    "UserEmail": "employer1@example.com"
+  }
 ]
