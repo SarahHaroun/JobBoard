@@ -63,7 +63,12 @@ namespace JobBoard.API
 					 ValidAudience = configuration["JWT:ValidAudience"],
 					 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"])) // Secret key for signing the token
 				 };
-			 });
+			 })
+              .AddGoogle(options =>
+                {
+                    options.ClientId = configuration["GoogleAuthSettings:ClientId"]!;
+                    options.ClientSecret = configuration["GoogleAuthSettings:ClientSecret"]!;
+                }); ;
 
 			/*------------------------Add Services--------------------------*/
 

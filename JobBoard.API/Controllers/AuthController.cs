@@ -8,6 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using JobBoard.Domain.DTO.ExternalLoginDto;
 
 namespace JobBoard.API.Controllers
 {
@@ -62,6 +63,18 @@ namespace JobBoard.API.Controllers
             }
         }
 
+
+        /*--------------------------------External login------------------------------------------*/
+        [HttpPost("ExternalLogin")]
+        public async Task<IActionResult> ExternalLogin([FromBody] ExternalLoginReceiverDto dto)
+        {
+            Console.WriteLine($"Server Time: {DateTime.UtcNow}");
+            var result = await authService.ExternalLoginAsync(dto.IdToken, dto.RoleFromClient);
+            if (!result.Succeeded)
+                return BadRequest(result);
+
+            return Ok(result);
+        }
 
         /*------------------------Change Password--------------------------*/
         [HttpPost("change-password")]
@@ -120,5 +133,12 @@ namespace JobBoard.API.Controllers
                 return BadRequest(result.Message);
             }
         }
-        }
+
+
+     }
 }
+
+
+ 
+
+

@@ -1,4 +1,6 @@
-﻿using JobBoard.Domain.DTO.AuthDto;
+﻿using Google.Apis.Auth;
+using JobBoard.Domain.DTO.AuthDto;
+using JobBoard.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +20,15 @@ namespace JobBoard.Services._ِAuthService
         //Task LogoutAsync();
         //Task<bool> IsEmailConfirmedAsync(string email);
         //Task<bool> ConfirmEmailAsync(string email, string token);
+
+
+        public Task<GoogleJsonWebSignature.Payload?> VerifyGoogleTokenAsync(string idToken);
+        public Task<ResultLoginDto> GenerateJwtTokenAsync(ApplicationUser user);
+        public Task<ResultLoginDto> ExternalLoginAsync(string idToken, string roleFromClient);
+
+
+
+
 
     }
 }
