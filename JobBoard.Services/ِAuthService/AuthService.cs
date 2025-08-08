@@ -40,12 +40,23 @@ namespace JobBoard.Services._ِAuthService
         public async Task<ResultLoginDto> LoginAsync(LoginDto model)
         {
             var user = await userManager.FindByEmailAsync(model.Email);
+            // Check if the user exists and if the password is correct
             if (user == null || !await userManager.CheckPasswordAsync(user, model.Password))
             {
                 return new ResultLoginDto()
                 {
                     Succeeded = false,
                     Message = "Invalid email or password."
+                };
+            }
+
+            // Check if the user has confirmed their email
+            if (!user.EmailConfirmed)
+            {
+                return new ResultLoginDto()
+                {
+                    Succeeded = false,
+                    Message = "Please confirm your email before logging in."
                 };
             }
             var userRole = await userManager.GetRolesAsync(user);  // Get the roles of the user (list of roles)
@@ -129,9 +140,13 @@ namespace JobBoard.Services._ِAuthService
                await context.EmployerProfiles.AddAsync(empProfile);
                await context.SaveChangesAsync();
             }
+
+            // Send confirmation email directly after register
+            await SendConfirmationEmailAsync(newUser.Email);
+
             return new ResultDto(
                     succeeded: true,
-                    message: "User registered successfully. Please login and complete your profile."
+                    message: "User registered successfully. Please confirm your email."
                     );
             }
 
@@ -248,6 +263,69 @@ namespace JobBoard.Services._ِAuthService
         }
 
 
+        /*---------------------send Confirm Email Service------------------------*/
+        public async Task<ResultDto> SendConfirmationEmailAsync(string email)
+        {
+            var user = await userManager.FindByEmailAsync(email);
+            if (user == null)
+            {
+                return new ResultDto(false, "User not found.");
+            }
+
+            if (user.EmailConfirmed)
+            {
+                return new ResultDto(false, "Email already confirmed.");
+            }
+
+            // Generate confirmation token
+            var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
+            var encodedToken = WebUtility.UrlEncode(token);
+
+            // Confirmation link
+            var confirmationLink = $"{config["AppSettings:ClientAppUrl"]}/confirm-email?email={user.Email}&token={encodedToken}";
+
+            // Email body
+            var body = $@"
+        <p>Hi {user.UserName},</p>
+        <p>Please click the button below to confirm your email:</p>
+        <div style='text-align:center;'>
+            <a href='{confirmationLink}'
+               style='background-color:#4CAF50;color:white;padding:10px 20px;
+                      text-decoration:none;border-radius:5px;'>
+                Confirm Email
+            </a>
+        </div>
+        <p style='margin-top: 30px; font-size: 14px; color: #999;'>
+            If you didn't create an account, please ignore this email.
+        </p>";
+
+            await emailService.SendEmailAsync(user.Email, "Confirm Your Email", body);
+
+            return new ResultDto(true, "Confirmation email sent.");
+        }
+
+
+        /*------------------------Confirm Email Service--------------------------*/
+        public async Task<ResultDto> ConfirmEmailAsync(ConfirmEmailDto model)
+        {
+            var user = await userManager.FindByEmailAsync(model.Email);
+            if (user == null)
+                return new ResultDto(false, "User not found.");
+
+            var decodedToken = WebUtility.UrlDecode(model.Token);
+            var result = await userManager.ConfirmEmailAsync(user, decodedToken);
+
+            if (!result.Succeeded)
+            {
+                var errors = string.Join(", ", result.Errors.Select(e => e.Description));
+                return new ResultDto(false, $"Email confirmation failed: {errors}");
+            }
+
+            return new ResultDto(true, "Email confirmed successfully.");
+        }
+
+
+
         /* -------------------------------External login with google------------------- */
 
         public async Task<GoogleJsonWebSignature.Payload?> VerifyGoogleTokenAsync(string idToken)
@@ -349,6 +427,7 @@ namespace JobBoard.Services._ِAuthService
 
             return await GenerateJwtTokenAsync(user);
         }
+
 
 
 
