@@ -159,6 +159,7 @@ namespace JobBoard.Services.SeekerService
                 LastName = seeker.LastName,
                 Address = seeker.Address,
                 CV_Url = seeker.CV_Url,
+                UserId= seeker.UserId,
             };
         }
 

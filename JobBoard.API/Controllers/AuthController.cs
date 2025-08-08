@@ -134,8 +134,26 @@ namespace JobBoard.API.Controllers
             }
         }
 
+        ///*------------------------Send Confirm Email--------------------------*/
+        [HttpPost("send-confirmation-email")]
+        public async Task<IActionResult> SendConfirmationEmail([FromBody] string email)
+        {
+            var result = await authService.SendConfirmationEmailAsync(email);
+            return result.Succeeded ? Ok(result) : BadRequest(result.Message);
+        }
 
-     }
+
+        /*------------------------ Confirm Email--------------------------*/
+        [HttpPost("confirm-email")]
+        public async Task<IActionResult> ConfirmEmail([FromBody] ConfirmEmailDto model)
+        {
+            var result = await authService.ConfirmEmailAsync(model);
+            return result.Succeeded ? Ok(result) : BadRequest(result.Message);
+        }
+
+
+
+    }
 }
 
 
