@@ -8,18 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\lib\foolproof-validation\mvcfoolproof.core.js" />
-    <Content Remove="wwwroot\lib\foolproof-validation\mvcfoolproof.jquery.validation.js" />
-    <Content Remove="wwwroot\lib\foolproof-validation\mvcfoolproof.unobtrusive.js" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\lib\foolproof-validation\mvcfoolproof.core.js" />
-    <None Include="wwwroot\lib\foolproof-validation\mvcfoolproof.jquery.validation.js" />
-    <None Include="wwwroot\lib\foolproof-validation\mvcfoolproof.unobtrusive.js" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="9.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.1" />
@@ -37,7 +25,6 @@
 
   <ItemGroup>
     <Folder Include="Helpers\" />
-    <Folder Include="wwwroot\cvs\" />
   </ItemGroup>
 
 </Project>

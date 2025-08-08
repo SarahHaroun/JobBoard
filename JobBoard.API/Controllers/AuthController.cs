@@ -133,13 +133,12 @@ namespace JobBoard.API.Controllers
                 return BadRequest(result.Message);
             }
         }
-        }
+
+
+     }
 }
 
 
  
 
-    }
 
-
-}

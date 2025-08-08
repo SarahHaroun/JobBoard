@@ -6,11 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace JobBoard.Repositories.Data.Migrations
 {
     /// <inheritdoc />
-<<<<<<<< HEAD:JobBoard.Repositories/Data/Migrations/20250803051426_Mig1.cs
-    public partial class Mig1 : Migration
-========
     public partial class v1 : Migration
->>>>>>>> origin/master:JobBoard.Repositories/Data/Migrations/20250805172932_v1.cs
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -345,11 +341,7 @@ namespace JobBoard.Repositories.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-<<<<<<<< HEAD:JobBoard.Repositories/Data/Migrations/20250803051426_Mig1.cs
-                name: "CategoryJob",
-========
                 name: "JobCategories",
->>>>>>>> origin/master:JobBoard.Repositories/Data/Migrations/20250805172932_v1.cs
                 columns: table => new
                 {
                     CategoriesId = table.Column<int>(type: "int", nullable: false),
@@ -484,15 +476,12 @@ namespace JobBoard.Repositories.Data.Migrations
                 name: "IX_SeekerSkills_SkillsId",
                 table: "SeekerSkills",
                 column: "SkillsId");
-<<<<<<<< HEAD:JobBoard.Repositories/Data/Migrations/20250803051426_Mig1.cs
-========
 
             migrationBuilder.CreateIndex(
                 name: "IX_Skills_SkillName",
                 table: "Skills",
                 column: "SkillName",
                 unique: true);
->>>>>>>> origin/master:JobBoard.Repositories/Data/Migrations/20250805172932_v1.cs
         }
 
         /// <inheritdoc />
