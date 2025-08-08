@@ -10,6 +10,7 @@ namespace JobBoard.Domain.DTO.JobDto
     {
 		public int Id { get; set; }
 		public string Title { get; set; }
+		public string Description { get; set; }
 
 		// Employer Info (summary)
 		public string CompanyName { get; set; } // From Employer

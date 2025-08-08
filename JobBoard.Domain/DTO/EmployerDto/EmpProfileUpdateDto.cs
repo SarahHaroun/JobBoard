@@ -20,9 +20,6 @@ namespace JobBoard.Domain.DTO.EmployerDto
         [Url(ErrorMessage = "Company image must be a valid URL")]
         public string? CompanyImage { get; set; }
 
-        [Url(ErrorMessage = "Logo must be a valid URL")]
-        public string? Companylogo { get; set; }
-
         [Url(ErrorMessage = "Website must be a valid URL")]
         public string? Website { get; set; }
 
@@ -33,12 +30,10 @@ namespace JobBoard.Domain.DTO.EmployerDto
         public string? CompanyDescription { get; set; }
 
         [StringLength(500, ErrorMessage = "Mission must be less than 500 characters")]
-        public string? Companymission { get; set; }
+		public string? CompanyMission { get; set; }
+		public string? EmployeeRange { get; set; }
 
-        [Range(1, 100000, ErrorMessage = "Employees number must be between 1 and 100000")]
-        public int? EmployeesNumber { get; set; }
-
-        [Range(1800, 2100, ErrorMessage = "Year must be between 1800 and 2100")]
+		[Range(1800, 2100, ErrorMessage = "Year must be between 1800 and 2100")]
         public int? EstablishedYear { get; set; }
 
         [EmailAddress(ErrorMessage = "Invalid email address")]

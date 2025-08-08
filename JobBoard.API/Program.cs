@@ -16,12 +16,9 @@ using JobBoard.Services.SeekerService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Text.Json.Serialization;
-using JobBoard.Domain.Mapping;
-using System.Text.Json;
 using JobBoard.Domain.Mapping.Resolvers;
 
 namespace JobBoard.API
