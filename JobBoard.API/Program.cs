@@ -36,60 +36,34 @@ namespace JobBoard.API
 			builder.Services.AddDbContext<ApplicationDbContext>(options =>
 				options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-			/*------------------------Add Identity--------------------------*/
-			builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-				.AddEntityFrameworkStores<ApplicationDbContext>();
             /*------------------------Add Identity--------------------------*/
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
                .AddEntityFrameworkStores<ApplicationDbContext>()
-               .AddDefaultTokenProviders(); 
+               .AddDefaultTokenProviders();
 
 
 			/*------------------------Add JWT Authentication--------------------------*/
-			builder.Services.AddAuthentication(options =>
-			{
-				options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-				options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;  //return unAuthorized
-				options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-			})
-			.AddJwtBearer(options =>         /// Validate the token
-			{
-				options.RequireHttpsMetadata = true; // Use HTTPS for production
-				options.SaveToken = true; // Save the token in the request
-				options.TokenValidationParameters = new TokenValidationParameters
-				{
-					ValidateIssuer = true,
-					ValidateAudience = true,
-					ValidateLifetime = true,
-					ValidateIssuerSigningKey = true,
-					ValidIssuer = configuration["JWT:ValidIssuer"],
-					ValidAudience = configuration["JWT:ValidAudience"],
-					IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"])) // Secret key for signing the token
-				};
-			});
-
-            /*------------------------Add JWT Authentication--------------------------*/
-            builder.Services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;  //return unAuthorized
-                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme; 
-            })
-            .AddJwtBearer(options =>         /// Validate the token
-            {
-                options.RequireHttpsMetadata = true; // Use HTTPS for production
-                options.SaveToken = true; // Save the token in the request
-                options.TokenValidationParameters = new TokenValidationParameters    
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = configuration["JWT:ValidIssuer"],
-                    ValidAudience = configuration["JWT:ValidAudience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"])) // Secret key for signing the token
-                };
-            });
+			 builder.Services.AddAuthentication(options =>
+			 {
+				 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+				 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;  //return unAuthorized
+				 options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+			 })
+			 .AddJwtBearer(options =>         /// Validate the token
+			 {
+				 options.RequireHttpsMetadata = true; // Use HTTPS for production
+				 options.SaveToken = true; // Save the token in the request
+				 options.TokenValidationParameters = new TokenValidationParameters
+				 {
+					 ValidateIssuer = true,
+					 ValidateAudience = true,
+					 ValidateLifetime = true,
+					 ValidateIssuerSigningKey = true,
+					 ValidIssuer = configuration["JWT:ValidIssuer"],
+					 ValidAudience = configuration["JWT:ValidAudience"],
+					 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"])) // Secret key for signing the token
+				 };
+			 });
 
 			/*------------------------Add Services--------------------------*/
 
@@ -173,13 +147,6 @@ namespace JobBoard.API
 
 				await InitialDataSeeder.SeedAsync(context, userManager, roleManager, mapper);
 			}
-			catch (Exception ex)
-			{
-				var logger = loggerFactory.CreateLogger<Program>();
-                await InitialDataSeeder.SeedSkillsAndCategories(context);
-                await InitialDataSeeder.SeedUsersWithProfiles(context, userManager, mapper);
-                await InitialDataSeeder.SeedJobs(context, mapper);
-            }
             catch (Exception ex)
             {
                 var logger = loggerFactory.CreateLogger<Program>();
