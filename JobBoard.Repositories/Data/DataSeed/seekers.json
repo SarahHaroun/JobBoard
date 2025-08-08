@@ -7,6 +7,6 @@
         "Experience_Level": "EntryLevel",
         "Gender": "Male",
         "UserEmail": "seeker1@example.com",
-        "Skills": [ 1, 2, 3 ] // skill ids
+        "Skills": [ 1, 2, 3 ] 
     }
 ]

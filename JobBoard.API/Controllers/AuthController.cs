@@ -11,18 +11,18 @@ using System.Text;
 
 namespace JobBoard.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AuthController : ControllerBase
-    {
-        private readonly IAuthService authService;
+	[Route("api/[controller]")]
+	[ApiController]
+	public class AuthController : ControllerBase
+	{
+		private readonly IAuthService authService;
 
-        public AuthController(IAuthService authService)
-        {
-            this.authService = authService;
-        }
+		public AuthController(IAuthService authService)
+		{
+			this.authService = authService;
+		}
 
-        /*------------------------Register--------------------------*/
+		/*------------------------Register--------------------------*/
 
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDto model)
@@ -41,7 +41,7 @@ namespace JobBoard.API.Controllers
                 return BadRequest(result.Message);
             }
 
-        }
+		}
 
         /*------------------------Login--------------------------*/
         [HttpPost("login")]

@@ -4,6 +4,7 @@ using JobBoard.Domain.DTO.JobDto;
 using JobBoard.Domain.DTO.SeekerDto;
 using JobBoard.Domain.DTO.UserDto;
 using JobBoard.Domain.Entities;
+using JobBoard.Domain.Mapping.Resolvers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,8 @@ namespace JobBoard.Domain.Mapping
             CreateMap<EmployerSeedDto, EmployerProfile>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.UserId, opt => opt.Ignore())
-                .ForMember(dest => dest.User, opt => opt.Ignore());
+                .ForMember(dest => dest.User, opt => opt.Ignore())
+                .ForMember(dest => dest.CompanyImage, opt => opt.MapFrom<CompanyImageUrlResolver>());
 
             CreateMap<SeekerSeedDto, SeekerProfile>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())

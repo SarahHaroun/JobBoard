@@ -14,19 +14,22 @@ namespace JobBoard.Domain.Entities
         public string Title { get; set; }
         public string Description { get; set; }
         public decimal? Salary { get; set; }
-        public WorkplaceType WorkplaceType { get; set; }
-        public JobType JobType { get; set; }
         public DateTime PostedDate { get; set; }
         public DateTime? ExpireDate { get; set; }
+        public WorkplaceType WorkplaceType { get; set; }
+        public JobType JobType { get; set; }
         public EducationLevel? EducationLevel { get; set; }
-        public int? MinTeamSize { get; set; } //New
-        public int? MaxTeamSize { get; set; } //New
-        public ExperienceLevel? ExperienceLevel { get; set; } //New
-        public string? Requirements { get; set; } //New
-        public bool IsActive { get; set; } = true; //New
+        public ExperienceLevel? ExperienceLevel { get; set; } 
+        public int? MinTeamSize { get; set; } 
+        public int? MaxTeamSize { get; set; } 
+        public bool IsActive { get; set; } = true;
+        public string? Requirements { get; set; } 
+		public string? Responsabilities { get; set; }
+		public string? Benefits { get; set; }
 
-        /*------------------------Category--------------------------*/
-        public ICollection<Category>? Categories { get; set; }
+
+		/*------------------------Category--------------------------*/
+		public ICollection<Category>? Categories { get; set; }
 
 
         /*------------------------Applications--------------------------*/

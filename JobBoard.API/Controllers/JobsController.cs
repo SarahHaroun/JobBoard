@@ -42,7 +42,7 @@ namespace JobBoard.API.Controllers
 				return BadRequest("Invalid job ID.");
 
 			var result = await _jobService.GetJobByIdAsync(id);
-			
+
 			if (result == null)
 				return NotFound();
 
@@ -51,7 +51,7 @@ namespace JobBoard.API.Controllers
 
 		//POST: api/jobs
 		[HttpPost]
-		public async Task<IActionResult> Add([FromBody] CreateUpdateJobDto jobDto)
+		public async Task<IActionResult> AddJob([FromBody] CreateUpdateJobDto jobDto)
 		{
 			if (!ModelState.IsValid)
 				return BadRequest(ModelState);
@@ -73,11 +73,11 @@ namespace JobBoard.API.Controllers
 		[HttpPut("{id}")]
 		public async Task<IActionResult> EditJob(int id, [FromBody] CreateUpdateJobDto jobDto)
 		{
-			if(!ModelState.IsValid)
+			if (!ModelState.IsValid)
 				return BadRequest(ModelState);
 
-			if(userId == null)
-				return Unauthorized() ;
+			if (userId == null)
+				return Unauthorized();
 
 			var employer = await _employerService.GetByUserId(userId);
 			if (employer == null)

@@ -42,104 +42,99 @@ namespace JobBoard.Services
 			return mappedJob;
 		}
 
+
 		public async Task<JobDto> AddJobAsync(CreateUpdateJobDto jobDto, int employerId)
 		{
-			var job = await CreateJobFromDtoAsync(jobDto, employerId);
-			await SaveJobAsync(job);
+			var job = _mapper.Map<Job>(jobDto);
+			job.EmployerId = employerId;
+
+			await MapSkillsAndCategoriesAsync(job, jobDto);
+
+			await _unitOfWork.Repository<Job>().AddAsync(job);
+			await _unitOfWork.CompleteAsync();
+
 			await _aiEmbeddingService.GenerateEmbeddingForJobAsync(job);
+
 			return _mapper.Map<JobDto>(job);
 		}
 
 		public async Task<JobDto> UpdateJobAsync(int id, CreateUpdateJobDto jobDto)
 		{
-			var job = await GetJobForUpdateAsync(id);
-			await UpdateJobFromDtoAsync(job, jobDto);
-			await SaveJobAsync(job, isUpdate: true);
+			var spec = new JobsWithFilterSpecifications(id);
+			var job = await _unitOfWork.Repository<Job>().GetByIdAsync(spec);
+
+			if (job == null)
+				return null;
+
+			_mapper.Map(jobDto, job);
+
+			await MapSkillsAndCategoriesAsync(job, jobDto);
+
+			_unitOfWork.Repository<Job>().Update(job);
+			await _unitOfWork.CompleteAsync();
+
 			await _aiEmbeddingService.GenerateEmbeddingForJobAsync(job);
+
 			return _mapper.Map<JobDto>(job);
 		}
+
 		public async Task<bool> DeleteJobAsync(int id)
 		{
 			var job = await _unitOfWork.Repository<Job>().GetByIdAsync(id);
-
 			if (job == null)
 				return false;
 
 			_unitOfWork.Repository<Job>().Delete(job);
 			await _unitOfWork.CompleteAsync();
+
 			return true;
 		}
 
-		// Helper methods
-		private async Task<Job> CreateJobFromDtoAsync(CreateUpdateJobDto jobDto, int employerId)
+		private async Task MapSkillsAndCategoriesAsync(Job job, CreateUpdateJobDto jobDto)
 		{
-			var job = _mapper.Map<Job>(jobDto);
-			job.EmployerId = employerId;
-			await MapRelationshipsAsync(job, jobDto);
-			return job;
-		}
+		
+			if (job.Categories == null)
+				job.Categories = new List<Category>();
 
-		private async Task<Job> GetJobForUpdateAsync(int id)
-		{
-			var spec = new JobsWithFilterSpecifications(id);
-			return await _unitOfWork.Repository<Job>().GetByIdAsync(spec);
-		}
+			if (job.Skills == null)
+				job.Skills = new List<Skill>();
 
-		private async Task UpdateJobFromDtoAsync(Job job, CreateUpdateJobDto jobDto)
-		{
-			_mapper.Map(jobDto, job);
-			await MapRelationshipsAsync(job, jobDto);
-		}
-
-		private async Task MapRelationshipsAsync(Job job, CreateUpdateJobDto jobDto)
-		{
-			await MapSkillsAsync(job, jobDto.SkillIds);
-			await MapCategoriesAsync(job, jobDto.CategoryIds);
-		}
-
-		private async Task MapSkillsAsync(Job job, List<int>? skillIds)
-		{
-			job.Skills.Clear();
-			if (skillIds?.Any() == true)
-			{
-				var skills = await GetEntitiesByIdsAsync<Skill>(skillIds);
-				job.Skills = skills.ToList();
-			}
-		}
-
-		private async Task MapCategoriesAsync(Job job, List<int>? categoryIds)
-		{
+			// Categories
 			job.Categories.Clear();
-			if (categoryIds?.Any() == true)
-			{
-				var categories = await GetEntitiesByIdsAsync<Category>(categoryIds);
-				job.Categories = categories.ToList();
-			}
-		}
 
-		private async Task<IEnumerable<T>> GetEntitiesByIdsAsync<T>(List<int> ids) where T : class
-		{
-			var allEntities = await _unitOfWork.Repository<T>().GetAllAsync();
-			return allEntities.Where(e => ids.Contains(GetEntityId(e)));
-		}
-
-		private int GetEntityId<T>(T entity)
-		{
-			// Assuming all entities have an Id property
-			return (int)entity.GetType().GetProperty("Id").GetValue(entity);
-		}
-
-		private async Task SaveJobAsync(Job job, bool isUpdate = false)
-		{
-			if (isUpdate)
+			if (jobDto.CategoryIds != null && jobDto.CategoryIds.Count > 0)
 			{
-				_unitOfWork.Repository<Job>().Update(job);
+				var allCategories = await _unitOfWork.Repository<Category>().GetAllAsync();
+				List<Category> selectedCategories = new List<Category>();
+
+				foreach (var category in allCategories)
+				{
+					if (jobDto.CategoryIds.Contains(category.Id))
+					{
+						selectedCategories.Add(category);
+					}
+				}
+
+				job.Categories = selectedCategories;
 			}
-			else
+			// Skills
+			job.Skills.Clear();
+
+			if (jobDto.SkillIds != null && jobDto.SkillIds.Count > 0)
 			{
-				await _unitOfWork.Repository<Job>().AddAsync(job);
+				var allSkills = await _unitOfWork.Repository<Skill>().GetAllAsync();
+				List<Skill> selectedSkills = new List<Skill>();
+
+				foreach (var skill in allSkills)
+				{
+					if (jobDto.SkillIds.Contains(skill.Id))
+					{
+						selectedSkills.Add(skill);
+					}
+				}
+
+				job.Skills = selectedSkills;
 			}
-			await _unitOfWork.CompleteAsync();
 		}
 
 	}
