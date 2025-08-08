@@ -6,7 +6,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace JobBoard.Repositories.Data.Migrations
 {
     /// <inheritdoc />
+<<<<<<<< HEAD:JobBoard.Repositories/Data/Migrations/20250803051426_Mig1.cs
     public partial class Mig1 : Migration
+========
+    public partial class v1 : Migration
+>>>>>>>> origin/master:JobBoard.Repositories/Data/Migrations/20250805172932_v1.cs
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -74,7 +78,7 @@ namespace JobBoard.Repositories.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CategoryName = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     CategoryDescription = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -88,7 +92,7 @@ namespace JobBoard.Repositories.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    SkillName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    SkillName = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -209,8 +213,14 @@ namespace JobBoard.Repositories.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CompanyName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CompanyLocation = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CompanyImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Companylogo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Website = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EstablishedYear = table.Column<int>(type: "int", nullable: false),
+                    Industry = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CompanyDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Companymission = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmployeesNumber = table.Column<int>(type: "int", nullable: true),
+                    EstablishedYear = table.Column<int>(type: "int", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
@@ -335,7 +345,11 @@ namespace JobBoard.Repositories.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+<<<<<<<< HEAD:JobBoard.Repositories/Data/Migrations/20250803051426_Mig1.cs
                 name: "CategoryJob",
+========
+                name: "JobCategories",
+>>>>>>>> origin/master:JobBoard.Repositories/Data/Migrations/20250805172932_v1.cs
                 columns: table => new
                 {
                     CategoriesId = table.Column<int>(type: "int", nullable: false),
@@ -343,15 +357,15 @@ namespace JobBoard.Repositories.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CategoryJob", x => new { x.CategoriesId, x.JobsId });
+                    table.PrimaryKey("PK_JobCategories", x => new { x.CategoriesId, x.JobsId });
                     table.ForeignKey(
-                        name: "FK_CategoryJob_Categories_CategoriesId",
+                        name: "FK_JobCategories_Categories_CategoriesId",
                         column: x => x.CategoriesId,
                         principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CategoryJob_Jobs_JobsId",
+                        name: "FK_JobCategories_Jobs_JobsId",
                         column: x => x.JobsId,
                         principalTable: "Jobs",
                         principalColumn: "Id",
@@ -432,9 +446,10 @@ namespace JobBoard.Repositories.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CategoryJob_JobsId",
-                table: "CategoryJob",
-                column: "JobsId");
+                name: "IX_Categories_CategoryName",
+                table: "Categories",
+                column: "CategoryName",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_EmployerProfiles_UserId",
@@ -442,6 +457,11 @@ namespace JobBoard.Repositories.Data.Migrations
                 column: "UserId",
                 unique: true,
                 filter: "[UserId] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_JobCategories_JobsId",
+                table: "JobCategories",
+                column: "JobsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Jobs_EmployerId",
@@ -464,6 +484,15 @@ namespace JobBoard.Repositories.Data.Migrations
                 name: "IX_SeekerSkills_SkillsId",
                 table: "SeekerSkills",
                 column: "SkillsId");
+<<<<<<<< HEAD:JobBoard.Repositories/Data/Migrations/20250803051426_Mig1.cs
+========
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Skills_SkillName",
+                table: "Skills",
+                column: "SkillName",
+                unique: true);
+>>>>>>>> origin/master:JobBoard.Repositories/Data/Migrations/20250805172932_v1.cs
         }
 
         /// <inheritdoc />
@@ -491,7 +520,7 @@ namespace JobBoard.Repositories.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "CategoryJob");
+                name: "JobCategories");
 
             migrationBuilder.DropTable(
                 name: "JobSkills");

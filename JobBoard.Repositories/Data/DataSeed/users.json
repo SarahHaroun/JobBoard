@@ -1,0 +1,51 @@
+[
+    {
+        "Email": "employer1@example.com",
+        "Password": "Test@123",
+    "PhoneNumber": "01012300001",
+        "UserName": "employer1",
+    "User_Type": 0
+    },
+    {
+        "Email": "seeker1@example.com",
+        "Password": "Test@123",
+    "PhoneNumber": "01000065402",
+        "UserName": "seeker1",
+    "User_Type": 1
+  },
+  {
+    "Email": "employer2@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "010000032002",
+    "UserName": "employer2",
+    "User_Type": 0
+  },
+  {
+    "Email": "employer3@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "01000033203",
+    "UserName": "employer3",
+    "User_Type": 0
+  },
+  {
+    "Email": "employer4@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "01006570004",
+    "UserName": "employer4",
+    "User_Type": 0
+  },
+  {
+    "Email": "employer5@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+971500000005",
+    "UserName": "employer5",
+    "User_Type": 0
+  },
+  {
+    "Email": "employer6@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+4915200000006",
+    "UserName": "employer6",
+    "User_Type": 0
+    }
+]

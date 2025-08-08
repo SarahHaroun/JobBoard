@@ -34,7 +34,7 @@ namespace JobBoard.Repositories.Data.Migrations
 
                     b.HasIndex("JobsId");
 
-                    b.ToTable("CategoryJob");
+                    b.ToTable("JobCategories", (string)null);
                 });
 
             modelBuilder.Entity("JobBoard.Domain.Entities.AIEmbedding", b =>
@@ -184,9 +184,12 @@ namespace JobBoard.Repositories.Data.Migrations
 
                     b.Property<string>("CategoryName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoryName")
+                        .IsUnique();
 
                     b.ToTable("Categories");
                 });
@@ -199,15 +202,31 @@ namespace JobBoard.Repositories.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("CompanyDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompanyImage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CompanyLocation")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompanyMission")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CompanyName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("EstablishedYear")
+                    b.Property<string>("EmployeeRange")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("EstablishedYear")
                         .HasColumnType("int");
+
+                    b.Property<string>("Industry")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -231,6 +250,9 @@ namespace JobBoard.Repositories.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Benefits")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -265,6 +287,9 @@ namespace JobBoard.Repositories.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Requirements")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Responsabilities")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal?>("Salary")
@@ -337,9 +362,12 @@ namespace JobBoard.Repositories.Data.Migrations
 
                     b.Property<string>("SkillName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("SkillName")
+                        .IsUnique();
 
                     b.ToTable("Skills");
                 });

@@ -12,24 +12,24 @@ using JobBoard.Domain.DTO.ExternalLoginDto;
 
 namespace JobBoard.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AuthController : ControllerBase
-    {
-        private readonly IAuthService authService;
+	[Route("api/[controller]")]
+	[ApiController]
+	public class AuthController : ControllerBase
+	{
+		private readonly IAuthService authService;
 
-        public AuthController(IAuthService authService)
-        {
-            this.authService = authService;
-        }
+		public AuthController(IAuthService authService)
+		{
+			this.authService = authService;
+		}
 
-        /*------------------------Register--------------------------*/
+		/*------------------------Register--------------------------*/
 
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDto model)
         {
             if (!ModelState.IsValid)
-            {              
+            {
                 return BadRequest(ModelState);
             }
             var result = await authService.RegisterAsync(model);
@@ -42,7 +42,7 @@ namespace JobBoard.API.Controllers
                 return BadRequest(result.Message);
             }
 
-        }
+		}
 
         /*------------------------Login--------------------------*/
         [HttpPost("login")]
@@ -63,12 +63,12 @@ namespace JobBoard.API.Controllers
             }
         }
 
+
         /*--------------------------------External login------------------------------------------*/
         [HttpPost("ExternalLogin")]
         public async Task<IActionResult> ExternalLogin([FromBody] ExternalLoginReceiverDto dto)
         {
             Console.WriteLine($"Server Time: {DateTime.UtcNow}");
-
             var result = await authService.ExternalLoginAsync(dto.IdToken, dto.RoleFromClient);
             if (!result.Succeeded)
                 return BadRequest(result);
@@ -76,29 +76,68 @@ namespace JobBoard.API.Controllers
             return Ok(result);
         }
 
-        [HttpGet("test-google-connection")]
-        public async Task<IActionResult> TestGoogleConnection()
+        /*------------------------Change Password--------------------------*/
+        [HttpPost("change-password")]
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePassDto model)
         {
-            using var httpClient = new HttpClient();
-
-            try
+            if (!ModelState.IsValid)
             {
-                var response = await httpClient.GetAsync("https://oauth2.googleapis.com/tokeninfo");
-                if (response.IsSuccessStatusCode)
-                {
-                    return Ok("✅ الاتصال بـ Google شغال تمام.");
-                }
-                else
-                {
-                    return BadRequest($"❌ الاتصال بـ Google رجّع status code: {response.StatusCode}");
-                }
+                return BadRequest(ModelState);
             }
-            catch (Exception ex)
+            var result = await authService.ChangePasswordAsync(model);
+            if (result.Succeeded)
             {
-                return BadRequest($"❌ حصل exception: {ex.Message}");
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result.Message);
             }
         }
 
+
+        /*------------------------Reset Password--------------------------*/
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword([FromBody] ResetPassDto model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var result = await authService.ResetPasswordAsync(model);
+            if (result.Succeeded)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result.Message);
+            }
+        }
+
+        /*------------------------Forget Password--------------------------*/
+        [HttpPost("forget-password")]
+        public async Task<IActionResult> ForgetPassword([FromBody] ForgetPassDto model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var result = await authService.ForgotPasswordAsync(model);
+            if (result.Succeeded)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result.Message);
+            }
+        }
+        }
+}
+
+
+ 
 
     }
 

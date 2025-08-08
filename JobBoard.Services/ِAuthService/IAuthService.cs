@@ -13,11 +13,13 @@ namespace JobBoard.Services._ِAuthService
     {
         Task<ResultDto> RegisterAsync(RegisterDto model);
         Task<ResultLoginDto> LoginAsync(LoginDto model);
+        Task<ResultDto> ChangePasswordAsync(ChangePassDto model);
+        Task<ResultDto> ResetPasswordAsync(ResetPassDto model);
+        Task<ResultDto> ForgotPasswordAsync(ForgetPassDto model);
         //Task<string> RefreshTokenAsync(string token, string refreshToken);
         //Task LogoutAsync();
         //Task<bool> IsEmailConfirmedAsync(string email);
         //Task<bool> ConfirmEmailAsync(string email, string token);
-        //Task<bool> ResetPasswordAsync(ResetPasswordDto model);
 
 
         public Task<GoogleJsonWebSignature.Payload?> VerifyGoogleTokenAsync(string idToken);

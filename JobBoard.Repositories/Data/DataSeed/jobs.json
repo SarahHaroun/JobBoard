@@ -1,7 +1,7 @@
 [
   {
     "Title": "Senior Full Stack Developer",
-    "Description": "We are seeking an experienced full stack developer to join our growing team. You will be responsible for developing and maintaining web applications using modern technologies. The ideal candidate should have strong problem-solving skills and experience with both frontend and backend development.",
+    "Description": "We are seeking an experienced full stack developer to join our growing team. You will be responsible for developing and maintaining both frontend and backend components of our web applications. This role requires strong technical skills and the ability to work in a collaborative environment. You will contribute to architectural decisions and mentor junior developers while delivering high-quality code that meets business requirements.",
     "Salary": 85000.00,
     "WorkplaceType": "OnSite",
     "JobType": "FullTime",
@@ -11,23 +11,17 @@
     "MinTeamSize": 5,
     "MaxTeamSize": 12,
     "ExperienceLevel": "Experienced",
-    "Requirements": "5+ years of experience in web development, strong knowledge of C# and JavaScript frameworks, experience with database design and API development.",
+    "Requirements": "5+ years of experience in web development with proficiency in JavaScript, HTML, and CSS. Strong experience with modern frontend frameworks like React or Angular. Backend development experience with Node.js or similar technologies. Knowledge of database design and SQL. Experience with version control systems like Git. Understanding of RESTful API design and implementation.",
+    "Responsabilities": "Develop and maintain full stack web applications. Write clean, efficient, and well-documented code. Collaborate with cross-functional teams including designers and product managers. Participate in code reviews and provide constructive feedback. Troubleshoot and debug applications. Implement responsive designs for various devices. Optimize applications for maximum speed and scalability. Mentor junior developers and share knowledge with the team.",
+    "Benefits": "Competitive salary with annual performance bonuses. Comprehensive health insurance including dental and vision. Flexible work hours and work-life balance support. Professional development budget for courses and conferences. Modern office environment with state-of-the-art equipment. Team building activities and company social events. Retirement savings plan with company matching. Paid time off and holidays.",
     "IsActive": true,
-    "EmployerId": 1,
-    "Skills": [
-      { "SkillName": "C#" },
-      { "SkillName": "ASP.NET Core" },
-      { "SkillName": "JavaScript" },
-      { "SkillName": "React" },
-      { "SkillName": "SQL" }
-    ],
-    "Categories": [
-      { "CategoryName": "Software Development" }
-    ]
+    "EmployerId": 5,
+    "SkillIds": [ 1, 2, 5, 9, 3 ],
+    "CategoryIds": [ 1 ]
   },
   {
     "Title": "Data Scientist - Machine Learning",
-    "Description": "Join our data science team to develop cutting-edge machine learning models and algorithms. You will work with large datasets to extract meaningful insights and build predictive models. This role requires strong analytical skills and experience with data visualization tools.",
+    "Description": "Join our data science team and help drive business decisions through advanced analytics and machine learning. You will work with large datasets to extract meaningful insights and build predictive models that solve complex business problems. This role involves collaboration with stakeholders across the organization to understand business needs and translate them into data-driven solutions.",
     "Salary": 95000.00,
     "WorkplaceType": "Remote",
     "JobType": "FullTime",
@@ -37,68 +31,58 @@
     "MinTeamSize": 3,
     "MaxTeamSize": 8,
     "ExperienceLevel": "Experienced",
-    "Requirements": "Advanced degree in Data Science or related field, experience with Python/R, knowledge of machine learning algorithms, strong statistical analysis skills.",
+    "Requirements": "Advanced degree in Data Science, Statistics, Mathematics, or Computer Science. 3+ years of experience in machine learning and statistical analysis. Proficiency in Python or R programming languages. Experience with machine learning libraries such as scikit-learn, TensorFlow, or PyTorch. Strong knowledge of SQL and database management. Experience with data visualization tools like Tableau or matplotlib. Understanding of statistical methods and experimental design.",
+    "Responsabilities": "Design and implement machine learning models and algorithms. Analyze large datasets to identify trends and patterns. Collaborate with business stakeholders to understand requirements. Create data visualizations and reports for executive leadership. Perform statistical analysis and hypothesis testing. Clean and preprocess data for analysis. Monitor model performance and make improvements. Present findings to technical and non-technical audiences.",
+    "Benefits": "Highly competitive salary with stock options. Remote work flexibility with home office stipend. Premium health insurance with family coverage options. Annual learning and development allowance. Access to cutting-edge technology and tools. Flexible vacation policy. Mental health and wellness programs. Conference attendance and professional networking opportunities.",
     "IsActive": true,
     "EmployerId": 1,
-    "Skills": [
-      { "SkillName": "SQL" },
-      { "SkillName": "JavaScript" }
-    ],
-    "Categories": [
-      { "CategoryName": "Data Science" }
-    ]
+    "SkillIds": [ 3, 5 ],
+    "CategoryIds": [ 2 ]
   },
   {
     "Title": "UI/UX Designer",
-    "Description": "We're looking for a creative UI/UX designer to create engaging and user-friendly interfaces. You will collaborate with our development team to design intuitive user experiences across web and mobile platforms. Experience with design tools and user research is essential.",
-    "Salary": 65000.00,
+    "Description": "We're looking for a creative UI/UX designer to create intuitive and engaging user experiences for our digital products. You will be responsible for the entire design process from user research to final implementation. This part-time role is perfect for someone starting their career in design or looking for flexible work arrangements while building their portfolio.",
+    "Salary": 23000.00,
     "WorkplaceType": "OnSite",
-    "JobType": "FullTime",
+    "JobType": "PartTime",
     "PostedDate": "2024-01-25T00:00:00",
     "ExpireDate": "2024-03-25T00:00:00",
     "EducationLevel": "Bachelor",
     "MinTeamSize": 2,
     "MaxTeamSize": 6,
     "ExperienceLevel": "EntryLevel",
-    "Requirements": "Portfolio demonstrating UI/UX design skills, proficiency in design tools like Figma or Adobe XD, understanding of user-centered design principles.",
+    "Requirements": "Portfolio demonstrating UI/UX design skills and creative thinking. Bachelor's degree in Design, Human-Computer Interaction, or related field. Proficiency in design tools such as Figma, Sketch, or Adobe Creative Suite. Basic understanding of user research methods and usability testing. Knowledge of design principles and typography. Understanding of responsive design and mobile-first approach. Basic HTML and CSS knowledge is a plus.",
+    "Responsabilities": "Create wireframes, prototypes, and high-fidelity designs. Conduct user research and usability testing sessions. Collaborate with developers to ensure proper implementation. Design responsive interfaces for web and mobile applications. Create and maintain design systems and style guides. Participate in design critiques and feedback sessions. Stay updated with current design trends and best practices. Assist in creating marketing materials and graphics.",
+    "Benefits": "Flexible part-time schedule with potential for full-time conversion. Mentorship from senior designers. Access to premium design software and tools. Professional development opportunities. Creative and collaborative work environment. Opportunity to work on diverse projects. Health insurance subsidy. Paid time off proportional to hours worked.",
     "IsActive": true,
-    "EmployerId": 1,
-    "Skills": [
-      { "SkillName": "HTML" },
-      { "SkillName": "CSS" },
-      { "SkillName": "JavaScript" }
-    ],
-    "Categories": [
-      { "CategoryName": "UI/UX Design" }
-    ]
+    "EmployerId": 3,
+    "SkillIds": [ 6, 7, 5 ],
+    "CategoryIds": [ 3 ]
   },
   {
     "Title": "Cybersecurity Analyst",
-    "Description": "Protect our organization's digital assets by monitoring and analyzing security threats. You will implement security measures, conduct vulnerability assessments, and respond to security incidents. Strong knowledge of cybersecurity frameworks and tools is required.",
+    "Description": "Protect our organization's digital assets by monitoring, detecting, and responding to security threats. You will play a crucial role in maintaining the security posture of our infrastructure and ensuring compliance with industry standards. This hybrid position offers the flexibility to work both remotely and on-site while contributing to our cybersecurity initiatives.",
     "Salary": 78000.00,
     "WorkplaceType": "Hybrid",
     "JobType": "FullTime",
-    "PostedDate": "2024-02-01T00:00:00",
-    "ExpireDate": "2024-04-01T00:00:00",
+    "PostedDate": "2025-02-01T00:00:00",
+    "ExpireDate": "2025-04-01T00:00:00",
     "EducationLevel": "Bachelor",
     "MinTeamSize": 4,
     "MaxTeamSize": 10,
     "ExperienceLevel": "Experienced",
-    "Requirements": "3+ years in cybersecurity, knowledge of security frameworks (NIST, ISO 27001), experience with SIEM tools, relevant certifications preferred.",
+    "Requirements": "3+ years in cybersecurity or information security roles. Bachelor's degree in Cybersecurity, Computer Science, or related field. Experience with security monitoring tools and SIEM platforms. Knowledge of network security protocols and firewalls. Understanding of compliance frameworks such as ISO 27001 or NIST. Experience with incident response and forensic analysis. Relevant certifications such as Security+ or CISSP preferred. Strong analytical and problem-solving skills.",
+    "Responsabilities": "Monitor security events and alerts using SIEM tools. Investigate and respond to security incidents and breaches. Conduct vulnerability assessments and penetration testing. Develop and maintain security policies and procedures. Perform risk assessments and security audits. Collaborate with IT teams to implement security measures. Stay current with emerging threats and security trends. Provide security awareness training to employees.",
+    "Benefits": "Competitive salary with performance incentives. Hybrid work model for optimal work-life balance. Comprehensive benefits package including health and dental. Professional certification reimbursement and training budget. Access to cutting-edge security tools and technologies. Opportunity to work with industry experts. Flexible working hours. Career advancement opportunities in cybersecurity.",
     "IsActive": true,
-    "EmployerId": 1,
-    "Skills": [
-      { "SkillName": "SQL" },
-      { "SkillName": "Git" }
-    ],
-    "Categories": [
-      { "CategoryName": "Cybersecurity" }
-    ]
+    "EmployerId": 2,
+    "SkillIds": [ 3, 10 ],
+    "CategoryIds": [ 4 ]
   },
   {
     "Title": "Project Manager - Software Development",
-    "Description": "Lead cross-functional teams to deliver software projects on time and within budget. You will coordinate with stakeholders, manage project timelines, and ensure quality deliverables. Strong communication and leadership skills are essential for this role.",
-    "Salary": 72000.00,
+    "Description": "Lead cross-functional teams in delivering high-quality software solutions on time and within budget. You will be responsible for managing the entire project lifecycle from planning to deployment. This role requires strong leadership skills and experience in agile methodologies to ensure successful project outcomes while maintaining stakeholder satisfaction.",
+    "Salary": 42000.00,
     "WorkplaceType": "OnSite",
     "JobType": "FullTime",
     "PostedDate": "2024-02-05T00:00:00",
@@ -107,20 +91,17 @@
     "MinTeamSize": 8,
     "MaxTeamSize": 15,
     "ExperienceLevel": "Manager",
-    "Requirements": "PMP certification preferred, 5+ years of project management experience, experience in software development lifecycle, excellent communication skills.",
+    "Requirements": "PMP certification preferred with 5+ years of project management experience. Bachelor's degree in Project Management, Business, or related field. Experience managing software development projects using Agile and Scrum methodologies. Strong understanding of SDLC and project management tools like Jira or Azure DevOps. Excellent communication and leadership skills. Experience managing budgets and resource allocation. Knowledge of risk management and quality assurance processes.",
+    "Responsabilities": "Plan and execute software development projects from initiation to closure. Coordinate cross-functional teams including developers, designers, and QA engineers. Manage project timelines, budgets, and resource allocation. Facilitate daily standups, sprint planning, and retrospective meetings. Communicate project status to stakeholders and executive leadership. Identify and mitigate project risks and issues. Ensure adherence to quality standards and best practices. Manage vendor relationships and external dependencies.",
+    "Benefits": "Competitive base salary with annual bonuses based on project success. Professional development opportunities including PMP certification support. Comprehensive health insurance with family coverage. Retirement savings plan with company matching. Paid time off and flexible work arrangements when needed. Access to project management tools and software. Team leadership training and mentorship programs. Career growth opportunities within the organization.",
     "IsActive": true,
-    "EmployerId": 1,
-    "Skills": [
-      { "SkillName": "Git" }
-    ],
-    "Categories": [
-      { "CategoryName": "Project Management" },
-      { "CategoryName": "Software Development" }
-    ]
+    "EmployerId": 4,
+    "SkillIds": [ 10 ],
+    "CategoryIds": [ 5, 1 ]
   },
   {
     "Title": "Frontend Developer Intern",
-    "Description": "Gain hands-on experience in frontend development while working on real projects. You will learn modern web technologies and collaborate with senior developers to build user interfaces. This is a great opportunity for students to start their career in web development.",
+    "Description": "Gain hands-on experience in frontend development while working alongside experienced developers on real-world projects. This internship provides an excellent opportunity to learn modern web technologies and best practices in a supportive environment. You will contribute to meaningful projects while building your professional network and technical skills.",
     "Salary": 2500.00,
     "WorkplaceType": "Hybrid",
     "JobType": "Internship",
@@ -130,48 +111,38 @@
     "MinTeamSize": 3,
     "MaxTeamSize": 7,
     "ExperienceLevel": "Student",
-    "Requirements": "Currently enrolled in Computer Science or related field, basic knowledge of HTML, CSS, JavaScript, eager to learn and grow.",
+    "Requirements": "Currently enrolled in Computer Science, Web Development, or related program. Basic knowledge of HTML, CSS, and JavaScript fundamentals. Familiarity with version control systems like Git. Understanding of responsive web design principles. Eagerness to learn and adapt to new technologies. Strong problem-solving skills and attention to detail. Ability to work collaboratively in a team environment. Portfolio of personal or academic projects preferred.",
+    "Responsabilities": "Assist in developing user interface components using modern frontend frameworks. Write clean and maintainable HTML, CSS, and JavaScript code. Participate in code reviews and learn from senior developers. Help with testing and debugging frontend applications. Collaborate with design team to implement UI mockups. Attend team meetings and contribute to project discussions. Document code and maintain technical documentation. Learn and apply best practices in web development.",
+    "Benefits": "Valuable hands-on experience with real-world projects. Mentorship from experienced senior developers. Flexible hybrid work arrangement accommodating class schedules. Potential for full-time job offer upon graduation. Access to learning resources and online courses. Networking opportunities within the tech industry. Letter of recommendation upon successful completion. Stipend to cover basic expenses during internship.",
     "IsActive": true,
-    "EmployerId": 1,
-    "Skills": [
-      { "SkillName": "HTML" },
-      { "SkillName": "CSS" },
-      { "SkillName": "JavaScript" },
-      { "SkillName": "React" }
-    ],
-    "Categories": [
-      { "CategoryName": "Software Development" }
-    ]
+    "EmployerId": 2,
+    "SkillIds": [ 6, 7, 5, 9 ],
+    "CategoryIds": [ 1 ]
   },
   {
     "Title": "Backend Developer - .NET Core",
-    "Description": "Develop and maintain server-side applications using .NET Core and related technologies. You will work on API development, database design, and system architecture. Strong understanding of software engineering principles and database management is required.",
+    "Description": "Develop and maintain server-side applications using .NET Core technologies in a flexible part-time remote position. You will work on building scalable APIs and services that power our web applications. This role is ideal for experienced developers seeking work-life balance while contributing to challenging technical projects in a collaborative environment.",
     "Salary": 75000.00,
     "WorkplaceType": "Remote",
-    "JobType": "FullTime",
+    "JobType": "PartTime",
     "PostedDate": "2024-02-15T00:00:00",
     "ExpireDate": "2024-04-15T00:00:00",
     "EducationLevel": "Bachelor",
     "MinTeamSize": 4,
     "MaxTeamSize": 10,
     "ExperienceLevel": "Experienced",
-    "Requirements": "4+ years experience with .NET Core, strong SQL skills, experience with Entity Framework, knowledge of RESTful API design, cloud platform experience preferred.",
+    "Requirements": "4+ years experience with .NET Core and C# programming language. Bachelor's degree in Computer Science or equivalent experience. Strong experience with ASP.NET Web API and Entity Framework. Proficiency in SQL Server or similar relational databases. Knowledge of microservices architecture and design patterns. Experience with cloud platforms such as Azure or AWS. Understanding of CI/CD pipelines and DevOps practices. Familiarity with containerization using Docker.",
+    "Responsabilities": "Design and develop RESTful APIs using .NET Core framework. Implement business logic and data access layers. Optimize database queries and improve application performance. Write unit tests and participate in code reviews. Collaborate with frontend developers to integrate APIs. Troubleshoot and resolve backend issues and bugs. Maintain and update existing applications and services. Follow security best practices and coding standards.",
+    "Benefits": "Competitive part-time hourly rate with flexible scheduling. Fully remote work environment with modern collaboration tools. Health insurance subsidy for part-time employees. Professional development budget for courses and certifications. Access to latest development tools and cloud platforms. Opportunity to work on cutting-edge projects. Flexible hours that accommodate personal schedule. Potential for increased hours or full-time conversion.",
     "IsActive": true,
-    "EmployerId": 1,
-    "Skills": [
-      { "SkillName": "C#" },
-      { "SkillName": "ASP.NET Core" },
-      { "SkillName": "SQL" },
-      { "SkillName": "Entity Framework" }
-    ],
-    "Categories": [
-      { "CategoryName": "Software Development" }
-    ]
+    "EmployerId": 3,
+    "SkillIds": [ 1, 2, 3, 4 ],
+    "CategoryIds": [ 1 ]
   },
   {
     "Title": "Freelance Web Developer",
-    "Description": "Work on exciting web development projects on a freelance basis with flexible schedules. You will create responsive websites and web applications for various clients across different industries. Strong portfolio and self-motivation are essential for success.",
-    "Salary": 45.00,
+    "Description": "Work on exciting web development projects as an independent contractor with the freedom to choose your assignments and work schedule. You will collaborate with our team on various client projects ranging from simple websites to complex web applications. This freelance position offers great flexibility for developers looking to expand their portfolio while working with diverse technologies.",
+    "Salary": 15000,
     "WorkplaceType": "Remote",
     "JobType": "Freelance",
     "PostedDate": "2024-02-20T00:00:00",
@@ -180,23 +151,17 @@
     "MinTeamSize": 1,
     "MaxTeamSize": 3,
     "ExperienceLevel": "EntryLevel",
-    "Requirements": "2+ years of web development experience, proficiency in HTML, CSS, JavaScript, experience with modern frameworks, strong portfolio of completed projects.",
+    "Requirements": "2+ years of web development experience with proven track record. Diploma or certificate in Web Development or related field. Proficiency in HTML, CSS, JavaScript, and modern frameworks. Experience with content management systems like WordPress. Knowledge of responsive design and cross-browser compatibility. Understanding of SEO principles and web accessibility standards. Strong communication skills for client interaction. Portfolio showcasing diverse web development projects.",
+    "Responsabilities": "Develop custom websites and web applications for various clients. Create responsive designs that work across all devices and browsers. Implement content management systems and e-commerce solutions. Collaborate with clients to understand project requirements. Perform website maintenance and updates as needed. Optimize websites for search engines and performance. Test applications across different browsers and devices. Provide technical support and training to clients when needed.",
+    "Benefits": "Flexible project-based work with competitive compensation per project. Complete freedom to choose projects that interest you. Remote work from anywhere with internet connection. Opportunity to work with diverse clients and industries. Build extensive portfolio with varied project types. Direct client relationship building and networking opportunities. Potential for long-term partnerships with repeat clients. Access to project management tools and development resources.",
     "IsActive": true,
-    "EmployerId": 1,
-    "Skills": [
-      { "SkillName": "HTML" },
-      { "SkillName": "CSS" },
-      { "SkillName": "JavaScript" },
-      { "SkillName": "Angular" },
-      { "SkillName": "Git" }
-    ],
-    "Categories": [
-      { "CategoryName": "Software Development" }
-    ]
+    "EmployerId": 5,
+    "SkillIds": [ 6, 7, 5, 8, 10 ],
+    "CategoryIds": [ 1 ]
   },
   {
     "Title": "Senior Security Engineer",
-    "Description": "Lead our cybersecurity initiatives and protect organizational assets from evolving threats. You will design security architectures, conduct penetration testing, and mentor junior security professionals. Advanced knowledge of security tools and frameworks is required.",
+    "Description": "Lead our cybersecurity initiatives as a senior security engineer responsible for designing and implementing enterprise-level security solutions. You will architect security frameworks, lead incident response efforts, and mentor junior team members. This role requires deep technical expertise and leadership skills to protect our organization against evolving cyber threats.",
     "Salary": 105000.00,
     "WorkplaceType": "OnSite",
     "JobType": "FullTime",
@@ -206,20 +171,17 @@
     "MinTeamSize": 6,
     "MaxTeamSize": 12,
     "ExperienceLevel": "TeamLeader",
-    "Requirements": "7+ years in cybersecurity, advanced certifications (CISSP, CEH), experience with penetration testing, leadership experience, knowledge of compliance frameworks.",
+    "Requirements": "7+ years in cybersecurity with leadership experience in enterprise environments. Master's degree in Cybersecurity, Computer Science, or related field. Advanced certifications such as CISSP, CISM, or CISSP preferred. Extensive experience with security frameworks and compliance standards. Deep knowledge of network security, cryptography, and threat analysis. Experience leading security incident response and forensic investigations. Strong understanding of cloud security and DevSecOps practices. Proven track record of managing and mentoring security teams.",
+    "Responsabilities": "Design and implement enterprise security architecture and policies. Lead incident response efforts and coordinate with law enforcement when necessary. Mentor and manage junior security analysts and engineers. Conduct advanced threat hunting and security assessments. Develop security standards and ensure compliance with regulations. Collaborate with executive leadership on security strategy and risk management. Evaluate and implement new security technologies and tools. Present security metrics and reports to board of directors.",
+    "Benefits": "Executive-level compensation package with significant annual bonuses. Comprehensive benefits including premium health, dental, and vision insurance. Leadership development programs and executive coaching opportunities. Generous professional development budget for certifications and conferences. Stock options and equity participation in company growth. Flexible PTO policy and sabbatical opportunities. State-of-the-art security lab and research environment. Opportunity to speak at industry conferences and publish research.",
     "IsActive": true,
-    "EmployerId": 1,
-    "Skills": [
-      { "SkillName": "SQL" },
-      { "SkillName": "Git" }
-    ],
-    "Categories": [
-      { "CategoryName": "Cybersecurity" }
-    ]
+    "EmployerId": 2,
+    "SkillIds": [ 3, 10 ],
+    "CategoryIds": [ 4 ]
   },
   {
     "Title": "Junior Data Analyst",
-    "Description": "Start your career in data analysis by working with business data to generate actionable insights. You will create reports, perform statistical analysis, and support data-driven decision making. Training and mentorship will be provided for career growth.",
+    "Description": "Start your career in data analysis by working with experienced analysts to transform raw data into actionable business insights. You will learn to use various analytical tools and techniques while contributing to important business decisions. This entry-level position offers excellent growth opportunities in a supportive hybrid work environment with comprehensive training programs.",
     "Salary": 48000.00,
     "WorkplaceType": "Hybrid",
     "JobType": "FullTime",
@@ -227,17 +189,14 @@
     "ExpireDate": "2024-05-01T00:00:00",
     "EducationLevel": "Bachelor",
     "MinTeamSize": 3,
-    "MaxTeamSize": 8,
+    "MaxTeamSize": 6,
     "ExperienceLevel": "EntryLevel",
-    "Requirements": "Degree in Statistics, Mathematics, or related field, basic knowledge of SQL and Excel, analytical thinking skills, willingness to learn data visualization tools.",
+    "Requirements": "Basic understanding of data analysis and visualization tools such as Excel, Tableau, or Power BI. Bachelor's degree in Mathematics, Statistics, Economics, or related field. Foundational knowledge of SQL for database querying. Understanding of statistical concepts and data interpretation. Strong analytical and problem-solving skills. Excellent attention to detail and accuracy. Good communication skills for presenting findings. Eagerness to learn new analytical tools and techniques.",
+    "Responsabilities": "Collect, clean, and analyze data from various business systems and databases. Create reports and dashboards to visualize key business metrics. Assist senior analysts in conducting statistical analysis and modeling. Participate in data quality assessment and improvement initiatives. Support ad-hoc analysis requests from different departments. Help maintain and update existing reports and data processes. Collaborate with business stakeholders to understand analytical requirements. Present findings and insights to team members and management.",
+    "Benefits": "Competitive entry-level salary with clear advancement path to senior analyst roles. Hybrid work model combining office collaboration and remote flexibility. Comprehensive training program covering advanced analytical tools and techniques. Mentorship from experienced data professionals. Health insurance with company contribution and wellness programs. Professional development budget for courses and certifications. Modern analytical tools and software licenses. Collaborative team environment focused on learning and growth.",
     "IsActive": true,
-    "EmployerId": 1,
-    "Skills": [
-      { "SkillName": "SQL" },
-      { "SkillName": "JavaScript" }
-    ],
-    "Categories": [
-      { "CategoryName": "Data Science" }
-    ]
+    "EmployerId": 4,
+    "SkillIds": [ 5, 7 ],
+    "CategoryIds": [ 2 ]
   }
 ]
