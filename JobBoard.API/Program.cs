@@ -11,6 +11,7 @@ using JobBoard.Services._ِAuthService;
 using JobBoard.Services.AIEmbeddingService;
 using JobBoard.Services.AIServices;
 using JobBoard.Services.CategoryService;
+using JobBoard.Services.EmailService;
 using JobBoard.Services.EmployerService;
 using JobBoard.Services.SeekerService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -36,9 +37,10 @@ namespace JobBoard.API
 
             /*------------------------Add Identity--------------------------*/
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+               .AddEntityFrameworkStores<ApplicationDbContext>()
+               .AddDefaultTokenProviders(); 
 
-           
+
             /*------------------------Add JWT Authentication--------------------------*/
             builder.Services.AddAuthentication(options =>
             {
@@ -82,6 +84,7 @@ namespace JobBoard.API
             builder.Services.AddScoped<IJobService, JobService>();
             builder.Services.AddScoped<ISeekerService, SeekerService>();
             builder.Services.AddScoped<ICategoryService, CategoryService>();
+            builder.Services.AddScoped<IEmailService, EmailService>();
 
 
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -94,6 +97,7 @@ namespace JobBoard.API
             /*--------------- Add Services AutoMappper Profiles ---------------*/
             builder.Services.AddAutoMapper(M => M.AddProfile(new JobProfile()));
             builder.Services.AddAutoMapper(M => M.AddProfile(new EmployerProfileMapping()));
+            builder.Services.AddAutoMapper(M => M.AddProfile(new UserProfileMapping()));
 
 
 
@@ -118,10 +122,10 @@ namespace JobBoard.API
 
 				var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
 				var mapper = services.GetRequiredService<IMapper>();
-				await InitialDataSeeder.SeedEmployersWithProfiles(services, mapper);
-
-				await InitialDataSeeder.SeedAsync(context, mapper);
-			}
+                await InitialDataSeeder.SeedSkillsAndCategories(context);
+                await InitialDataSeeder.SeedUsersWithProfiles(context, userManager, mapper);
+                await InitialDataSeeder.SeedJobs(context, mapper);
+            }
             catch (Exception ex)
             {
                 var logger = loggerFactory.CreateLogger<Program>();

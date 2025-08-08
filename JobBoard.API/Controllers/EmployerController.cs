@@ -12,7 +12,7 @@ namespace JobBoard.API.Controllers
     [Authorize(Roles ="Employer")]
     public class EmployerController : ControllerBase
     {
-        private string? userId => User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        private string? userId => User.FindFirstValue(ClaimTypes.NameIdentifier);
 
         private readonly IEmployerService employerService;
 
@@ -25,14 +25,18 @@ namespace JobBoard.API.Controllers
         /*------------------------Get All Profiles --------------------------*/
         [HttpGet]
         public async Task<IActionResult> GetAll()
-        {
+        {      
+            if (userId == null)
+                return Unauthorized();
             var result = await employerService.GetAll();
+            if (result == null || !result.Any())
+                return NotFound("No employer profiles found");
             return Ok(result);
         }
 
 
         /*------------------------Get my Profile --------------------------*/
-        [HttpGet("GetMyProfile")]
+        [HttpGet("my-profile")]
         public async Task<IActionResult> GetById()
         {
             if (userId == null)

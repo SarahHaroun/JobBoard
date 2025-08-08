@@ -27,6 +27,11 @@ namespace JobBoard.Domain.DTO.AuthDto
         //    ErrorMessage = "Password must contain at least one uppercase letter, one lowercase letter, and one number.")]
         public string Password { get; set; }
 
+        [DataType(DataType.Password)]
+        [StringLength(100, ErrorMessage = "Confirm Password must be at least 6 characters long", MinimumLength = 6)]
+        [Compare("Password", ErrorMessage = "Confirm Password does not match Password")]
+        public string ConfirmPassword { get; set; }
+
         [Required(ErrorMessage = "User type is required")]
         [EnumDataType(typeof(UserType), ErrorMessage = "Invalid user type")]
         public UserType user_type { get; set; }  // UserType can be Employer or Seeker

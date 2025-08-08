@@ -1,0 +1,16 @@
+[
+    {
+        "Email": "employer1@example.com",
+        "Password": "Test@123",
+        "PhoneNumber": "01000000001",
+        "UserName": "employer1",
+        "User_Type": 0  //employer
+    },
+    {
+        "Email": "seeker1@example.com",
+        "Password": "Test@123",
+        "PhoneNumber": "01000000002",
+        "UserName": "seeker1",
+        "User_Type": 1    //seeker
+    }
+]
