@@ -8,6 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using JobBoard.Domain.DTO.ExternalLoginDto;
 
 namespace JobBoard.API.Controllers
 {
@@ -61,7 +62,45 @@ namespace JobBoard.API.Controllers
                 return Unauthorized(result.Message);
             }
         }
-           
+
+        /*--------------------------------External login------------------------------------------*/
+        [HttpPost("ExternalLogin")]
+        public async Task<IActionResult> ExternalLogin([FromBody] ExternalLoginReceiverDto dto)
+        {
+            Console.WriteLine($"Server Time: {DateTime.UtcNow}");
+
+            var result = await authService.ExternalLoginAsync(dto.IdToken, dto.RoleFromClient);
+            if (!result.Succeeded)
+                return BadRequest(result);
+
+            return Ok(result);
+        }
+
+        [HttpGet("test-google-connection")]
+        public async Task<IActionResult> TestGoogleConnection()
+        {
+            using var httpClient = new HttpClient();
+
+            try
+            {
+                var response = await httpClient.GetAsync("https://oauth2.googleapis.com/tokeninfo");
+                if (response.IsSuccessStatusCode)
+                {
+                    return Ok("✅ الاتصال بـ Google شغال تمام.");
+                }
+                else
+                {
+                    return BadRequest($"❌ الاتصال بـ Google رجّع status code: {response.StatusCode}");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"❌ حصل exception: {ex.Message}");
+            }
+        }
+
 
     }
+
+
 }

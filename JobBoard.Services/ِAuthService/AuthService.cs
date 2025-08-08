@@ -11,6 +11,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Google.Apis.Auth;
 
 namespace JobBoard.Services._ِAuthService
 {
@@ -128,9 +129,115 @@ namespace JobBoard.Services._ِAuthService
             }
 
 
+        /* -------------------------------External login with google------------------- */
 
+        public async Task<GoogleJsonWebSignature.Payload?> VerifyGoogleTokenAsync(string idToken)
+        {
+            try
+            {
+                var settings = new GoogleJsonWebSignature.ValidationSettings
+                {
+                    Audience = new List<string> { config["GoogleAuthSettings:ClientId"] }
+                };
 
-
+                var payload = await GoogleJsonWebSignature.ValidateAsync(idToken, settings);
+                return payload;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Google token validation failed: " + ex.Message);
+            }
         }
+        public async Task<ResultLoginDto> GenerateJwtTokenAsync(ApplicationUser user)
+        {
+            var userRole = await userManager.GetRolesAsync(user);
+
+            var userClaims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.Id),
+                new Claim(ClaimTypes.Name, user.UserName),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim(ClaimTypes.Role, userRole.FirstOrDefault() ?? "")
+            };
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["JWT:Secret"]));
+            var signingCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(
+                issuer: config["JWT:ValidIssuer"],
+                audience: config["JWT:ValidAudience"],
+                expires: DateTime.Now.AddDays(1),
+                claims: userClaims,
+                signingCredentials: signingCredentials
+            );
+
+            return new ResultLoginDto
+            {
+                Succeeded = true,
+                Token = new JwtSecurityTokenHandler().WriteToken(token),
+                Expiration = DateTime.Now.AddDays(1),
+                Role = userRole.FirstOrDefault() ?? ""
+            };
+        }
+
+        public async Task<ResultLoginDto> ExternalLoginAsync(string idToken, string roleFromClient)
+        {
+            // check google token
+            var payload = await VerifyGoogleTokenAsync(idToken);
+            if (payload == null)
+            {
+                return new ResultLoginDto
+                {
+                    Succeeded = false,
+                    Message = "Invalid Google token."
+                };
+            }
+
+            // 2. search about user
+            var user = await userManager.FindByEmailAsync(payload.Email);
+
+            // 3. if user not found --> generate user with role came from client
+            if (user == null)
+            {
+                user = new ApplicationUser
+                {
+                    Email = payload.Email,
+                    UserName = payload.Email,
+                    EmailConfirmed = true
+                };
+
+                var createResult = await userManager.CreateAsync(user);
+                if (!createResult.Succeeded)
+                {
+                    return new ResultLoginDto
+                    {
+                        Succeeded = false,
+                        Message = "Failed to create user from Google account."
+                    };
+                }
+
+                // make sure that the role came from client is already found
+                if (!await roleManager.RoleExistsAsync(roleFromClient))
+                {
+                    await roleManager.CreateAsync(new IdentityRole(roleFromClient));
+                }
+
+                // register the user with the role came from client
+                await userManager.AddToRoleAsync(user, roleFromClient);
+            }
+
+
+
+            return await GenerateJwtTokenAsync(user);
+        }
+
+
+
+
+
+
+
+
     }
+}
 

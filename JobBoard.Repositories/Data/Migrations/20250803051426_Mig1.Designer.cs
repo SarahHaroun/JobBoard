@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobBoard.Repositories.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250728231450_AddAIEmbeddingEntity")]
-    partial class AddAIEmbeddingEntity
+    [Migration("20250803051426_Mig1")]
+    partial class Mig1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
