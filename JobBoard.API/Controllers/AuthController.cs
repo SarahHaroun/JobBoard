@@ -24,44 +24,101 @@ namespace JobBoard.API.Controllers
 
 		/*------------------------Register--------------------------*/
 
-		[HttpPost("register")]
-		public async Task<IActionResult> Register([FromBody] RegisterDto model)
-		{
-			if (!ModelState.IsValid)
-			{
-				return BadRequest(ModelState);
-			}
-			var result = await authService.RegisterAsync(model);
-			if (result.Succeeded)
-			{
-				return Ok(result);
-			}
-			else
-			{
-				return BadRequest(result.Message);
-			}
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterDto model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var result = await authService.RegisterAsync(model);
+            if (result.Succeeded)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result.Message);
+            }
 
 		}
 
-		/*------------------------Login--------------------------*/
-		[HttpPost("login")]
-		public async Task<IActionResult> Login([FromBody] LoginDto model)
-		{
-			if (!ModelState.IsValid)
-			{
-				return BadRequest(ModelState);
-			}
-			var result = await authService.LoginAsync(model);
-			if (result.Succeeded)
-			{
-				return Ok(result);
-			}
-			else
-			{
-				return Unauthorized(result.Message);
-			}
-		}
+        /*------------------------Login--------------------------*/
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginDto model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var result = await authService.LoginAsync(model);
+            if (result.Succeeded)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return Unauthorized(result.Message);
+            }
+        }
 
 
-	}
+        /*------------------------Change Password--------------------------*/
+        [HttpPost("change-password")]
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePassDto model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var result = await authService.ChangePasswordAsync(model);
+            if (result.Succeeded)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result.Message);
+            }
+        }
+
+
+        /*------------------------Reset Password--------------------------*/
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword([FromBody] ResetPassDto model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var result = await authService.ResetPasswordAsync(model);
+            if (result.Succeeded)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result.Message);
+            }
+        }
+
+        /*------------------------Forget Password--------------------------*/
+        [HttpPost("forget-password")]
+        public async Task<IActionResult> ForgetPassword([FromBody] ForgetPassDto model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var result = await authService.ForgotPasswordAsync(model);
+            if (result.Succeeded)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result.Message);
+            }
+        }
+        }
 }

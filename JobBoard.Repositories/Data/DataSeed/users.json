@@ -1,16 +1,16 @@
 [
-  {
-    "Email": "employer1@example.com",
-    "Password": "Test@123",
+    {
+        "Email": "employer1@example.com",
+        "Password": "Test@123",
     "PhoneNumber": "01012300001",
-    "UserName": "employer1",
+        "UserName": "employer1",
     "User_Type": 0
-  },
-  {
-    "Email": "seeker1@example.com",
-    "Password": "Test@123",
+    },
+    {
+        "Email": "seeker1@example.com",
+        "Password": "Test@123",
     "PhoneNumber": "01000065402",
-    "UserName": "seeker1",
+        "UserName": "seeker1",
     "User_Type": 1
   },
   {
@@ -47,5 +47,5 @@
     "PhoneNumber": "+4915200000006",
     "UserName": "employer6",
     "User_Type": 0
-  }
+    }
 ]

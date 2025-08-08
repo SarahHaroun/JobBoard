@@ -11,6 +11,7 @@ using JobBoard.Services._ِAuthService;
 using JobBoard.Services.AIEmbeddingService;
 using JobBoard.Services.AIServices;
 using JobBoard.Services.CategoryService;
+using JobBoard.Services.EmailService;
 using JobBoard.Services.EmployerService;
 using JobBoard.Services.SeekerService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -38,6 +39,10 @@ namespace JobBoard.API
 			/*------------------------Add Identity--------------------------*/
 			builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 				.AddEntityFrameworkStores<ApplicationDbContext>();
+            /*------------------------Add Identity--------------------------*/
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+               .AddEntityFrameworkStores<ApplicationDbContext>()
+               .AddDefaultTokenProviders(); 
 
 
 			/*------------------------Add JWT Authentication--------------------------*/
@@ -63,6 +68,29 @@ namespace JobBoard.API
 				};
 			});
 
+            /*------------------------Add JWT Authentication--------------------------*/
+            builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;  //return unAuthorized
+                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme; 
+            })
+            .AddJwtBearer(options =>         /// Validate the token
+            {
+                options.RequireHttpsMetadata = true; // Use HTTPS for production
+                options.SaveToken = true; // Save the token in the request
+                options.TokenValidationParameters = new TokenValidationParameters    
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = configuration["JWT:ValidIssuer"],
+                    ValidAudience = configuration["JWT:ValidAudience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"])) // Secret key for signing the token
+                };
+            });
+
 			/*------------------------Add Services--------------------------*/
 
 			/*-------------------- Cors Policy --------------------*/
@@ -83,6 +111,13 @@ namespace JobBoard.API
 			builder.Services.AddScoped<IJobService, JobService>();
 			builder.Services.AddScoped<ISeekerService, SeekerService>();
 			builder.Services.AddScoped<ICategoryService, CategoryService>();
+            builder.Services.AddScoped<IAuthService, AuthService>();
+            builder.Services.AddScoped<IEmployerService, EmployerService>();
+            builder.Services.AddScoped<ISeekerService, SeekerService>();
+            builder.Services.AddScoped<IJobService, JobService>();
+            builder.Services.AddScoped<ISeekerService, SeekerService>();
+            builder.Services.AddScoped<ICategoryService, CategoryService>();
+            builder.Services.AddScoped<IEmailService, EmailService>();
 
 
 			builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -99,6 +134,12 @@ namespace JobBoard.API
 				cfg.AddProfile<EmployerProfileMapping>();
 				cfg.AddProfile<UserProfileMapping>();
 			});
+            /*--------------- Add Services AutoMappper Profiles ---------------*/
+            builder.Services.AddAutoMapper(M => M.AddProfile(new JobProfile()));
+            builder.Services.AddAutoMapper(M => M.AddProfile(new EmployerProfileMapping()));
+            builder.Services.AddAutoMapper(M => M.AddProfile(new UserProfileMapping()));
+
+
 
 			builder.Services.AddScoped<CompanyImageUrlResolver>();
 
@@ -135,6 +176,13 @@ namespace JobBoard.API
 			catch (Exception ex)
 			{
 				var logger = loggerFactory.CreateLogger<Program>();
+                await InitialDataSeeder.SeedSkillsAndCategories(context);
+                await InitialDataSeeder.SeedUsersWithProfiles(context, userManager, mapper);
+                await InitialDataSeeder.SeedJobs(context, mapper);
+            }
+            catch (Exception ex)
+            {
+                var logger = loggerFactory.CreateLogger<Program>();
 				logger.LogError(ex, "An error occurred while migrating the database.");
 			}
 

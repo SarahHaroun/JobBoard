@@ -7,12 +7,12 @@ using System.Security.Claims;
 
 namespace JobBoard.API.Controllers
 {
-	[Route("api/[controller]")]
-	[ApiController]
-	[Authorize(Roles = "Employer")]
-	public class EmployerController : ControllerBase
-	{
-		private string? userId => User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+    [Route("api/[controller]")]
+    [ApiController]
+    [Authorize(Roles ="Employer")]
+    public class EmployerController : ControllerBase
+    {
+        private string? userId => User.FindFirstValue(ClaimTypes.NameIdentifier);
 
 		private readonly IEmployerService employerService;
 
@@ -22,21 +22,25 @@ namespace JobBoard.API.Controllers
 		}
 
 
-		/*------------------------Get All Profiles --------------------------*/
-		[HttpGet]
-		public async Task<IActionResult> GetAll()
-		{
-			var result = await employerService.GetAll();
-			return Ok(result);
-		}
+        /*------------------------Get All Profiles --------------------------*/
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {      
+            if (userId == null)
+                return Unauthorized();
+            var result = await employerService.GetAll();
+            if (result == null || !result.Any())
+                return NotFound("No employer profiles found");
+            return Ok(result);
+        }
 
 
-		/*------------------------Get my Profile --------------------------*/
-		[HttpGet("GetMyProfile")]
-		public async Task<IActionResult> GetById()
-		{
-			if (userId == null)
-				return Unauthorized();
+        /*------------------------Get my Profile --------------------------*/
+        [HttpGet("my-profile")]
+        public async Task<IActionResult> GetById()
+        {
+            if (userId == null)
+                return Unauthorized();
 
 			var result = await employerService.GetByUserId(userId);
 
