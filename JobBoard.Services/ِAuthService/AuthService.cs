@@ -1,6 +1,7 @@
-﻿using JobBoard.Domain.Entities;
-using JobBoard.Domain.DTO.AuthDto;
+﻿using JobBoard.Domain.DTO.AuthDto;
+using JobBoard.Domain.Entities;
 using JobBoard.Repositories.Persistence;
+using JobBoard.Services.EmailService;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -8,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,13 +22,17 @@ namespace JobBoard.Services._ِAuthService
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly IConfiguration config;
         private readonly ApplicationDbContext context;
+        private readonly IEmailService emailService;
 
-        public AuthService(UserManager<ApplicationUser> userManager , RoleManager<IdentityRole> roleManager , IConfiguration config , ApplicationDbContext context)
+        public AuthService(UserManager<ApplicationUser> userManager ,
+            RoleManager<IdentityRole> roleManager , 
+            IConfiguration config , ApplicationDbContext context, IEmailService emailService)
         {
             this.userManager = userManager;
             this.roleManager = roleManager;
             this.config = config;
             this.context = context;
+            this.emailService = emailService;
         }
 
         /*------------------------Login Service--------------------------*/
@@ -129,9 +135,113 @@ namespace JobBoard.Services._ِAuthService
             }
 
 
-
-
+        /*------------------------Change Password Service--------------------------*/
+        public async Task<ResultDto> ChangePasswordAsync(ChangePassDto model)
+        {
+            var user = await userManager.FindByEmailAsync(model.Email);
+            if (user == null)
+            {
+                return new ResultDto(
+                    succeeded: false,
+                    message: "User not found."
+                    );
+            }
+           
+            var result = await userManager.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
+            if (!result.Succeeded)
+            {
+                var errors = string.Join(", ", result.Errors.Select(e => e.Description));
+                return new ResultDto(
+                    succeeded: false,
+                    message: $"Password change failed: {errors}"
+                    );
+            }
+            return new ResultDto(
+                succeeded: true,
+                message: "Password changed successfully."
+                );
 
         }
+
+
+
+        /*----------------------Reset Password Service-----------------------*/
+        public async Task<ResultDto> ResetPasswordAsync(ResetPassDto model)
+        {
+            var user = await userManager.FindByEmailAsync(model.Email);
+            if (user == null)
+            {
+                return new ResultDto(
+                    succeeded: false,
+                    message: "User not found."
+                    );
+            }
+            var decodedToken = WebUtility.UrlDecode(model.Token);
+
+
+            var result = await userManager.ResetPasswordAsync(user, decodedToken, model.NewPassword);
+
+
+            if (!result.Succeeded)
+            {
+                var errors = string.Join(", ", result.Errors.Select(e => e.Description));
+                return new ResultDto(
+                    succeeded: false,
+                    message: $"Password reset failed: {errors}"
+                    );
+            }
+
+            return new ResultDto(
+                succeeded:true,
+                message: "success");
+        }
+
+
+        /*----------------------Forget Password Service-----------------------*/
+        public async Task<ResultDto> ForgotPasswordAsync(ForgetPassDto model)
+        {
+            var user = await userManager.FindByEmailAsync(model.Email);
+            if (user == null)
+            {
+                return new ResultDto(
+                    succeeded: false,
+                    message: "User not found."
+                    );
+            }
+            var token = await userManager.GeneratePasswordResetTokenAsync(user);
+            var encodedToken = WebUtility.UrlEncode(token);
+            var encodedEmail = WebUtility.UrlEncode(model.Email);
+            var clientUrl = config["AppSettings:ClientAppUrl"];
+
+            var resetLink = $"{clientUrl}/reset-password?email={encodedEmail}&token={encodedToken}";
+
+            var subject = "Reset Your Password";
+
+            var body = $@"
+                 <p>Hi {user.UserName},</p>
+                 <p>We received a request to reset your password. Click the button below to choose a new password:</p>
+
+               <div style='text-align:center; margin-top:20px;'>
+                    <a href='{resetLink}' 
+                   style='background-color:#4CAF50; color:white; padding:10px 20px;
+                  text-decoration:none; border-radius:5px; display:inline-block;'>
+                       Reset Password
+                   </a>
+              </div>
+
+             <p style='margin-top: 30px; font-size: 14px; color: #999;'>
+                    If you didn't request this, please ignore this email.
+             </p>";
+
+
+            await emailService.SendEmailAsync(model.Email, subject, body);
+            return new ResultDto(
+                succeeded: true,
+                message: "If the email exists in our system, a reset link has been sent"
+                );
+        }
+
+
     }
+}
 

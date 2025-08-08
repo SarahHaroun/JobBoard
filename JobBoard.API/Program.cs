@@ -11,6 +11,7 @@ using JobBoard.Services._ِAuthService;
 using JobBoard.Services.AIEmbeddingService;
 using JobBoard.Services.AIServices;
 using JobBoard.Services.CategoryService;
+using JobBoard.Services.EmailService;
 using JobBoard.Services.EmployerService;
 using JobBoard.Services.SeekerService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -36,9 +37,10 @@ namespace JobBoard.API
 
             /*------------------------Add Identity--------------------------*/
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+               .AddEntityFrameworkStores<ApplicationDbContext>()
+               .AddDefaultTokenProviders(); 
 
-           
+
             /*------------------------Add JWT Authentication--------------------------*/
             builder.Services.AddAuthentication(options =>
             {
@@ -82,6 +84,7 @@ namespace JobBoard.API
             builder.Services.AddScoped<IJobService, JobService>();
             builder.Services.AddScoped<ISeekerService, SeekerService>();
             builder.Services.AddScoped<ICategoryService, CategoryService>();
+            builder.Services.AddScoped<IEmailService, EmailService>();
 
 
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();

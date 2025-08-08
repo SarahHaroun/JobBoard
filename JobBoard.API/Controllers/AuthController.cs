@@ -28,7 +28,7 @@ namespace JobBoard.API.Controllers
         public async Task<IActionResult> Register([FromBody] RegisterDto model)
         {
             if (!ModelState.IsValid)
-            {              
+            {
                 return BadRequest(ModelState);
             }
             var result = await authService.RegisterAsync(model);
@@ -61,7 +61,64 @@ namespace JobBoard.API.Controllers
                 return Unauthorized(result.Message);
             }
         }
-           
 
-    }
+
+        /*------------------------Change Password--------------------------*/
+        [HttpPost("change-password")]
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePassDto model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var result = await authService.ChangePasswordAsync(model);
+            if (result.Succeeded)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result.Message);
+            }
+        }
+
+
+        /*------------------------Reset Password--------------------------*/
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword([FromBody] ResetPassDto model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var result = await authService.ResetPasswordAsync(model);
+            if (result.Succeeded)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result.Message);
+            }
+        }
+
+        /*------------------------Forget Password--------------------------*/
+        [HttpPost("forget-password")]
+        public async Task<IActionResult> ForgetPassword([FromBody] ForgetPassDto model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var result = await authService.ForgotPasswordAsync(model);
+            if (result.Succeeded)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return BadRequest(result.Message);
+            }
+        }
+        }
 }
