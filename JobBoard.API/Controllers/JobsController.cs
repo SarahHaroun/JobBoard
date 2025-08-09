@@ -128,21 +128,5 @@ namespace JobBoard.API.Controllers
 			return Ok(result);
 		}
 
-		[HttpGet("categories")]
-		[AllowAnonymous]
-		public async Task<IActionResult> GetAllCategories()
-		{
-			var result = await _jobService.GetAllCategoriesAsync();
-			return Ok(result);
-		}
-
-		[HttpGet("skills")]
-		[AllowAnonymous]
-		public async Task<IActionResult> GetAllSkills()
-		{
-			var result = await _jobService.GetAllCategoriesAsync();
-			return Ok(result);
-		}
-
 	}
 }
