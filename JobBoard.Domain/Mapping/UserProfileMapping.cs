@@ -34,7 +34,8 @@ namespace JobBoard.Domain.Mapping
                 .ForMember(dest => dest.UserId, opt => opt.Ignore())
                 .ForMember(dest => dest.User, opt => opt.Ignore())
                 .ForMember(dest => dest.Skills, opt => opt.Ignore()) // Handle manually
-                .ForMember(dest => dest.UserApplications, opt => opt.Ignore());
+                .ForMember(dest => dest.UserApplications, opt => opt.Ignore())
+                .ForMember(dest => dest.CV_Url, opt => opt.MapFrom<SeekerCvUrlResolver>());
 
            
         }
