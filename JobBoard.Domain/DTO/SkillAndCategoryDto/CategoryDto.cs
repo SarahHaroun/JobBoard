@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace JobBoard.Domain.DTO.CategoryDto
 {
-    public class categoryNameDto
-    {
-        public int Id { get; set; }
-        public string CatName { get; set; }
-        
+    public class CategoryDto
+	{
+		public int Id { get; set; }
+		public string CategoryName { get; set; }
     }
 }
