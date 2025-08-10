@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using JobBoard.Services.AIEmbeddingService;
 using JobBoard.Repositories.Specifications;
 using JobBoard.Domain.Shared;
+using JobBoard.Domain.DTO.CategoryDto;
+using JobBoard.Domain.DTO.SkillAndCategoryDto;
 
 namespace JobBoard.Services
 {
@@ -33,7 +35,6 @@ namespace JobBoard.Services
 			return mappedJobs;
 
 		}
-
 		public async Task<JobDto> GetJobByIdAsync(int id)
 		{
 			var spec = new JobsWithFilterSpecifications(id);
@@ -137,5 +138,20 @@ namespace JobBoard.Services
 			}
 		}
 
+		public async Task<IEnumerable<CategoryDto>> GetAllCategoriesAsync()
+		{
+			var categories = await _unitOfWork.Repository<Category>().GetAllAsync();
+			var mappedCategories = _mapper.Map<IEnumerable<CategoryDto>>(categories);
+
+			return mappedCategories;
+		}
+
+		public async Task<IEnumerable<SkillDto>> GetAllSkillsAsync()
+		{
+			var skills  = await _unitOfWork.Repository<Skill>().GetAllAsync();
+			var mappedSkills = _mapper.Map<IEnumerable<SkillDto>>(skills);
+
+			return mappedSkills;
+		}
 	}
 }

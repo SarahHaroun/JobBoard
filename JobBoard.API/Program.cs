@@ -112,15 +112,11 @@ namespace JobBoard.API
 				cfg.AddProfile<JobProfile>();
 				cfg.AddProfile<EmployerProfileMapping>();
 				cfg.AddProfile<UserProfileMapping>();
+				cfg.AddProfile<SkillAndCategoryProfile>();
 			});
-            /*--------------- Add Services AutoMappper Profiles ---------------*/
-            builder.Services.AddAutoMapper(M => M.AddProfile(new JobProfile()));
-            builder.Services.AddAutoMapper(M => M.AddProfile(new EmployerProfileMapping()));
-            builder.Services.AddAutoMapper(M => M.AddProfile(new UserProfileMapping()));
-
-
 
 			builder.Services.AddScoped<CompanyImageUrlResolver>();
+			builder.Services.AddScoped<SeekerCvUrlResolver>();
 
 			builder.Services.AddAuthorization();
 			builder.Services.AddControllers()
