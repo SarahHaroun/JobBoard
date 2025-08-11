@@ -11,8 +11,8 @@ namespace JobBoard.Services.SeekerService
     {
         Task<List<SeekerProfileDto>> GetAll();
         Task<SeekerProfileDto> GetByUserId(string userId);
-        Task<SeekerProfileResultDto> Create(SeekerProfileDto seekerProfile);
-        Task<SeekerProfileResultDto> Update(int id, SeekerProfileDto seekerProfile);
+        //Task<SeekerProfileResultDto> Create(SeekerProfileDto seekerProfile);
+        Task<bool> Update(int id, SeekerProfileUpdateDto model);
         Task<bool> DeleteById(int id);
      
     }

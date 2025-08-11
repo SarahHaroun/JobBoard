@@ -46,28 +46,28 @@ namespace JobBoard.API.Controllers
 
 
 		/*------------------------create --------------------------*/
-		[HttpPost]
-		public async Task<IActionResult> Create([FromBody] SeekerProfileDto dto)
-		{
-			// Check if the userId is null, which means the user is not authenticated
-			if (userId == null)
-				return Unauthorized();
+		//[HttpPost]
+		//public async Task<IActionResult> Create([FromBody] SeekerProfileDto dto)
+		//{
+		//	// Check if the userId is null, which means the user is not authenticated
+		//	if (userId == null)
+		//		return Unauthorized();
 
-			// Check if a seeker profile already exists for the authenticated user
-			var existingProfile = await seekerService.GetByUserId(userId);
-			if (existingProfile != null)
-				return BadRequest("Seeker profile already exists");
-			// If no profile exists, create a new one
-			dto.UserId = userId; // Set the UserId from the authenticated user
-			var result = await seekerService.Create(dto);
-			if (!result.Success)
-				return BadRequest(result.Message);
-			return Ok(result.Data);
-			//CreatedAtAction(nameof(GetById), new { id = result.Data.Id }, result.Data);
-		}
+		//	// Check if a seeker profile already exists for the authenticated user
+		//	var existingProfile = await seekerService.GetByUserId(userId);
+		//	if (existingProfile != null)
+		//		return BadRequest("Seeker profile already exists");
+		//	// If no profile exists, create a new one
+		//	dto.UserId = userId; // Set the UserId from the authenticated user
+		//	var result = await seekerService.Create(dto);
+		//	if (!result.Success)
+		//		return BadRequest(result.Message);
+		//	return Ok(result.Data);
+		//	//CreatedAtAction(nameof(GetById), new { id = result.Data.Id }, result.Data);
+		//}
 
 		[HttpPut]
-		public async Task<IActionResult> Update([FromBody] SeekerProfileDto dto)
+		public async Task<IActionResult> Update([FromBody] SeekerProfileUpdateDto dto)
 		{
 			// Check if the userId is null, which means the user is not authenticated
 			if (userId == null)
@@ -77,11 +77,11 @@ namespace JobBoard.API.Controllers
 			if (existingProfile == null)
 				return NotFound();
 			// If a profile exists, update it
-			dto.UserId = userId; // Ensure the UserId is set
+			//dto.UserId = userId; // Ensure the UserId is set
 			var result = await seekerService.Update(existingProfile.Id, dto);
-			if (!result.Success)
-				return BadRequest(result.Message);
-			return Ok(result.Data);
+			if (!result)
+				return BadRequest(result);
+			return Ok(result);
 		}
 
 		[HttpDelete("{id}")]
