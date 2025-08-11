@@ -16,6 +16,12 @@ namespace JobBoard.Repositories.Persistence
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):base(options) { }
         
         public DbSet<SeekerProfile> SeekerProfiles { get; set; }
+        public DbSet<SeekerEducation> SeekerEducations { get; set; }
+        public DbSet<SeekerExperience> SeekerExperiences { get; set; }
+        public DbSet<SeekerCertificate> SeekerCertificates { get; set; }
+        public DbSet<SeekerInterest> seekerInterests { get; set; }
+        public DbSet<SeekerTraining> SeekerTrainings { get; set; }
+
         public DbSet<EmployerProfile> EmployerProfiles { get; set; }
         public DbSet<Application> Applications { get; set; }
         public DbSet<Job> Jobs { get; set; }

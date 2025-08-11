@@ -1,4 +1,5 @@
-﻿using JobBoard.Domain.DTO.SeekerDto;
+﻿using AutoMapper;
+using JobBoard.Domain.DTO.SeekerDto;
 using JobBoard.Domain.Entities;
 using JobBoard.Repositories.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -13,57 +14,59 @@ namespace JobBoard.Services.SeekerService
     public class SeekerService : ISeekerService
     {
         private readonly ApplicationDbContext context;
-        public SeekerService(ApplicationDbContext context)
+        private readonly IMapper mapper;
+        public SeekerService(ApplicationDbContext context, IMapper mapper)
         {
             this.context = context;
+            this.mapper = mapper;
         }
 
-        public async Task<SeekerProfileResultDto> Create(SeekerProfileDto seekerProfile)
-        {
-            //check if seeker profile already exists
-            var existingProfile = await context.SeekerProfiles.FirstOrDefaultAsync(s => s.UserId == seekerProfile.UserId);
-            if (existingProfile != null)
-                return new SeekerProfileResultDto
-                {
-                    Success = false,
-                    Message = "Seeker profile already exists."
-                };
+        //public async Task<SeekerProfileResultDto> Create(SeekerProfileDto seekerProfile)
+        //{
+        //    //check if seeker profile already exists
+        //    var existingProfile = await context.SeekerProfiles.FirstOrDefaultAsync(s => s.UserId == seekerProfile.UserId);
+        //    if (existingProfile != null)
+        //        return new SeekerProfileResultDto
+        //        {
+        //            Success = false,
+        //            Message = "Seeker profile already exists."
+        //        };
 
-            //if not, create a new profile
-            var newSeekerProfile = new SeekerProfile()
-            {
-                FirstName = seekerProfile.FirstName,
-                LastName = seekerProfile.LastName,
-                Address = seekerProfile.Address,
-                CV_Url = seekerProfile.CV_Url,
-                UserId = seekerProfile.UserId,
+        //    //if not, create a new profile
+        //    var newSeekerProfile = new SeekerProfile()
+        //    {
+        //        FirstName = seekerProfile.FirstName,
+        //        LastName = seekerProfile.LastName,
+        //        Address = seekerProfile.Address,
+        //        CV_Url = seekerProfile.CV_Url,
+        //        UserId = seekerProfile.UserId,
 
-            };
-            await context.SeekerProfiles.AddAsync(newSeekerProfile);
-            await context.SaveChangesAsync();
+        //    };
+        //    await context.SeekerProfiles.AddAsync(newSeekerProfile);
+        //    await context.SaveChangesAsync();
 
-            //var dto = new SeekerProfileDto
-            //{
-            //    Id = newSeekerProfile.Id,
-            //    FirstName = newSeekerProfile.FirstName,
-            //    LastName = newSeekerProfile.LastName,
-            //    Address = newSeekerProfile.Address,
-            //    CV_Url = newSeekerProfile.CV_Url,
-            //    Experience_Level = newSeekerProfile.Experience_Level,
-            //    Gender = newSeekerProfile.Gender,
-            //    UserId = newSeekerProfile.UserId
-            //};
-
-
-            return new SeekerProfileResultDto
-            {
-                Success = true,
-                Message = "Seeker profile created successfully.",
-                Data = MapToDto(newSeekerProfile)
-            };
+        //    //var dto = new SeekerProfileDto
+        //    //{
+        //    //    Id = newSeekerProfile.Id,
+        //    //    FirstName = newSeekerProfile.FirstName,
+        //    //    LastName = newSeekerProfile.LastName,
+        //    //    Address = newSeekerProfile.Address,
+        //    //    CV_Url = newSeekerProfile.CV_Url,
+        //    //    Experience_Level = newSeekerProfile.Experience_Level,
+        //    //    Gender = newSeekerProfile.Gender,
+        //    //    UserId = newSeekerProfile.UserId
+        //    //};
 
 
-        }
+        //    return new SeekerProfileResultDto
+        //    {
+        //        Success = true,
+        //        Message = "Seeker profile created successfully.",
+        //        Data = MapToDto(newSeekerProfile)
+        //    };
+
+
+        //}
 
         public async Task<bool> DeleteById(int id)
         {
@@ -80,88 +83,58 @@ namespace JobBoard.Services.SeekerService
         public async Task<List<SeekerProfileDto>> GetAll()
         {
             var seekers = await context.SeekerProfiles.ToListAsync();
-            var SeekerDtoList = new List<SeekerProfileDto>();
+            //var SeekerDtoList = new List<SeekerProfileDto>();
+            //foreach (var seeker in seekers)
+            //{                
+            //    SeekerDtoList.Add(MapToDto(seeker));
+            //}
+            //return SeekerDtoList;
 
-            foreach (var seeker in seekers)
-            {
-                //SeekerDtoList.Add(new SeekerProfileDto
-                //{
-                //    Id = seeker.Id,
-                //    FirstName = seeker.FirstName,
-                //    LastName = seeker.LastName,
-                //    Address = seeker.Address,
-                //    CV_Url = seeker.CV_Url,
-                //    Experience_Level = seeker.Experience_Level,
-                //    Gender = seeker.Gender,
-                //    UserId = seeker.UserId
-                //});
-                SeekerDtoList.Add(MapToDto(seeker));
-            }
-
-            return SeekerDtoList;
+            return mapper.Map<List<SeekerProfileDto>>(seekers);
 
         }
 
         public async Task<SeekerProfileDto> GetByUserId(string userId)
         {
-            var seekerProfile = await context.SeekerProfiles.FirstOrDefaultAsync(s => s.UserId == userId);
-            if (seekerProfile == null)
+            var seeker = await context.SeekerProfiles.FirstOrDefaultAsync(s => s.UserId == userId);
+            if (seeker == null)
             {
                 return null;
             }
-            return MapToDto(seekerProfile);
+            return mapper.Map<SeekerProfileDto>(seeker);
         }
 
 
-        public async Task<SeekerProfileResultDto> Update(int id, SeekerProfileDto seekerProfile)
+        public async Task<bool> Update(int id, SeekerProfileUpdateDto seekerProfile)
         {
-            var existingProfile = await context.SeekerProfiles.FirstOrDefaultAsync(s => s.Id == id);
-            if (existingProfile == null)
+            var seeker = await context.SeekerProfiles.FirstOrDefaultAsync(s => s.Id == id);
+            if (seeker == null)
             {
-                return new SeekerProfileResultDto
-                {
-                    Success = false,
-                    Message = "Seeker profile not found."
-                };
+                return false;
             }
-            // Update the existing profile with new values
-            existingProfile.FirstName = seekerProfile.FirstName;
-            existingProfile.LastName = seekerProfile.LastName;
-            existingProfile.Address = seekerProfile.Address;
-            existingProfile.CV_Url = seekerProfile.CV_Url;
+            // Update the properties of the seeker profile
+            mapper.Map(seekerProfile, seeker);
 
-            context.SeekerProfiles.Update(existingProfile);
+            context.SeekerProfiles.Update(seeker);  
             await context.SaveChangesAsync();
-            //var updatedDto = new SeekerProfileDto
-            //{
-            //    Id = existingProfile.Id,
-            //    FirstName = existingProfile.FirstName,
-            //    LastName = existingProfile.LastName,
-            //    Address = existingProfile.Address,
-            //    CV_Url = existingProfile.CV_Url,
-            //    Experience_Level = existingProfile.Experience_Level,
-            //    Gender = existingProfile.Gender,
-            //};
-            return new SeekerProfileResultDto
-            {
-                Success = true,
-                Message = "Seeker profile updated successfully.",
-                Data = MapToDto(existingProfile)
-            };
+            return true;
+
         }
 
-        private SeekerProfileDto MapToDto(SeekerProfile seeker)
-        {
-            return new SeekerProfileDto
-            {
-                Id = seeker.Id,
-                FirstName = seeker.FirstName,
-                LastName = seeker.LastName,
-                Address = seeker.Address,
-                CV_Url = seeker.CV_Url,
-                UserId= seeker.UserId,
-            };
-        }
+       
+
+        //private SeekerProfileDto MapToDto(SeekerProfile seeker)
+        //{
+        //    return new SeekerProfileDto
+        //    {
+        //        Id = seeker.Id,
+        //        FirstName = seeker.FirstName,
+        //        LastName = seeker.LastName,
+        //        Address = seeker.Address,
+        //        CV_Url = seeker.CV_Url,
+        //        UserId= seeker.UserId,
+        //    };
+        //}
 
     } 
 }
