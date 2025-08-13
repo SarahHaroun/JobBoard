@@ -21,5 +21,7 @@ namespace JobBoard.Domain.Repositories.Contract
         Task AddAsync(TEntity entity);
 		void Update(TEntity entity);
 		void Delete(TEntity entity);
+
+		Task<bool> AnyAsync(ISpecifications<TEntity> spec);
 	}
 }

@@ -31,7 +31,8 @@ namespace JobBoard.Services
 		{
 			//Verify if user has already applied to this job
 			var hasApplied = await HasUserAppliedToJobAsync(applicantId, createDto.JobId);
-			if (hasApplied) throw new Exception("User has already applied to this job.");
+			if (hasApplied)
+				return null;
 
 			var application = _mapper.Map<Application>(createDto);
 			application.ApplicantId = applicantId;
@@ -50,75 +51,75 @@ namespace JobBoard.Services
 
 		public async Task<ApplicationDto> GetApplicationByIdAsync(int id)
 		{
-			var repo = _unitOfWork.Repository<Application>();
-			var application = await repo.GetByIdAsync(id);
-			return _mapper.Map<ApplicationDto>(application);
+			var application = await _unitOfWork.Repository<Application>().GetByIdAsync(id);
+			var mappedApplication = _mapper.Map<ApplicationDto>(application);
+			return mappedApplication;
 		}
 
 		public async Task<IEnumerable<ApplicationDto>> GetAllApplicationsAsync()
 		{
-			var repo = _unitOfWork.Repository<Application>();
-			var applications = await repo.GetAllAsync();
-			return _mapper.Map<IEnumerable<ApplicationDto>>(applications);
+			var applications = await _unitOfWork.Repository<Application>().GetAllAsync();
+		    var mappedApplications = _mapper.Map<IEnumerable<ApplicationDto>>(applications);
+			return mappedApplications;
+
 		}
 
 		public async Task<IEnumerable<ApplicationDto>> GetApplicationsWithFilterAsync(ApplicationFilterParams filterParams)
 		{
-			var repo = _unitOfWork.Repository<Application>();
 			var spec = new ApplicationWithFilterSpecification(filterParams);
-			var applications = await repo.GetAllAsync(spec);
-
-			return _mapper.Map<IEnumerable<ApplicationDto>>(applications);
+			var applications = await _unitOfWork.Repository<Application>().GetAllAsync(spec);
+			var mappedApplications = _mapper.Map<IEnumerable<ApplicationDto>>(applications);
+			return mappedApplications;
 		}
 
 		public async Task<ApplicationDto> UpdateApplicationStatusAsync(int id, UpdateApplicationStatusDto statusDto)
 		{
-			var repo = _unitOfWork.Repository<Application>();
-			var application = await repo.GetByIdAsync(id);
+			var application = await _unitOfWork.Repository<Application>().GetByIdAsync(id);
 			if (application == null)
 				return null;
 
 			application.Status = statusDto.Status;
-			repo.Update(application);
+			_unitOfWork.Repository<Application>().Update(application);
 
 			var result = await _unitOfWork.CompleteAsync();
 			if (result <= 0)
 				return null;
 
-			return _mapper.Map<ApplicationDto>(application);
+			var mappedApplication = _mapper.Map<ApplicationDto>(application);
+			return mappedApplication;
 		}
 
 		public async Task<bool> DeleteApplicationAsync(int id)
 		{
-			var repo = _unitOfWork.Repository<Application>();
-			var application = await repo.GetByIdAsync(id);
-			if (application == null) return false;
+			var application = await _unitOfWork.Repository<Application>().GetByIdAsync(id);
+			if (application == null)
+				return false;
 
-			repo.Delete(application);
-			return await _unitOfWork.CompleteAsync() > 0;
+			_unitOfWork.Repository<Application>().Delete(application);
+			var deleted = await _unitOfWork.CompleteAsync();
+			return  deleted > 0;
 		}
 
 		public async Task<IEnumerable<ApplicationDto>> GetApplicationsByJobIdAsync(int jobId)
 		{
-			var repo = _unitOfWork.Repository<Application>();
 			var spec = new ApplicationWithFilterSpecification(jobId);
-			var applications = await repo.GetAllAsync(spec);
-			return _mapper.Map<IEnumerable<ApplicationDto>>(applications);
+			var applications = await _unitOfWork.Repository<Application>().GetAllAsync(spec);
+			var mappedApplications = _mapper.Map<IEnumerable<ApplicationDto>>(applications);
+			return mappedApplications;
 		}
 
 		public async Task<IEnumerable<ApplicationDto>> GetApplicationsByApplicantIdAsync(int applicantId)
 		{
-			var repo = _unitOfWork.Repository<Application>();
 			var spec = new ApplicationWithFilterSpecification(applicantId);
-			var applications = await repo.GetAllAsync(spec);
-			return _mapper.Map<IEnumerable<ApplicationDto>>(applications);
+			var applications = await _unitOfWork.Repository<Application>().GetAllAsync(spec);
+			var mappedApplications = _mapper.Map<IEnumerable<ApplicationDto>>(applications);
+			return mappedApplications;
 		}
 
 		public async Task<bool> HasUserAppliedToJobAsync(int applicantId, int jobId)
 		{
-			var repo = _unitOfWork.Repository<Application>();
 			var spec = new ApplicationWithFilterSpecification(applicantId, jobId);
-			var existing = await repo.GetAllAsync(spec);
+			var existing = await _unitOfWork.Repository<Application>().GetAllAsync(spec);
 			return existing.Any();
 		}
 	}

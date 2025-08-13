@@ -15,16 +15,7 @@ namespace JobBoard.API.Controllers
 	{
 		private readonly IApplicationService _applicationService;
 		private readonly ISeekerService _seekerService;
-		//private string? userId => User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
-		//private string? GetUserIdFromClaims()
-		//	=> User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-		//private int? GetApplicantIdFromClaims()
-		//{
-		//	var idValue = User.FindFirstValue("id");
-		//	return int.TryParse(idValue, out var id) ? id : null;
-		//}
+		
 		private string? userId => User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
 		public ApplicationController(IApplicationService applicationService, ISeekerService seekerService)
@@ -37,23 +28,6 @@ namespace JobBoard.API.Controllers
 		// POST: api/applications
 		[HttpPost]
 		[Authorize(Roles = "Seeker")]
-		///public async Task<IActionResult> CreateApplication([FromBody] CreateApplicationDto createDto)
-		///{
-		///	if (!ModelState.IsValid)
-		///		return BadRequest(ModelState); 
-		///	if (createDto.JobId <= 0)
-		///		return BadRequest("Invalid JobId.");
-		///	var userId = GetUserIdFromClaims();
-		///	if (string.IsNullOrEmpty(userId))
-		///		return Unauthorized("User not authenticated.");
-		///	var seekerProfile = await _seekerService.GetByUserId(userId);
-		///	if (seekerProfile == null)
-		///		return Unauthorized("Seeker profile not found.");
-		///	var createdApplication = await _applicationService.CreateApplicationAsync(createDto, seekerProfile.Id);
-		///	if (createdApplication == null)
-		///		return BadRequest("Unable to create application. You may have already applied to this job or the job doesn't exist.");
-		///	return Ok(createdApplication);
-		///}
 		public async Task<IActionResult> CreateApplication([FromBody] CreateApplicationDto createDto)
 		{
 			if (!ModelState.IsValid)
@@ -65,7 +39,7 @@ namespace JobBoard.API.Controllers
 			if (userId == null)
 				return Unauthorized();
 
-			var seekerProfile = await _seekerService.GetByUserId(userId);
+			var seekerProfile = await _seekerService.GetByUserIdAsync(userId);
 			if (seekerProfile == null)
 				return Unauthorized("Seeker profile not found");
 
@@ -75,48 +49,16 @@ namespace JobBoard.API.Controllers
 
 			return CreatedAtAction(nameof(GetMyApplications), new { id = createdApplication.Id }, createdApplication);
 		}
-	
-
 
 		// GET: api/applications/my-applications
-		//[HttpGet("my-applications")]
-		//[Authorize(Roles = "Seeker")]
-		//public async Task<ActionResult<IEnumerable<ApplicationDto>>> GetMyApplications()
-		//{
-		//	var applicantId = GetApplicantIdFromClaims();
-		//	if (applicantId == null)
-		//		return Unauthorized("Invalid or missing applicant ID in token.");
-
-		//	var applications = await _applicationService.GetApplicationsByApplicantIdAsync(applicantId.Value);
-		//	return Ok(applications);
-		//}
-
-		//// GET: api/applications/has-applied/{jobId}
-		//[HttpGet("has-applied/{jobId}")]
-		//[Authorize(Roles = "Seeker")]
-		//public async Task<ActionResult<bool>> HasApplied(int jobId)
-		//{
-		//	if (jobId <= 0)
-		//		return BadRequest("Invalid JobId.");
-
-		//	var applicantId = GetApplicantIdFromClaims();
-		//	if (applicantId == null)
-		//		return Unauthorized("Invalid or missing applicant ID in token.");
-
-		//	var hasApplied = await _applicationService.HasUserAppliedToJobAsync(applicantId.Value, jobId);
-		//	return Ok(hasApplied);
-		//}
-	//}
-
-	// GET: api/applications/my-applications
-[HttpGet("my-applications")]
+		[HttpGet("my-applications")]
 		[Authorize(Roles = "Seeker")]
 		public async Task<ActionResult<IEnumerable<ApplicationDto>>> GetMyApplications()
 		{
 			if (userId == null)
 				return Unauthorized();
 
-			var seekerProfile = await _seekerService.GetByUserId(userId);
+			var seekerProfile = await _seekerService.GetByUserIdAsync(userId);
 			if (seekerProfile == null)
 				return Unauthorized("Seeker profile not found");
 
@@ -135,7 +77,7 @@ namespace JobBoard.API.Controllers
 			if (userId == null)
 				return Unauthorized();
 
-			var seekerProfile = await _seekerService.GetByUserId(userId);
+			var seekerProfile = await _seekerService.GetByUserIdAsync(userId);
 			if (seekerProfile == null)
 				return Unauthorized("Seeker profile not found");
 

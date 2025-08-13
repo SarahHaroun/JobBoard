@@ -11,14 +11,32 @@ namespace JobBoard.Domain.DTO.SeekerDto
     public class SeekerProfileDto
     {
         public int Id { get; set; }
-
-        public string? FirstName { get; set; }
-        public string? LastName { get; set; }
+        public string UserId { get; set; } = string.Empty;
+        public string? Name { get; set; }
+        public string? Email { get; set; }
+        public string? PhoneNumber { get; set; }
+        public string? Title { get; set; }
+        public DateTime? DateOfBirth { get; set; }
         public string? Address { get; set; }
         public string? CV_Url { get; set; }
-        public ExperienceLevel? Experience_Level { get; set; } 
         public Gender? Gender { get; set; }
+        public string? Summary { get; set; }
+        public string? ProfileImageUrl { get; set; }
 
-        public string? UserId { get; set; }
+
+        // Navigation collections
+        public List<string>? CertificateName { get; set; } = new List<string>();
+        public List<string>? TrainingName { get; set; } = new List<string>();
+        public List<string>? InterestName { get; set; } = new List<string>();
+        public List<string>? SkillName { get; set; } = new List<string>();
+
+        public List<SeekerExperienceDto>? SeekerExperiences { get; set; } = new();
+        public List<SeekerEducationDto>? SeekerEducations { get; set; } = new();
+
+
+
+
+
+
     }
 }

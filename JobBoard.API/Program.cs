@@ -115,6 +115,7 @@ namespace JobBoard.API
 				cfg.AddProfile<UserProfileMapping>();
 				cfg.AddProfile<SkillAndCategoryProfile>();
 				cfg.AddProfile<ApplicationProfile>();
+        cfg.AddProfile<SeekerProfileMapping>();
 			});
 
 			builder.Services.AddScoped<CompanyImageUrlResolver>();
