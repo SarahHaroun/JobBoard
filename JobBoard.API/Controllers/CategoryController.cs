@@ -17,12 +17,12 @@ namespace JobBoard.API.Controllers
             this.categoryService = categoryService;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetAllCategories(int? jobId)
-        {
-            var result = await categoryService.GetAllCategoryAsync(jobId);
-            return Ok(result);
-        }
+        //[HttpGet]
+        //public async Task<IActionResult> GetAllCategories(int? jobId)
+        //{
+        //    var result = await categoryService.GetAllCategoryAsync(jobId);
+        //    return Ok(result);
+        //}
 
     }
 }

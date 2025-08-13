@@ -1,12 +1,12 @@
 [
-    {
-        "FirstName": "Ahmed",
-        "LastName": "Tarek",
-        "Address": "Giza, Egypt",
-        "CV_Url": "https://example.com/cv/ahmedtarek.pdf",
-        "Experience_Level": "EntryLevel",
-        "Gender": "Male",
-        "UserEmail": "seeker1@example.com",
-        "Skills": [ 1, 2, 3 ] 
-    }
+  {
+    "FirstName": "Ahmed",
+    "LastName": "Tarek",
+    "Address": "Giza, Egypt",
+    "CV_Url": "cv/ahmedtarek.pdf",
+    "Experience_Level": "EntryLevel",
+    "Gender": "Male",
+    "UserEmail": "seeker1@example.com",
+    "Skills": [ 1, 2, 3 ]
+  }
 ]
