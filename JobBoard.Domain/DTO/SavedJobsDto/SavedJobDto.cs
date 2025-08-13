@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JobBoard.Domain.DTO.SavedJobsDto
 {
-    class SavedJobDto
+    public class SavedJobDto
     {
 		public int Id { get; set; }
 		public int JobId { get; set; }

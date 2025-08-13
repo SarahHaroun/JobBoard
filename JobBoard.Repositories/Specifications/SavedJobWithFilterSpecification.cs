@@ -26,9 +26,12 @@ namespace JobBoard.Repositories.Specifications
 				default:
 					AddOrderByDesc(s => s.SavedAt);
 					break;
-
-
 			}
+		}
+
+		public SavedJobWithFilterSpecification(int id): base( s => s.Id ==  id)
+		{
+			AddIncludes(s => s.Job);
 		}
 	}
 }

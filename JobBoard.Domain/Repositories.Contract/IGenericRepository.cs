@@ -22,6 +22,6 @@ namespace JobBoard.Domain.Repositories.Contract
 		void Update(TEntity entity);
 		void Delete(TEntity entity);
 
-		Task<bool> AnyAsync(ISpecifications<TEntity> spec);
+		Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate);
 	}
 }

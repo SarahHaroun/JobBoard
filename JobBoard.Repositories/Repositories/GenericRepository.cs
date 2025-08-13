@@ -72,9 +72,9 @@ namespace JobBoard.Repositories.Repositories
 			_context.Remove(entity);
 		}
 
-		public async Task<bool> AnyAsync(ISpecifications<TEntity> spec)
+		public async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate)
 		{
-			return await SpecificationEvaluator.CreateQuery(_context.Set<TEntity>(), spec).AnyAsync();
+			return await _context.Set<TEntity>().AnyAsync(predicate);
 		}
 	}
 }
