@@ -9,11 +9,11 @@ namespace JobBoard.Services.SeekerService
 {
     public interface ISeekerService
     {
-        Task<List<SeekerProfileDto>> GetAll();
-        Task<SeekerProfileDto> GetByUserId(string userId);
+        Task<List<SeekerProfileDto>> GetAllAsync();
+        Task<SeekerProfileDto> GetByUserIdAsync(string userId);
         //Task<SeekerProfileResultDto> Create(SeekerProfileDto seekerProfile);
-        Task<bool> Update(int id, SeekerProfileUpdateDto model);
-        Task<bool> DeleteById(int id);
+        Task<bool> UpdateAsync(string userId, SeekerProfileUpdateDto model);
+        Task<bool> DeleteAsync(int Id);
      
     }
 }

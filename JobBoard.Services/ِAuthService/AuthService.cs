@@ -151,7 +151,8 @@ namespace JobBoard.Services._ِAuthService
             {
                  var seekerProfile = new SeekerProfile 
                  { 
-                     UserId = newUser.Id 
+                     UserId = newUser.Id,
+                   
                  };
                  await context.SeekerProfiles.AddAsync(seekerProfile);
                  await context.SaveChangesAsync();

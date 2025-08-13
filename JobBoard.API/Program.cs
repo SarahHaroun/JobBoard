@@ -117,6 +117,8 @@ namespace JobBoard.API
             builder.Services.AddAutoMapper(M => M.AddProfile(new JobProfile()));
             builder.Services.AddAutoMapper(M => M.AddProfile(new EmployerProfileMapping()));
             builder.Services.AddAutoMapper(M => M.AddProfile(new UserProfileMapping()));
+            builder.Services.AddAutoMapper(M => M.AddProfile(new SeekerProfileMapping()));
+			
 
 
 
