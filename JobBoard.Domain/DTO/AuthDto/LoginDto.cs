@@ -10,9 +10,6 @@ namespace JobBoard.Domain.DTO.AuthDto
     public class LoginDto
     {
 
-        [Required(ErrorMessage = "UserName is required")]
-        [StringLength(50, ErrorMessage = "UserName must be between 3 and 50 characters", MinimumLength = 3)]
-        public string UserName { get; set; }
 
         [Required(ErrorMessage = "Email is required")]
         [EmailAddress(ErrorMessage = "Invalid email address")]       

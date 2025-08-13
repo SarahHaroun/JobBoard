@@ -1,4 +1,5 @@
-﻿using JobBoard.Domain.DTO.SeekerDto;
+﻿using JobBoard.Domain.DTO.AuthDto;
+using JobBoard.Domain.DTO.SeekerDto;
 using JobBoard.Services.SeekerService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -13,84 +14,63 @@ namespace JobBoard.API.Controllers
 	public class SeekerController : ControllerBase
 	{
 		private readonly ISeekerService seekerService;
-		private string? userId => User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        private string? userId => User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-		public SeekerController(ISeekerService seekerService)
-		{
-			this.seekerService = seekerService;
-		}
+        public SeekerController(ISeekerService seekerService)
+        {
+            this.seekerService = seekerService;
+        }
 
-		/*------------------------Get All Profiles --------------------------*/
-		[HttpGet]
-		public async Task<IActionResult> GetAll()
-		{
-			var seekers = await seekerService.GetAll();
-			return Ok(seekers);
-		}
+        /*------------------------ Get All Profiles --------------------------*/
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var seekers = await seekerService.GetAllAsync();
+            return Ok(seekers);
+        }
 
-		/*------------------------Get my Profile --------------------------*/
-		[HttpGet("GetMyProfile")]
-		public async Task<IActionResult> GetMyProfile()
-		{
-			// Check if the userId is null, which means the user is not authenticated
-			if (userId == null)
-				return Unauthorized();
-			var seekerProfile = await seekerService.GetByUserId(userId);
-			// If the profile is not found, return NotFound
-			if (seekerProfile == null)
-				return NotFound();
-			// If the profile is found, return it
-			return Ok(seekerProfile);
-		}
+        /*------------------------ Get My Profile --------------------------*/
+        [HttpGet("GetMyProfile")]
+        public async Task<IActionResult> GetMyProfile()
+        {
+            if (userId == null)
+                return Unauthorized(new ResultDto(false, "User not authenticated"));
 
+            var seekerProfile = await seekerService.GetByUserIdAsync(userId);
 
+            if (seekerProfile == null)
+                return NotFound(new ResultDto(false, "Seeker profile not found"));
 
-		/*------------------------create --------------------------*/
-		//[HttpPost]
-		//public async Task<IActionResult> Create([FromBody] SeekerProfileDto dto)
-		//{
-		//	// Check if the userId is null, which means the user is not authenticated
-		//	if (userId == null)
-		//		return Unauthorized();
+            return Ok(seekerProfile);
+        }
 
-		//	// Check if a seeker profile already exists for the authenticated user
-		//	var existingProfile = await seekerService.GetByUserId(userId);
-		//	if (existingProfile != null)
-		//		return BadRequest("Seeker profile already exists");
-		//	// If no profile exists, create a new one
-		//	dto.UserId = userId; // Set the UserId from the authenticated user
-		//	var result = await seekerService.Create(dto);
-		//	if (!result.Success)
-		//		return BadRequest(result.Message);
-		//	return Ok(result.Data);
-		//	//CreatedAtAction(nameof(GetById), new { id = result.Data.Id }, result.Data);
-		//}
+        /*------------------------ Update Profile --------------------------*/
+        [HttpPut]
+        public async Task<IActionResult> Update( [FromBody] SeekerProfileUpdateDto dto)
+        {
+            if (userId == null)
+                return Unauthorized(new ResultDto(false, "User not authenticated"));
 
-		[HttpPut]
-		public async Task<IActionResult> Update([FromBody] SeekerProfileUpdateDto dto)
-		{
-			// Check if the userId is null, which means the user is not authenticated
-			if (userId == null)
-				return Unauthorized();
-			// Check if a seeker profile exists for the authenticated user
-			var existingProfile = await seekerService.GetByUserId(userId);
-			if (existingProfile == null)
-				return NotFound();
-			// If a profile exists, update it
-			//dto.UserId = userId; // Ensure the UserId is set
-			var result = await seekerService.Update(existingProfile.Id, dto);
-			if (!result)
-				return BadRequest(result);
-			return Ok(result);
-		}
+            var existingProfile = await seekerService.GetByUserIdAsync(userId);
+            if (existingProfile == null)
+                return NotFound(new ResultDto(false, "Seeker profile not found"));
 
-		[HttpDelete("{id}")]
-		public async Task<IActionResult> DeleteById(int id)
-		{
-			var result = await seekerService.DeleteById(id);
-			if (!result)
-				return NotFound();
-			return Ok("Deleted");
-		}
-	}
+            var result = await seekerService.UpdateAsync(userId , dto);
+            if (!result)
+                return BadRequest(result);
+
+            return Ok(result);
+        }
+
+        /*------------------------ Delete Profile by Id --------------------------*/
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteById(int id)
+        {
+            var result = await seekerService.DeleteAsync(id);
+            if (!result)
+                return NotFound(result);
+
+            return Ok(result);
+        }
+    }
 }
