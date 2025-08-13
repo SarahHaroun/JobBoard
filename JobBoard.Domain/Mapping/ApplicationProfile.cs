@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using JobBoard.Domain.DTO.ApplicationDto;
 using JobBoard.Domain.Entities;
+using JobBoard.Domain.Entities.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;

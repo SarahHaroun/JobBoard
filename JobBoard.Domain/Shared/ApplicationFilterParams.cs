@@ -1,4 +1,5 @@
 ﻿using JobBoard.Domain.Entities;
+using JobBoard.Domain.Entities.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,6 @@ namespace JobBoard.Domain.Shared
 		public DateTime? AppliedDateFrom { get; set; }
 		public DateTime? AppliedDateTo { get; set; }
 		public string? SearchValue { get; set; }
-		public ApplicationSortingOptions SortingOption { get; set; } = ApplicationSortingOptions.AppliedDateDesc;
+		public SortingOptions SortingOption { get; set; } = SortingOptions.DateDesc;
 	}
 }

@@ -26,7 +26,7 @@ namespace JobBoard.Repositories.Specifications
 
 			switch (filterParams.SortingOption)
 			{
-				case ApplicationSortingOptions.AppliedDateAsc:
+				case SortingOptions.DateAsc:
 					AddOrderBy(a => a.AppliedDate);
 					break;
 				default:
