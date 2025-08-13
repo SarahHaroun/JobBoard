@@ -14,6 +14,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Google.Apis.Auth;
+using JobBoard.Domain.DTO.ExternalLoginDto;
 
 namespace JobBoard.Services._ِAuthService
 {
@@ -377,10 +378,10 @@ namespace JobBoard.Services._ِAuthService
             };
         }
 
-        public async Task<ResultLoginDto> ExternalLoginAsync(string idToken, string roleFromClient)
+        public async Task<ResultLoginDto> ExternalLoginAsync(ExternalLoginReceiverDto model)
         {
             // check google token
-            var payload = await VerifyGoogleTokenAsync(idToken);
+            var payload = await VerifyGoogleTokenAsync(model.IdToken);
             if (payload == null)
             {
                 return new ResultLoginDto
@@ -414,13 +415,41 @@ namespace JobBoard.Services._ِAuthService
                 }
 
                 // make sure that the role came from client is already found
-                if (!await roleManager.RoleExistsAsync(roleFromClient))
+                
+                if (!Enum.TryParse<UserType>(model.RoleFromClient, true, out var userType))
                 {
-                    await roleManager.CreateAsync(new IdentityRole(roleFromClient));
+                    return new ResultLoginDto
+                    {
+                        Succeeded = false,
+                        Message = "Invalid user type."
+                    };
                 }
 
                 // register the user with the role came from client
-                await userManager.AddToRoleAsync(user, roleFromClient);
+                await userManager.AddToRoleAsync(user, userType.ToString());
+
+                // If the user is an Employer, set additional properties
+                if (userType == UserType.Employer)
+                {
+                    var empProfile = new EmployerProfile
+                    {
+                        CompanyName = model.CompanyName,
+                        CompanyLocation = model.CompanyLocation,
+                        UserId = user.Id
+                    };
+                    await context.EmployerProfiles.AddAsync(empProfile);
+                }
+                else if (userType == UserType.Seeker)
+                {
+                    var seekerProfile = new SeekerProfile
+                    {
+                        UserId = user.Id
+                    };
+                    await context.SeekerProfiles.AddAsync(seekerProfile);
+                }
+
+                await context.SaveChangesAsync();
+
             }
 
 
