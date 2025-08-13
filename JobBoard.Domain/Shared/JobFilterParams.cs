@@ -20,7 +20,7 @@ namespace JobBoard.Domain.Shared
 		public ExperienceLevel? ExperienceLevel { get; set; }
 		public EducationLevel? EducationLevel { get; set; }
 		public bool? IsActive { get; set; }
-		public SortingOptions SortingOption { get; set; }
+		public JobSortingOptions SortingOption { get; set; }
 		public string? SearchValue { get; set; }
 	}
 }
