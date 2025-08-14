@@ -72,34 +72,27 @@ namespace JobBoard.Services.SeekerService
 
             if (seeker == null) return false;
 
+			// ================= CV =================
 			if (dto.CV_Url != null && dto.CV_Url.Length > 0)
 			{
-				DocumentSettings.DeleteFile(seeker.CV_Url, "cv", _env);
+				// Delete the old CV from the server if it exists
+				if (!string.IsNullOrEmpty(seeker.CV_Url))
+					DocumentSettings.DeleteFile(seeker.CV_Url, "cv", _env);
+
+				// Upload the new CV and update the database 
 				seeker.CV_Url = await DocumentSettings.UploadFileAsync(dto.CV_Url, "cv", _env, _configuration);
 			}
-			else if (dto.CV_Url == null) 
-			{
-				// Delete the old file from the server
-				DocumentSettings.DeleteFile(seeker.CV_Url, "cv", _env);
-				// Remove the file URL from the database
-				seeker.CV_Url = null;
-			}
 
-
+			// ================= Profile Image =================
 			if (dto.ProfileImageUrl != null && dto.ProfileImageUrl.Length > 0)
 			{
-				DocumentSettings.DeleteFile(seeker.ProfileImageUrl, "images/profilepic", _env);
-                seeker.ProfileImageUrl = await DocumentSettings.UploadFileAsync(dto.ProfileImageUrl, "images/profilepic", _env, _configuration);
+				// Delete the old profile image from the server if it exists
+				if (!string.IsNullOrEmpty(seeker.ProfileImageUrl))
+					DocumentSettings.DeleteFile(seeker.ProfileImageUrl, "images/profilepic", _env);
 
-            }
-            else if (dto.ProfileImageUrl == null)
-			{
-				// Delete the old file from the server
-				DocumentSettings.DeleteFile(seeker.ProfileImageUrl, "images/profilepic", _env);
-				// Remove the file URL from the database
-				seeker.ProfileImageUrl = null;
+				// Upload the new profile image and update the database S
+				seeker.ProfileImageUrl = await DocumentSettings.UploadFileAsync(dto.ProfileImageUrl, "images/profilepic", _env, _configuration);
 			}
-
 
 			// Map basic props (excluding collections)
 			_mapper.Map(dto, seeker);
