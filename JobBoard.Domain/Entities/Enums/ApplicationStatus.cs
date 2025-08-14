@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JobBoard.Domain.Shared
+namespace JobBoard.Domain.Entities.Enums
 {
-    public enum SortingOptions
+    public enum ApplicationStatus
     {
-        DateDesc,
-		DateAsc
-    }
+		Pending, 
+		Accepted,
+		Rejected
+	}
 }

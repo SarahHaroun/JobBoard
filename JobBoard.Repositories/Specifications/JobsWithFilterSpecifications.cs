@@ -27,13 +27,13 @@ namespace JobBoard.Repositories.Specifications
 
 			switch (filterParams.SortingOption)
 			{
-				case SortingOptions.SalaryAsc:
+				case JobSortingOptions.SalaryAsc:
 					AddOrderBy(j => j.Salary);
 					break;
-				case SortingOptions.SalaryDesc:
+				case JobSortingOptions.SalaryDesc:
 					AddOrderByDesc(j => j.Salary);
 					break;
-				case SortingOptions.DateAsc:
+				case JobSortingOptions.DateAsc:
 					AddOrderBy(j => j.PostedDate);
 					break;
 				default:

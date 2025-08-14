@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JobBoard.Domain.Shared
+namespace JobBoard.Domain.DTO.SavedJobsDto
 {
-    public enum SortingOptions
+    public class CreateSavedJobDto
     {
-        DateDesc,
-		DateAsc
-    }
+		public int JobId { get; set; }
+
+	}
 }

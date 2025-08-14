@@ -1,4 +1,5 @@
 ﻿using JobBoard.Domain.Entities.Enums;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace JobBoard.Domain.DTO.SeekerDto
         public DateTime? DateOfBirth { get; set; }
         public Gender? Gender { get; set; } 
         public string? Summary { get; set; }
-        public string? CV_Url { get; set; }
+        public IFormFile? CV_Url { get; set; }
         public string? ProfileImageUrl { get; set; }
 
         public List<string>? Skills { get; set; }

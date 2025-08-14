@@ -100,6 +100,7 @@ namespace JobBoard.Repositories.Data
 
 				// Create ApplicationUser
 				var user = mapper.Map<ApplicationUser>(userDto);
+				user.EmailConfirmed = true;
 				var result = await userManager.CreateAsync(user, userDto.Password);
 				if (!result.Succeeded) continue;
 
