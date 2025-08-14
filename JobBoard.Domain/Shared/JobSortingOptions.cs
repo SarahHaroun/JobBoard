@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace JobBoard.Domain.Shared
 {
-    public enum SortingOptions
+    public enum JobSortingOptions
     {
         DateDesc,
-		DateAsc
+        DateAsc,
+        SalaryDesc,
+        SalaryAsc
     }
 }

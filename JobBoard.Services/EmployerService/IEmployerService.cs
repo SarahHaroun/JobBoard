@@ -15,5 +15,5 @@ namespace JobBoard.Services.EmployerService
         Task<bool> Update(int id, EmpProfileUpdateDto empProfile);
         Task<bool> DeleteById(int id);
 
-    }
+	}
 }

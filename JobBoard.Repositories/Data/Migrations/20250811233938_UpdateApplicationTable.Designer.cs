@@ -4,6 +4,7 @@ using JobBoard.Repositories.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JobBoard.Repositories.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250811233938_UpdateApplicationTable")]
+    partial class UpdateApplicationTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -345,33 +348,6 @@ namespace JobBoard.Repositories.Data.Migrations
                     b.HasIndex("EmployerId");
 
                     b.ToTable("Jobs");
-                });
-
-            modelBuilder.Entity("JobBoard.Domain.Entities.SavedJob", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("JobId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("SavedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("SeekerId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("JobId");
-
-                    b.HasIndex("SeekerId", "JobId")
-                        .IsUnique();
-
-                    b.ToTable("SavedJobs");
                 });
 
             modelBuilder.Entity("JobBoard.Domain.Entities.SeekerCertificate", b =>
@@ -808,25 +784,6 @@ namespace JobBoard.Repositories.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Employer");
-                });
-
-            modelBuilder.Entity("JobBoard.Domain.Entities.SavedJob", b =>
-                {
-                    b.HasOne("JobBoard.Domain.Entities.Job", "Job")
-                        .WithMany()
-                        .HasForeignKey("JobId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("JobBoard.Domain.Entities.SeekerProfile", "Seeker")
-                        .WithMany()
-                        .HasForeignKey("SeekerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Job");
-
-                    b.Navigation("Seeker");
                 });
 
             modelBuilder.Entity("JobBoard.Domain.Entities.SeekerCertificate", b =>

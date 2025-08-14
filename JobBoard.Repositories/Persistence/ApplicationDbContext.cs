@@ -21,12 +21,12 @@ namespace JobBoard.Repositories.Persistence
         public DbSet<SeekerCertificate> SeekerCertificates { get; set; }
         public DbSet<SeekerInterest> seekerInterests { get; set; }
         public DbSet<SeekerTraining> SeekerTrainings { get; set; }
-
         public DbSet<EmployerProfile> EmployerProfiles { get; set; }
         public DbSet<Application> Applications { get; set; }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<SavedJob> SavedJobs { get; set; }
 
         public DbSet<AIEmbedding> AIEmbeddings { get; set; }
 

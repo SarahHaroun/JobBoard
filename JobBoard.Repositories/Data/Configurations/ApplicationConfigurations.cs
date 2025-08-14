@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,8 +22,7 @@ namespace JobBoard.Repositories.Data.Configurations
 			builder.HasOne(a => a.Applicant)
 				.WithMany(s => s.UserApplications)
 				.HasForeignKey(a => a.ApplicantId)
-				.OnDelete(DeleteBehavior.Cascade);
-
+				.OnDelete(DeleteBehavior.Restrict);
 		}
 	}
 }

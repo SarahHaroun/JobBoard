@@ -1,8 +1,11 @@
 ﻿using AutoMapper;
 using JobBoard.Domain.DTO.SeekerDto;
 using JobBoard.Domain.Entities;
+using JobBoard.Domain.Shared;
 using JobBoard.Repositories.Persistence;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Org.BouncyCastle.Tls;
 
 namespace JobBoard.Services.SeekerService
@@ -11,12 +14,16 @@ namespace JobBoard.Services.SeekerService
     {
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
+		private readonly IWebHostEnvironment _env;
+		private readonly IConfiguration _configuration;
 
-        public SeekerService(ApplicationDbContext context, IMapper mapper)
+		public SeekerService(ApplicationDbContext context, IMapper mapper, IWebHostEnvironment env, IConfiguration configuration)
         {
             _context = context;
             _mapper = mapper;
-        }
+			_env = env;
+			_configuration = configuration;
+		}
 
         // ================== GET ==================
         public async Task<SeekerProfileDto?> GetByUserIdAsync(string userId)
@@ -66,8 +73,18 @@ namespace JobBoard.Services.SeekerService
 
             if (seeker == null) return false;
 
-            // Map basic props (excluding collections)
-            _mapper.Map(dto, seeker);
+			if (dto.CV_Url != null && dto.CV_Url.Length > 0)
+			{
+				// Delete old file
+				DocumentSettings.DeleteFile(seeker.CV_Url, "cv", _env);
+
+				// Upload New file
+				seeker.CV_Url = await DocumentSettings.UploadFileAsync(dto.CV_Url, "cv", _env, _configuration);
+			}
+
+
+			// Map basic props (excluding collections)
+			_mapper.Map(dto, seeker);
 
             // ===== Skills =====
             if (dto.Skills != null)

@@ -100,6 +100,5 @@ namespace JobBoard.Services.EmployerService
 
             return mapper.Map<EmpProfileDto>(emp);
         }
-
-    }
+	}
 }
