@@ -8,7 +8,6 @@ namespace JobBoard.Domain.DTO.EmployerDto
 {
     public class EmployerSeedDto
     {
-		//public int Id { get; set; }
 		public string CompanyName { get; set; }
 		public string CompanyLocation { get; set; }
 		public string? CompanyImage { get; set; }

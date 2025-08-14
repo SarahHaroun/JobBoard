@@ -81,7 +81,7 @@ namespace JobBoard.API.Controllers
 
 			var employer = await _employerService.GetByUserId(userId);
 			if (employer == null)
-				return Unauthorized("Employer profile not found");
+				return Unauthorized("You are not authorized to edit this job.");
 
 			try
 			{
@@ -110,6 +110,22 @@ namespace JobBoard.API.Controllers
 
 			return NoContent();
 
+		}
+
+		[HttpGet("categories")]
+		[AllowAnonymous]
+		public async Task<IActionResult> GetAllCategories()
+		{
+			var result = await _jobService.GetAllCategoriesAsync();
+			return Ok(result);
+		}
+
+		[HttpGet("skills")]
+		[AllowAnonymous]
+		public async Task<IActionResult> GetAllSkills()
+		{
+			var result = await _jobService.GetAllSkillsAsync();
+			return Ok(result);
 		}
 
 	}
