@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace JobBoard.Domain.DTO.EmployerDto
         public string? CompanyLocation { get; set; }
 
         [Url(ErrorMessage = "Company image must be a valid URL")]
-        public string? CompanyImage { get; set; }
+        public IFormFile? CompanyImage { get; set; }
 
         [Url(ErrorMessage = "Website must be a valid URL")]
         public string? Website { get; set; }

@@ -90,7 +90,7 @@ namespace JobBoard.Services.SeekerService
 				if (!string.IsNullOrEmpty(seeker.ProfileImageUrl))
 					DocumentSettings.DeleteFile(seeker.ProfileImageUrl, "images/profilepic", _env);
 
-				// Upload the new profile image and update the database S
+				// Upload the new profile image and update the database 
 				seeker.ProfileImageUrl = await DocumentSettings.UploadFileAsync(dto.ProfileImageUrl, "images/profilepic", _env, _configuration);
 			}
 
