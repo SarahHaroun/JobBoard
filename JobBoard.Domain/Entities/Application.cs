@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JobBoard.Domain.Entities.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -7,10 +8,7 @@ using System.Threading.Tasks;
 
 namespace JobBoard.Domain.Entities
 {
-    public enum ApplicationStatus
-    {
-        Pending,Accepted,Rejected
-    }
+   
     public class Application
     {
         public int Id { get; set; }
