@@ -35,6 +35,7 @@ namespace JobBoard.Services.SeekerService
                 .Include(s => s.SeekerTraining)
                 .Include(s => s.SeekerEducations)
                 .Include(s => s.SeekerExperiences)
+                .Include(s => s.User)
                 .FirstOrDefaultAsync(s => s.UserId == userId);
 
             if (seeker == null) return null;
@@ -132,7 +133,6 @@ namespace JobBoard.Services.SeekerService
                         seeker.seekerInterests.Add(new SeekerInterest
                         {
                             InterestName = interestName,
-                            SeekerProfileId = seeker.Id
                         });
                     }
                 }
@@ -176,29 +176,88 @@ namespace JobBoard.Services.SeekerService
                 }
             }
 
-            // ===== Educations =====
-            if (dto.SeekerEducations != null)
+            // ===== Experiences =====
+            if (dto.SeekerExperiences != null)
             {
-                seeker.SeekerEducations.Clear();
-                foreach (var edu in dto.SeekerEducations)
+                var currentExperiences = seeker.SeekerExperiences.ToList();
+
+                var dtoIds = dto.SeekerExperiences
+                    .Where(e => e.Id != null)
+                    .Select(e => e.Id)
+                    .ToList();
+
+                var toRemove = currentExperiences
+                    .Where(e => !dtoIds.Contains(e.Id))
+                    .ToList();
+
+                foreach (var exp in toRemove)
+                    seeker.SeekerExperiences.Remove(exp);
+
+                foreach (var expDto in dto.SeekerExperiences)
                 {
-                    seeker.SeekerEducations.Add(_mapper.Map<SeekerEducation>(edu));
+                    if (expDto.Id == null)
+                    {
+                        var newExp = _mapper.Map<SeekerExperience>(expDto);
+                        seeker.SeekerExperiences.Add(newExp);
+                    }
+                    else
+                    {
+                        var existingExp = currentExperiences.FirstOrDefault(e => e.Id == expDto.Id);
+                        if (existingExp != null)
+                        {
+                            _mapper.Map(expDto, existingExp);
+                        }
+                    }
                 }
             }
+
 
             // ===== Experiences =====
             if (dto.SeekerExperiences != null)
             {
-                seeker.SeekerExperiences.Clear();
-                foreach (var exp in dto.SeekerExperiences)
+                
+                var currentExperiences = seeker.SeekerExperiences.ToList();
+
+                
+                var dtoIds = dto.SeekerExperiences
+                    .Where(e => e.Id != null)  
+                    .Select(e => e.Id)
+                    .ToList();
+
+                var toRemove = currentExperiences
+                    .Where(e => !dtoIds.Contains(e.Id))
+                    .ToList();
+
+                foreach (var exp in toRemove)
+                    seeker.SeekerExperiences.Remove(exp);
+
+                foreach (var expDto in dto.SeekerExperiences)
                 {
-                    seeker.SeekerExperiences.Add(_mapper.Map<SeekerExperience>(exp));
+                    if (expDto.Id == null)
+                    {
+                        var newExp = _mapper.Map<SeekerExperience>(expDto);
+                        seeker.SeekerExperiences.Add(newExp);
+                    }
+                    else
+                    {                     
+                        var existingExp = currentExperiences.FirstOrDefault(e => e.Id == expDto.Id);
+                        if (existingExp != null)
+                        {
+                            _mapper.Map(expDto, existingExp);
+                        }
+                    }
                 }
             }
+
 
             // ===== Update phone =====
             if (!string.IsNullOrEmpty(dto.PhoneNumber))
                 seeker.User.PhoneNumber = dto.PhoneNumber;
+
+            // ===== Update user name =====
+            if (!string.IsNullOrEmpty(dto.Name))
+                seeker.User.UserName = dto.Name;
+
 
             await _context.SaveChangesAsync();
             return true;
