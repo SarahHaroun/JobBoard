@@ -8,8 +8,8 @@ namespace JobBoard.Domain.DTO.AIEmbeddingDto
 {
     public class ChatMessageDto
     {
-        public string Role { get; set; } = ""; // "user" / "assistant" / "system"
+        public string Role { get; set; } = ""; // "Employer" / "Seeker" / "Admin"
         public string Content { get; set; } = "";
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     }
 }

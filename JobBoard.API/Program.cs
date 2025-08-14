@@ -22,6 +22,10 @@ using System.Text;
 using System.Text.Json.Serialization;
 using JobBoard.Domain.Mapping.Resolvers;
 
+using StackExchange.Redis;
+using JobBoard.Services.AIChatHistoryServices;
+using JobBoard.Repositories.Redis;
+
 namespace JobBoard.API
 {
 	public class Program
@@ -70,9 +74,9 @@ namespace JobBoard.API
                     options.ClientSecret = configuration["GoogleAuthSettings:ClientSecret"]!;
                 }); ;
 
-			/*------------------------Add Services--------------------------*/
+			/*-----------------------------------------------------------------------------------------*/
 
-			/*-------------------- Cors Policy --------------------*/
+			/*-------------------------------------- Cors Policy ------------------------------*/
 			builder.Services.AddCors(options =>
 			{
 				options.AddPolicy("AllowAngularApp", policy =>
@@ -83,8 +87,8 @@ namespace JobBoard.API
 						  .AllowCredentials();
 				});
 			});
-
-			builder.Services.AddScoped<IAuthService, AuthService>();
+            /*------------------------Add Services--------------------------*/
+            builder.Services.AddScoped<IAuthService, AuthService>();
 			builder.Services.AddScoped<IEmployerService, EmployerService>();
 			builder.Services.AddScoped<ISeekerService, SeekerService>();
 			builder.Services.AddScoped<IJobService, JobService>();
@@ -106,8 +110,26 @@ namespace JobBoard.API
 			builder.Services.AddSingleton<IGeminiChatService, GeminiChatService>();
 			builder.Services.AddScoped<IAIEmbeddingService, AIEmbeddingService>();
 
-			/*--------------- Add Services AutoMappper Profiles ---------------*/
-			builder.Services.AddAutoMapper(cfg =>
+
+            /*-------------------- Add Redis Service ---------------------*/
+            builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
+            {
+                var configuration = builder.Configuration.GetConnectionString("Redis");
+                return ConnectionMultiplexer.Connect(configuration);
+            });
+
+
+            builder.Services.AddSingleton<IRedisService, RedisService>();
+            builder.Services.AddScoped<IChatHistoryService, ChatHistoryService>();
+
+            /*-------------------- Add AI Chat History Service ---------------------*/
+
+            builder.Services.AddScoped<IChatHistoryService, ChatHistoryService>();
+
+
+
+            /*--------------- Add Services AutoMappper Profiles ---------------*/
+            builder.Services.AddAutoMapper(cfg =>
 			{
 				cfg.AddProfile<JobProfile>();
 				cfg.AddProfile<EmployerProfileMapping>();

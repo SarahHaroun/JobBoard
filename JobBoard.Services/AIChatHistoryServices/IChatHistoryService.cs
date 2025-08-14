@@ -24,8 +24,8 @@ namespace JobBoard.Services.AIChatHistoryServices
         /// <returns>A list of messages in the chat history.</returns>
         Task<List<string>> GetChatHistoryAsync(int jobId);  */
 
-        Task SaveMessageAsync(string userId, string role, string content);
-        Task<List<ChatMessageDto>> GetRecentMessagesAsync(string userId, int lastN = 10);
+        Task AddMessageAsync(string userId, string message);
+        Task<List<string>> GetMessagesAsync(string userId);
         Task ClearHistoryAsync(string userId);
     }
 }
