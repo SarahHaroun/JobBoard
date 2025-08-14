@@ -17,12 +17,10 @@ namespace JobBoard.Services.SeekerService
 		private readonly IWebHostEnvironment _env;
 		private readonly IConfiguration _configuration;
 
-		public SeekerService(ApplicationDbContext context, IMapper mapper, IWebHostEnvironment env, IConfiguration configuration)
+		public SeekerService(ApplicationDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
-			_env = env;
-			_configuration = configuration;
 		}
 
         // ================== GET ==================
@@ -72,15 +70,6 @@ namespace JobBoard.Services.SeekerService
                 .FirstOrDefaultAsync(s => s.UserId == userID);
 
             if (seeker == null) return false;
-
-			if (dto.CV_Url != null && dto.CV_Url.Length > 0)
-			{
-				// Delete old file
-				DocumentSettings.DeleteFile(seeker.CV_Url, "cv", _env);
-
-				// Upload New file
-				seeker.CV_Url = await DocumentSettings.UploadFileAsync(dto.CV_Url, "cv", _env, _configuration);
-			}
 
 
 			// Map basic props (excluding collections)
