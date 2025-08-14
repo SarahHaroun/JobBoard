@@ -98,6 +98,7 @@ namespace JobBoard.API
             builder.Services.AddScoped<ICategoryService, CategoryService>();
             builder.Services.AddScoped<IEmailService, EmailService>();
             builder.Services.AddScoped<IApplicationService, ApplicationService>();
+            builder.Services.AddScoped<ISavedJobService, SavedJobService>();
 
 
 			builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();

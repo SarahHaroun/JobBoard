@@ -8,7 +8,7 @@ using JobBoard.Repositories.Specifications;
 
 namespace JobBoard.Services
 {
-	class SavedJobService : ISavedJobService
+	public class SavedJobService : ISavedJobService
 	{
 		private readonly IUnitOfWork _unitOfWork;
 		private readonly IMapper _mapper;
@@ -65,11 +65,10 @@ namespace JobBoard.Services
 
 		public async Task<bool> IsJobSavedAsync(int seekerId, int jobId)
 		{
-			var existed = await _unitOfWork.Repository<SavedJob>()
+			var isSaved = await _unitOfWork.Repository<SavedJob>()
 				.AnyAsync(s => s.SeekerId == seekerId && s.JobId == jobId);
-			return existed;
+			return isSaved;
 		}
-
 
 		public async Task<bool> UnsaveJobAsync(int seekerId, int jobId)
 		{

@@ -12,11 +12,11 @@ namespace JobBoard.Repositories.Specifications
 	{
 		public SavedJobWithFilterSpecification(SavedJobFilterParams filterParams)
 			: base(s =>
-				(!filterParams.SeekerId.HasValue || s.SeekerId == filterParams.SeekerId) &&
 				(string.IsNullOrEmpty(filterParams.SearchValue) || s.Job.Title.ToLower().Contains(filterParams.SearchValue.ToLower()))
 			)
 		{
 			AddIncludes(s => s.Job);
+			AddIncludes(s => s.Job.Employer);
 
 			switch (filterParams.SortingOption)
 			{
@@ -32,6 +32,7 @@ namespace JobBoard.Repositories.Specifications
 		public SavedJobWithFilterSpecification(int id): base( s => s.Id ==  id)
 		{
 			AddIncludes(s => s.Job);
+			AddIncludes(s => s.Job.Employer);
 		}
 	}
 }

@@ -8,7 +8,6 @@ namespace JobBoard.Domain.Shared
 {
 	public class SavedJobFilterParams
 	{
-		public int? SeekerId { get; set; }
 		public string? SearchValue { get; set; }
 		public SortingOptions SortingOption { get; set; } = SortingOptions.DateDesc;
 	}
