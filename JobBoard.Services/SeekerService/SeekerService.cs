@@ -74,11 +74,30 @@ namespace JobBoard.Services.SeekerService
 
 			if (dto.CV_Url != null && dto.CV_Url.Length > 0)
 			{
-				// Delete old file
 				DocumentSettings.DeleteFile(seeker.CV_Url, "cv", _env);
-
-				// Upload New file
 				seeker.CV_Url = await DocumentSettings.UploadFileAsync(dto.CV_Url, "cv", _env, _configuration);
+			}
+			else if (dto.CV_Url == null) 
+			{
+				// Delete the old file from the server
+				DocumentSettings.DeleteFile(seeker.CV_Url, "cv", _env);
+				// Remove the file URL from the database
+				seeker.CV_Url = null;
+			}
+
+
+			if (dto.ProfileImageUrl != null && dto.ProfileImageUrl.Length > 0)
+			{
+				DocumentSettings.DeleteFile(seeker.ProfileImageUrl, "images/profilepic", _env);
+                seeker.ProfileImageUrl = await DocumentSettings.UploadFileAsync(dto.ProfileImageUrl, "images/profilepic", _env, _configuration);
+
+            }
+            else if (dto.ProfileImageUrl == null)
+			{
+				// Delete the old file from the server
+				DocumentSettings.DeleteFile(seeker.ProfileImageUrl, "images/profilepic", _env);
+				// Remove the file URL from the database
+				seeker.ProfileImageUrl = null;
 			}
 
 
@@ -210,7 +229,9 @@ namespace JobBoard.Services.SeekerService
             var seeker = await _context.SeekerProfiles.FirstOrDefaultAsync(s => s.Id == Id);
             if (seeker == null) return false;
 
-            _context.SeekerProfiles.Remove(seeker);
+			DocumentSettings.DeleteFile(seeker.CV_Url, "cv", _env);
+			DocumentSettings.DeleteFile(seeker.ProfileImageUrl, "images/profilepic", _env);
+			_context.SeekerProfiles.Remove(seeker);
             await _context.SaveChangesAsync();
             return true;
         }

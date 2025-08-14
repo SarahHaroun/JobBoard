@@ -78,12 +78,14 @@ namespace JobBoard.Domain.Mapping
                 .ForMember(dest => dest.seekerInterests, opt => opt.MapFrom(src => src.Interests.Select(i => new SeekerInterest { InterestName = i })))
                 .ForMember(dest => dest.seekerCertificates, opt => opt.MapFrom(src => src.Certificates.Select(c => new SeekerCertificate { CertificateName = c })))
                 .ForMember(dest => dest.SeekerTraining, opt => opt.MapFrom(src => src.Trainings.Select(t => new SeekerTraining { TrainingName = t })))
+                .ForMember(dest => dest.CV_Url, opt => opt.Ignore())
+                .ForMember(dest => dest.ProfileImageUrl, opt => opt.Ignore())
                 .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
 
-            // -----------------------------
-            // Education
-            // -----------------------------
-            CreateMap<SeekerEducation, SeekerEducationDto>().ReverseMap();
+			// -----------------------------
+			// Education
+			// -----------------------------
+			CreateMap<SeekerEducation, SeekerEducationDto>().ReverseMap();
             CreateMap<SeekerEducationUpdateDto, SeekerEducation>()
                 .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
 
