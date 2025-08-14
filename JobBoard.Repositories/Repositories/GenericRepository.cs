@@ -19,31 +19,13 @@ namespace JobBoard.Repositories.Repositories
 		{
 			_context = context;
 		}
-		public async Task<IEnumerable<TEntity>> GetAllAsync()
-		{
-			///if (typeof(TEntity) == typeof(Job))
-			///{
-			/// var jobs = await _context.Jobs.Include(j => j.Employer)
-			///       .Include(j => j.Categories)
-			///       .Include(j => j.Skills).ToListAsync();
-			///   return (IEnumerable<TEntity>)jobs;
-			///}
-			
-			return await _context.Set<TEntity>().ToListAsync();
-		}
+		public async Task<IEnumerable<TEntity>> GetAllAsync()			
+			=> await _context.Set<TEntity>().ToListAsync();
+		
 
 		public async Task<TEntity> GetByIdAsync(int id)
-		{
-			///if (typeof(TEntity) == typeof(Job) && id is int jobId)
-			///{
-			///	var job = await _context.Jobs.Include(j => j.Employer)
-			///		.Include(j => j.Categories)
-			///		.Include(j => j.Skills)
-			///		.FirstOrDefaultAsync(j => j.Id == jobId);
-			///	return job as TEntity;
-			///}
-			return await _context.Set<TEntity>().FindAsync(id);
-		}
+			=> await _context.Set<TEntity>().FindAsync(id);
+		
 
 		#region With Specifications
 
