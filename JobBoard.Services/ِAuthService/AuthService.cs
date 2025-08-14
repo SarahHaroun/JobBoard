@@ -1,8 +1,10 @@
-﻿using JobBoard.Domain.DTO.AuthDto;
+﻿using Google.Apis.Auth;
+using JobBoard.Domain.DTO.AuthDto;
 using JobBoard.Domain.Entities;
 using JobBoard.Repositories.Persistence;
 using JobBoard.Services.EmailService;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -105,12 +107,16 @@ namespace JobBoard.Services._ِAuthService
                     succeeded: false,
                     message: "Invalid user type."
                     );
-            ApplicationUser newUser = new ApplicationUser();
-            newUser.UserName = model.UserName;
-            newUser.Email = model.Email;
-            newUser.User_Type = model.user_type;
 
+            ApplicationUser newUser = new ApplicationUser()
+            {
+                UserName = model.UserName,
+                Email = model.Email,
+                EmailConfirmed = false, // Set to false initially, will be confirmed later
+                User_Type = model.user_type,
 
+            };
+           
             var result = await userManager.CreateAsync(newUser, model.Password);
 
             // Check if the user creation was successful
@@ -142,9 +148,30 @@ namespace JobBoard.Services._ِAuthService
                await context.SaveChangesAsync();
             }
 
-            // Send confirmation email directly after register
-            await SendConfirmationEmailAsync(newUser.Email);
+            // If the user is a Seeker, you can set additional properties here if needed
+            if (model.user_type == UserType.Seeker)
+            {
+                 var seekerProfile = new SeekerProfile 
+                 { 
+                     UserId = newUser.Id,
+                   
+                 };
+                 await context.SeekerProfiles.AddAsync(seekerProfile);
+                 await context.SaveChangesAsync();
+            }
 
+            // Send confirmation email directly after register
+            try
+            {
+                await SendConfirmationEmailAsync(newUser.Email);
+            }
+            catch (Exception ex)
+            {
+                return new ResultDto(
+                    succeeded: false,
+                    message: $"Failed to send confirmation email: {ex.Message}"
+                    );
+            }
             return new ResultDto(
                     succeeded: true,
                     message: "User registered successfully. Please confirm your email."
@@ -193,15 +220,12 @@ namespace JobBoard.Services._ِAuthService
                     message: "User not found."
                     );
             }
-            var decodedToken = WebUtility.UrlDecode(model.Token);
+            //var decodedToken = WebUtility.UrlDecode(model.Token);
 
-      
+            var decodedBytes = WebEncoders.Base64UrlDecode(model.Token);
+            var normalToken = Encoding.UTF8.GetString(decodedBytes);
 
-
-
-
-
-            var result = await userManager.ResetPasswordAsync(user, decodedToken, model.NewPassword);
+            var result = await userManager.ResetPasswordAsync(user, normalToken, model.NewPassword);
 
 
             if (!result.Succeeded)
@@ -231,11 +255,13 @@ namespace JobBoard.Services._ِAuthService
                     );
             }
             var token = await userManager.GeneratePasswordResetTokenAsync(user);
-            var encodedToken = WebUtility.UrlEncode(token);
-            var encodedEmail = WebUtility.UrlEncode(model.Email);
+           
+
+            var encodedToken = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
+
             var clientUrl = config["AppSettings:ClientAppUrl"];
 
-            var resetLink = $"{clientUrl}/reset-password?email={encodedEmail}&token={encodedToken}";
+            var resetLink = $"{clientUrl}/reset-password?email={user.Email}&token={encodedToken}";
 
             var subject = "Reset Your Password";
 
@@ -280,7 +306,9 @@ namespace JobBoard.Services._ِAuthService
 
             // Generate confirmation token
             var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
-            var encodedToken = WebUtility.UrlEncode(token);
+            //var encodedToken = WebUtility.UrlEncode(token);
+            var encodedToken = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
+
 
             // Confirmation link
             var confirmationLink = $"{config["AppSettings:ClientAppUrl"]}/confirm-email?email={user.Email}&token={encodedToken}";
@@ -313,8 +341,11 @@ namespace JobBoard.Services._ِAuthService
             if (user == null)
                 return new ResultDto(false, "User not found.");
 
-            var decodedToken = WebUtility.UrlDecode(model.Token);
-            var result = await userManager.ConfirmEmailAsync(user, decodedToken);
+            //var decodedToken = WebUtility.UrlDecode(model.Token);
+            var decodedBytes = WebEncoders.Base64UrlDecode(model.Token);
+            var normalToken = Encoding.UTF8.GetString(decodedBytes);
+
+            var result = await userManager.ConfirmEmailAsync(user, normalToken);
 
             if (!result.Succeeded)
             {

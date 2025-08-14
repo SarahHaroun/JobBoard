@@ -13,8 +13,10 @@ namespace JobBoard.Repositories.Data.Configurations
 	{
 		public void Configure(EntityTypeBuilder<Skill> builder)
 		{
-			builder.Property(c => c.SkillName)
-				.IsRequired();
+            builder.HasKey(s => s.Id);
+
+            builder.Property(c => c.SkillName)
+				.IsRequired().HasMaxLength(100); ;
 
 			builder.HasIndex(c => c.SkillName)
 				.IsUnique();

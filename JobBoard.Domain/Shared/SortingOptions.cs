@@ -9,8 +9,6 @@ namespace JobBoard.Domain.Shared
     public enum SortingOptions
     {
         DateDesc,
-        DateAsc,
-        SalaryDesc,
-        SalaryAsc
+		DateAsc
     }
 }

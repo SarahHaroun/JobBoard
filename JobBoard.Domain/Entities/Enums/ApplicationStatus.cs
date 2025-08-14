@@ -8,7 +8,8 @@ namespace JobBoard.Domain.Entities.Enums
 {
     public enum ApplicationStatus
     {
-        Pending, Accepted, Rejected
-
-    }
+		Pending, 
+		Accepted,
+		Rejected
+	}
 }

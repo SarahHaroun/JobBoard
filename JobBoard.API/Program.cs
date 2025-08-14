@@ -101,6 +101,8 @@ namespace JobBoard.API
             builder.Services.AddScoped<ISeekerService, SeekerService>();
             builder.Services.AddScoped<ICategoryService, CategoryService>();
             builder.Services.AddScoped<IEmailService, EmailService>();
+            builder.Services.AddScoped<IApplicationService, ApplicationService>();
+            builder.Services.AddScoped<ISavedJobService, SavedJobService>();
 
 
 			builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -135,6 +137,9 @@ namespace JobBoard.API
 				cfg.AddProfile<EmployerProfileMapping>();
 				cfg.AddProfile<UserProfileMapping>();
 				cfg.AddProfile<SkillAndCategoryProfile>();
+				cfg.AddProfile<ApplicationProfile>();
+				cfg.AddProfile<SeekerProfileMapping>();
+				cfg.AddProfile<SavedJobProfile>();
 			});
 
 			builder.Services.AddScoped<CompanyImageUrlResolver>();

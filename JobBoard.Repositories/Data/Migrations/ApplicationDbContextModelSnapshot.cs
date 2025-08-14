@@ -84,8 +84,40 @@ namespace JobBoard.Repositories.Data.Migrations
                     b.Property<DateTime>("AppliedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("CoverLetter")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CurrentJobTitle")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CurrentLocation")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GitHubUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("JobId")
                         .HasColumnType("int");
+
+                    b.Property<string>("LinkedInUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PortfolioUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ResumeUrl")
                         .IsRequired()
@@ -93,6 +125,10 @@ namespace JobBoard.Repositories.Data.Migrations
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
+
+                    b.Property<string>("YearsOfExperience")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -311,6 +347,158 @@ namespace JobBoard.Repositories.Data.Migrations
                     b.ToTable("Jobs");
                 });
 
+            modelBuilder.Entity("JobBoard.Domain.Entities.SavedJob", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("JobId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("SavedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("SeekerId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("JobId");
+
+                    b.HasIndex("SeekerId", "JobId")
+                        .IsUnique();
+
+                    b.ToTable("SavedJobs");
+                });
+
+            modelBuilder.Entity("JobBoard.Domain.Entities.SeekerCertificate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CertificateName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SeekerProfileId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SeekerProfileId");
+
+                    b.ToTable("SeekerCertificates");
+                });
+
+            modelBuilder.Entity("JobBoard.Domain.Entities.SeekerEducation", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("EducationLevel")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Faculty")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<double?>("GPA")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Location")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Major")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("SeekerProfileId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("University")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SeekerProfileId");
+
+                    b.ToTable("SeekerEducations");
+                });
+
+            modelBuilder.Entity("JobBoard.Domain.Entities.SeekerExperience", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CompanyName")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("JobTitle")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("Location")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("SeekerProfileId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SeekerProfileId");
+
+                    b.ToTable("SeekerExperiences");
+                });
+
+            modelBuilder.Entity("JobBoard.Domain.Entities.SeekerInterest", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("InterestName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SeekerProfileId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SeekerProfileId");
+
+                    b.ToTable("seekerInterests");
+                });
+
             modelBuilder.Entity("JobBoard.Domain.Entities.SeekerProfile", b =>
                 {
                     b.Property<int>("Id")
@@ -320,36 +508,67 @@ namespace JobBoard.Repositories.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("CV_Url")
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<DateTime?>("DateOfBirth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Gender")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Experience_Level")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("ProfileImageUrl")
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
 
-                    b.Property<int>("Gender")
-                        .HasColumnType("int");
+                    b.Property<string>("Summary")
+                        .HasMaxLength(2000)
+                        .HasColumnType("nvarchar(2000)");
 
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("Title")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("UserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserId")
-                        .IsUnique()
-                        .HasFilter("[UserId] IS NOT NULL");
+                        .IsUnique();
 
                     b.ToTable("SeekerProfiles");
+                });
+
+            modelBuilder.Entity("JobBoard.Domain.Entities.SeekerTraining", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("SeekerProfileId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TrainingName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SeekerProfileId");
+
+                    b.ToTable("SeekerTrainings");
                 });
 
             modelBuilder.Entity("JobBoard.Domain.Entities.Skill", b =>
@@ -362,7 +581,8 @@ namespace JobBoard.Repositories.Data.Migrations
 
                     b.Property<string>("SkillName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
@@ -555,7 +775,7 @@ namespace JobBoard.Repositories.Data.Migrations
                     b.HasOne("JobBoard.Domain.Entities.SeekerProfile", "Applicant")
                         .WithMany("UserApplications")
                         .HasForeignKey("ApplicantId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("JobBoard.Domain.Entities.Job", "Job")
@@ -590,14 +810,89 @@ namespace JobBoard.Repositories.Data.Migrations
                     b.Navigation("Employer");
                 });
 
+            modelBuilder.Entity("JobBoard.Domain.Entities.SavedJob", b =>
+                {
+                    b.HasOne("JobBoard.Domain.Entities.Job", "Job")
+                        .WithMany()
+                        .HasForeignKey("JobId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("JobBoard.Domain.Entities.SeekerProfile", "Seeker")
+                        .WithMany()
+                        .HasForeignKey("SeekerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Job");
+
+                    b.Navigation("Seeker");
+                });
+
+            modelBuilder.Entity("JobBoard.Domain.Entities.SeekerCertificate", b =>
+                {
+                    b.HasOne("JobBoard.Domain.Entities.SeekerProfile", "SeekerProfile")
+                        .WithMany("seekerCertificates")
+                        .HasForeignKey("SeekerProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SeekerProfile");
+                });
+
+            modelBuilder.Entity("JobBoard.Domain.Entities.SeekerEducation", b =>
+                {
+                    b.HasOne("JobBoard.Domain.Entities.SeekerProfile", "SeekerProfile")
+                        .WithMany("SeekerEducations")
+                        .HasForeignKey("SeekerProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SeekerProfile");
+                });
+
+            modelBuilder.Entity("JobBoard.Domain.Entities.SeekerExperience", b =>
+                {
+                    b.HasOne("JobBoard.Domain.Entities.SeekerProfile", "SeekerProfile")
+                        .WithMany("SeekerExperiences")
+                        .HasForeignKey("SeekerProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SeekerProfile");
+                });
+
+            modelBuilder.Entity("JobBoard.Domain.Entities.SeekerInterest", b =>
+                {
+                    b.HasOne("JobBoard.Domain.Entities.SeekerProfile", "SeekerProfile")
+                        .WithMany("seekerInterests")
+                        .HasForeignKey("SeekerProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SeekerProfile");
+                });
+
             modelBuilder.Entity("JobBoard.Domain.Entities.SeekerProfile", b =>
                 {
                     b.HasOne("JobBoard.Domain.Entities.ApplicationUser", "User")
                         .WithOne("seekerProfile")
                         .HasForeignKey("JobBoard.Domain.Entities.SeekerProfile", "UserId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("JobBoard.Domain.Entities.SeekerTraining", b =>
+                {
+                    b.HasOne("JobBoard.Domain.Entities.SeekerProfile", "SeekerProfile")
+                        .WithMany("SeekerTraining")
+                        .HasForeignKey("SeekerProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SeekerProfile");
                 });
 
             modelBuilder.Entity("JobSkill", b =>
@@ -702,7 +997,17 @@ namespace JobBoard.Repositories.Data.Migrations
 
             modelBuilder.Entity("JobBoard.Domain.Entities.SeekerProfile", b =>
                 {
+                    b.Navigation("SeekerEducations");
+
+                    b.Navigation("SeekerExperiences");
+
+                    b.Navigation("SeekerTraining");
+
                     b.Navigation("UserApplications");
+
+                    b.Navigation("seekerCertificates");
+
+                    b.Navigation("seekerInterests");
                 });
 #pragma warning restore 612, 618
         }
