@@ -13,6 +13,7 @@ namespace JobBoard.Repositories.Specifications
 		public JobsWithFilterSpecifications(JobFilterParams filterParams)
 			: base(j =>
 			(string.IsNullOrWhiteSpace(filterParams.SearchValue) || j.Title.ToLower().Contains(filterParams.SearchValue.ToLower())) &&
+			(string.IsNullOrWhiteSpace(filterParams.SearchByLocationValue) || j.Employer.CompanyLocation.ToLower().Contains(filterParams.SearchByLocationValue.ToLower())) &&
 			(!filterParams.CategoryId.HasValue || j.Categories.Any(jc => jc.Id == filterParams.CategoryId)) &&
 			(!filterParams.SkillId.HasValue || j.Skills.Any(js => js.Id == filterParams.SkillId)) &&
 			(!filterParams.EmployerId.HasValue || j.EmployerId == filterParams.EmployerId) &&
