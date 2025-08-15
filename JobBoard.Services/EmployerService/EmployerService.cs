@@ -98,8 +98,19 @@ namespace JobBoard.Services.EmployerService
 				// Upload the new profile image and update the database 
 				employer.CompanyImage = await DocumentSettings.UploadFileAsync(model.CompanyImage, "images/companies", env, configuration);
 			}
-            // Update the employer profile using AutoMapper
-            mapper.Map(model, employer);
+			else if (model.RemoveCompanyImage)
+			{
+				// if user wants to delete the old image
+				if (!string.IsNullOrEmpty(employer.CompanyImage))
+				{
+					DocumentSettings.DeleteFile(employer.CompanyImage, "images/companies", env);
+					employer.CompanyImage = null;
+				}
+			}
+
+
+			// Update the employer profile using AutoMapper
+			mapper.Map(model, employer);
 
             // Update related User entity manually if needed
             if (!string.IsNullOrEmpty(model.Phone))

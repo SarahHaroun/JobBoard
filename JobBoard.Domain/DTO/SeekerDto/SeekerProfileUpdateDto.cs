@@ -18,8 +18,6 @@ namespace JobBoard.Domain.DTO.SeekerDto
         public DateTime? DateOfBirth { get; set; }
         public Gender? Gender { get; set; } 
         public string? Summary { get; set; }
-        public IFormFile? CV_Url { get; set; }
-        public IFormFile? ProfileImageUrl { get; set; }
 
         public List<string>? Skills { get; set; }
 
