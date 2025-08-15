@@ -15,8 +15,8 @@ namespace JobBoard.Services.SeekerService
     {
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
-		private readonly IWebHostEnvironment _env;
-		private readonly IConfiguration _configuration;
+		    private readonly IWebHostEnvironment _env;
+		    private readonly IConfiguration _configuration;
 
 		public SeekerService(ApplicationDbContext context, IMapper mapper)
         {

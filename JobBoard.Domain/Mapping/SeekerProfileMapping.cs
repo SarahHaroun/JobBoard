@@ -9,10 +9,7 @@ using System.Threading.Tasks;
 
 namespace JobBoard.Domain.Mapping
 {
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
     public class SeekerProfileMapping : Profile
     {
         public SeekerProfileMapping()
@@ -40,21 +37,11 @@ namespace JobBoard.Domain.Mapping
                 .ForMember(dest => dest.seekerCertificates, opt => opt.MapFrom(src => src.Certificates.Select(c => new SeekerCertificate { CertificateName = c })))
                 .ForMember(dest => dest.SeekerTraining, opt => opt.MapFrom(src => src.Trainings.Select(t => new SeekerTraining { TrainingName = t })))
                 .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
-<<<<<<< HEAD
-
-			// -----------------------------
-			// Education
-			// -----------------------------
-			CreateMap<SeekerEducation, SeekerEducationDto>().ReverseMap();
-=======
 
             // -----------------------------
             // Education
             // -----------------------------
             CreateMap<SeekerEducation, SeekerEducationDto>().ReverseMap();
-
-
->>>>>>> origin/master
             CreateMap<SeekerEducationUpdateDto, SeekerEducation>()
                 .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
 
