@@ -18,7 +18,6 @@ namespace JobBoard.Domain.DTO.SeekerDto
         public DateTime? DateOfBirth { get; set; }
         public Gender? Gender { get; set; } 
         public string? Summary { get; set; }
-
         public List<string>? Skills { get; set; }
 
         // Interests
@@ -31,10 +30,10 @@ namespace JobBoard.Domain.DTO.SeekerDto
         public List<string>? Trainings { get; set; }
 
         // Educations
-        public List<SeekerEducationDto>? SeekerEducations { get; set; }
+        public List<SeekerEducationUpdateDto>? SeekerEducations { get; set; }
 
         // Experiences
-        public List<SeekerExperienceDto>? SeekerExperiences { get; set; }
+        public List<SeekerExperienceUpdateDto>? SeekerExperiences { get; set; }
 
 
     }

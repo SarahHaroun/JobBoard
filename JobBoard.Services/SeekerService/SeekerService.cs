@@ -15,15 +15,15 @@ namespace JobBoard.Services.SeekerService
     {
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
-		private readonly IWebHostEnvironment _env;
-		private readonly IConfiguration _configuration;
+		    private readonly IWebHostEnvironment _env;
+		    private readonly IConfiguration _configuration;
 
-		public SeekerService(ApplicationDbContext context, IMapper mapper, IWebHostEnvironment env, IConfiguration configuration)
+		public SeekerService(ApplicationDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
-			_env = env;
-			_configuration = configuration;
+			      _env = env;
+		      	_configuration = configuration;
 		}
 
 		// ================== GET ==================
@@ -304,8 +304,9 @@ namespace JobBoard.Services.SeekerService
 			return (newCvUrl, newProfileImageUrl);
 		}
 
-		// ================== DELETE ==================
-		public async Task<bool> DeleteAsync(int Id)
+
+        // ================== DELETE ==================
+        public async Task<bool> DeleteAsync(int Id)
         {
             var seeker = await _context.SeekerProfiles.FirstOrDefaultAsync(s => s.Id == Id);
             if (seeker == null) return false;

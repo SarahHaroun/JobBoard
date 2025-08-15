@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace JobBoard.Domain.Entities.Enums
 {
+   
     public enum ApplicationStatus
     {
 		Pending, 
 		Accepted,
 		Rejected
 	}
+    
 }
