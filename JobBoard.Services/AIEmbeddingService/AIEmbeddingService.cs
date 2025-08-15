@@ -10,6 +10,7 @@ using JobBoard.Domain.DTO.JobDto;
 using JobBoard.Domain.Entities;
 using JobBoard.Domain.Repositories.Contract;
 using JobBoard.Repositories.Persistence;
+using JobBoard.Services.AIChatHistoryServices;
 using JobBoard.Services.AIServices;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
@@ -20,12 +21,14 @@ namespace JobBoard.Services.AIEmbeddingService
         private readonly IUnitOfWork _unitOfWork;
         private readonly EmbeddingModel _embeddingModel;
         private readonly IMapper _mapper;
+        private readonly IChatHistoryService _chatHistoryService;
         private readonly IGeminiChatService _chatService;
 
-        public AIEmbeddingService(IUnitOfWork unitOfWork, IGeminiChatService chatService, IMapper mapper)
+        public AIEmbeddingService(IUnitOfWork unitOfWork, IGeminiChatService chatService, IMapper mapper, IChatHistoryService chatHistoryService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _chatHistoryService = chatHistoryService;
             _chatService = chatService;
             var apiKey = chatService.GetApiKey();
             _embeddingModel = new EmbeddingModel(apiKey, "text-embedding-004");
@@ -44,7 +47,8 @@ namespace JobBoard.Services.AIEmbeddingService
             .Select(e => e.EntityId)
             .ToHashSet();
 
-            foreach (var job in jobs.OfType<Job>()) {
+            foreach (var job in jobs.OfType<Job>())
+            {
 
                 if (existingJobIds.Contains(job.Id)) continue; // skip if already embedded
 
@@ -58,7 +62,7 @@ namespace JobBoard.Services.AIEmbeddingService
                 //convert to float[]
                 if (response?.Embedding?.Values == null || !response.Embedding.Values.Any())
                     continue;
-                var vector = response.Embedding.Values?.Select(v => (float)v).ToArray(); 
+                var vector = response.Embedding.Values?.Select(v => (float)v).ToArray();
 
 
                 //save content in AIEmbedding Entity
@@ -243,6 +247,68 @@ namespace JobBoard.Services.AIEmbeddingService
 
             await embeddingRepo.AddAsync(embedding);
             await _unitOfWork.CompleteAsync();
+        }
+
+
+        /*-------------------------Chat OverLoad Function-------------------------*/
+        public async Task<string> GetJobAnswerFromGeminiAsync(string userId, string userQuestion)
+        {
+            //1) use semantic search to pull similar jobs (most top 3 , TopK=3)
+            var topJobs = await SearchJobsByMeaningAsync(userQuestion, 3);
+            if (topJobs == null || !topJobs.Any())
+                topJobs = new List<SemanticSearchResultDto>();
+
+            // 2) add chat history
+            var history = await _chatHistoryService.GetAsync(userId, takeLast: 10);
+            //3) prepare the prompt
+            var contextBuilder = new StringBuilder();
+            foreach (var result in topJobs)
+            {
+                var job = result.Job;
+                contextBuilder.AppendLine($"""
+                Job Title: {job.Title}
+                Description: {job.Description}
+                Requirements: {job.Requirements}
+                Skills: {string.Join(", ", job.Skills)}
+                Location: {job.CompanyLocation}
+                """);
+            }
+
+            //4) build chat history
+            var historyBuilder = new StringBuilder();
+            foreach (var msg in history)
+            {
+                historyBuilder.AppendLine($"{msg.Role.ToUpper()}: {msg.Content}");
+            }
+
+            // 5) final prompt 
+            var finalPrompt = $"""
+                        You are a helpful job assistant.
+
+                        Conversation history (most recent last):
+                        {historyBuilder}
+
+                        Context from similar job listings (if any):
+                        {contextBuilder}
+
+                        User question:
+                        {userQuestion}
+
+                        Instructions:
+                        - Answer in a concise, clear way.
+                        - If the answer depends on job context above, use it.
+                        - If you don't know, say you don't know.
+                        """;
+
+            // 6) ask from Gemini
+            var response = await _chatService.AskGeminiAsync(finalPrompt);
+            var aiAnswer = response ?? "Error throgh Generation";
+
+            // 7) save chat history
+            await _chatHistoryService.AddAsync(userId, new ChatMessageDto { Role = "user", Content = userQuestion });
+            await _chatHistoryService.AddAsync(userId, new ChatMessageDto { Role = "assistant", Content = aiAnswer });
+
+            return aiAnswer;
         }
 
     }
