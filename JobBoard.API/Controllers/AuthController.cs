@@ -69,7 +69,7 @@ namespace JobBoard.API.Controllers
         public async Task<IActionResult> ExternalLogin([FromBody] ExternalLoginReceiverDto dto)
         {
             Console.WriteLine($"Server Time: {DateTime.UtcNow}");
-            var result = await authService.ExternalLoginAsync(dto.IdToken, dto.RoleFromClient);
+            var result = await authService.ExternalLoginAsync(dto);
             if (!result.Succeeded)
                 return BadRequest(result);
 

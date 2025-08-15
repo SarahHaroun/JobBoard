@@ -18,6 +18,11 @@ namespace JobBoard.Domain.DTO.SeekerDto
         public DateTime? DateOfBirth { get; set; }
         public Gender? Gender { get; set; } 
         public string? Summary { get; set; }
+<<<<<<< HEAD
+=======
+        public string? CV_Url { get; set; }
+        public string? ProfileImageUrl { get; set; }
+>>>>>>> origin/master
 
         public List<string>? Skills { get; set; }
 
@@ -31,10 +36,10 @@ namespace JobBoard.Domain.DTO.SeekerDto
         public List<string>? Trainings { get; set; }
 
         // Educations
-        public List<SeekerEducationDto>? SeekerEducations { get; set; }
+        public List<SeekerEducationUpdateDto>? SeekerEducations { get; set; }
 
         // Experiences
-        public List<SeekerExperienceDto>? SeekerExperiences { get; set; }
+        public List<SeekerExperienceUpdateDto>? SeekerExperiences { get; set; }
 
 
     }
