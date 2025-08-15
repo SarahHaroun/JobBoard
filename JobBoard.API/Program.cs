@@ -25,6 +25,7 @@ using JobBoard.Domain.Mapping.Resolvers;
 using StackExchange.Redis;
 using JobBoard.Services.AIChatHistoryServices;
 using JobBoard.Repositories.Redis;
+using JobBoard.Services.AdminService;
 
 namespace JobBoard.API
 {
@@ -103,6 +104,7 @@ namespace JobBoard.API
             builder.Services.AddScoped<IEmailService, EmailService>();
             builder.Services.AddScoped<IApplicationService, ApplicationService>();
             builder.Services.AddScoped<ISavedJobService, SavedJobService>();
+            builder.Services.AddScoped<IAdminService, AdminService>();
 
 
 			builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();

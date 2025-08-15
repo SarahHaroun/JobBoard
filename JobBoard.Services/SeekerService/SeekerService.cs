@@ -51,6 +51,7 @@ namespace JobBoard.Services.SeekerService
                 .Include(s => s.SeekerEducations)
                 .Include(s => s.SeekerExperiences)
                 .Include(s => s.User)
+                .AsNoTracking()
                 .ToListAsync();
 
             return _mapper.Map<List<SeekerProfileDto>>(seekers);
@@ -67,6 +68,7 @@ namespace JobBoard.Services.SeekerService
                 .Include(s => s.SeekerEducations)
                 .Include(s => s.SeekerExperiences)
                 .Include(s => s.User)
+                .AsNoTracking()
                 .FirstOrDefaultAsync(s => s.UserId == userID);
 
             if (seeker == null) return false;
@@ -165,41 +167,7 @@ namespace JobBoard.Services.SeekerService
                 }
             }
 
-            // ===== Experiences =====
-            if (dto.SeekerExperiences != null)
-            {
-                var currentExperiences = seeker.SeekerExperiences.ToList();
-
-                var dtoIds = dto.SeekerExperiences
-                    .Where(e => e.Id != null)
-                    .Select(e => e.Id)
-                    .ToList();
-
-                var toRemove = currentExperiences
-                    .Where(e => !dtoIds.Contains(e.Id))
-                    .ToList();
-
-                foreach (var exp in toRemove)
-                    seeker.SeekerExperiences.Remove(exp);
-
-                foreach (var expDto in dto.SeekerExperiences)
-                {
-                    if (expDto.Id == null)
-                    {
-                        var newExp = _mapper.Map<SeekerExperience>(expDto);
-                        seeker.SeekerExperiences.Add(newExp);
-                    }
-                    else
-                    {
-                        var existingExp = currentExperiences.FirstOrDefault(e => e.Id == expDto.Id);
-                        if (existingExp != null)
-                        {
-                            _mapper.Map(expDto, existingExp);
-                        }
-                    }
-                }
-            }
-
+            
 
             // ===== Experiences =====
             if (dto.SeekerExperiences != null)
@@ -233,6 +201,41 @@ namespace JobBoard.Services.SeekerService
                         if (existingExp != null)
                         {
                             _mapper.Map(expDto, existingExp);
+                        }
+                    }
+                }
+            }
+
+            // ===== Educations =====
+            if (dto.SeekerEducations != null)
+            {
+                var currentEducations = seeker.SeekerEducations.ToList();
+
+                var dtoIds = dto.SeekerEducations
+                    .Where(e => e.Id != null)
+                    .Select(e => e.Id)
+                    .ToList();
+
+                var toRemove = currentEducations
+                    .Where(e => !dtoIds.Contains(e.Id))
+                    .ToList();
+
+                foreach (var edu in toRemove)
+                    seeker.SeekerEducations.Remove(edu);
+
+                foreach (var eduDto in dto.SeekerEducations)
+                {
+                    if (eduDto.Id == null)
+                    {
+                        var newEdu = _mapper.Map<SeekerEducation>(eduDto);
+                        seeker.SeekerEducations.Add(newEdu);
+                    }
+                    else
+                    {
+                        var existingEdu = currentEducations.FirstOrDefault(e => e.Id == eduDto.Id);
+                        if (existingEdu != null)
+                        {
+                            _mapper.Map(eduDto, existingEdu);
                         }
                     }
                 }
