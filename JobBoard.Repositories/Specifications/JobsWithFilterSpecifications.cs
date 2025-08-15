@@ -41,6 +41,9 @@ namespace JobBoard.Repositories.Specifications
 					AddOrderByDesc(j => j.PostedDate);
 					break;
 			}
+
+			var skip = filterParams.PageSize * (filterParams.PageIndex - 1);
+			AddPagination(skip, filterParams.PageSize);
 		}
 		public JobsWithFilterSpecifications(int id) : base(j => j.Id == id)
 		{

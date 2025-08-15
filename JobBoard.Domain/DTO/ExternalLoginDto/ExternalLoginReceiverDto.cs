@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FoolProof.Core;
 using JobBoard.Domain.Entities;
+using JobBoard.Domain.Entities.Enums;
 
 namespace JobBoard.Domain.DTO.ExternalLoginDto
 {

@@ -15,8 +15,8 @@ namespace JobBoard.Services.SeekerService
     {
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
-		    private readonly IWebHostEnvironment _env;
-		    private readonly IConfiguration _configuration;
+		private readonly IWebHostEnvironment _env;
+		private readonly IConfiguration _configuration;
 
 		public SeekerService(ApplicationDbContext context, IMapper mapper, IConfiguration configuration, IWebHostEnvironment env)
         {
@@ -25,7 +25,6 @@ namespace JobBoard.Services.SeekerService
 			_env = env;
 			_configuration = configuration;
 		}
-
 		// ================== GET ==================
 		public async Task<SeekerProfileDto?> GetByUserIdAsync(string userId)
 		{
@@ -54,6 +53,7 @@ namespace JobBoard.Services.SeekerService
 				.Include(s => s.SeekerEducations)
 				.Include(s => s.SeekerExperiences)
 				.Include(s => s.User)
+				.AsNoTracking()
 				.ToListAsync();
 
 			return _mapper.Map<List<SeekerProfileDto>>(seekers);
@@ -70,6 +70,7 @@ namespace JobBoard.Services.SeekerService
 				.Include(s => s.SeekerEducations)
 				.Include(s => s.SeekerExperiences)
 				.Include(s => s.User)
+				.AsNoTracking()
 				.FirstOrDefaultAsync(s => s.UserId == userID);
 
 			if (seeker == null) return false;
@@ -255,6 +256,7 @@ namespace JobBoard.Services.SeekerService
 			await _context.SaveChangesAsync();
 			return true;
 		}
+
 
 		// =================== Handle File Upload ===================
 		public async Task<string?> HandleFileUploadAsync(IFormFile? file, string? existingFileUrl, string folderPath, bool removeFile = false)

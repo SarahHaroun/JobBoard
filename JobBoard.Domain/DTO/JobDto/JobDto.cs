@@ -24,10 +24,12 @@ namespace JobBoard.Domain.DTO.JobDto
 		public string? Requirements { get; set; }
 		public string? Responsabilities { get; set; }
 		public string? Benefits { get; set; }
+        public bool IsApproved { get; set; } = false;
 
 
-		// Employer Info (summary)
-		public string CompanyName { get; set; }
+
+        // Employer Info (summary)
+        public string CompanyName { get; set; }
 		public string CompanyLocation { get; set; }
 		public string? CompanyImage { get; set; }
 		public string? Website { get; set; }

@@ -29,7 +29,10 @@ namespace JobBoard.Repositories
 			if (specifications.Includes is not null && specifications.Includes.Count > 0)
                 query = specifications.Includes.Aggregate(query, (currQuery, include) => currQuery.Include(include));
 
-            return query;
+			if (specifications.IsPaginationEnabled)
+				query = query.Skip(specifications.Skip).Take(specifications.Take);
+
+			return query;
         }
     }
 }
