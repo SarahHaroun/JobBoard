@@ -46,7 +46,7 @@ namespace JobBoard.API.Controllers
 
         /*------------------------ Update Profile --------------------------*/
         [HttpPut]
-        public async Task<IActionResult> Update( [FromBody] SeekerProfileUpdateDto dto)
+        public async Task<IActionResult> Update([FromBody] SeekerProfileUpdateDto dto)
         {
             if (userId == null)
                 return Unauthorized(new ResultDto(false, "User not authenticated"));
@@ -62,8 +62,28 @@ namespace JobBoard.API.Controllers
             return Ok(result);
         }
 
-        /*------------------------ Delete Profile by Id --------------------------*/
-        [HttpDelete("{id}")]
+
+		/*------------------------ Upload Files (Profile Image & CV) --------------------------*/
+		[HttpPost("upload-files")]
+		public async Task<IActionResult> UploadFiles([FromForm] SeekerFileUploadDto dto)
+		{
+			if (userId == null)
+				return Unauthorized(new ResultDto(false, "User not authenticated"));
+
+			var result = await seekerService.UploadFilesAsync(userId, dto);
+
+			if (result.CvUrl == null && result.ProfileImageUrl == null)
+				return NotFound(new ResultDto(false, "Seeker profile not found"));
+
+			return Ok(new
+			{
+				CV_Url = result.CvUrl,
+				ProfileImageUrl = result.ProfileImageUrl
+			});
+		}
+
+		/*------------------------ Delete Profile by Id --------------------------*/
+		[HttpDelete("{id}")]
         public async Task<IActionResult> DeleteById(int id)
         {
             var result = await seekerService.DeleteAsync(id);

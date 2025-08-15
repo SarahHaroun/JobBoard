@@ -42,8 +42,6 @@ namespace JobBoard.Domain.Mapping
             // Education
             // -----------------------------
             CreateMap<SeekerEducation, SeekerEducationDto>().ReverseMap();
-
-
             CreateMap<SeekerEducationUpdateDto, SeekerEducation>()
                 .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
 
@@ -53,6 +51,14 @@ namespace JobBoard.Domain.Mapping
             CreateMap<SeekerExperience, SeekerExperienceDto>().ReverseMap();
             CreateMap<SeekerExperienceUpdateDto, SeekerExperience>()
                 .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
-        }
+
+			// -----------------------------
+			// UploadingFiles
+			// -----------------------------
+			CreateMap<SeekerProfileUpdateDto, SeekerProfile>()
+            .ForMember(dest => dest.CV_Url, opt => opt.Ignore()) 
+            .ForMember(dest => dest.ProfileImageUrl, opt => opt.Ignore());
+
+		}
     }
 }

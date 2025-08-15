@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -29,7 +30,7 @@ namespace JobBoard.Domain.DTO.ApplicationDto
 		public string YearsOfExperience { get; set; }
 
 		[Required]
-		public string ResumeUrl { get; set; }
+		public IFormFile ResumeUrl { get; set; }
 
 		public string? CoverLetter { get; set; }
 		public string? PortfolioUrl { get; set; }

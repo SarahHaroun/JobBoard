@@ -11,7 +11,6 @@ namespace JobBoard.Domain.Shared
 {
     public class JobFilterParams
     {
-		//public string? Title { get; set; }
 		public int? CategoryId { get; set; } 
 		public int? SkillId { get; set; }
 		public int? EmployerId { get; set; }
@@ -22,5 +21,6 @@ namespace JobBoard.Domain.Shared
 		public bool? IsActive { get; set; }
 		public JobSortingOptions SortingOption { get; set; }
 		public string? SearchValue { get; set; }
+		public string? SearchByLocationValue { get; set; }
 	}
 }
