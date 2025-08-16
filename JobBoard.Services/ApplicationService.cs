@@ -136,12 +136,11 @@ namespace JobBoard.Services
 
 		public async Task<IEnumerable<ApplicationDto>> GetApplicationsByApplicantIdAsync(int applicantId)
 		{
-			var spec = new ApplicationWithFilterSpecification(applicantId);
+			var spec = new ApplicationWithFilterSpecification(applicantId, isApplicantId: true);
 			var applications = await _unitOfWork.Repository<Application>().GetAllAsync(spec);
 			var mappedApplications = _mapper.Map<IEnumerable<ApplicationDto>>(applications);
 			return mappedApplications;
 		}
-
 		public async Task<bool> HasUserAppliedToJobAsync(int applicantId, int jobId)
 		{
 			var spec = new ApplicationWithFilterSpecification(applicantId, jobId);
