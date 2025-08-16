@@ -18,10 +18,6 @@ namespace JobBoard.Domain.DTO.SeekerDto
 		[StringLength(100, ErrorMessage = "Name must be less than 100 characters")]
 		public string? Name { get; set; }
 
-		[EmailAddress(ErrorMessage = "Invalid email address format")]
-		[StringLength(150, ErrorMessage = "Email must be less than 150 characters")]
-		public string? Email { get; set; }
-
 		[Phone(ErrorMessage = "Invalid phone number format")]
 		[StringLength(20, ErrorMessage = "Phone number must be less than 20 characters")]
 		public string? PhoneNumber { get; set; }
