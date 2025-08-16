@@ -39,6 +39,8 @@ namespace JobBoard.Repositories.Specifications.AdminSpecifications
 		public AllJobsSpecification()
 		{
 			AddIncludes(j => j.Employer);
+			AddIncludes(j => j.Categories);
+			AddIncludes(j => j.Skills);
 		}
 	}
 
@@ -47,6 +49,8 @@ namespace JobBoard.Repositories.Specifications.AdminSpecifications
 		public PendingJobsSpecification() : base(j => !j.IsApproved)
 		{
 			AddIncludes(j => j.Employer);
+			AddIncludes(j => j.Categories);
+			AddIncludes(j => j.Skills);
 		}
 	}
 
@@ -55,6 +59,8 @@ namespace JobBoard.Repositories.Specifications.AdminSpecifications
 		public JobByIdSpecification(int jobId) : base(j => j.Id == jobId)
 		{
 			AddIncludes(j => j.Employer);
+			AddIncludes(j => j.Categories);
+			AddIncludes(j => j.Skills);
 		}
 	}
 }
