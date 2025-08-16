@@ -1,5 +1,6 @@
 ﻿using JobBoard.Domain.Entities;
 using JobBoard.Domain.Shared;
+using JobBoard.Domain.Shared.SortingOptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace JobBoard.Repositories.Specifications
 
 			switch (filterParams.SortingOption)
 			{
-				case SortingOptions.DateAsc:
+				case SortingDateOptions.DateAsc:
 					AddOrderBy(a => a.AppliedDate);
 					break;
 				default:

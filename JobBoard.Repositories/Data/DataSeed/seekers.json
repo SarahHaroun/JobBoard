@@ -1,12 +1,65 @@
 [
   {
-    "FirstName": "Ahmed",
-    "LastName": "Tarek",
-    "Address": "Giza, Egypt",
+    "Name": "Ahmed Ali",
+    "Title": "Software Engineer",
+    "DateOfBirth": "1995-05-15T00:00:00",
+    "Address": "Cairo, Egypt",
     "CV_Url": "cv/ahmedtarek.pdf",
-    "Experience_Level": "EntryLevel",
     "Gender": "Male",
+    "Summary": "A passionate and experienced software engineer with a strong background in developing web applications using modern technologies.",
+    "ProfileImageUrl": "images/profilepic/ahmed_profile.jpg",
     "UserEmail": "seeker1@example.com",
-    "Skills": [ 1, 2, 3 ]
+    "Skills": [ 1, 2, 3 ],
+    "SeekerEducations": [
+      {
+        "Id": 1,
+        "Major": "Computer Science",
+        "Faculty": "Faculty of Engineering",
+        "University": "Cairo University",
+        "Date": "2018-06-30T00:00:00",
+        "Location": "Cairo, Egypt",
+        "GPA": 3.8,
+        "EducationLevel": 3,
+        "SeekerProfileId": 1
+      }
+    ],
+    "SeekerExperiences": [
+      {
+        "Id": 1,
+        "JobTitle": "Software Developer",
+        "CompanyName": "Advanced Technology Inc.",
+        "Location": "Nasr City, Cairo",
+        "StartDate": "2019-01-01T00:00:00",
+        "EndDate": "2023-12-31T00:00:00",
+        "Description": "Developing and maintaining web applications using .NET and SQL Server.",
+        "SeekerProfileId": 1
+      }
+    ],
+    "SeekerTraining": [
+      {
+        "Id": 1,
+        "TrainingName": "Artificial Intelligence Course",
+        "SeekerProfileId": 1
+      }
+    ],
+    "seekerCertificates": [
+      {
+        "Id": 1,
+        "CertificateName": "Azure Developer Associate Certificate",
+        "SeekerProfileId": 1
+      }
+    ],
+    "seekerInterests": [
+      {
+        "Id": 1,
+        "InterestName": "Machine Learning",
+        "SeekerProfileId": 1
+      },
+      {
+        "Id": 2,
+        "InterestName": "Information Security",
+        "SeekerProfileId": 1
+      }
+    ]
   }
 ]

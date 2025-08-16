@@ -11,46 +11,33 @@ namespace JobBoard.Domain.Shared
 {
 	public static class DocumentSettings
 	{
-		// Upload File
-		public static async Task<string> UploadFileAsync(IFormFile file, string folderName, IWebHostEnvironment env, IConfiguration configuration)
+		public static async Task<string> UploadFileAsync(IFormFile file, string folderPath, IWebHostEnvironment env, IConfiguration configuration)
 		{
-			if (file == null || file.Length == 0)
-				return null;
-
 			var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
-			var folderPath = Path.Combine(env.WebRootPath, folderName);
+			var uploadPath = Path.Combine(env.WebRootPath, folderPath);
 
-			// Generate folder if it doesn't exist
-			if (!Directory.Exists(folderPath))
-				Directory.CreateDirectory(folderPath);
+			if (!Directory.Exists(uploadPath))
+				Directory.CreateDirectory(uploadPath);
 
-			var filePath = Path.Combine(folderPath, fileName);
+			var filePath = Path.Combine(uploadPath, fileName);
 
 			using (var stream = new FileStream(filePath, FileMode.Create))
 			{
 				await file.CopyToAsync(stream);
 			}
 
-			return $"{configuration["ApiBaseUrl"]}/{folderName}/{fileName}";
+			return $"{configuration["ApiBaseUrl"]}/{folderPath.Replace("\\", "/")}/{fileName}";
 		}
 
-		// Delet File
-		public static bool DeleteFile(string fileUrl, string folderName, IWebHostEnvironment env)
+		public static void DeleteFile(string fileUrl, string folderPath, IWebHostEnvironment env)
 		{
-			if (string.IsNullOrEmpty(fileUrl))
-				return false;
+			if (string.IsNullOrEmpty(fileUrl)) return;
 
-			// اExtract file name from url
-			var fileName = Path.GetFileName(new Uri(fileUrl).LocalPath);
-			var filePath = Path.Combine(env.WebRootPath, folderName, fileName);
+			var fileName = Path.GetFileName(fileUrl);
+			var fullPath = Path.Combine(env.WebRootPath, folderPath, fileName);
 
-			if (File.Exists(filePath))
-			{
-				File.Delete(filePath);
-				return true;
-			}
-
-			return false;
+			if (File.Exists(fullPath))
+				File.Delete(fullPath);
 		}
 	}
 

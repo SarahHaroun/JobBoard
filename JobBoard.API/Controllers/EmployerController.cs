@@ -66,7 +66,8 @@ namespace JobBoard.API.Controllers
 
 		/*------------------------Update --------------------------*/
 		[HttpPut]
-		public async Task<IActionResult> Update([FromBody] EmpProfileUpdateDto dto)
+		[Consumes("multipart/form-data")]
+		public async Task<IActionResult> Update([FromForm] EmpProfileUpdateDto dto)
 		{
 			if (userId == null)
 				return Unauthorized();

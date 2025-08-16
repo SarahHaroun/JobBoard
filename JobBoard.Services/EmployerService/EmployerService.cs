@@ -9,6 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using JobBoard.Domain.Shared;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 
 namespace JobBoard.Services.EmployerService
 {
@@ -16,12 +19,16 @@ namespace JobBoard.Services.EmployerService
     {
         private readonly ApplicationDbContext context;
         private readonly IMapper mapper;
+		private readonly IWebHostEnvironment env;
+		private readonly IConfiguration configuration;
 
-        public EmployerService(ApplicationDbContext context, IMapper mapper)
+		public EmployerService(ApplicationDbContext context, IMapper mapper, IWebHostEnvironment env, IConfiguration configuration)
         {
             this.context = context;
             this.mapper = mapper;
-        }
+			this.env = env;
+			this.configuration = configuration;
+		}
      
         //public async Task<string> Create(EmpProfileDto model)
         //{
@@ -46,7 +53,9 @@ namespace JobBoard.Services.EmployerService
             {
                 return false;
             }
-            context.EmployerProfiles.Remove(employer);
+			DocumentSettings.DeleteFile(employer.CompanyImage, "images/companies", env);
+
+			context.EmployerProfiles.Remove(employer);
             await context.SaveChangesAsync();
             return true;
         }
@@ -79,8 +88,29 @@ namespace JobBoard.Services.EmployerService
             if (employer == null)
                 return false;
 
-            // Update the employer profile using AutoMapper
-            mapper.Map(model, employer);
+            // ================= Profile Image =================
+			if (model.CompanyImage != null && model.CompanyImage.Length > 0)
+			{
+				// Delete the old profile image from the server if it exists
+				if (!string.IsNullOrEmpty(employer.CompanyImage))
+					DocumentSettings.DeleteFile(employer.CompanyImage, "images/companies", env);
+
+				// Upload the new profile image and update the database 
+				employer.CompanyImage = await DocumentSettings.UploadFileAsync(model.CompanyImage, "images/companies", env, configuration);
+			}
+			else if (model.RemoveCompanyImage)
+			{
+				// if user wants to delete the old image
+				if (!string.IsNullOrEmpty(employer.CompanyImage))
+				{
+					DocumentSettings.DeleteFile(employer.CompanyImage, "images/companies", env);
+					employer.CompanyImage = null;
+				}
+			}
+
+
+			// Update the employer profile using AutoMapper
+			mapper.Map(model, employer);
 
             // Update related User entity manually if needed
             if (!string.IsNullOrEmpty(model.Phone))

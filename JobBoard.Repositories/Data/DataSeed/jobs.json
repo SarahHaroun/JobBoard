@@ -15,6 +15,7 @@
     "Responsabilities": "Develop and maintain full stack web applications. Write clean, efficient, and well-documented code. Collaborate with cross-functional teams including designers and product managers. Participate in code reviews and provide constructive feedback. Troubleshoot and debug applications. Implement responsive designs for various devices. Optimize applications for maximum speed and scalability. Mentor junior developers and share knowledge with the team.",
     "Benefits": "Competitive salary with annual performance bonuses. Comprehensive health insurance including dental and vision. Flexible work hours and work-life balance support. Professional development budget for courses and conferences. Modern office environment with state-of-the-art equipment. Team building activities and company social events. Retirement savings plan with company matching. Paid time off and holidays.",
     "IsActive": true,
+    "IsApproved": true,
     "EmployerId": 5,
     "SkillIds": [ 1, 2, 5, 9, 3 ],
     "CategoryIds": [ 1 ]
@@ -35,6 +36,7 @@
     "Responsabilities": "Design and implement machine learning models and algorithms. Analyze large datasets to identify trends and patterns. Collaborate with business stakeholders to understand requirements. Create data visualizations and reports for executive leadership. Perform statistical analysis and hypothesis testing. Clean and preprocess data for analysis. Monitor model performance and make improvements. Present findings to technical and non-technical audiences.",
     "Benefits": "Highly competitive salary with stock options. Remote work flexibility with home office stipend. Premium health insurance with family coverage options. Annual learning and development allowance. Access to cutting-edge technology and tools. Flexible vacation policy. Mental health and wellness programs. Conference attendance and professional networking opportunities.",
     "IsActive": true,
+    "IsApproved": true,
     "EmployerId": 1,
     "SkillIds": [ 3, 5 ],
     "CategoryIds": [ 2 ]
@@ -55,6 +57,7 @@
     "Responsabilities": "Create wireframes, prototypes, and high-fidelity designs. Conduct user research and usability testing sessions. Collaborate with developers to ensure proper implementation. Design responsive interfaces for web and mobile applications. Create and maintain design systems and style guides. Participate in design critiques and feedback sessions. Stay updated with current design trends and best practices. Assist in creating marketing materials and graphics.",
     "Benefits": "Flexible part-time schedule with potential for full-time conversion. Mentorship from senior designers. Access to premium design software and tools. Professional development opportunities. Creative and collaborative work environment. Opportunity to work on diverse projects. Health insurance subsidy. Paid time off proportional to hours worked.",
     "IsActive": true,
+    "IsApproved": true,
     "EmployerId": 3,
     "SkillIds": [ 6, 7, 5 ],
     "CategoryIds": [ 3 ]
@@ -75,6 +78,7 @@
     "Responsabilities": "Monitor security events and alerts using SIEM tools. Investigate and respond to security incidents and breaches. Conduct vulnerability assessments and penetration testing. Develop and maintain security policies and procedures. Perform risk assessments and security audits. Collaborate with IT teams to implement security measures. Stay current with emerging threats and security trends. Provide security awareness training to employees.",
     "Benefits": "Competitive salary with performance incentives. Hybrid work model for optimal work-life balance. Comprehensive benefits package including health and dental. Professional certification reimbursement and training budget. Access to cutting-edge security tools and technologies. Opportunity to work with industry experts. Flexible working hours. Career advancement opportunities in cybersecurity.",
     "IsActive": true,
+    "IsApproved": true,
     "EmployerId": 2,
     "SkillIds": [ 3, 10 ],
     "CategoryIds": [ 4 ]
@@ -95,6 +99,7 @@
     "Responsabilities": "Plan and execute software development projects from initiation to closure. Coordinate cross-functional teams including developers, designers, and QA engineers. Manage project timelines, budgets, and resource allocation. Facilitate daily standups, sprint planning, and retrospective meetings. Communicate project status to stakeholders and executive leadership. Identify and mitigate project risks and issues. Ensure adherence to quality standards and best practices. Manage vendor relationships and external dependencies.",
     "Benefits": "Competitive base salary with annual bonuses based on project success. Professional development opportunities including PMP certification support. Comprehensive health insurance with family coverage. Retirement savings plan with company matching. Paid time off and flexible work arrangements when needed. Access to project management tools and software. Team leadership training and mentorship programs. Career growth opportunities within the organization.",
     "IsActive": true,
+    "IsApproved": true,
     "EmployerId": 4,
     "SkillIds": [ 10 ],
     "CategoryIds": [ 5, 1 ]
@@ -115,6 +120,7 @@
     "Responsabilities": "Assist in developing user interface components using modern frontend frameworks. Write clean and maintainable HTML, CSS, and JavaScript code. Participate in code reviews and learn from senior developers. Help with testing and debugging frontend applications. Collaborate with design team to implement UI mockups. Attend team meetings and contribute to project discussions. Document code and maintain technical documentation. Learn and apply best practices in web development.",
     "Benefits": "Valuable hands-on experience with real-world projects. Mentorship from experienced senior developers. Flexible hybrid work arrangement accommodating class schedules. Potential for full-time job offer upon graduation. Access to learning resources and online courses. Networking opportunities within the tech industry. Letter of recommendation upon successful completion. Stipend to cover basic expenses during internship.",
     "IsActive": true,
+    "IsApproved": true,
     "EmployerId": 2,
     "SkillIds": [ 6, 7, 5, 9 ],
     "CategoryIds": [ 1 ]
@@ -135,6 +141,7 @@
     "Responsabilities": "Design and develop RESTful APIs using .NET Core framework. Implement business logic and data access layers. Optimize database queries and improve application performance. Write unit tests and participate in code reviews. Collaborate with frontend developers to integrate APIs. Troubleshoot and resolve backend issues and bugs. Maintain and update existing applications and services. Follow security best practices and coding standards.",
     "Benefits": "Competitive part-time hourly rate with flexible scheduling. Fully remote work environment with modern collaboration tools. Health insurance subsidy for part-time employees. Professional development budget for courses and certifications. Access to latest development tools and cloud platforms. Opportunity to work on cutting-edge projects. Flexible hours that accommodate personal schedule. Potential for increased hours or full-time conversion.",
     "IsActive": true,
+    "IsApproved": true,
     "EmployerId": 3,
     "SkillIds": [ 1, 2, 3, 4 ],
     "CategoryIds": [ 1 ]
@@ -155,6 +162,7 @@
     "Responsabilities": "Develop custom websites and web applications for various clients. Create responsive designs that work across all devices and browsers. Implement content management systems and e-commerce solutions. Collaborate with clients to understand project requirements. Perform website maintenance and updates as needed. Optimize websites for search engines and performance. Test applications across different browsers and devices. Provide technical support and training to clients when needed.",
     "Benefits": "Flexible project-based work with competitive compensation per project. Complete freedom to choose projects that interest you. Remote work from anywhere with internet connection. Opportunity to work with diverse clients and industries. Build extensive portfolio with varied project types. Direct client relationship building and networking opportunities. Potential for long-term partnerships with repeat clients. Access to project management tools and development resources.",
     "IsActive": true,
+    "IsApproved": true,
     "EmployerId": 5,
     "SkillIds": [ 6, 7, 5, 8, 10 ],
     "CategoryIds": [ 1 ]
@@ -175,6 +183,7 @@
     "Responsabilities": "Design and implement enterprise security architecture and policies. Lead incident response efforts and coordinate with law enforcement when necessary. Mentor and manage junior security analysts and engineers. Conduct advanced threat hunting and security assessments. Develop security standards and ensure compliance with regulations. Collaborate with executive leadership on security strategy and risk management. Evaluate and implement new security technologies and tools. Present security metrics and reports to board of directors.",
     "Benefits": "Executive-level compensation package with significant annual bonuses. Comprehensive benefits including premium health, dental, and vision insurance. Leadership development programs and executive coaching opportunities. Generous professional development budget for certifications and conferences. Stock options and equity participation in company growth. Flexible PTO policy and sabbatical opportunities. State-of-the-art security lab and research environment. Opportunity to speak at industry conferences and publish research.",
     "IsActive": true,
+    "IsApproved": true,
     "EmployerId": 2,
     "SkillIds": [ 3, 10 ],
     "CategoryIds": [ 4 ]
@@ -195,6 +204,7 @@
     "Responsabilities": "Collect, clean, and analyze data from various business systems and databases. Create reports and dashboards to visualize key business metrics. Assist senior analysts in conducting statistical analysis and modeling. Participate in data quality assessment and improvement initiatives. Support ad-hoc analysis requests from different departments. Help maintain and update existing reports and data processes. Collaborate with business stakeholders to understand analytical requirements. Present findings and insights to team members and management.",
     "Benefits": "Competitive entry-level salary with clear advancement path to senior analyst roles. Hybrid work model combining office collaboration and remote flexibility. Comprehensive training program covering advanced analytical tools and techniques. Mentorship from experienced data professionals. Health insurance with company contribution and wellness programs. Professional development budget for courses and certifications. Modern analytical tools and software licenses. Collaborative team environment focused on learning and growth.",
     "IsActive": true,
+    "IsApproved": true,
     "EmployerId": 4,
     "SkillIds": [ 5, 7 ],
     "CategoryIds": [ 2 ]

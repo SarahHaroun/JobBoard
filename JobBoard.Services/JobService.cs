@@ -48,6 +48,7 @@ namespace JobBoard.Services
 		{
 			var job = _mapper.Map<Job>(jobDto);
 			job.EmployerId = employerId;
+			job.IsApproved = false;
 
 			await MapSkillsAndCategoriesAsync(job, jobDto);
 
@@ -59,9 +60,9 @@ namespace JobBoard.Services
 			return _mapper.Map<JobDto>(job);
 		}
 
-		public async Task<JobDto> UpdateJobAsync(int id, CreateUpdateJobDto jobDto)
+		public async Task<JobDto> UpdateJobAsync(int id, CreateUpdateJobDto jobDto, int employerId)
 		{
-			var spec = new JobsWithFilterSpecifications(id);
+			var spec = new JobUpdateSpecification(id, employerId);
 			var job = await _unitOfWork.Repository<Job>().GetByIdAsync(spec);
 
 			if (job == null)
@@ -69,11 +70,14 @@ namespace JobBoard.Services
 
 			_mapper.Map(jobDto, job);
 
-			await MapSkillsAndCategoriesAsync(job, jobDto);
+			if (job.IsApproved)
+			{
+				job.IsApproved = false;
+			}
 
+			await MapSkillsAndCategoriesAsync(job, jobDto);
 			_unitOfWork.Repository<Job>().Update(job);
 			await _unitOfWork.CompleteAsync();
-
 			await _aiEmbeddingService.GenerateEmbeddingForJobAsync(job);
 
 			return _mapper.Map<JobDto>(job);

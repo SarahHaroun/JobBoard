@@ -8,7 +8,9 @@ using JobBoard.Domain.Shared;
 using JobBoard.Repositories.Specifications;
 using JobBoard.Services.EmployerService;
 using JobBoard.Services.SeekerService;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,11 +23,15 @@ namespace JobBoard.Services
 	{
 		private readonly IUnitOfWork _unitOfWork;
 		private readonly IMapper _mapper;
+		private readonly IWebHostEnvironment _env;
+		private readonly IConfiguration _configuration;
 
-		public ApplicationService(IUnitOfWork unitOfWork, IMapper mapper)
+		public ApplicationService(IUnitOfWork unitOfWork, IMapper mapper, IWebHostEnvironment env, IConfiguration configuration)
 		{
 			_unitOfWork = unitOfWork;
 			_mapper = mapper;
+			_env = env;
+			_configuration = configuration;
 		}
 
 		public async Task<ApplicationDto> CreateApplicationAsync(CreateApplicationDto createDto, int applicantId)
@@ -40,8 +46,25 @@ namespace JobBoard.Services
 			application.AppliedDate = DateTime.UtcNow;
 			application.Status = ApplicationStatus.Pending;
 
-			var appRepo = _unitOfWork.Repository<Application>();
-			await appRepo.AddAsync(application);
+			if (createDto.ResumeUrl != null && createDto.ResumeUrl.Length > 0)
+			{
+				// Delete the old profile image from the server if it exists
+				if (!string.IsNullOrEmpty(application.ResumeUrl))
+					DocumentSettings.DeleteFile(application.ResumeUrl, "applications", _env);
+
+				// Upload the new profile image and update the database 
+				application.ResumeUrl = await DocumentSettings.UploadFileAsync(createDto.ResumeUrl, "applications", _env, _configuration);
+			}
+			else if (createDto.RemoveResume)
+			{
+				// if user wants to delete the old image
+				if (!string.IsNullOrEmpty(application.ResumeUrl))
+				{
+					DocumentSettings.DeleteFile(application.ResumeUrl, "applications", _env);
+					application.ResumeUrl = null;
+				}
+			}
+			await _unitOfWork.Repository<Application>().AddAsync(application);
 
 			var result = await _unitOfWork.CompleteAsync();
 			if (result <= 0)
@@ -97,6 +120,8 @@ namespace JobBoard.Services
 				return false;
 
 			_unitOfWork.Repository<Application>().Delete(application);
+			DocumentSettings.DeleteFile(application.ResumeUrl, "applications", _env);
+
 			var deleted = await _unitOfWork.CompleteAsync();
 			return  deleted > 0;
 		}

@@ -17,6 +17,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Google.Apis.Auth;
 using JobBoard.Domain.DTO.ExternalLoginDto;
+using JobBoard.Domain.Entities.Enums;
 
 namespace JobBoard.Services._ِAuthService
 {
