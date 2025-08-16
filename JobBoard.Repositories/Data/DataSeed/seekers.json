@@ -61,5 +61,78 @@
         "SeekerProfileId": 1
       }
     ]
+  },
+  {
+    "Name": "Mohamed Hassan",
+    "Title": "Data Scientist",
+    "DateOfBirth": "1992-11-22T00:00:00",
+    "Address": "Giza, Egypt",
+    "CV_Url": "cv/mohamedhassan.pdf",
+    "Gender": "Male",
+    "Summary": "An analytical and detail-oriented data scientist with extensive experience in machine learning, data visualization, and statistical modeling.",
+    "ProfileImageUrl": "images/profilepic/mohamed_profile.jpg",
+    "UserEmail": "seeker2@example.com",
+    "Skills": [ 4, 5, 6 ],
+    "SeekerEducations": [
+      {
+        "Id": 2,
+        "Major": "Statistics",
+        "Faculty": "Faculty of Economics and Political Science",
+        "University": "Cairo University",
+        "Date": "2015-06-25T00:00:00",
+        "Location": "Cairo, Egypt",
+        "GPA": 3.6,
+        "EducationLevel": 3,
+        "SeekerProfileId": 2
+      }
+    ],
+    "SeekerExperiences": [
+      {
+        "Id": 2,
+        "JobTitle": "Data Analyst",
+        "CompanyName": "Data Insights Co.",
+        "Location": "Maadi, Cairo",
+        "StartDate": "2016-03-01T00:00:00",
+        "EndDate": "2020-05-30T00:00:00",
+        "Description": "Collecting, cleaning, and interpreting data sets to solve business problems and provide actionable insights.",
+        "SeekerProfileId": 2
+      },
+      {
+        "Id": 3,
+        "JobTitle": "Senior Data Scientist",
+        "CompanyName": "Tech Solutions Ltd.",
+        "Location": "Heliopolis, Cairo",
+        "StartDate": "2020-06-01T00:00:00",
+        "EndDate": "2025-08-16T00:00:00",
+        "Description": "Developing predictive models and algorithms to optimize operational efficiency and improve customer experience.",
+        "SeekerProfileId": 2
+      }
+    ],
+    "SeekerTraining": [
+      {
+        "Id": 2,
+        "TrainingName": "Data Science with Python",
+        "SeekerProfileId": 2
+      }
+    ],
+    "seekerCertificates": [
+      {
+        "Id": 2,
+        "CertificateName": "IBM Data Science Professional Certificate",
+        "SeekerProfileId": 2
+      }
+    ],
+    "seekerInterests": [
+      {
+        "Id": 3,
+        "InterestName": "Big Data",
+        "SeekerProfileId": 2
+      },
+      {
+        "Id": 4,
+        "InterestName": "Artificial Intelligence",
+        "SeekerProfileId": 2
+      }
+    ]
   }
 ]

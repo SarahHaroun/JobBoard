@@ -11,15 +11,16 @@ namespace JobBoard.Repositories.Specifications
 {
 	public class SavedJobWithFilterSpecification : BaseSpecifications<SavedJob>
 	{
-		public SavedJobWithFilterSpecification(SavedJobFilterParams filterParams)
+		public SavedJobWithFilterSpecification(int seekerId, SavedJobFilterParams filterParams)
 		: base(s =>
-		string.IsNullOrEmpty(filterParams.SearchValue) ||
-		(
-			s.Job.Title.ToLower().Contains(filterParams.SearchValue.ToLower()) ||
-			s.Job.Employer.CompanyName.ToLower().Contains(filterParams.SearchValue.ToLower()) ||
-			s.Job.Employer.CompanyLocation.ToLower().Contains(filterParams.SearchValue.ToLower())
+			s.SeekerId == seekerId && 
+			(string.IsNullOrEmpty(filterParams.SearchValue) ||
+			(
+				s.Job.Title.ToLower().Contains(filterParams.SearchValue.ToLower()) ||
+				s.Job.Employer.CompanyName.ToLower().Contains(filterParams.SearchValue.ToLower()) ||
+				s.Job.Employer.CompanyLocation.ToLower().Contains(filterParams.SearchValue.ToLower())
+			))
 		)
-	)
 		{
 			AddIncludes(s => s.Job);
 			AddIncludes(s => s.Job.Employer);
@@ -35,7 +36,15 @@ namespace JobBoard.Repositories.Specifications
 			}
 		}
 
-		public SavedJobWithFilterSpecification(int id): base( s => s.Id ==  id)
+		public SavedJobWithFilterSpecification(int seekerId, int jobId)
+			: base(s => s.SeekerId == seekerId && s.JobId == jobId)
+		{
+			AddIncludes(s => s.Job);
+			AddIncludes(s => s.Job.Employer);
+		}
+
+		public SavedJobWithFilterSpecification(int savedJobId)
+			: base(s => s.Id == savedJobId)
 		{
 			AddIncludes(s => s.Job);
 			AddIncludes(s => s.Job.Employer);
