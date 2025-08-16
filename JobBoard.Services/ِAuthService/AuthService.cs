@@ -428,10 +428,21 @@ namespace JobBoard.Services._ِAuthService
             // 3. if user not found --> generate user with role came from client
             if (user == null)
             {
+                // Check if the role came from client is valid
+                if (!Enum.TryParse<UserType>(model.RoleFromClient, true, out var userType))
+                {
+                    return new ResultLoginDto
+                    {
+                        Succeeded = false,
+                        Message = "Invalid user type."
+                    };
+                }
+
                 user = new ApplicationUser
                 {
                     Email = payload.Email,
                     UserName = payload.Email,
+                    User_Type = userType,
                     EmailConfirmed = true
                 };
 
@@ -442,17 +453,6 @@ namespace JobBoard.Services._ِAuthService
                     {
                         Succeeded = false,
                         Message = "Failed to create user from Google account."
-                    };
-                }
-
-                // make sure that the role came from client is already found
-                
-                if (!Enum.TryParse<UserType>(model.RoleFromClient, true, out var userType))
-                {
-                    return new ResultLoginDto
-                    {
-                        Succeeded = false,
-                        Message = "Invalid user type."
                     };
                 }
 
