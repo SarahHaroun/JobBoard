@@ -40,12 +40,15 @@ namespace JobBoard.API.Controllers
 		[HttpPost("ask")]
 		public async Task<IActionResult> AskGemini([FromBody] AskQuestionDto dto)
 		{
-			if (string.IsNullOrWhiteSpace(dto.Question))
-				return BadRequest("Question is required.");
+            if (string.IsNullOrWhiteSpace(dto.Question))
+                return BadRequest("Question is required.");
+            if (string.IsNullOrWhiteSpace(dto.UserId))
+                return BadRequest("UserId is required.");
 
-			var answer = await _aiEmbeddingService.GetJobAnswerFromGeminiAsync(dto.Question);
+            var answer = await _aiEmbeddingService.GetJobAnswerFromGeminiAsync(dto.UserId, dto.Question);
 
-			return Ok(new { answer });
+
+            return Ok(new { answer });
 		}
 
 

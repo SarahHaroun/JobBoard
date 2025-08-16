@@ -13,8 +13,10 @@ namespace JobBoard.Services.AIEmbeddingService
         public Task GenerateEmbeddingsForJobsAsync();
         public Task<List<SemanticSearchResultDto>> SearchJobsByMeaningAsync(string query, int topK);
         public Task<string> GetJobAnswerFromGeminiAsync(string userQuestion);
+        public Task<string> GetJobAnswerFromGeminiAsync(string userId, string userQuestion);
 
         public Task GenerateEmbeddingForJobAsync(Job job);
+        public Task DeleteEmbeddingForJobAsync(int jobId);
 
     }
 }
