@@ -20,6 +20,8 @@ namespace JobBoard.Domain.DTO.JobDto
 		public int? MinTeamSize { get; set; }
 		public int? MaxTeamSize { get; set; }
 		public bool IsActive { get; set; }
+		public bool IsApproved { get; set; } 
+
 		public string? Requirements { get; set; }
 		public string? Responsabilities { get; set; }
 		public string? Benefits { get; set; }

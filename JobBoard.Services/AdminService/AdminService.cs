@@ -6,7 +6,9 @@ using JobBoard.Domain.DTO.SeekerDto;
 using JobBoard.Domain.Entities;
 using JobBoard.Domain.Entities.Enums;
 using JobBoard.Domain.Repositories.Contract;
+using JobBoard.Domain.Shared;
 using JobBoard.Repositories.Persistence;
+using JobBoard.Repositories.Specifications;
 using JobBoard.Repositories.Specifications.AdminSpecifications;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -54,9 +56,14 @@ namespace JobBoard.Services.AdminService
 
 		public async Task<List<JobDto>> GetPendingJobsAsync()
 		{
-			var spec = new PendingJobsSpecification();
-			var jobs = await _unitOfWork.Repository<Job>().GetAllAsync(spec);
+			var spec = new JobsWithFilterSpecifications(new JobFilterParams
+			{
+				EmployerId = employerId,
+				// إضافة parameter جديد للPending jobs
+			}); var jobs = await _unitOfWork.Repository<Job>().GetAllAsync(spec);
 			return _mapper.Map<List<JobDto>>(jobs);
+
+
 		}
 
 		public async Task<bool> ApproveJobAsync(int jobId)

@@ -38,6 +38,7 @@ namespace JobBoard.Domain.DTO.JobDto
 		[Range(1, 100)]
 		public int? MaxTeamSize { get; set; }
 		public bool IsActive { get; set; } = true;
+		public bool? IsApproved { get; set; }
 		public string? Requirements { get; set; }
 		public string? Responsabilities { get; set; }
 		public string? Benefits { get; set; }
