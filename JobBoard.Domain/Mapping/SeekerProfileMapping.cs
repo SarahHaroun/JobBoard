@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace JobBoard.Domain.Mapping
 {
+    
 
     public class SeekerProfileMapping : Profile
     {
