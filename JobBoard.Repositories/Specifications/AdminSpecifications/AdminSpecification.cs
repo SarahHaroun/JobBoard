@@ -23,6 +23,10 @@ namespace JobBoard.Repositories.Specifications.AdminSpecifications
 			AddIncludes(s => s.seekerCertificates);
 			AddIncludes(s => s.seekerInterests);
 			AddIncludes(s => s.UserApplications);
+			
+			
+			AddOrderByDesc(e => e.Id);
+
 		}
 	}
 
@@ -31,6 +35,9 @@ namespace JobBoard.Repositories.Specifications.AdminSpecifications
 		public AllEmployersSpecification()
 		{
 			AddIncludes(e => e.User);
+			
+			
+			AddOrderByDesc(e => e.Id);
 		}
 	}
 
@@ -41,6 +48,7 @@ namespace JobBoard.Repositories.Specifications.AdminSpecifications
 			AddIncludes(j => j.Employer);
 			AddIncludes(j => j.Categories);
 			AddIncludes(j => j.Skills);
+			AddOrderByDesc(j => j.PostedDate);
 		}
 	}
 
@@ -51,6 +59,7 @@ namespace JobBoard.Repositories.Specifications.AdminSpecifications
 			AddIncludes(j => j.Employer);
 			AddIncludes(j => j.Categories);
 			AddIncludes(j => j.Skills);
+			AddOrderByDesc(j => j.PostedDate);
 		}
 	}
 

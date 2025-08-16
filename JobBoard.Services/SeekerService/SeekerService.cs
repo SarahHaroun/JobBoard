@@ -270,7 +270,6 @@ namespace JobBoard.Services.SeekerService
 				.Include(s => s.SeekerEducations)
 				.Include(s => s.SeekerExperiences)
 				.Include(s => s.User)
-				.AsNoTracking()
 				.FirstOrDefaultAsync(s => s.UserId == userID);
 
 			if (seeker == null) return false;

@@ -56,13 +56,9 @@ namespace JobBoard.Services.AdminService
 
 		public async Task<List<JobDto>> GetPendingJobsAsync()
 		{
-			var spec = new JobsWithFilterSpecifications(new JobFilterParams
-			{
-				EmployerId = employerId,
-				// إضافة parameter جديد للPending jobs
-			}); var jobs = await _unitOfWork.Repository<Job>().GetAllAsync(spec);
+			var spec = new PendingJobsSpecification();
+			var jobs = await _unitOfWork.Repository<Job>().GetAllAsync(spec);
 			return _mapper.Map<List<JobDto>>(jobs);
-
 
 		}
 
@@ -120,5 +116,6 @@ namespace JobBoard.Services.AdminService
 				TotalJobs = jobsCount,
 				PendingJobs = pendingJobsCount
 			};
-		}	}
+		}
+	}
 }
