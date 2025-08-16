@@ -16,6 +16,7 @@ namespace JobBoard.Services.AIEmbeddingService
         public Task<string> GetJobAnswerFromGeminiAsync(string userId, string userQuestion);
 
         public Task GenerateEmbeddingForJobAsync(Job job);
+        public Task DeleteEmbeddingForJobAsync(int jobId);
 
     }
 }
