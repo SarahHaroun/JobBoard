@@ -14,8 +14,7 @@ namespace JobBoard.Services.SeekerService
     {
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
-		private readonly IWebHostEnvironment _env;
-		private readonly IConfiguration _configuration;
+		
 
 		public SeekerService(ApplicationDbContext context, IMapper mapper)
         {
@@ -51,7 +50,6 @@ namespace JobBoard.Services.SeekerService
                 .Include(s => s.SeekerEducations)
                 .Include(s => s.SeekerExperiences)
                 .Include(s => s.User)
-                .AsNoTracking()
                 .ToListAsync();
 
             return _mapper.Map<List<SeekerProfileDto>>(seekers);
@@ -68,7 +66,6 @@ namespace JobBoard.Services.SeekerService
                 .Include(s => s.SeekerEducations)
                 .Include(s => s.SeekerExperiences)
                 .Include(s => s.User)
-                .AsNoTracking()
                 .FirstOrDefaultAsync(s => s.UserId == userID);
 
             if (seeker == null) return false;
