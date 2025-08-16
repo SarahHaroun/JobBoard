@@ -27,10 +27,11 @@ namespace JobBoard.Domain.Mapping
                 .ForMember(dest => dest.SeekerEducations, opt => opt.MapFrom(src => src.SeekerEducations))
                 .ForMember(dest => dest.SeekerExperiences, opt => opt.MapFrom(src => src.SeekerExperiences));
 
-            // -----------------------------
-            // DTO -> Seeker Profile
-            // -----------------------------
-            CreateMap<SeekerProfileUpdateDto, SeekerProfile>()
+		
+			// -----------------------------
+			// DTO -> Seeker Profile
+			// -----------------------------
+			CreateMap<SeekerProfileUpdateDto, SeekerProfile>()
                 .ForMember(dest => dest.Skills, opt => opt.MapFrom(src => src.Skills.Select(s => new Skill { SkillName = s })))
                 .ForMember(dest => dest.seekerInterests, opt => opt.MapFrom(src => src.Interests.Select(i => new SeekerInterest { InterestName = i })))
                 .ForMember(dest => dest.seekerCertificates, opt => opt.MapFrom(src => src.Certificates.Select(c => new SeekerCertificate { CertificateName = c })))

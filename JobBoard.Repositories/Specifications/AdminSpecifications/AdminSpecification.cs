@@ -12,7 +12,17 @@ namespace JobBoard.Repositories.Specifications.AdminSpecifications
 	{
 		public AllSeekersSpecification()
 		{
+			// Include User data
 			AddIncludes(s => s.User);
+
+			// Include all related collections
+			AddIncludes(s => s.Skills);
+			AddIncludes(s => s.SeekerEducations);
+			AddIncludes(s => s.SeekerExperiences);
+			AddIncludes(s => s.SeekerTraining);
+			AddIncludes(s => s.seekerCertificates);
+			AddIncludes(s => s.seekerInterests);
+			AddIncludes(s => s.UserApplications);
 		}
 	}
 
