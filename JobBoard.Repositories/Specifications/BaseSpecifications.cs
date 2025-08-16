@@ -22,6 +22,10 @@ namespace JobBoard.Repositories.Specifications
 		public List<Expression<Func<TEntity, object>>> Includes { get; } = [];
 		public Expression<Func<TEntity, object>> Order { get; private set; }
 		public Expression<Func<TEntity, object>> OrderDesc { get; private set; }
+		public int Skip { get; set; }
+		public int Take { get; set; }
+		public bool IsPaginationEnabled { get; set; } = false;
+
 
 		protected void AddIncludes(Expression<Func<TEntity, object>> include)
 		{
@@ -39,6 +43,13 @@ namespace JobBoard.Repositories.Specifications
 		{
 			if (orderDesc is not null)
 				OrderDesc = orderDesc;
+		}
+
+		protected void AddPagination(int skip, int take)
+		{
+			Skip = skip;
+			Take = take;
+			IsPaginationEnabled = true;
 		}
 	}
 }

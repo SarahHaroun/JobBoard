@@ -4,6 +4,7 @@ using JobBoard.Domain.DTO.JobDto;
 using JobBoard.Domain.DTO.SeekerDto;
 using JobBoard.Domain.DTO.UserDto;
 using JobBoard.Domain.Entities;
+using JobBoard.Domain.Entities.Enums;
 using JobBoard.Repositories.Persistence;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -141,7 +142,26 @@ namespace JobBoard.Repositories.Data
 				}
 			}
 
-			await context.SaveChangesAsync();
+            // Create Admin account if not exists
+            var adminEmail = "admin@example.com";
+            if (await userManager.FindByEmailAsync(adminEmail) == null)
+            {
+                var adminUser = new ApplicationUser
+                {
+                    UserName = adminEmail,
+                    Email = adminEmail,
+                    EmailConfirmed = true
+                };
+
+                var result = await userManager.CreateAsync(adminUser, "Admin@123"); // Password
+                if (result.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(adminUser, "Admin");
+                }
+            }
+
+
+            await context.SaveChangesAsync();
 		}
 
 		//Load list<T> from JSON file

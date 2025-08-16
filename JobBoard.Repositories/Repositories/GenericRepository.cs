@@ -53,10 +53,15 @@ namespace JobBoard.Repositories.Repositories
 		{
 			_context.Remove(entity);
 		}
-
 		public async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate)
 		{
 			return await _context.Set<TEntity>().AnyAsync(predicate);
+		}
+
+		public async Task<int> CountAsync(ISpecifications<TEntity> specifications = null)
+		{
+			var query = SpecificationEvaluator.CreateQuery(_context.Set<TEntity>(), specifications, isForCount: true);
+			return await query.CountAsync();
 		}
 	}
 }

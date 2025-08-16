@@ -309,6 +309,9 @@ namespace JobBoard.Repositories.Data.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsApproved")
+                        .HasColumnType("bit");
+
                     b.Property<string>("JobType")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -794,7 +797,7 @@ namespace JobBoard.Repositories.Data.Migrations
                     b.HasOne("JobBoard.Domain.Entities.ApplicationUser", "User")
                         .WithOne("employerProfile")
                         .HasForeignKey("JobBoard.Domain.Entities.EmployerProfile", "UserId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("User");
                 });
@@ -878,7 +881,7 @@ namespace JobBoard.Repositories.Data.Migrations
                     b.HasOne("JobBoard.Domain.Entities.ApplicationUser", "User")
                         .WithOne("seekerProfile")
                         .HasForeignKey("JobBoard.Domain.Entities.SeekerProfile", "UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");

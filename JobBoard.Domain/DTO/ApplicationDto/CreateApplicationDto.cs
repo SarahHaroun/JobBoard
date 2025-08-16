@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using JobBoard.Domain.Attributes;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -29,9 +30,11 @@ namespace JobBoard.Domain.DTO.ApplicationDto
 		[Required]
 		public string YearsOfExperience { get; set; }
 
-		[Required]
-		public IFormFile ResumeUrl { get; set; }
+		public bool RemoveResume { get; set; } = false;
 
+		[Required]
+		[AllowedExtensions("pdf", "doc", "docx", ErrorMessage = "Only PDF and Word documents are allowed for CV.")]
+		public IFormFile ResumeUrl { get; set; }
 		public string? CoverLetter { get; set; }
 		public string? PortfolioUrl { get; set; }
 		public string? LinkedInUrl { get; set; }

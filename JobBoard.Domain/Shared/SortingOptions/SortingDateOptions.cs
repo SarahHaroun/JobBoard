@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JobBoard.Domain.Shared
+namespace JobBoard.Domain.Shared.SortingOptions
 {
-    public enum SortingOptions
+    public enum SortingDateOptions
     {
         DateDesc,
 		DateAsc

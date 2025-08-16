@@ -26,10 +26,12 @@ namespace JobBoard.Domain.Entities
         public string? Requirements { get; set; } 
 		public string? Responsabilities { get; set; }
 		public string? Benefits { get; set; }
+        public bool IsApproved { get; set; } = false;
 
 
-		/*------------------------Category--------------------------*/
-		public ICollection<Category>? Categories { get; set; }
+
+        /*------------------------Category--------------------------*/
+        public ICollection<Category>? Categories { get; set; }
 
 
         /*------------------------Applications--------------------------*/
