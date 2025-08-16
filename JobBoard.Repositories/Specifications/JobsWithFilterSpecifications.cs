@@ -11,8 +11,9 @@ namespace JobBoard.Repositories.Specifications
 	public class JobsWithFilterSpecifications : BaseSpecifications<Job>
 	{
 		public JobsWithFilterSpecifications(JobFilterParams filterParams)
-			: base(j =>
+			: base(j => j.IsApproved &&
 			(string.IsNullOrWhiteSpace(filterParams.SearchValue) || j.Title.ToLower().Contains(filterParams.SearchValue.ToLower())) &&
+			(string.IsNullOrWhiteSpace(filterParams.SearchByLocationValue) || j.Employer.CompanyLocation.ToLower().Contains(filterParams.SearchByLocationValue.ToLower())) &&
 			(!filterParams.CategoryId.HasValue || j.Categories.Any(jc => jc.Id == filterParams.CategoryId)) &&
 			(!filterParams.SkillId.HasValue || j.Skills.Any(js => js.Id == filterParams.SkillId)) &&
 			(!filterParams.EmployerId.HasValue || j.EmployerId == filterParams.EmployerId) &&
@@ -40,8 +41,11 @@ namespace JobBoard.Repositories.Specifications
 					AddOrderByDesc(j => j.PostedDate);
 					break;
 			}
+
+			var skip = filterParams.PageSize * (filterParams.PageIndex - 1);
+			AddPagination(skip, filterParams.PageSize);
 		}
-		public JobsWithFilterSpecifications(int id) : base(j => j.Id == id)
+		public JobsWithFilterSpecifications(int id) : base(j => j.Id == id && j.IsApproved)
 		{
 			{
 				AddIncludes(j => j.Skills);

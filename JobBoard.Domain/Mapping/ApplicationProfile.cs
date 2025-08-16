@@ -16,7 +16,9 @@ namespace JobBoard.Domain.Mapping
 		{
 			CreateMap<CreateApplicationDto, Application>()
 			.ForMember(dest => dest.AppliedDate, opt => opt.MapFrom(src => DateTime.UtcNow))
-			.ForMember(dest => dest.Status, opt => opt.MapFrom(src => ApplicationStatus.Pending));
+			.ForMember(dest => dest.Status, opt => opt.MapFrom(src => ApplicationStatus.Pending))
+			.ForMember(dest => dest.ResumeUrl, opt => opt.Ignore());
+
 
 			CreateMap<Application, ApplicationDto>()
 				.ForMember(dest => dest.Job, opt => opt.MapFrom(src => src.Job))

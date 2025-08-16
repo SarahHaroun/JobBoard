@@ -27,7 +27,6 @@ namespace JobBoard.Domain.DTO.JobDto
 		[Required]
 		public WorkplaceType WorkplaceType { get; set; }
 
-
 		[Required]
 		public JobType JobType { get; set; }
 		public EducationLevel? EducationLevel { get; set; }
@@ -39,10 +38,10 @@ namespace JobBoard.Domain.DTO.JobDto
 		[Range(1, 100)]
 		public int? MaxTeamSize { get; set; }
 		public bool IsActive { get; set; } = true;
+		public bool? IsApproved { get; set; }
 		public string? Requirements { get; set; }
 		public string? Responsabilities { get; set; }
 		public string? Benefits { get; set; }
-
 		public List<int> CategoryIds { get; set; } = [];
 		public List<int> SkillIds { get; set; } = [];
 	}

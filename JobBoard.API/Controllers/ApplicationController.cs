@@ -27,8 +27,9 @@ namespace JobBoard.API.Controllers
 
 		// POST: api/applications
 		[HttpPost]
+		[Consumes("multipart/form-data")]
 		[Authorize(Roles = "Seeker")]
-		public async Task<IActionResult> CreateApplication([FromBody] CreateApplicationDto createDto)
+		public async Task<IActionResult> CreateApplication([FromForm] CreateApplicationDto createDto)
 		{
 			if (!ModelState.IsValid)
 				return BadRequest(ModelState);

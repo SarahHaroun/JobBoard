@@ -13,5 +13,8 @@ namespace JobBoard.Domain.Repositories.Contract
 		public List<Expression<Func<TEntity, object>>> Includes { get; }
 		public Expression<Func<TEntity, object>> Order { get; }
 		public Expression<Func<TEntity, object>> OrderDesc { get; }
+		public int Skip { get; set; }
+		public int Take { get; set; }
+		public bool IsPaginationEnabled { get; set; }
 	}
 }

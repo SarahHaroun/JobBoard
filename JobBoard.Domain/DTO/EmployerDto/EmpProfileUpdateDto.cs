@@ -1,4 +1,6 @@
-﻿using System;
+﻿using JobBoard.Domain.Attributes;
+using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -17,8 +19,12 @@ namespace JobBoard.Domain.DTO.EmployerDto
         [StringLength(150, ErrorMessage = "Location must be less than 150 characters")]
         public string? CompanyLocation { get; set; }
 
-        [Url(ErrorMessage = "Company image must be a valid URL")]
-        public string? CompanyImage { get; set; }
+		[DataType(DataType.Upload)]
+
+		public bool RemoveCompanyImage { get; set; } = false;
+
+		[AllowedExtensions("jpg", "jpeg", "png", "gif", "webp", ErrorMessage = "Only image files are allowed.")]
+		public IFormFile? CompanyImage { get; set; }
 
         [Url(ErrorMessage = "Website must be a valid URL")]
         public string? Website { get; set; }

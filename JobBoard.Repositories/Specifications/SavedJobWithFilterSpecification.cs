@@ -1,5 +1,6 @@
 ﻿using JobBoard.Domain.Entities;
 using JobBoard.Domain.Shared;
+using JobBoard.Domain.Shared.SortingOptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,16 +12,21 @@ namespace JobBoard.Repositories.Specifications
 	public class SavedJobWithFilterSpecification : BaseSpecifications<SavedJob>
 	{
 		public SavedJobWithFilterSpecification(SavedJobFilterParams filterParams)
-			: base(s =>
-				(string.IsNullOrEmpty(filterParams.SearchValue) || s.Job.Title.ToLower().Contains(filterParams.SearchValue.ToLower()))
-			)
+		: base(s =>
+		string.IsNullOrEmpty(filterParams.SearchValue) ||
+		(
+			s.Job.Title.ToLower().Contains(filterParams.SearchValue.ToLower()) ||
+			s.Job.Employer.CompanyName.ToLower().Contains(filterParams.SearchValue.ToLower()) ||
+			s.Job.Employer.CompanyLocation.ToLower().Contains(filterParams.SearchValue.ToLower())
+		)
+	)
 		{
 			AddIncludes(s => s.Job);
 			AddIncludes(s => s.Job.Employer);
 
 			switch (filterParams.SortingOption)
 			{
-				case SortingOptions.DateAsc:
+				case SortingDateOptions.DateAsc:
 					AddOrderBy(s => s.SavedAt);
 					break;
 				default:

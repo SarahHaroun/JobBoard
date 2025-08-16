@@ -82,16 +82,13 @@ namespace JobBoard.API.Controllers
 			var employer = await _employerService.GetByUserId(userId);
 			if (employer == null)
 				return Unauthorized("You are not authorized to edit this job.");
+			
+			var updatedJob = await _jobService.UpdateJobAsync(id, jobDto, employer.Id);
 
-			try
-			{
-				var updatedJob = await _jobService.UpdateJobAsync(id, jobDto);
-				return Ok(updatedJob);
-			}
-			catch (Exception ex)
-			{
-				return NotFound(ex.Message);
-			}
+			if (updatedJob == null)
+				return NotFound("Job not found or you don't have permission to edit it.");
+
+			return Ok(updatedJob);
 		}
 
 

@@ -18,10 +18,8 @@ namespace JobBoard.Domain.Mapping
                 .ForMember(dest => dest.Phone, op => op.MapFrom(src => src.User.PhoneNumber))
                 .ReverseMap();
 
-            CreateMap<EmpProfileUpdateDto, EmployerProfile>();
-           
-
-
-        }
-    }
+            CreateMap<EmpProfileUpdateDto, EmployerProfile>()
+                .ForMember(dest => dest.CompanyImage, opt => opt.Ignore());
+		}
+	}
 }

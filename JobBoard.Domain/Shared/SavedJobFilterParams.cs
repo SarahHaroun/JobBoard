@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JobBoard.Domain.Shared.SortingOptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,6 @@ namespace JobBoard.Domain.Shared
 	public class SavedJobFilterParams
 	{
 		public string? SearchValue { get; set; }
-		public SortingOptions SortingOption { get; set; } = SortingOptions.DateDesc;
+		public SortingDateOptions SortingOption { get; set; } = SortingDateOptions.DateDesc;
 	}
 }
