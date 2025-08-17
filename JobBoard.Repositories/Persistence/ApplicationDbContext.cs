@@ -29,7 +29,7 @@ namespace JobBoard.Repositories.Persistence
         public DbSet<SavedJob> SavedJobs { get; set; }
 
         public DbSet<AIEmbedding> AIEmbeddings { get; set; }
-
+        public DbSet<Notification> Notifications { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

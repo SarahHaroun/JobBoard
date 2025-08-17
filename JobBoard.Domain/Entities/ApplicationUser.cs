@@ -16,6 +16,7 @@ namespace JobBoard.Domain.Entities
         // Navigation properties
         public EmployerProfile employerProfile { get; set; }
         public SeekerProfile seekerProfile { get; set; }
+        public List<Notification> Notifications { get; set; } = new List<Notification>();
 
     }
 }
