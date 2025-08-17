@@ -12,6 +12,7 @@ namespace JobBoard.Domain.Entities
     public class ApplicationUser : IdentityUser
     {
         public UserType User_Type { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
         // Navigation properties
         public EmployerProfile employerProfile { get; set; }
