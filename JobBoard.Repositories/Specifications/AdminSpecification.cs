@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JobBoard.Repositories.Specifications.AdminSpecifications
+namespace JobBoard.Repositories.Specifications
 {
 	// Admin Specifications
 	public class AllSeekersSpecification : BaseSpecifications<SeekerProfile>

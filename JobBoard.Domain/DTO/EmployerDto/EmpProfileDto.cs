@@ -1,4 +1,6 @@
-﻿using System;
+﻿using JobBoard.Domain.DTO.JobDto;
+using JobBoard.Domain.Entities;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace JobBoard.Domain.DTO.EmployerDto
@@ -40,5 +42,6 @@ namespace JobBoard.Domain.DTO.EmployerDto
         [Phone(ErrorMessage = "Invalid phone number")]
         public string? Phone { get; set; }
         public string? UserId { get; set; }
-    }
+		public List<JobListDto>? PostedJobs { get; set; }
+	}
 }

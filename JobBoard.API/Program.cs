@@ -1,16 +1,19 @@
 ﻿using AutoMapper;
 using JobBoard.Domain.Entities;
 using JobBoard.Domain.Mapping;
+using JobBoard.Domain.Mapping.Resolvers;
 using JobBoard.Domain.Repositories.Contract;
 using JobBoard.Domain.Services.Contract;
 using JobBoard.Repositories;
 using JobBoard.Repositories.Data;
 using JobBoard.Repositories.Persistence;
+using JobBoard.Repositories.Redis;
 using JobBoard.Services;
 using JobBoard.Services._ِAuthService;
+using JobBoard.Services.AdminService;
+using JobBoard.Services.AIChatHistoryServices;
 using JobBoard.Services.AIEmbeddingService;
 using JobBoard.Services.AIServices;
-using JobBoard.Services.CategoryService;
 using JobBoard.Services.EmailService;
 using JobBoard.Services.EmployerService;
 using JobBoard.Services.SeekerService;
@@ -18,14 +21,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using StackExchange.Redis;
 using System.Text;
 using System.Text.Json.Serialization;
-using JobBoard.Domain.Mapping.Resolvers;
-
-using StackExchange.Redis;
-using JobBoard.Services.AIChatHistoryServices;
-using JobBoard.Repositories.Redis;
-using JobBoard.Services.AdminService;
 
 namespace JobBoard.API
 {
@@ -93,20 +91,11 @@ namespace JobBoard.API
 			builder.Services.AddScoped<IEmployerService, EmployerService>();
 			builder.Services.AddScoped<ISeekerService, SeekerService>();
 			builder.Services.AddScoped<IJobService, JobService>();
-			builder.Services.AddScoped<ISeekerService, SeekerService>();
-			builder.Services.AddScoped<ICategoryService, CategoryService>();
             builder.Services.AddScoped<IAuthService, AuthService>();
-            builder.Services.AddScoped<IEmployerService, EmployerService>();
-            builder.Services.AddScoped<ISeekerService, SeekerService>();
-            builder.Services.AddScoped<IJobService, JobService>();
-            builder.Services.AddScoped<ISeekerService, SeekerService>();
-            builder.Services.AddScoped<ICategoryService, CategoryService>();
             builder.Services.AddScoped<IEmailService, EmailService>();
             builder.Services.AddScoped<IApplicationService, ApplicationService>();
             builder.Services.AddScoped<ISavedJobService, SavedJobService>();
             builder.Services.AddScoped<IAdminService, AdminService>();
-
-
 			builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 			/*-------------------- Add Ai Service ---------------------*/

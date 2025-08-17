@@ -124,11 +124,12 @@ namespace JobBoard.Services.EmployerService
 
         public async Task<EmpProfileDto?> GetByUserId(string userId)
         {
-            var emp = await context.EmployerProfiles.Include(e => e.User).FirstOrDefaultAsync(e => e.UserId == userId);
-            if (emp == null)
-                return null;
+			var emp = await context.EmployerProfiles.Include(e => e.User)
+		        .Include(e => e.PostedJobs).ThenInclude(js => js.Skills).FirstOrDefaultAsync(e => e.UserId == userId);
+			if (emp == null)
+				return null;
 
-            return mapper.Map<EmpProfileDto>(emp);
+			return mapper.Map<EmpProfileDto>(emp);
         }
 	}
 }

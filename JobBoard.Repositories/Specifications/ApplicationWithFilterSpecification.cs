@@ -39,6 +39,7 @@ namespace JobBoard.Repositories.Specifications
 		{
 			AddIncludes(a => a.Job);
 			AddIncludes(a => a.Applicant);
+			AddIncludes(a => a.Job.Employer);
 		}
 
 		public ApplicationWithFilterSpecification(int applicantId, int jobId)
@@ -52,6 +53,7 @@ namespace JobBoard.Repositories.Specifications
 		: base(a => a.ApplicantId == applicantId)
 		{
 			AddIncludes(a => a.Job);
+			AddIncludes(a => a.Job.Employer);
 			AddIncludes(a => a.Applicant);
 			AddOrderByDesc(a => a.AppliedDate);
 		}

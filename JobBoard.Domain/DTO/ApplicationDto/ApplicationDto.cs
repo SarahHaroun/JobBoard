@@ -27,6 +27,6 @@ namespace JobBoard.Domain.DTO.ApplicationDto
 		public int JobId { get; set; }
 		public JobSummaryDto? Job { get; set; }
 		public int ApplicantId { get; set; }
-		public ApplicantSummaryDto? Applicant { get; set; }
+		//public ApplicantSummaryDto? Applicant { get; set; }
 	}
 }
