@@ -41,42 +41,42 @@ namespace JobBoard.Services.AIEmbeddingService
        
         /*-------------------------------Gemini Replay-----------------------------------------*/
 
-        public async Task<string> GetJobAnswerFromGeminiAsync(string userQuestion)
-        {
-            //use semantic search to pull similar jobs (most top 3 , TopK=3)
-            var topJobs = await SearchJobsByMeaningAsync(userQuestion, 3);
+        //public async Task<string> GetJobAnswerFromGeminiAsync(string userQuestion)
+        //{
+        //    //use semantic search to pull similar jobs (most top 3 , TopK=3)
+        //    var topJobs = await SearchJobsByMeaningAsync(userQuestion, 3);
 
-            if (topJobs == null || !topJobs.Any())
-                return "Sorry, I couldn't find any jobs matching your query.";
+        //    if (topJobs == null || !topJobs.Any())
+        //        return "Sorry, I couldn't find any jobs matching your query.";
 
-            var contextBuilder = new StringBuilder();
+        //    var contextBuilder = new StringBuilder();
 
-            foreach (var result in topJobs)
-            {
-                var job = result.Job;
-                contextBuilder.AppendLine($"""
-                Job Title: {job.Title}
-                Description: {job.Description}
-                Requirements: {job.Requirements}
-                Skills: {string.Join(", ", job.Skills)}
-                Location: {job.CompanyLocation}
-                """);
-            }
+        //    foreach (var result in topJobs)
+        //    {
+        //        var job = result.Job;
+        //        contextBuilder.AppendLine($"""
+        //        Job Title: {job.Title}
+        //        Description: {job.Description}
+        //        Requirements: {job.Requirements}
+        //        Skills: {string.Join(", ", job.Skills)}
+        //        Location: {job.CompanyLocation}
+        //        """);
+        //    }
 
 
-            //prepare the prompt
-            var finalPrompt = $"""
-                    You are a job assistant. Based on the following job listings, answer the user's question:
+        //    //prepare the prompt
+        //    var finalPrompt = $"""
+        //            You are a job assistant. Based on the following job listings, answer the user's question:
 
-                    {contextBuilder}
+        //            {contextBuilder}
 
-                    User's question: {userQuestion}
-                    """;
+        //            User's question: {userQuestion}
+        //            """;
 
-            var response = await _chatService.AskGeminiAsync(finalPrompt);
+        //    var response = await _chatService.AskGeminiAsync(finalPrompt);
 
-            return response ?? "Error throgh Generation";
-        }
+        //    return response ?? "Error throgh Generation";
+        //}
 
 
         /*---------------------------Generate Embeddings Functions-------------------------------*/
@@ -286,6 +286,8 @@ namespace JobBoard.Services.AIEmbeddingService
 
 
         /*-----------------------------------Private Functions------------------------------*/
+
+        /* use to create Ebmeddings of job to save it in DB at AIEmbedding Table */
         private string BuildJobContent(JobDto job)
         {
             return $"""
@@ -340,7 +342,10 @@ namespace JobBoard.Services.AIEmbeddingService
 
             // 2) add chat history
             var history = await _chatHistoryService.GetAsync(userId, takeLast: 10);
+
             //3) prepare the prompt
+            // Using existing BuildJobContent method
+
             var contextBuilder = new StringBuilder();
             foreach (var result in topJobs)
             {
@@ -351,7 +356,10 @@ namespace JobBoard.Services.AIEmbeddingService
                 Requirements: {job.Requirements}
                 Skills: {string.Join(", ", job.Skills)}
                 Location: {job.CompanyLocation}
-    
+                Education Level: {job.EducationLevel}
+                Experience Level: {job.ExperienceLevel}
+                Salary: {job.Salary?.ToString() ?? "Not specified"}
+                Categories: {string.Join(", ", job.Categories)}
                 --- Company Information ---
                 Company Name: {job.CompanyName ?? "Not specified"}
                 Industry: {job.Industry ?? "Not specified"}
@@ -359,7 +367,7 @@ namespace JobBoard.Services.AIEmbeddingService
                 Company Mission: {job.CompanyMission ?? "Not specified"}
                 Employee Range: {job.EmployeeRange ?? "Not specified"}
                 Website: {job.Website ?? "Not specified"}
-    
+                Established Year: {job.EstablishedYear?.ToString() ?? "Not specified"}
                 """);
             }
 
@@ -371,16 +379,23 @@ namespace JobBoard.Services.AIEmbeddingService
             }
 
             // 5) final prompt 
+      
             var finalPrompt = $"""
-                        You are a helpful job assistant. Based on the following job listings, answer the user's question.
-    
-                        When describing jobs, always include company information like company name, industry, and company description when available.
+                        You are a specialized job assistant focused exclusively on helping users find and learn about job opportunities. Your responses must be concise, relevant, and strictly related to job listings and career-related questions..
 
+                        Conversation history (most recent last):
+                        {historyBuilder}
+
+                        Context from similar job listings (if any):
                         {contextBuilder}
 
-                        User's question: {userQuestion}
+                        User question:
+                        {userQuestion}
 
-                        Please provide a comprehensive answer that includes both job details AND company information.
+                        Instructions:
+                        - Answer in a concise, clear way.
+                        - If the answer depends on job context above, use it.
+                        - If you don't know, say you don't know.
                         """;
 
             // 6) ask from Gemini
