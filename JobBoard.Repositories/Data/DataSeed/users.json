@@ -47,12 +47,5 @@
     "PhoneNumber": "+4915200000006",
     "UserName": "employer6",
     "User_Type": 0
-  },
-  {
-    "Email": "seeker2@example.com",
-    "Password": "Test@123",
-    "PhoneNumber": "+4915259000006",
-    "UserName": "seeker2",
-    "User_Type": 0
-  }
+    }
 ]

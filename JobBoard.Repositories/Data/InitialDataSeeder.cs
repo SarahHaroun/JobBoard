@@ -46,7 +46,8 @@ namespace JobBoard.Repositories.Data
 
 			//Load job data from JSON
 			var jobDtos = await LoadJsonFileAsync<JobSeedDto>("jobs.json");
-			if (jobDtos == null || !jobDtos.Any()) return;
+			if (jobDtos == null || !jobDtos.Any())
+				return;
 
 			//Load related data from DB to match relationships
 			var allSkills = await context.Skills.ToListAsync();

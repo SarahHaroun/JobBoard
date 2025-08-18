@@ -66,9 +66,14 @@ namespace JobBoard.Services.AdminService
 			var spec = new JobByIdSpecification(jobId);
 			var job = await _unitOfWork.Repository<Job>().GetByIdAsync(spec);
 
-			if (job == null) return false;
+			if (job == null) 
+				return false;
+			//Check if job is already approved
+			if (job.IsApproved) 
+				return false;
 
 			job.IsApproved = true;
+			job.PostedDate = DateTime.Now;
 			_unitOfWork.Repository<Job>().Update(job);
 
 			var result = await _unitOfWork.CompleteAsync();
