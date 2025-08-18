@@ -351,6 +351,15 @@ namespace JobBoard.Services.AIEmbeddingService
                 Requirements: {job.Requirements}
                 Skills: {string.Join(", ", job.Skills)}
                 Location: {job.CompanyLocation}
+    
+                --- Company Information ---
+                Company Name: {job.CompanyName ?? "Not specified"}
+                Industry: {job.Industry ?? "Not specified"}
+                Company Description: {job.CompanyDescription ?? "Not specified"}
+                Company Mission: {job.CompanyMission ?? "Not specified"}
+                Employee Range: {job.EmployeeRange ?? "Not specified"}
+                Website: {job.Website ?? "Not specified"}
+    
                 """);
             }
 
@@ -363,21 +372,15 @@ namespace JobBoard.Services.AIEmbeddingService
 
             // 5) final prompt 
             var finalPrompt = $"""
-                        You are a helpful job assistant.
+                        You are a helpful job assistant. Based on the following job listings, answer the user's question.
+    
+                        When describing jobs, always include company information like company name, industry, and company description when available.
 
-                        Conversation history (most recent last):
-                        {historyBuilder}
-
-                        Context from similar job listings (if any):
                         {contextBuilder}
 
-                        User question:
-                        {userQuestion}
+                        User's question: {userQuestion}
 
-                        Instructions:
-                        - Answer in a concise, clear way.
-                        - If the answer depends on job context above, use it.
-                        - If you don't know, say you don't know.
+                        Please provide a comprehensive answer that includes both job details AND company information.
                         """;
 
             // 6) ask from Gemini
@@ -390,6 +393,8 @@ namespace JobBoard.Services.AIEmbeddingService
 
             return aiAnswer;
         }
+
+
 
     }
 }

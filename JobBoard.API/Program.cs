@@ -26,6 +26,7 @@ using StackExchange.Redis;
 using JobBoard.Services.AIChatHistoryServices;
 using JobBoard.Repositories.Redis;
 using JobBoard.Services.AdminService;
+using JobBoard.Services.NotificationsService;
 
 namespace JobBoard.API
 {
@@ -105,6 +106,7 @@ namespace JobBoard.API
             builder.Services.AddScoped<IApplicationService, ApplicationService>();
             builder.Services.AddScoped<ISavedJobService, SavedJobService>();
             builder.Services.AddScoped<IAdminService, AdminService>();
+			builder.Services.AddScoped<INotificationService , NotificationService>();
 
 
 			builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -142,7 +144,8 @@ namespace JobBoard.API
 				cfg.AddProfile<ApplicationProfile>();
 				cfg.AddProfile<SeekerProfileMapping>();
 				cfg.AddProfile<SavedJobProfile>();
-			});
+                cfg.AddProfile<NotificationProfile>();
+            });
 
 			builder.Services.AddScoped<CompanyImageUrlResolver>();
 			builder.Services.AddScoped<SeekerCvUrlResolver>();

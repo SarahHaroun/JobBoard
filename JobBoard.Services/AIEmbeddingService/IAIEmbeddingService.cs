@@ -18,5 +18,7 @@ namespace JobBoard.Services.AIEmbeddingService
         public Task GenerateEmbeddingForJobAsync(Job job);
         public Task DeleteEmbeddingForJobAsync(int jobId);
 
+
+       
     }
 }

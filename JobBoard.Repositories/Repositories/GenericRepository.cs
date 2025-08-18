@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace JobBoard.Repositories.Repositories
 {
-	class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
+	public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
 	{
 		private readonly ApplicationDbContext _context;
 

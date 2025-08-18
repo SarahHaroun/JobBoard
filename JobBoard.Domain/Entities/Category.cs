@@ -10,8 +10,7 @@ namespace JobBoard.Domain.Entities
     {
 		public int Id { get; set; }
 		public string CategoryName { get; set; }
-		public string? CategoryDescription { get; set; }
-
+		
 		/*------------------------job--------------------------*/
 		public ICollection<Job> Jobs { get; set; }
 
