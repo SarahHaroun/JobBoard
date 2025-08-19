@@ -91,8 +91,9 @@ namespace JobBoard.Services
 
 			_unitOfWork.Repository<Job>().Delete(job);
 			await _unitOfWork.CompleteAsync();
+            await _aiEmbeddingService.DeleteEmbeddingForJobAsync(id);
 
-			return true;
+            return true;
 		}
 
 		private async Task MapSkillsAndCategoriesAsync(Job job, CreateUpdateJobDto jobDto)

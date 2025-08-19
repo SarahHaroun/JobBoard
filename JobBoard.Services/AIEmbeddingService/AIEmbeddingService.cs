@@ -9,7 +9,10 @@ using JobBoard.Domain.DTO.AIEmbeddingDto;
 using JobBoard.Domain.DTO.JobDto;
 using JobBoard.Domain.Entities;
 using JobBoard.Domain.Repositories.Contract;
+using JobBoard.Domain.Shared;
 using JobBoard.Repositories.Persistence;
+using JobBoard.Repositories.Specifications;
+using JobBoard.Services.AIChatHistoryServices;
 using JobBoard.Services.AIServices;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
@@ -20,48 +23,173 @@ namespace JobBoard.Services.AIEmbeddingService
         private readonly IUnitOfWork _unitOfWork;
         private readonly EmbeddingModel _embeddingModel;
         private readonly IMapper _mapper;
+        private readonly IChatHistoryService _chatHistoryService;
         private readonly IGeminiChatService _chatService;
 
-        public AIEmbeddingService(IUnitOfWork unitOfWork, IGeminiChatService chatService, IMapper mapper)
+        public AIEmbeddingService(IUnitOfWork unitOfWork, IGeminiChatService chatService, IMapper mapper, IChatHistoryService chatHistoryService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _chatHistoryService = chatHistoryService;
             _chatService = chatService;
             var apiKey = chatService.GetApiKey();
             _embeddingModel = new EmbeddingModel(apiKey, "text-embedding-004");
 
         }
+
+
+       
+        /*-------------------------------Gemini Replay-----------------------------------------*/
+
+        //public async Task<string> GetJobAnswerFromGeminiAsync(string userQuestion)
+        //{
+        //    //use semantic search to pull similar jobs (most top 3 , TopK=3)
+        //    var topJobs = await SearchJobsByMeaningAsync(userQuestion, 3);
+
+        //    if (topJobs == null || !topJobs.Any())
+        //        return "Sorry, I couldn't find any jobs matching your query.";
+
+        //    var contextBuilder = new StringBuilder();
+
+        //    foreach (var result in topJobs)
+        //    {
+        //        var job = result.Job;
+        //        contextBuilder.AppendLine($"""
+        //        Job Title: {job.Title}
+        //        Description: {job.Description}
+        //        Requirements: {job.Requirements}
+        //        Skills: {string.Join(", ", job.Skills)}
+        //        Location: {job.CompanyLocation}
+        //        """);
+        //    }
+
+
+        //    //prepare the prompt
+        //    var finalPrompt = $"""
+        //            You are a job assistant. Based on the following job listings, answer the user's question:
+
+        //            {contextBuilder}
+
+        //            User's question: {userQuestion}
+        //            """;
+
+        //    var response = await _chatService.AskGeminiAsync(finalPrompt);
+
+        //    return response ?? "Error throgh Generation";
+        //}
+
+
+        /*---------------------------Generate Embeddings Functions-------------------------------*/
         public async Task GenerateEmbeddingsForJobsAsync()
         {
             var jobRepo = _unitOfWork.Repository<Job>();
-            var jobs = await jobRepo.GetAllAsync();
+
+            // Get all jobs with Employer, Skills, and Categories
+            var spec = new JobsWithDetailsSpec();
+            var jobs = await jobRepo.GetAllAsync(spec);
 
             var embeddingRepo = _unitOfWork.Repository<AIEmbedding>();
             var existingEmbeddings = await embeddingRepo.GetAllAsync();
 
-            var existingJobIds = existingEmbeddings
-            .Where(e => e.EntityType == "Job")
-            .Select(e => e.EntityId)
-            .ToHashSet();
-
-            foreach (var job in jobs.OfType<Job>()) {
-
-                if (existingJobIds.Contains(job.Id)) continue; // skip if already embedded
-
-
+            // Use dictionary for faster lookup
+            var embeddingsDict = existingEmbeddings
+                .OfType<AIEmbedding>()
+                .Where(e => e.EntityType == "Job")
+                .ToDictionary(e => e.EntityId, e => e);
+            foreach (var job in jobs)
+            {
+                Console.WriteLine($"Job: {job.Title}");
+                Console.WriteLine($"Employer: {job.Employer?.CompanyName}");
+                Console.WriteLine($"Location: {job.Employer?.CompanyLocation}");
                 var dto = _mapper.Map<JobDto>(job);
                 var content = BuildJobContent(dto);
 
                 var response = await _embeddingModel.EmbedContentAsync(content);
-                if (response == null || response.Embedding == null) continue;
-
-                //convert to float[]
                 if (response?.Embedding?.Values == null || !response.Embedding.Values.Any())
                     continue;
-                var vector = response.Embedding.Values?.Select(v => (float)v).ToArray(); 
 
+                var vector = response.Embedding.Values.Select(v => (float)v).ToArray();
 
-                //save content in AIEmbedding Entity
+                var existingEmbedding = await embeddingRepo.FindAsync(
+                    e => e.EntityType == "Job" && e.EntityId == job.Id);
+
+                if (existingEmbedding != null)
+                {
+                    existingEmbedding.Content = content;
+                    existingEmbedding.EmbeddingVector = vector;
+                    existingEmbedding.CreatedAt = DateTime.UtcNow;
+                    // Update existing embedding
+                    _unitOfWork.Repository<AIEmbedding>().Update(existingEmbedding);
+
+                    // Alternatively, you can use:
+                    //embeddingRepo.Update(existingEmbedding);
+                }
+                else
+                {
+                    var embedding = new AIEmbedding
+                    {
+                        EntityType = "Job",
+                        EntityId = job.Id,
+                        Content = content,
+                        EmbeddingVector = vector,
+                        CreatedAt = DateTime.UtcNow
+                    };
+                    await _unitOfWork.Repository<AIEmbedding>().AddAsync(embedding);
+                }
+            }
+
+            await _unitOfWork.CompleteAsync();
+
+        }
+
+        // update and generate emebedding for a specific job
+        public async Task GenerateEmbeddingForJobAsync(Job job)
+        {
+            var embeddingRepo = _unitOfWork.Repository<AIEmbedding>();
+
+            // skip if already exists
+            var exists = await embeddingRepo.FindAsync(e =>
+                           e.EntityType == "Job" && e.EntityId == job.Id);
+            if (exists != null) return;
+
+            // Load the job with all related data (Employer, Skills, Categories)
+            var jobRepo = _unitOfWork.Repository<Job>();
+            var spec = new JobsWithDetailsSpec();
+            var jobsWithDetails = await jobRepo.GetAllAsync(spec);
+            var jobWithDetails = jobsWithDetails.FirstOrDefault(j => j.Id == job.Id);
+
+            // If job not found with details, use the original job
+            if (jobWithDetails == null)
+            {
+                
+                jobWithDetails = job;
+            }
+
+            var dto = _mapper.Map<JobDto>(jobWithDetails);
+            var content = BuildJobContent(dto);
+
+            var response = await _embeddingModel.EmbedContentAsync(content);
+            if (response?.Embedding?.Values == null || !response.Embedding.Values.Any())
+                return;
+
+            var vector = response.Embedding.Values.Select(v => (float)v).ToArray();
+
+            // check if embedding already exists
+            var existingEmbedding = await embeddingRepo.FindAsync(e =>
+                e.EntityType == "Job" && e.EntityId == job.Id);
+
+            if (existingEmbedding != null)
+            {
+                // update existing embedding
+                existingEmbedding.Content = content;
+                existingEmbedding.EmbeddingVector = vector;
+                existingEmbedding.CreatedAt = DateTime.UtcNow;
+
+                embeddingRepo.Update(existingEmbedding);
+            }
+            else
+            {
+                // add new embedding
                 var embedding = new AIEmbedding
                 {
                     EntityType = "Job",
@@ -72,29 +200,29 @@ namespace JobBoard.Services.AIEmbeddingService
                 };
 
                 await embeddingRepo.AddAsync(embedding);
-
             }
 
             await _unitOfWork.CompleteAsync();
+
         }
 
-
-        private string BuildJobContent(JobDto job)
+        public async Task DeleteEmbeddingForJobAsync(int jobId)
         {
-            return $"""
-            Job Title: {job.Title}
-            Description: {job.Description}
-            Requirements: {job.Requirements}
-            Education Level: {job.EducationLevel}
-            Experience Level: {job.ExperienceLevel}
-            Skills: {string.Join(", ", job.Skills)}
-            Categories: {string.Join(", ", job.Categories)}
-            Salary: {job.Salary?.ToString() ?? "Not specified"}
-            Company: {job.CompanyName}
-            Location: {job.CompanyLocation}
-            Website: {job.Website}
-            """;
+            var embeddingRepo = _unitOfWork.Repository<AIEmbedding>();
+
+            var existingEmbeddings = await embeddingRepo.FindAsync(e =>
+                e.EntityType == "Job" && e.EntityId == jobId);
+
+            if (existingEmbeddings != null)
+            {
+                embeddingRepo.Delete(existingEmbeddings);
+                await _unitOfWork.CompleteAsync();
+            }
         }
+
+
+        /*----------------------------------------------------------------------------------------*/
+
 
         /*Find the functions that are closest in meaning to a given word or phrase using embedding.*/
 
@@ -107,16 +235,14 @@ namespace JobBoard.Services.AIEmbeddingService
 
             var queryResponse = await _embeddingModel.EmbedContentAsync(query);
             if (queryResponse?.Embedding?.Values == null || !queryResponse.Embedding.Values.Any())
+            { 
                 return new List<SemanticSearchResultDto>();
-
+            }
             var queryVector = queryResponse.Embedding.Values.Select(v => (float)v).ToArray();
-
-            // Step 2: Get all job embeddings from the DB
 
             var embeddingRepo = _unitOfWork.Repository<AIEmbedding>();
             var allEmbeddings = await embeddingRepo.GetAllAsync();
             var jobEmbeddings = allEmbeddings.Where(e => e.EntityType == "Job" && e.EmbeddingVector != null).ToList();
-
             // Step 3: Compute similarity between query and each job
 
             var similarities = new List<(AIEmbedding Embedding, float Score)>();
@@ -131,20 +257,21 @@ namespace JobBoard.Services.AIEmbeddingService
             // Step 4: Order by similarity and return top K
 
             var topResults = similarities
-            .OrderByDescending(x => x.Score)
-            .Take(topK)
-            .ToList();
+                 .OrderByDescending(x => x.Score)
+                 .Take(topK)
+                 .ToList();
 
             // Load the actual job data and prepare result DTOs
-
             var jobRepo = _unitOfWork.Repository<Job>();
+            var spec = new JobsWithDetailsSpec();
+            var allJobs = await jobRepo.GetAllAsync(spec);
+            var jobsDict = allJobs.ToDictionary(j => j.Id, j => j);
             var resultDtos = new List<SemanticSearchResultDto>();
-
             foreach (var (embedding, score) in topResults)
             {
-                var job = await jobRepo.GetByIdAsync(embedding.EntityId);
-                if (job == null) continue;
+                if (!jobsDict.ContainsKey(embedding.EntityId)) continue;
 
+                var job = jobsDict[embedding.EntityId];
                 var dto = _mapper.Map<JobDto>(job);
 
                 resultDtos.Add(new SemanticSearchResultDto
@@ -155,9 +282,35 @@ namespace JobBoard.Services.AIEmbeddingService
             }
 
             return resultDtos;
-
         }
 
+
+        /*-----------------------------------Private Functions------------------------------*/
+
+        /* use to create Ebmeddings of job to save it in DB at AIEmbedding Table */
+        private string BuildJobContent(JobDto job)
+        {
+            return $"""
+                Job Title: {job.Title}
+                Description: {job.Description}
+                Requirements: {job.Requirements}
+                Education Level: {job.EducationLevel}
+                Experience Level: {job.ExperienceLevel}
+                Skills: {string.Join(", ", job.Skills)}
+                Categories: {string.Join(", ", job.Categories)}
+                Salary: {job.Salary?.ToString() ?? "Not specified"}
+
+                --- Employer Info ---
+                Company Name: {job.CompanyName ?? "Not specified"}
+                Company Location: {job.CompanyLocation ?? "Not specified"}
+                Company Website: {(string.IsNullOrEmpty(job.Website) ? "Not specified" : job.Website)}
+                Industry: {job.Industry ?? "Not specified"}
+                Company Description: {job.CompanyDescription ?? "Not specified"}
+                Company Mission: {job.CompanyMission ?? "Not specified"}
+                Employee Range: {job.EmployeeRange ?? "Not specified"}
+                Established Year: {job.EstablishedYear?.ToString() ?? "Not specified"}
+                """;
+        }
         private float CosineSimilarity(float[] vectorA, float[] vectorB)
         {
             float dotProduct = 0;
@@ -177,16 +330,23 @@ namespace JobBoard.Services.AIEmbeddingService
             return dotProduct / (float)(Math.Sqrt(magnitudeA) * Math.Sqrt(magnitudeB));
         }
 
-        public async Task<string> GetJobAnswerFromGeminiAsync(string userQuestion)
-        {
-            //use semantic search to pull similar jobs (most top 3 , TopK=3)
-            var topJobs = await SearchJobsByMeaningAsync(userQuestion, 3);
 
+
+        /*-------------------------Chat OverLoad Function (Gemini Replay)-------------------------*/
+        public async Task<string> GetJobAnswerFromGeminiAsync(string userId, string userQuestion)
+        {
+            //1) use semantic search to pull similar jobs (most top 3 , TopK=3)
+            var topJobs = await SearchJobsByMeaningAsync(userQuestion, 3);
             if (topJobs == null || !topJobs.Any())
-                return "Sorry, I couldn't find any jobs matching your query.";
+                topJobs = new List<SemanticSearchResultDto>();
+
+            // 2) add chat history
+            var history = await _chatHistoryService.GetAsync(userId, takeLast: 10);
+
+            //3) prepare the prompt
+            // Using existing BuildJobContent method
 
             var contextBuilder = new StringBuilder();
-
             foreach (var result in topJobs)
             {
                 var job = result.Job;
@@ -196,54 +356,60 @@ namespace JobBoard.Services.AIEmbeddingService
                 Requirements: {job.Requirements}
                 Skills: {string.Join(", ", job.Skills)}
                 Location: {job.CompanyLocation}
+                Education Level: {job.EducationLevel}
+                Experience Level: {job.ExperienceLevel}
+                Salary: {job.Salary?.ToString() ?? "Not specified"}
+                Categories: {string.Join(", ", job.Categories)}
+                --- Company Information ---
+                Company Name: {job.CompanyName ?? "Not specified"}
+                Industry: {job.Industry ?? "Not specified"}
+                Company Description: {job.CompanyDescription ?? "Not specified"}
+                Company Mission: {job.CompanyMission ?? "Not specified"}
+                Employee Range: {job.EmployeeRange ?? "Not specified"}
+                Website: {job.Website ?? "Not specified"}
+                Established Year: {job.EstablishedYear?.ToString() ?? "Not specified"}
                 """);
             }
 
-
-            //prepare the prompt
-            var finalPrompt = $"""
-                    You are a job assistant. Based on the following job listings, answer the user's question:
-
-                    {contextBuilder}
-
-                    User's question: {userQuestion}
-                    """;
-
-            var response = await _chatService.AskGeminiAsync(finalPrompt);
-
-            return response ?? "Error throgh Generation";
-        }
-
-        public async Task GenerateEmbeddingForJobAsync(Job job)
-        {
-            var embeddingRepo = _unitOfWork.Repository<AIEmbedding>();
-
-            // skip if already exists
-            var exists = await embeddingRepo.FindAsync(e =>
-                e.EntityType == "Job" && e.EntityId == job.Id);
-            if (exists != null) return;
-
-            var dto = _mapper.Map<JobDto>(job);
-            var content = BuildJobContent(dto);
-
-            var response = await _embeddingModel.EmbedContentAsync(content);
-            if (response?.Embedding?.Values == null || !response.Embedding.Values.Any())
-                return;
-
-            var vector = response.Embedding.Values.Select(v => (float)v).ToArray();
-
-            var embedding = new AIEmbedding
+            //4) build chat history
+            var historyBuilder = new StringBuilder();
+            foreach (var msg in history)
             {
-                EntityType = "Job",
-                EntityId = job.Id,
-                Content = content,
-                EmbeddingVector = vector,
-                CreatedAt = DateTime.UtcNow
-            };
+                historyBuilder.AppendLine($"{msg.Role.ToUpper()}: {msg.Content}");
+            }
 
-            await embeddingRepo.AddAsync(embedding);
-            await _unitOfWork.CompleteAsync();
+            // 5) final prompt 
+      
+            var finalPrompt = $"""
+                        You are a specialized job assistant focused exclusively on helping users find and learn about job opportunities. Your responses must be concise, relevant, and strictly related to job listings and career-related questions..
+
+                        Conversation history (most recent last):
+                        {historyBuilder}
+
+                        Context from similar job listings (if any):
+                        {contextBuilder}
+
+                        User question:
+                        {userQuestion}
+
+                        Instructions:
+                        - Answer in a concise, clear way.
+                        - If the answer depends on job context above, use it.
+                        - If you don't know, say you don't know.
+                        """;
+
+            // 6) ask from Gemini
+            var response = await _chatService.AskGeminiAsync(finalPrompt);
+            var aiAnswer = response ?? "Error throgh Generation";
+
+            // 7) save chat history
+            await _chatHistoryService.AddAsync(userId, new ChatMessageDto { Role = "user", Content = userQuestion });
+            await _chatHistoryService.AddAsync(userId, new ChatMessageDto { Role = "assistant", Content = aiAnswer });
+
+            return aiAnswer;
         }
+
+
 
     }
 }
