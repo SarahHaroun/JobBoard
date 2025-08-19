@@ -151,6 +151,9 @@ namespace JobBoard.Repositories.Data.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -214,9 +217,6 @@ namespace JobBoard.Repositories.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("CategoryDescription")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CategoryName")
                         .IsRequired()
@@ -348,6 +348,44 @@ namespace JobBoard.Repositories.Data.Migrations
                     b.HasIndex("EmployerId");
 
                     b.ToTable("Jobs");
+                });
+
+            modelBuilder.Entity("JobBoard.Domain.Entities.Notification", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETUTCDATE()");
+
+                    b.Property<bool>("IsRead")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<string>("Link")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Notifications");
                 });
 
             modelBuilder.Entity("JobBoard.Domain.Entities.SavedJob", b =>
@@ -813,6 +851,17 @@ namespace JobBoard.Repositories.Data.Migrations
                     b.Navigation("Employer");
                 });
 
+            modelBuilder.Entity("JobBoard.Domain.Entities.Notification", b =>
+                {
+                    b.HasOne("JobBoard.Domain.Entities.ApplicationUser", "User")
+                        .WithMany("Notifications")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("JobBoard.Domain.Entities.SavedJob", b =>
                 {
                     b.HasOne("JobBoard.Domain.Entities.Job", "Job")
@@ -981,6 +1030,8 @@ namespace JobBoard.Repositories.Data.Migrations
 
             modelBuilder.Entity("JobBoard.Domain.Entities.ApplicationUser", b =>
                 {
+                    b.Navigation("Notifications");
+
                     b.Navigation("employerProfile")
                         .IsRequired();
 
