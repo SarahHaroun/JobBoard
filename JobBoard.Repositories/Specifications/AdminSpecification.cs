@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JobBoard.Repositories.Specifications.AdminSpecifications
+namespace JobBoard.Repositories.Specifications
 {
 	// Admin Specifications
 	public class AllSeekersSpecification : BaseSpecifications<SeekerProfile>
@@ -48,7 +48,7 @@ namespace JobBoard.Repositories.Specifications.AdminSpecifications
 			AddIncludes(j => j.Employer);
 			AddIncludes(j => j.Categories);
 			AddIncludes(j => j.Skills);
-			AddOrderByDesc(j => j.PostedDate);
+			AddOrderByDesc(j => !j.IsApproved);
 		}
 	}
 

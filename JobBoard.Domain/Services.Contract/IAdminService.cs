@@ -2,12 +2,6 @@
 using JobBoard.Domain.DTO.EmployerDto;
 using JobBoard.Domain.DTO.JobDto;
 using JobBoard.Domain.DTO.SeekerDto;
-using JobBoard.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JobBoard.Services.AdminService
 {

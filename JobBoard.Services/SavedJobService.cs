@@ -18,23 +18,24 @@ namespace JobBoard.Services
 			_unitOfWork = unitOfWork;
 			_mapper = mapper;
 		}
-		public async Task<IEnumerable<SavedJobDto>> GetSavedJobsAsync(SavedJobFilterParams filterParams)
+		public async Task<IEnumerable<SavedJobDto>> GetSavedJobsAsync(int seekerId, SavedJobFilterParams filterParams)
 		{
-			var spec = new SavedJobWithFilterSpecification(filterParams);
-			var savedJob = await _unitOfWork.Repository<SavedJob>().GetAllAsync(spec);
-			var mappedSavedJobs = _mapper.Map<IEnumerable<SavedJobDto>>(savedJob);
+			var spec = new SavedJobWithFilterSpecification(seekerId, filterParams);
+			var savedJobs = await _unitOfWork.Repository<SavedJob>().GetAllAsync(spec);
+			var mappedSavedJobs = _mapper.Map<IEnumerable<SavedJobDto>>(savedJobs);
 			return mappedSavedJobs;
-
 		}
-		public async Task<SavedJobDto> GetSavedJobByIdAsync(int id)
-		{
-			var spec = new SavedJobWithFilterSpecification(id);
-			var savedJob = await _unitOfWork.Repository<SavedJob>().GetByIdAsync(spec);
 
+		public async Task<SavedJobDto> GetSavedJobByIdAsync(int seekerId, int jobId)
+		{
+			var savedJob = await _unitOfWork.Repository<SavedJob>()
+				.FindAsync(s => s.SeekerId == seekerId && s.JobId == jobId);
 			if (savedJob == null)
 				return null;
 
-			var mappedSavedJob = _mapper.Map<SavedJobDto>(savedJob);
+			var spec = new SavedJobWithFilterSpecification(savedJob.Id);
+			var savedJobWithDetails = await _unitOfWork.Repository<SavedJob>().GetByIdAsync(spec);
+			var mappedSavedJob = _mapper.Map<SavedJobDto>(savedJobWithDetails);
 			return mappedSavedJob;
 		}
 

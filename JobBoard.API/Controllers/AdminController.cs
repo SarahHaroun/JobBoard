@@ -75,9 +75,12 @@ namespace JobBoard.API.Controllers
         public async Task<IActionResult> ApproveJob(int jobId)
         {
             var result = await _adminService.ApproveJobAsync(jobId);
-            if (!result) return NotFound("Job not found.");
+            if (!result) 
+                return NotFound("Job not found or already approved.");
+            
             return Ok("Job approved successfully.");
         }
+
 
         [HttpDelete("jobs/{jobId}/reject")]
         public async Task<IActionResult> RejectJob(int jobId)

@@ -1,5 +1,6 @@
 ﻿using JobBoard.Domain.Entities;
 using JobBoard.Domain.Shared;
+using JobBoard.Domain.Shared.SortingOptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -19,16 +19,16 @@ namespace JobBoard.Domain.Mapping
 			.ForMember(dest => dest.Status, opt => opt.MapFrom(src => ApplicationStatus.Pending))
 			.ForMember(dest => dest.ResumeUrl, opt => opt.Ignore());
 
-
 			CreateMap<Application, ApplicationDto>()
-				.ForMember(dest => dest.Job, opt => opt.MapFrom(src => src.Job))
-				.ForMember(dest => dest.Applicant, opt => opt.MapFrom(src => src.Applicant));
+				.ForMember(dest => dest.Job, opt => opt.MapFrom(src => src.Job));
 
 			CreateMap<Job, JobSummaryDto>()
-				.ForMember(dest => dest.CompanyName, opt => opt.MapFrom(src => src.Employer != null ? src.Employer.CompanyName : string.Empty));
+				.ForMember(dest => dest.CompanyName, opt => opt.MapFrom(src => src.Employer != null ? src.Employer.CompanyName : string.Empty))
+				.ForMember(dest => dest.CompanyLocation, opt => opt.MapFrom(src => src.Employer.CompanyLocation))
+				.ForMember(dest => dest.Salary, opt => opt.MapFrom(src => src.Salary));
 
 			CreateMap<SeekerProfile, ApplicantSummaryDto>();
-
 		}
+
 	}
 }

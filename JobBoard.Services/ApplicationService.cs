@@ -72,71 +72,17 @@ namespace JobBoard.Services
 
 			return _mapper.Map<ApplicationDto>(application);
 		}
-
 		public async Task<ApplicationDto> GetApplicationByIdAsync(int id)
 		{
-			var application = await _unitOfWork.Repository<Application>().GetByIdAsync(id);
+			var spec = new ApplicationWithFilterSpecification(id);
+			var applications = await _unitOfWork.Repository<Application>().GetAllAsync(spec);
+			var application = applications.FirstOrDefault();
 			var mappedApplication = _mapper.Map<ApplicationDto>(application);
 			return mappedApplication;
 		}
-
-		public async Task<IEnumerable<ApplicationDto>> GetAllApplicationsAsync()
-		{
-			var applications = await _unitOfWork.Repository<Application>().GetAllAsync();
-		    var mappedApplications = _mapper.Map<IEnumerable<ApplicationDto>>(applications);
-			return mappedApplications;
-
-		}
-
-		public async Task<IEnumerable<ApplicationDto>> GetApplicationsWithFilterAsync(ApplicationFilterParams filterParams)
-		{
-			var spec = new ApplicationWithFilterSpecification(filterParams);
-			var applications = await _unitOfWork.Repository<Application>().GetAllAsync(spec);
-			var mappedApplications = _mapper.Map<IEnumerable<ApplicationDto>>(applications);
-			return mappedApplications;
-		}
-
-		public async Task<ApplicationDto> UpdateApplicationStatusAsync(int id, UpdateApplicationStatusDto statusDto)
-		{
-			var application = await _unitOfWork.Repository<Application>().GetByIdAsync(id);
-			if (application == null)
-				return null;
-
-			application.Status = statusDto.Status;
-			_unitOfWork.Repository<Application>().Update(application);
-
-			var result = await _unitOfWork.CompleteAsync();
-			if (result <= 0)
-				return null;
-
-			var mappedApplication = _mapper.Map<ApplicationDto>(application);
-			return mappedApplication;
-		}
-
-		public async Task<bool> DeleteApplicationAsync(int id)
-		{
-			var application = await _unitOfWork.Repository<Application>().GetByIdAsync(id);
-			if (application == null)
-				return false;
-
-			_unitOfWork.Repository<Application>().Delete(application);
-			DocumentSettings.DeleteFile(application.ResumeUrl, "applications", _env);
-
-			var deleted = await _unitOfWork.CompleteAsync();
-			return  deleted > 0;
-		}
-
-		public async Task<IEnumerable<ApplicationDto>> GetApplicationsByJobIdAsync(int jobId)
-		{
-			var spec = new ApplicationWithFilterSpecification(jobId);
-			var applications = await _unitOfWork.Repository<Application>().GetAllAsync(spec);
-			var mappedApplications = _mapper.Map<IEnumerable<ApplicationDto>>(applications);
-			return mappedApplications;
-		}
-
 		public async Task<IEnumerable<ApplicationDto>> GetApplicationsByApplicantIdAsync(int applicantId)
 		{
-			var spec = new ApplicationWithFilterSpecification(applicantId);
+			var spec = new ApplicationWithFilterSpecification(applicantId, isApplicantId: true);
 			var applications = await _unitOfWork.Repository<Application>().GetAllAsync(spec);
 			var mappedApplications = _mapper.Map<IEnumerable<ApplicationDto>>(applications);
 			return mappedApplications;
@@ -148,5 +94,18 @@ namespace JobBoard.Services
 			var existing = await _unitOfWork.Repository<Application>().GetAllAsync(spec);
 			return existing.Any();
 		}
+		public async Task<bool> DeleteApplicationAsync(int id)
+		{
+			var application = await _unitOfWork.Repository<Application>().GetByIdAsync(id);
+			if (application == null)
+				return false;
+
+			_unitOfWork.Repository<Application>().Delete(application);
+			DocumentSettings.DeleteFile(application.ResumeUrl, "applications", _env);
+
+			var deleted = await _unitOfWork.CompleteAsync();
+			return deleted > 0;
+		}
+
 	}
 }
