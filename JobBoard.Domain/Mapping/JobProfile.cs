@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JobBoard.Domain.DTO.JobsDto;
+using JobBoard.Domain.Shared;
 
 namespace JobBoard.Domain.Mapping
 {
@@ -48,6 +50,15 @@ namespace JobBoard.Domain.Mapping
 			   //.ForMember(dest => dest.PostedDate, opt => opt.Ignore());
 
 			CreateMap<JobSeedDto, Job>();
+
+            CreateMap<Job, TopPerformingJobDto>()
+                .ForMember(dest => dest.ApplicationsCount, opt => opt.MapFrom(src => src.JobApplications != null ? src.JobApplications.Count : 0));
+
+			CreateMap<Job, RecentJobDto>()
+	            .ForMember(dest => dest.ApplicationsCount,
+		            opt => opt.MapFrom(src => src.JobApplications != null ? src.JobApplications.Count : 0))
+	            .ForMember(dest => dest.PostedAgo,
+		            opt => opt.MapFrom(src => DateTimeHelper.CalculateTimeAgo(src.PostedDate)));
 
 
 		}

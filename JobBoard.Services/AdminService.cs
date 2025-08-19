@@ -9,6 +9,7 @@ using JobBoard.Domain.Repositories.Contract;
 using JobBoard.Domain.Shared;
 using JobBoard.Repositories.Persistence;
 using JobBoard.Repositories.Specifications;
+using JobBoard.Services.AIEmbeddingService;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -24,12 +25,17 @@ namespace JobBoard.Services.AdminService
 		private readonly IUnitOfWork _unitOfWork;
 		private readonly UserManager<ApplicationUser> _userManager;
 		private readonly IMapper _mapper;
+		private readonly IAIEmbeddingService _aiEmbeddingService;
 
-		public AdminService(IUnitOfWork unitOfWork, UserManager<ApplicationUser> userManager, IMapper mapper)
+		public AdminService(IUnitOfWork unitOfWork, 
+			UserManager<ApplicationUser> userManager,
+			IMapper mapper, 
+			IAIEmbeddingService aiEmbeddingService)
 		{
 			_unitOfWork = unitOfWork;
 			_userManager = userManager;
 			_mapper = mapper;
+			_aiEmbeddingService = aiEmbeddingService;
 		}
 
 		public async Task<List<SeekerProfileDto>> GetAllSeekersAsync()
@@ -51,6 +57,19 @@ namespace JobBoard.Services.AdminService
 			var spec = new AllJobsSpecification();
 			var jobs = await _unitOfWork.Repository<Job>().GetAllAsync(spec);
 			return _mapper.Map<List<JobDto>>(jobs);
+		}
+
+		public async Task<bool> DeleteJob(int id)
+		{
+			var job = await _unitOfWork.Repository<Job>().GetByIdAsync(id);
+			if (job == null)
+				return false;
+
+			_unitOfWork.Repository<Job>().Delete(job);
+			await _unitOfWork.CompleteAsync();
+			await _aiEmbeddingService.DeleteEmbeddingForJobAsync(id);
+
+			return true;
 		}
 
 		public async Task<List<JobDto>> GetPendingJobsAsync()
@@ -121,5 +140,6 @@ namespace JobBoard.Services.AdminService
 				PendingJobs = pendingJobsCount
 			};
 		}
+
 	}
 }

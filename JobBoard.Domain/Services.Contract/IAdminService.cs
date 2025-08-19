@@ -2,6 +2,8 @@
 using JobBoard.Domain.DTO.EmployerDto;
 using JobBoard.Domain.DTO.JobDto;
 using JobBoard.Domain.DTO.SeekerDto;
+using JobBoard.Domain.Entities;
+using JobBoard.Domain.Repositories.Contract;
 
 namespace JobBoard.Services.AdminService
 {
@@ -10,7 +12,8 @@ namespace JobBoard.Services.AdminService
         Task<List<SeekerProfileDto>> GetAllSeekersAsync();
         Task<List<EmpProfileDto>> GetAllEmployersAsync();
         Task<List<JobDto>> GetAllJobsAsync();
-        Task<List<JobDto>> GetPendingJobsAsync();
+		Task<bool> DeleteJob(int id);
+		Task<List<JobDto>> GetPendingJobsAsync();
         Task<bool> ApproveJobAsync(int jobId);
         Task<bool> RejectJobAsync(int jobId);
         Task<bool> DeleteUserAsync(string userId);

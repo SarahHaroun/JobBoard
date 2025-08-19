@@ -26,6 +26,7 @@ namespace JobBoard.API.Controllers
 		}
 
 
+		//Get: api/jobs
 		[HttpGet]
 		[AllowAnonymous]
 		public async Task<IActionResult> GetAllJobs([FromQuery] JobFilterParams filterParams)
@@ -34,6 +35,38 @@ namespace JobBoard.API.Controllers
 			return Ok(result);
 		}
 
+		//Get: api/jobs/top-performing
+		[HttpGet("top-performing")]
+		public async Task<IActionResult> GetTopPerformingJobs([FromQuery] int limit = 5)
+		{
+			if (userId == null)
+				return Unauthorized();
+
+			var employer = await _employerService.GetByUserId(userId);
+			if (employer == null)
+				return Unauthorized("Employer profile not found");
+
+			var result = await _jobService.GetTopPerformingJobsAsync(employer.Id, limit);
+			return Ok(result);
+		}
+
+
+		//Get: api/jobs/recent
+		[HttpGet("recent")]
+		public async Task<IActionResult> GetRecentJobs([FromQuery] int limit = 3)
+		{
+			if(userId == null)
+				return Unauthorized();
+
+			var employer = await _employerService.GetByUserId(userId);
+			if (employer == null)
+				return Unauthorized("Employer profile not found");
+
+			var result = await _jobService.GetRecentJobsAsync(employer.Id, limit);
+			return Ok(result);
+		}
+
+		//Get: api/jobs/{id}
 		[HttpGet("{id:int}")]
 		[AllowAnonymous]
 		public async Task<IActionResult> GetJob(int id)
@@ -82,8 +115,8 @@ namespace JobBoard.API.Controllers
 			var employer = await _employerService.GetByUserId(userId);
 			if (employer == null)
 				return Unauthorized("You are not authorized to edit this job.");
-			
-			var updatedJob = await _jobService.UpdateJobAsync(id, jobDto, employer.Id);
+
+			var updatedJob = await _jobService.UpdateJob(id, jobDto, employer.Id);
 
 			if (updatedJob == null)
 				return NotFound("Job not found or you don't have permission to edit it.");
@@ -91,22 +124,22 @@ namespace JobBoard.API.Controllers
 			return Ok(updatedJob);
 		}
 
-
-		[HttpDelete("{id}")]
-		public async Task<IActionResult> DeleteJob([FromRoute] int id)
+		//Delete: api/jobs/{id}
+		[HttpDelete("{jobId:int}")]
+		public async Task<IActionResult> DeleteJob(int jobId)
 		{
 			if (userId == null)
 				return Unauthorized();
 
 			var employer = await _employerService.GetByUserId(userId);
-			if (employer == null)
+			if (employer == null) 
 				return BadRequest("Employer profile not found.");
-			var deletedJob = await _jobService.DeleteJobAsync(id);
-			if (!deletedJob)
-				return NotFound();
+
+			var deleted = await _jobService.DeleteJob(jobId, employer.Id);
+			if (!deleted) 
+				return NotFound("Job not found or you are not the owner.");
 
 			return NoContent();
-
 		}
 
 		[HttpGet("categories")]

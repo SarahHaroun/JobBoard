@@ -193,27 +193,6 @@ namespace JobBoard.Repositories.Data
                     }
                 }
             }
-
-  //              // Create Admin account if not exists
-  //              var adminEmail = "admin@example.com";
-  //          if (await userManager.FindByEmailAsync(adminEmail) == null)
-  //          {
-  //              var adminUser = new ApplicationUser
-  //              {
-  //                  UserName = adminEmail,
-  //                  Email = adminEmail,
-  //                  EmailConfirmed = true
-  //              };
-
-  //              var result = await userManager.CreateAsync(adminUser, "Admin@123"); // Password
-  //              if (result.Succeeded)
-  //              {
-  //                  await userManager.AddToRoleAsync(adminUser, "Admin");
-  //              }
-  //          }
-
-
-  //          await context.SaveChangesAsync();
 		}
 
 		//Load list<T> from JSON file
