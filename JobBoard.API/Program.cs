@@ -146,6 +146,7 @@ namespace JobBoard.API
 
 			builder.Services.AddScoped<CompanyImageUrlResolver>();
 			builder.Services.AddScoped<SeekerCvUrlResolver>();
+			builder.Services.AddScoped<ProfileImageUrlResolver>();
 
 			builder.Services.AddAuthorization();
 			builder.Services.AddControllers()

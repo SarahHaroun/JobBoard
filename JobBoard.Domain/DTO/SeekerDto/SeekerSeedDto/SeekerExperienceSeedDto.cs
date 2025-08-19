@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JobBoard.Domain.DTO.SeekerDto
+namespace JobBoard.Domain.DTO.SeekerDto.SeekerSeedDto
 {
-    public class SeekerExperienceDto
+    public class SeekerExperienceSeedDto
     {
-        public int Id { get; set; }
         public string? JobTitle { get; set; }
         public string? CompanyName { get; set; }
         public string? Location { get; set; }

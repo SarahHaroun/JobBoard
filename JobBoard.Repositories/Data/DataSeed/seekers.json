@@ -1,65 +1,174 @@
 [
   {
-    "Name": "Ahmed Ali",
+    "UserEmail": "ahmedtarek@gmail.com",
+    "Name": "Ahmed Tarek",
+    "PhoneNumber": "01000065402",
     "Title": "Software Engineer",
-    "DateOfBirth": "1995-05-15T00:00:00",
+    "DateOfBirth": "1998-05-01T00:00:00",
     "Address": "Cairo, Egypt",
     "CV_Url": "cv/ahmedtarek.pdf",
     "Gender": "Male",
-    "Summary": "A passionate and experienced software engineer with a strong background in developing web applications using modern technologies.",
-    "ProfileImageUrl": "images/profilepic/ahmed_profile.jpg",
-    "UserEmail": "seeker1@example.com",
-    "Skills": [ 1, 2, 3 ],
-    "SeekerEducations": [
-      {
-        "Id": 1,
-        "Major": "Computer Science",
-        "Faculty": "Faculty of Engineering",
-        "University": "Cairo University",
-        "Date": "2018-06-30T00:00:00",
-        "Location": "Cairo, Egypt",
-        "GPA": 3.8,
-        "EducationLevel": 3,
-        "SeekerProfileId": 1
-      }
-    ],
+    "Summary": "Motivated software engineer...",
+    "ProfileImageUrl": "images/profilepic/ahmedtarek.jpg",
+    "Skills": [ 1, 2 ],
+    "seekerCertificates": [ { "CertificateName": "AWS Certified" } ],
+    "SeekerTraining": [ { "TrainingName": "Flutter Training" } ],
+    "seekerInterests": [ { "InterestName": "AI" } ],
     "SeekerExperiences": [
       {
-        "Id": 1,
-        "JobTitle": "Software Developer",
-        "CompanyName": "Advanced Technology Inc.",
-        "Location": "Nasr City, Cairo",
-        "StartDate": "2019-01-01T00:00:00",
-        "EndDate": "2023-12-31T00:00:00",
-        "Description": "Developing and maintaining web applications using .NET and SQL Server.",
-        "SeekerProfileId": 1
+        "JobTitle": "Intern",
+        "CompanyName": "ABC Corp",
+        "Location": "Cairo",
+        "StartDate": "2020-01-01T00:00:00",
+        "EndDate": "2020-06-01T00:00:00",
+        "Description": "Worked on web apps"
       }
+    ],
+    "SeekerEducations": [
+      {
+        "Major": "Computer Science",
+        "Faculty": "FCI",
+        "University": "Helwan",
+        "Date": "2021-06-01T00:00:00",
+        "Location": "Cairo",
+        "GPA": 3.7,
+        "EducationLevel": "Bachelor"
+      }
+    ]
+  },
+  {
+    "UserEmail": "maramali@gmail.com",
+    "Name": "Maram Ali",
+    "PhoneNumber": "201000012345",
+    "Title": "Frontend Developer",
+    "DateOfBirth": "1999-03-15T00:00:00",
+    "Address": "Giza, Egypt",
+    "CV_Url": "cv/maramali.pdf",
+    "Gender": "Female",
+    "Summary": "Passionate frontend developer with strong skills in React and UI design.",
+    "ProfileImageUrl": "images/profilepic/maramali.jpg",
+    "Skills": [ 3, 4 ],
+    "seekerCertificates": [
+      { "CertificateName": "Google UX Design" }
     ],
     "SeekerTraining": [
-      {
-        "Id": 1,
-        "TrainingName": "Artificial Intelligence Course",
-        "SeekerProfileId": 1
-      }
-    ],
-    "seekerCertificates": [
-      {
-        "Id": 1,
-        "CertificateName": "Azure Developer Associate Certificate",
-        "SeekerProfileId": 1
-      }
+      { "TrainingName": "React Training" }
     ],
     "seekerInterests": [
+      { "InterestName": "UI/UX" }
+    ],
+
+    "SeekerExperiences": [
       {
-        "Id": 1,
-        "InterestName": "Machine Learning",
-        "SeekerProfileId": 1
-      },
+        "JobTitle": "Frontend Intern",
+        "CompanyName": "Tech Solutions",
+        "Location": "Giza",
+        "StartDate": "2021-02-01T00:00:00",
+        "EndDate": "2021-08-01T00:00:00",
+        "Description": "Worked on building responsive web pages and improving user experience."
+      }
+    ],
+    "SeekerEducations": [
       {
-        "Id": 2,
-        "InterestName": "Information Security",
-        "SeekerProfileId": 1
+        "Major": "Information Technology",
+        "Faculty": "Computer Science",
+        "University": "Cairo University",
+        "Date": "2022-07-01T00:00:00",
+        "Location": "Giza",
+        "GPA": 3.8,
+        "EducationLevel": "Bachelor"
+      }
+    ]
+  },
+  {
+    "UserEmail": "mohamed12@gmail.com",
+    "Name": "Mohamed Hassan",
+    "PhoneNumber": "01098765432",
+    "Title": "Backend Developer",
+    "DateOfBirth": "1997-11-20T00:00:00",
+    "Address": "Alexandria, Egypt",
+    "CV_Url": "cv/Mohamed_Hassan.pdf",
+    "Gender": "Male",
+    "Summary": "Backend developer with strong experience in .NET Core and database management.",
+    "ProfileImageUrl": "images/profilepic/user.png",
+    "Skills": [ 5, 6 ],
+    "seekerCertificates": [
+      { "CertificateName": "Microsoft Azure Fundamentals" }
+    ],
+    "SeekerTraining": [
+      { "TrainingName": "ASP.NET Core Advanced Training" }
+    ],
+    "seekerInterests": [
+      { "InterestName": "Cloud Computing" }
+    ],
+
+    "SeekerExperiences": [
+      {
+        "JobTitle": "Backend Developer Intern",
+        "CompanyName": "Smart Tech",
+        "Location": "Alexandria",
+        "StartDate": "2020-07-01T00:00:00",
+        "EndDate": "2021-01-01T00:00:00",
+        "Description": "Built RESTful APIs and optimized database queries for better performance."
+      }
+    ],
+    "SeekerEducations": [
+      {
+        "Major": "Software Engineering",
+        "Faculty": "Engineering",
+        "University": "Alexandria University",
+        "Date": "2020-06-01T00:00:00",
+        "Location": "Alexandria",
+        "GPA": 3.6,
+        "EducationLevel": "Bachelor"
+      }
+    ]
+  },
+  {
+    "UserEmail": "sara12@gmail.com",
+    "Name": "Sara Mostafa",
+    "PhoneNumber": "01055667788",
+    "Title": "Data Analyst",
+    "DateOfBirth": "1996-09-10T00:00:00",
+    "Address": "Cairo, Egypt",
+    "CV_Url": "cv/Sara_Mosata.pdf",
+    "Gender": "Female",
+    "Summary": "Data analyst with strong background in Python, SQL, and data visualization tools like Power BI.",
+    "ProfileImageUrl": "images/profilepic/user.png",
+    "Skills": [ 7, 10 ],
+    "seekerCertificates": [
+      { "CertificateName": "IBM Data Science Professional" }
+    ],
+    "SeekerTraining": [
+      { "TrainingName": "Power BI Advanced Training" }
+    ],
+    "seekerInterests": [
+      { "InterestName": "Data Visualization" }
+    ],
+
+    "SeekerExperiences": [
+      {
+        "JobTitle": "Data Analyst Intern",
+        "CompanyName": "DataTech",
+        "Location": "Cairo",
+        "StartDate": "2021-03-01T00:00:00",
+        "EndDate": "2021-09-01T00:00:00",
+        "Description": "Analyzed business data and created dashboards using Power BI and SQL queries."
+      }
+    ],
+    "SeekerEducations": [
+      {
+        "Major": "Information Systems",
+        "Faculty": "Commerce",
+        "University": "Ain Shams University",
+        "Date": "2019-07-01T00:00:00",
+        "Location": "Cairo",
+        "GPA": 3.5,
+        "EducationLevel": "Bachelor"
       }
     ]
   }
+
+
+
 ]
