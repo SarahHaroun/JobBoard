@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using JobBoard.Domain.DTO.EmployerDto;
 using JobBoard.Domain.DTO.JobDto;
-using JobBoard.Domain.DTO.SeekerDto;
+using JobBoard.Domain.DTO.SeekerDto.SeekerSeedDto;
 using JobBoard.Domain.DTO.UserDto;
 using JobBoard.Domain.Entities;
 using JobBoard.Domain.Entities.Enums;
@@ -34,8 +34,16 @@ namespace JobBoard.Repositories.Data
 			await SeedRolesAsync(roleManager);
 			await SeedDataAsync<Skill>(context, context.Skills, "skills.json");
 			await SeedDataAsync<Category>(context, context.Categories, "categories.json");
-			await SeedUsersAndProfilesAsync(context, userManager, roleManager, mapper);
-			await SeedJobsAsync(context, mapper);
+            try
+            {
+                await SeedUsersAndProfilesAsync(context, userManager, roleManager, mapper);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("SEED ERROR: " + ex); 
+                throw;
+            }
+            await SeedJobsAsync(context, mapper);
 		}
 
 		//Seeds Jobs
@@ -122,47 +130,90 @@ namespace JobBoard.Repositories.Data
 						var employer = mapper.Map<EmployerProfile>(employerDto);
 						employer.UserId = user.Id;
 						context.EmployerProfiles.Add(employer);
+						await context.SaveChangesAsync();
+
 					}
 				}
-				// Create SeekerProfile if user is Seeker
-				else if (userDto.User_Type == UserType.Seeker)
-				{
-					var seekerDto = seekers.FirstOrDefault(s => s.UserEmail == user.Email);
-					if (seekerDto != null)
-					{
-						var seeker = mapper.Map<SeekerProfile>(seekerDto);
-						seeker.UserId = user.Id;
-
-						// Assign skills to seeker
-						seeker.Skills = await context.Skills
-							.Where(skill => seekerDto.Skills.Contains(skill.Id))
-							.ToListAsync();
-
-						context.SeekerProfiles.Add(seeker);
-					}
-				}
-			}
-
-            // Create Admin account if not exists
-            var adminEmail = "admin@example.com";
-            if (await userManager.FindByEmailAsync(adminEmail) == null)
-            {
-                var adminUser = new ApplicationUser
+                // Create Seeker Profiles if user is Seeker
+                else if (userDto.User_Type == UserType.Seeker)
                 {
-                    UserName = adminEmail,
-                    Email = adminEmail,
-                    EmailConfirmed = true
-                };
+                    var seekerDto = seekers.FirstOrDefault(s => s.UserEmail == user.Email);
+                    if (seekerDto != null)
+                    {
+                        try
+                        {
+                            // Use mapper for basic properties only
+                            var seeker = mapper.Map<SeekerProfile>(seekerDto);
+                            seeker.UserId = user.Id;
 
-                var result = await userManager.CreateAsync(adminUser, "Admin@123"); // Password
-                if (result.Succeeded)
-                {
-                    await userManager.AddToRoleAsync(adminUser, "Admin");
+                            // Then handle collections manually
+
+                            // Skills
+                            if (seekerDto.Skills?.Any() == true)
+                            {
+                                seeker.Skills = await context.Skills
+                                    .Where(s => seekerDto.Skills.Contains(s.Id))
+                                    .ToListAsync();
+                            }
+
+                            // Other collections using mapper
+                            if (seekerDto.seekerCertificates?.Any() == true)
+                            {
+                                seeker.seekerCertificates = mapper.Map<List<SeekerCertificate>>(seekerDto.seekerCertificates);
+                            }
+
+                            if (seekerDto.SeekerTraining?.Any() == true)
+                            {
+                                seeker.SeekerTraining = mapper.Map<List<SeekerTraining>>(seekerDto.SeekerTraining);
+                            }
+
+                            if (seekerDto.seekerInterests?.Any() == true)
+                            {
+                                seeker.seekerInterests = mapper.Map<List<SeekerInterest>>(seekerDto.seekerInterests);
+                            }
+
+                            if (seekerDto.SeekerExperiences?.Any() == true)
+                            {
+                                seeker.SeekerExperiences = mapper.Map<List<SeekerExperience>>(seekerDto.SeekerExperiences);
+                            }
+
+                            if (seekerDto.SeekerEducations?.Any() == true)
+                            {
+                                seeker.SeekerEducations = mapper.Map<List<SeekerEducation>>(seekerDto.SeekerEducations);
+                            }
+
+                            context.SeekerProfiles.Add(seeker);
+                            await context.SaveChangesAsync();
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Error: {ex.Message}");
+                            throw;
+                        }
+                    }
                 }
             }
 
+  //              // Create Admin account if not exists
+  //              var adminEmail = "admin@example.com";
+  //          if (await userManager.FindByEmailAsync(adminEmail) == null)
+  //          {
+  //              var adminUser = new ApplicationUser
+  //              {
+  //                  UserName = adminEmail,
+  //                  Email = adminEmail,
+  //                  EmailConfirmed = true
+  //              };
 
-            await context.SaveChangesAsync();
+  //              var result = await userManager.CreateAsync(adminUser, "Admin@123"); // Password
+  //              if (result.Succeeded)
+  //              {
+  //                  await userManager.AddToRoleAsync(adminUser, "Admin");
+  //              }
+  //          }
+
+
+  //          await context.SaveChangesAsync();
 		}
 
 		//Load list<T> from JSON file
