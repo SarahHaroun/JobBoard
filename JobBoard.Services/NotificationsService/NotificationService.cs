@@ -7,7 +7,9 @@ using AutoMapper;
 using JobBoard.Domain.DTO.NotificationsDto;
 using JobBoard.Domain.Entities;
 using JobBoard.Domain.Repositories.Contract;
+using JobBoard.Domain.Services.Contract;
 using JobBoard.Repositories.Specifications;
+using Microsoft.AspNetCore.SignalR;
 
 namespace JobBoard.Services.NotificationsService
 {
@@ -15,11 +17,13 @@ namespace JobBoard.Services.NotificationsService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly INotificationSender _notificationSender;
 
-        public NotificationService(IUnitOfWork unitOfWork , IMapper mapper)
+        public NotificationService(IUnitOfWork unitOfWork , IMapper mapper , INotificationSender notificationSender )
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _notificationSender = notificationSender;
         }
         public async Task AddNotificationAsync(string userId, string message, string? link = null)
         {
@@ -35,6 +39,8 @@ namespace JobBoard.Services.NotificationsService
             await repository.AddAsync(notification);
             await _unitOfWork.CompleteAsync();
 
+            // Send the notification to the user via SignalR
+            await _notificationSender.SendNotificationAsync(userId, message, link);
         }
         public async Task MarkAsReadAsync(int notificationId)
         {
@@ -50,6 +56,9 @@ namespace JobBoard.Services.NotificationsService
             repository.Update(notification);
             await _unitOfWork.CompleteAsync();
 
+
+            // Optionally, you could also send a SignalR message to update the UI
+            await _notificationSender.SendNotificationAsync(notification.UserId, "Notification marked as read.");
 
         }
         public async Task<IEnumerable<NotificationDto>> GetUserNotificationsAsync(string userId)

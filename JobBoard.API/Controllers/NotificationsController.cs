@@ -36,8 +36,8 @@ namespace JobBoard.API.Controllers
         }
 
         // PUT: api/notifications/{id}/mark-as-read
-        [HttpPut("{id}/mark-as-read")]
-        public async Task<IActionResult> MarkAsRead(int notificationId)
+        [HttpPut("read/{id}")]
+        public async Task<IActionResult> MarkAsRead([FromBody] int notificationId)
         {
             try
             {

@@ -27,6 +27,7 @@ using JobBoard.Services.AIChatHistoryServices;
 using JobBoard.Repositories.Redis;
 using JobBoard.Services.AdminService;
 using JobBoard.Services.NotificationsService;
+using JobBoard.API.Hubs;
 
 namespace JobBoard.API
 {
@@ -132,7 +133,9 @@ namespace JobBoard.API
 
             builder.Services.AddScoped<IChatHistoryService, ChatHistoryService>();
 
-
+			/*---------------------- Add SignalR Service --------------------------*/
+			builder.Services.AddSignalR();
+            builder.Services.AddScoped<INotificationSender, SignalRNotificationSender>();
 
             /*--------------- Add Services AutoMappper Profiles ---------------*/
             builder.Services.AddAutoMapper(cfg =>
@@ -201,8 +204,10 @@ namespace JobBoard.API
 
 			app.UseStaticFiles();
 			app.MapControllers();
+            /*----------- SignalR MiddlWare -------------*/
+            app.MapHub<NotificationsHub>("/notifications");
 
-			app.Run();
+            app.Run();
 		}
 	}
 }
