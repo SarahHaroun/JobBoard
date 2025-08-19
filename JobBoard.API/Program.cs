@@ -1,4 +1,5 @@
-﻿using JobBoard.API.Extensions;
+﻿
+using JobBoard.API.Extensions;
 using JobBoard.API.Helpers;
 
 namespace JobBoard.API

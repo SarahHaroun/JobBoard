@@ -20,6 +20,7 @@ namespace JobBoard.API.Extensions
 
 			services.AddScoped<CompanyImageUrlResolver>();
 			services.AddScoped<SeekerCvUrlResolver>();
+			services.AddScoped<ProfileImageUrlResolver>();
 
 			return services;
 		}
