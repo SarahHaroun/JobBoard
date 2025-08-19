@@ -36,6 +36,17 @@ namespace JobBoard.Services
 			return mappedJobs;
 
 		}
+		public async Task<IEnumerable<JobListDto>> GetEmployerJobsAsync(int employerId, JobFilterParams filterParams)
+		{
+			filterParams.EmployerId = employerId;
+			var spec = new JobsWithFilterSpecifications(filterParams);
+
+			var jobs = await _unitOfWork.Repository<Job>().GetAllAsync(spec);
+			var mappedJobs = _mapper.Map<IEnumerable<JobListDto>>(jobs);
+
+			return mappedJobs;
+		}
+
 
 		public async Task<IEnumerable<TopPerformingJobDto>> GetTopPerformingJobsAsync(int employerId, int limit = 5)
 		{

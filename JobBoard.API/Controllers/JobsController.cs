@@ -35,6 +35,22 @@ namespace JobBoard.API.Controllers
 			return Ok(result);
 		}
 
+		// GET: api/jobs/my-jobs
+		[HttpGet("my-jobs")]
+		public async Task<IActionResult> GetMyJobs([FromQuery] JobFilterParams filterParams)
+		{
+			if (userId == null)
+				return Unauthorized();
+
+			var employer = await _employerService.GetByUserId(userId);
+			if (employer == null)
+				return Unauthorized("Employer profile not found");
+
+			var result = await _jobService.GetEmployerJobsAsync(employer.Id, filterParams);
+			return Ok(result);
+		}
+
+
 		//Get: api/jobs/top-performing
 		[HttpGet("top-performing")]
 		public async Task<IActionResult> GetTopPerformingJobs([FromQuery] int limit = 5)

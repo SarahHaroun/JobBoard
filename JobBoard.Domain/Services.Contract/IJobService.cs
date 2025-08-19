@@ -16,6 +16,7 @@ namespace JobBoard.Domain.Services.Contract
     public interface IJobService
     {
         Task<IEnumerable<JobListDto>> GetAllJobsAsync(JobFilterParams filterParams);
+		Task<IEnumerable<JobListDto>> GetEmployerJobsAsync(int employerId, JobFilterParams filterParams);
 		Task<IEnumerable<TopPerformingJobDto>> GetTopPerformingJobsAsync(int employerId, int limit = 5);
         Task<IEnumerable<RecentJobDto>> GetRecentJobsAsync(int employerId, int limit = 3);
 
