@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using JobBoard.Domain.Entities;
 
-namespace JobBoard.Repositories.Specifications
+namespace JobBoard.Repositories.Specifications.JobSpecifications
 {
     public class JobsWithDetailsSpec : BaseSpecifications<Job>
     {

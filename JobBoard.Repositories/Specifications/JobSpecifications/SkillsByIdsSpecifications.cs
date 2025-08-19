@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JobBoard.Repositories.Specifications
+namespace JobBoard.Repositories.Specifications.JobSpecifications
 {
 	public class SkillsByIdsSpecifications : BaseSpecifications<Skill>
 	{

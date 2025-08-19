@@ -14,6 +14,9 @@ using JobBoard.Domain.Shared;
 using JobBoard.Domain.DTO.CategoryDto;
 using JobBoard.Domain.DTO.SkillAndCategoryDto;
 using JobBoard.Domain.DTO.JobsDto;
+using JobBoard.Repositories.Specifications.JobSpecifications;
+using JobBoard.Domain.DTO.EmployerDto;
+using JobBoard.Repositories.Specifications.DashboardSpecifications;
 
 namespace JobBoard.Services
 {
@@ -36,17 +39,14 @@ namespace JobBoard.Services
 			return mappedJobs;
 
 		}
-		public async Task<IEnumerable<JobListDto>> GetEmployerJobsAsync(int employerId, JobFilterParams filterParams)
+		public async Task<IEnumerable<PostedJobsDto>> GetEmployerJobsAsync(int employerId, EmployerJobFilterParams filterParams)
 		{
-			filterParams.EmployerId = employerId;
-			var spec = new JobsWithFilterSpecifications(filterParams);
-
+			var spec = new EmployerJobsWithFilterSpecification(employerId, filterParams);
 			var jobs = await _unitOfWork.Repository<Job>().GetAllAsync(spec);
-			var mappedJobs = _mapper.Map<IEnumerable<JobListDto>>(jobs);
+			var mappedJobs = _mapper.Map<IEnumerable<PostedJobsDto>>(jobs);
 
 			return mappedJobs;
 		}
-
 
 		public async Task<IEnumerable<TopPerformingJobDto>> GetTopPerformingJobsAsync(int employerId, int limit = 5)
 		{
@@ -126,6 +126,31 @@ namespace JobBoard.Services
             await _aiEmbeddingService.DeleteEmbeddingForJobAsync(id);
 
             return true;
+		}
+
+		public async Task<EmployerDashboardStatsDto> GetEmployerDashboardStatsAsync(int employerId)
+		{
+			var currDate = DateTime.Now;
+			var startOfMonth = new DateTime(currDate.Year, currDate.Month, 1);
+
+			// Active Jobs
+			var activeJobsSpec = new ActiveJobsSpecification(employerId);
+			var activeJobs = await _unitOfWork.Repository<Job>().CountAsync(activeJobsSpec);
+
+			// Applications this month  
+			var applicationsSpec = new ApplicationsMonthSpecification(employerId, startOfMonth);
+			var applicationsThisMonth = await _unitOfWork.Repository<Application>().CountAsync(applicationsSpec);
+
+			// Jobs expiring soon
+			var expiringSoonSpec = new JobsExpiringSoonSpecification(employerId, currDate.AddDays(7));
+			var jobsExpiringSoon = await _unitOfWork.Repository<Job>().CountAsync(expiringSoonSpec);
+
+			return new EmployerDashboardStatsDto
+			{
+				TotalActiveJobs = activeJobs,
+				ApplicationsThisMonth = applicationsThisMonth,
+				JobsExpiringSoon = jobsExpiringSoon
+			};
 		}
 
 		private async Task MapSkillsAndCategoriesAsync(Job job, CreateUpdateJobDto jobDto)

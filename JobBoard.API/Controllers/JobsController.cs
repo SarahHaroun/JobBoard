@@ -37,7 +37,7 @@ namespace JobBoard.API.Controllers
 
 		// GET: api/jobs/my-jobs
 		[HttpGet("my-jobs")]
-		public async Task<IActionResult> GetMyJobs([FromQuery] JobFilterParams filterParams)
+		public async Task<IActionResult> GetMyJobs([FromQuery] EmployerJobFilterParams filterParams)
 		{
 			if (userId == null)
 				return Unauthorized();
@@ -140,7 +140,7 @@ namespace JobBoard.API.Controllers
 			return Ok(updatedJob);
 		}
 
-		//Delete: api/jobs/{id}
+		//DELETE: api/jobs/{id}
 		[HttpDelete("{jobId:int}")]
 		public async Task<IActionResult> DeleteJob(int jobId)
 		{
@@ -156,6 +156,21 @@ namespace JobBoard.API.Controllers
 				return NotFound("Job not found or you are not the owner.");
 
 			return NoContent();
+		}
+
+		//GET: api/jobs/stats
+		[HttpGet("stats")]
+		public async Task<IActionResult> GetDashboardStats()
+		{
+			if (userId == null)
+				return Unauthorized();
+
+			var employer = await _employerService.GetByUserId(userId);
+			if (employer == null)
+				return Unauthorized("Employer profile not found");
+
+			var result = await _jobService.GetEmployerDashboardStatsAsync(employer.Id);
+			return Ok(result);
 		}
 
 		[HttpGet("categories")]

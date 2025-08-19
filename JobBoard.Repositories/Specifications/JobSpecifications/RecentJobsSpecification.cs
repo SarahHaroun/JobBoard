@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JobBoard.Repositories.Specifications
+namespace JobBoard.Repositories.Specifications.JobSpecifications
 {
     public class RecentJobsSpecification : BaseSpecifications<Job>
     {
-		public RecentJobsSpecification(int employerId, int limit = 10)
+		public RecentJobsSpecification(int employerId, int limit = 3)
 		: base(j => j.EmployerId == employerId && j.IsApproved)
 		{
 			AddIncludes(j => j.JobApplications);

@@ -60,6 +60,9 @@ namespace JobBoard.Domain.Mapping
 	            .ForMember(dest => dest.PostedAgo,
 		            opt => opt.MapFrom(src => DateTimeHelper.CalculateTimeAgo(src.PostedDate)));
 
+			CreateMap<Job, PostedJobsDto>()
+				.ForMember(dest => dest.ApplicationsCount, opt => opt.MapFrom(src => src.JobApplications != null ? src.JobApplications.Count : 0))
+                .ForMember(dest => dest.Industry, opt => opt.MapFrom(src => src.Employer.Industry));
 
 		}
 	}
