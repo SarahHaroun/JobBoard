@@ -3,6 +3,7 @@ using JobBoard.Services.NotificationsService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace JobBoard.API.Controllers
 {
@@ -27,11 +28,15 @@ namespace JobBoard.API.Controllers
         [HttpPost]
         public async Task<IActionResult> AddNotification([FromBody] CreateNotificationDto dto)
         {
-            if (dto == null || string.IsNullOrEmpty(dto.UserId) || string.IsNullOrEmpty(dto.Message))
-            {
+            if (dto == null || string.IsNullOrEmpty(dto.Message))
                 return BadRequest("Invalid notification data.");
-            }
-            await _notificationService.AddNotificationAsync(dto.UserId, dto.Message, dto.Link);
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized("User not found in token.");
+
+            await _notificationService.AddNotificationAsync(userId, dto.Message, dto.Link);
+
             return Ok("Notification added successfully.");
         }
 

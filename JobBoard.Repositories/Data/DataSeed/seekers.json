@@ -124,50 +124,95 @@
       }
     ]
   },
-  {
-    "UserEmail": "sara12@gmail.com",
-    "Name": "Sara Mostafa",
-    "PhoneNumber": "01055667788",
-    "Title": "Data Analyst",
-    "DateOfBirth": "1996-09-10T00:00:00",
-    "Address": "Cairo, Egypt",
-    "CV_Url": "cv/Sara_Mosata.pdf",
-    "Gender": "Female",
-    "Summary": "Data analyst with strong background in Python, SQL, and data visualization tools like Power BI.",
-    "ProfileImageUrl": "images/profilepic/user.png",
-    "Skills": [ 7, 10 ],
-    "seekerCertificates": [
-      { "CertificateName": "IBM Data Science Professional" }
-    ],
-    "SeekerTraining": [
-      { "TrainingName": "Power BI Advanced Training" }
-    ],
-    "seekerInterests": [
-      { "InterestName": "Data Visualization" }
-    ],
+    {
+        "UserEmail": "sara12@gmail.com",
+        "Name": "Sara Mostafa",
+        "PhoneNumber": "01055667788",
+        "Title": "Data Analyst",
+        "DateOfBirth": "1996-09-10T00:00:00",
+        "Address": "Cairo, Egypt",
+        "CV_Url": "cv/Sara_Mosata.pdf",
+        "Gender": "Female",
+        "Summary": "Data analyst with strong background in Python, SQL, and data visualization tools like Power BI.",
+        "ProfileImageUrl": "images/profilepic/user.png",
+        "Skills": [ 7, 10 ],
+        "seekerCertificates": [
+            { "CertificateName": "IBM Data Science Professional" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "Power BI Advanced Training" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Data Visualization" }
+        ],
 
-    "SeekerExperiences": [
-      {
-        "JobTitle": "Data Analyst Intern",
-        "CompanyName": "DataTech",
-        "Location": "Cairo",
-        "StartDate": "2021-03-01T00:00:00",
-        "EndDate": "2021-09-01T00:00:00",
-        "Description": "Analyzed business data and created dashboards using Power BI and SQL queries."
-      }
-    ],
-    "SeekerEducations": [
-      {
-        "Major": "Information Systems",
-        "Faculty": "Commerce",
-        "University": "Ain Shams University",
-        "Date": "2019-07-01T00:00:00",
-        "Location": "Cairo",
-        "GPA": 3.5,
-        "EducationLevel": "Bachelor"
-      }
-    ]
-  }
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Data Analyst Intern",
+                "CompanyName": "DataTech",
+                "Location": "Cairo",
+                "StartDate": "2021-03-01T00:00:00",
+                "EndDate": "2021-09-01T00:00:00",
+                "Description": "Analyzed business data and created dashboards using Power BI and SQL queries."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Information Systems",
+                "Faculty": "Commerce",
+                "University": "Ain Shams University",
+                "Date": "2019-07-01T00:00:00",
+                "Location": "Cairo",
+                "GPA": 3.5,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "seeker5@example.com",
+        "Name": "Omar Khaled",
+        "PhoneNumber": "01033445566",
+        "Title": "Mobile App Developer",
+        "DateOfBirth": "1998-12-05T00:00:00",
+        "Address": "Giza, Egypt",
+        "CV_Url": "cv/omarkhaled.pdf",
+        "Gender": "Male",
+        "Summary": "Mobile app developer specialized in Flutter and Android with experience in building cross-platform apps.",
+        "ProfileImageUrl": "images/profilepic/omarkhaled.jpg",
+        "Skills": [ 9, 10 ],
+        "seekerCertificates": [
+            { "CertificateName": "Google Associate Android Developer" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "Flutter Development Bootcamp" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Mobile Technologies" }
+        ],
+
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Flutter Developer Intern",
+                "CompanyName": "AppMakers",
+                "Location": "Giza",
+                "StartDate": "2021-06-01T00:00:00",
+                "EndDate": "2021-12-01T00:00:00",
+                "Description": "Developed mobile apps for Android and iOS using Flutter, integrated APIs, and implemented responsive UI."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Computer Science",
+                "Faculty": "FCI",
+                "University": "Helwan University",
+                "Date": "2020-07-01T00:00:00",
+                "Location": "Giza",
+                "GPA": 3.4,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    }
+
 
 
 

@@ -685,11 +685,18 @@
     "UserName": "employer5",
     "User_Type": 0
   },
-  {
-    "Email": "employer6@example.com",
-    "Password": "Test@123",
-    "PhoneNumber": "+4915200000006",
-    "UserName": "employer6",
-    "User_Type": 0
-  }
+    {
+        "Email": "employer6@example.com",
+        "Password": "Test@123",
+        "PhoneNumber": "+4915200000006",
+        "UserName": "employer6",
+        "User_Type": 0
+    },
+    {
+        "Email": "seeker5@example.com",
+        "Password": "Test@123",
+        "PhoneNumber": "01033445566",
+        "UserName": "omarKhaled",
+        "User_Type": 1
+    }
 ]
