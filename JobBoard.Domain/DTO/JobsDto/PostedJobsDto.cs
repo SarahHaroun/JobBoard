@@ -13,7 +13,6 @@ namespace JobBoard.Domain.DTO.JobsDto
 		private DateTime PostedDate { get; set; }
 		public DateTime? ExpireDate { get; set; }
 		public int ApplicationsCount { get; set; }
-		public string? Industry { get; set; }
 		public string PostedDateFormatted => PostedDate.ToString("yyyy-MM-dd");
 		public string ExpireDateFormatted => ExpireDate?.ToString("yyyy-MM-dd") ?? "No expiry";
 		public bool IsExpiringSoon => ExpireDate.HasValue && ExpireDate.Value <= DateTime.Now.AddDays(7);

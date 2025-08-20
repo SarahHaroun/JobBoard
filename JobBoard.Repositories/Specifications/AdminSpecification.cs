@@ -49,6 +49,7 @@ namespace JobBoard.Repositories.Specifications
 			AddIncludes(j => j.Categories);
 			AddIncludes(j => j.Skills);
 			AddOrderByDesc(j => !j.IsApproved);
+			AddThenByDesc(j => j.PostedDate);
 		}
 	}
 
