@@ -15,4 +15,5 @@ namespace JobBoard.Repositories.Specifications
             AddOrderByDesc(n => n.CreatedAt);
         }
     }
+
 }

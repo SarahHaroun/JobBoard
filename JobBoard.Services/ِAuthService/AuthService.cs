@@ -88,7 +88,10 @@ namespace JobBoard.Services._ِAuthService
                 Succeeded = true,
                 Token = new JwtSecurityTokenHandler().WriteToken(token),
                 Expiration = expiration,   //token.ValidTo,
-                Role = userRole.FirstOrDefault() ?? ""
+                Role = userRole.FirstOrDefault() ?? "",
+                Message = "Login successful.",
+                UserId = user.Id
+
             };
 
 
@@ -143,6 +146,7 @@ namespace JobBoard.Services._ِAuthService
                 {
                     CompanyName = model.CompanyName,
                     CompanyLocation = model.CompanyLocation,
+                    CompanyImage= $"{config["ApiBaseUrl"]}/images/companies/logo.jpg",
                     UserId = newUser.Id
                 };
                await context.EmployerProfiles.AddAsync(empProfile);
@@ -155,7 +159,8 @@ namespace JobBoard.Services._ِAuthService
                  var seekerProfile = new SeekerProfile 
                  { 
                      UserId = newUser.Id,
-                   
+                     ProfileImageUrl= $"{config["ApiBaseUrl"]}/images/profilepic/user.jpg"
+
                  };
                  await context.SeekerProfiles.AddAsync(seekerProfile);
                  await context.SaveChangesAsync();

@@ -9,6 +9,7 @@ using JobBoard.Domain.Repositories.Contract;
 using JobBoard.Domain.Shared;
 using JobBoard.Repositories.Persistence;
 using JobBoard.Repositories.Specifications;
+using JobBoard.Services.NotificationsService;
 using JobBoard.Services.AIEmbeddingService;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +27,7 @@ namespace JobBoard.Services.AdminService
 		private readonly UserManager<ApplicationUser> _userManager;
 		private readonly IMapper _mapper;
 		private readonly IAIEmbeddingService _aiEmbeddingService;
+        private readonly INotificationService _notificationService;
 
 		public AdminService(IUnitOfWork unitOfWork, 
 			UserManager<ApplicationUser> userManager,
@@ -37,6 +39,8 @@ namespace JobBoard.Services.AdminService
 			_mapper = mapper;
 			_aiEmbeddingService = aiEmbeddingService;
 		}
+			_notificationService = notificationService;
+        }
 
 		public async Task<List<SeekerProfileDto>> GetAllSeekersAsync()
 		{
@@ -96,7 +100,16 @@ namespace JobBoard.Services.AdminService
 			_unitOfWork.Repository<Job>().Update(job);
 
 			var result = await _unitOfWork.CompleteAsync();
-			return result > 0;
+
+            var notificationMessage = $"Your job {job.Title} has been approved!";
+             var jobLink = $"/jobDtl/{job.Id}"; // رابط للوظيفة
+
+            await _notificationService.AddNotificationAsync(
+                job.Employer.UserId,
+                notificationMessage,
+               jobLink
+            );
+            return result > 0;
 		}
 
 		public async Task<bool> RejectJobAsync(int jobId)

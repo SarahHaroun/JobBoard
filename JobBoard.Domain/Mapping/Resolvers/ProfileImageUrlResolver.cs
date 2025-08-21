@@ -25,7 +25,8 @@ namespace JobBoard.Domain.Mapping.Resolvers
             if (!string.IsNullOrEmpty(source.ProfileImageUrl))
                 return $"{_configuration["ApiBaseUrl"]}/{source.ProfileImageUrl}";
             else
-                return string.Empty;
+                return $"{_configuration["ApiBaseUrl"]}/images/profilepic/user.jpg";
+
         }
     }
 }
