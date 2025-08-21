@@ -6,6 +6,7 @@ using JobBoard.Domain.Repositories.Contract;
 using JobBoard.Domain.Services.Contract;
 using JobBoard.Domain.Shared;
 using JobBoard.Repositories.Specifications;
+using JobBoard.Repositories.Specifications.ApplicationSpecifications;
 using JobBoard.Services.EmployerService;
 using JobBoard.Services.SeekerService;
 using Microsoft.AspNetCore.Hosting;
