@@ -15,6 +15,7 @@ using JobBoard.Repositories.Specifications;
 using JobBoard.Services.AIChatHistoryServices;
 using JobBoard.Services.AIServices;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.Extensions.Logging;
 
 namespace JobBoard.Services.AIEmbeddingService
 {
@@ -25,8 +26,9 @@ namespace JobBoard.Services.AIEmbeddingService
         private readonly IMapper _mapper;
         private readonly IChatHistoryService _chatHistoryService;
         private readonly IGeminiChatService _chatService;
+        private readonly ILogger<AIEmbeddingService> _logger;
 
-        public AIEmbeddingService(IUnitOfWork unitOfWork, IGeminiChatService chatService, IMapper mapper, IChatHistoryService chatHistoryService)
+        public AIEmbeddingService(IUnitOfWork unitOfWork, IGeminiChatService chatService, IMapper mapper, IChatHistoryService chatHistoryService, ILogger<AIEmbeddingService> logger)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -34,6 +36,7 @@ namespace JobBoard.Services.AIEmbeddingService
             _chatService = chatService;
             var apiKey = chatService.GetApiKey();
             _embeddingModel = new EmbeddingModel(apiKey, "text-embedding-004");
+            _logger = logger;
 
         }
 
@@ -229,45 +232,72 @@ namespace JobBoard.Services.AIEmbeddingService
         /* We use the query typed by the user, generate an embedding vector for it,
          * calculate the cosine similarity between it and all the embeddings stored in the database,
          * and then return the top K results as functions that are similar in meaning.*/
-        public async Task<List<SemanticSearchResultDto>> SearchJobsByMeaningAsync(string query, int topK)
+        public async Task<List<SemanticSearchResultDto>> SearchJobsByMeaningAsync(string query, int maxResults = 5)
         {
+
             // Step 1: Generate embedding for the query
 
+            // Step 1: Generate embedding for the query
             var queryResponse = await _embeddingModel.EmbedContentAsync(query);
             if (queryResponse?.Embedding?.Values == null || !queryResponse.Embedding.Values.Any())
-            { 
+            {
+                Console.WriteLine($"Failed to generate embedding for query: {query}");
                 return new List<SemanticSearchResultDto>();
             }
             var queryVector = queryResponse.Embedding.Values.Select(v => (float)v).ToArray();
 
+
+            // Step 2: Get all job embeddings
             var embeddingRepo = _unitOfWork.Repository<AIEmbedding>();
             var allEmbeddings = await embeddingRepo.GetAllAsync();
             var jobEmbeddings = allEmbeddings.Where(e => e.EntityType == "Job" && e.EmbeddingVector != null).ToList();
-            // Step 3: Compute similarity between query and each job
-
+            // Step 3: Compute similarity and filter by threshold
+            const float similarityThreshold = 0.6f; // min range of similarity
             var similarities = new List<(AIEmbedding Embedding, float Score)>();
 
             foreach (var jobEmbedding in jobEmbeddings)
             {
                 var score = CosineSimilarity(queryVector, jobEmbedding.EmbeddingVector);
-                similarities.Add((jobEmbedding, score));
+                if (score >= similarityThreshold) // filtered by threshold
+                {
+                    similarities.Add((jobEmbedding, score));
+                    Console.WriteLine($"Job ID: {jobEmbedding.EntityId}, Similarity Score: {score}");
+                }
             }
 
 
-            // Step 4: Order by similarity and return top K
-
+            // Step 4: Order by similarity and take up to maxResults
             var topResults = similarities
-                 .OrderByDescending(x => x.Score)
-                 .Take(topK)
-                 .ToList();
+                .OrderByDescending(x => x.Score)
+                .Take(maxResults)
+                .ToList();
 
             // Load the actual job data and prepare result DTOs
             var jobRepo = _unitOfWork.Repository<Job>();
             var spec = new JobsWithDetailsSpec();
             var allJobs = await jobRepo.GetAllAsync(spec);
             var jobsDict = allJobs.ToDictionary(j => j.Id, j => j);
+
+            // Step 5: Filter results based on keywords in the query
+            var keywords = query.ToLower().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            var filteredResults = topResults
+                .Where(r => jobsDict.ContainsKey(r.Embedding.EntityId))
+                .Where(r =>
+                {
+                    var job = jobsDict[r.Embedding.EntityId];
+                    return keywords.Any(k =>
+                        job.Title.ToLower().Contains(k) ||
+                        (job.Skills != null && job.Skills.Any(s => s.SkillName.ToLower().Contains(k))));
+                })
+                .ToList();
+
+            // Step 6: If no filtered results, use top results
+
+            var finalResults = filteredResults.Any() ? filteredResults : topResults;
+
+            // Step 7: Prepare result DTOs
             var resultDtos = new List<SemanticSearchResultDto>();
-            foreach (var (embedding, score) in topResults)
+            foreach (var (embedding, score) in finalResults)
             {
                 if (!jobsDict.ContainsKey(embedding.EntityId)) continue;
 
@@ -281,8 +311,10 @@ namespace JobBoard.Services.AIEmbeddingService
                 });
             }
 
+            Console.WriteLine($"Found {resultDtos.Count} relevant jobs for query: {query}");
             return resultDtos;
         }
+
 
 
         /*-----------------------------------Private Functions------------------------------*/
@@ -381,21 +413,21 @@ namespace JobBoard.Services.AIEmbeddingService
             // 5) final prompt 
       
             var finalPrompt = $"""
-                        You are a specialized job assistant focused exclusively on helping users find and learn about job opportunities. Your responses must be concise, relevant, and strictly related to job listings and career-related questions..
-
+                        You are a specialized job assistant focused on helping users find and learn about job opportunities. Your responses must be concise, relevant, and strictly based on the provided job context.
                         Conversation history (most recent last):
                         {historyBuilder}
 
-                        Context from similar job listings (if any):
+                        Job context (use this to answer the question):
                         {contextBuilder}
 
                         User question:
                         {userQuestion}
 
                         Instructions:
-                        - Answer in a concise, clear way.
-                        - If the answer depends on job context above, use it.
-                        - If you don't know, say you don't know.
+                        - Always prioritize the job context to answer questions about jobs, salaries, locations, or skills.
+                        - For salary questions, explicitly include the salary from the context if available, or state "Salary not specified" if the context says so.
+                        - If the context is empty or lacks specific details, provide a general answer based on the question and mention that specific job details are unavailable.
+                        - Answer in the same language as the user question (Arabic or English).
                         """;
 
             // 6) ask from Gemini

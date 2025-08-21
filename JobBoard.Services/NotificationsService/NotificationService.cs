@@ -29,20 +29,23 @@ namespace JobBoard.Services.NotificationsService
         /////////////////////////////// Add Notification //////////////////////////////////////////
         public async Task AddNotificationAsync(string userId, string message, string? link = null)
         {
-
-            // This would typically involve saving the notification to a database
-            var notification = new Notification
+            try
             {
-                UserId = userId,
-                Message = message,
-                Link = link
-            };
-            var repository = _unitOfWork.Repository<Notification>();
-            await repository.AddAsync(notification);
-            await _unitOfWork.CompleteAsync();
-
-            // Send the notification to the user via SignalR
-            await _notificationSender.SendNotificationAsync(userId, message, link);
+                var notification = new Notification
+                {
+                    UserId = userId,
+                    Message = message,
+                    Link = link
+                };
+                var repository = _unitOfWork.Repository<Notification>();
+                await repository.AddAsync(notification);
+                await _unitOfWork.CompleteAsync();
+                await _notificationSender.SendNotificationAsync(userId, message, link, notification.Id); // أضيفي Id
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error adding notification: {ex.Message}", ex);
+            }
         }
 
 
