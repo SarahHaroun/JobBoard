@@ -1,4 +1,6 @@
-﻿using System.Text.Json.Serialization;
+﻿using JobBoard.API.Hubs;
+using Microsoft.AspNetCore.Http;
+using System.Text.Json.Serialization;
 
 namespace JobBoard.API.Extensions
 {
@@ -29,12 +31,16 @@ namespace JobBoard.API.Extensions
 			app.UseCors("AllowAngularApp");
 			app.UseHttpsRedirection();
 			app.UseRouting();
-			app.UseAuthentication();
+            app.UseAuthentication();
 			app.UseAuthorization();
 			app.UseStaticFiles();
 			app.MapControllers();
 
-			return app;
+
+            /* -----------SignalR MiddlWare------------ */
+            app.MapHub<NotificationsHub>("/notifications");
+
+            return app;
 		}
 	}
 }

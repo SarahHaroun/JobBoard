@@ -1,4 +1,5 @@
-﻿using JobBoard.Domain.Repositories.Contract;
+﻿using JobBoard.API.Hubs;
+using JobBoard.Domain.Repositories.Contract;
 using JobBoard.Domain.Services.Contract;
 using JobBoard.Repositories;
 using JobBoard.Services;
@@ -7,6 +8,7 @@ using JobBoard.Services.AdminService;
 using JobBoard.Services.CleanupUsersService;
 using JobBoard.Services.EmailService;
 using JobBoard.Services.EmployerService;
+using JobBoard.Services.NotificationsService;
 using JobBoard.Services.SeekerService;
 
 namespace JobBoard.API.Extensions
@@ -24,7 +26,9 @@ namespace JobBoard.API.Extensions
 			services.AddScoped<ISavedJobService, SavedJobService>();
 			services.AddScoped<IAdminService, AdminService>();
 			services.AddScoped<IUnitOfWork, UnitOfWork>();
-
+            services.AddScoped<INotificationService, NotificationService>();
+            services.AddScoped<INotificationSender, SignalRNotificationSender>();
+            services.AddSignalR();
             return services;
 		}
 	}
