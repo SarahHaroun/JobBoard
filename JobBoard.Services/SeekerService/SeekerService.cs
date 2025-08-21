@@ -439,55 +439,75 @@ namespace JobBoard.Services.SeekerService
 
 
 
-		// ======================================
+        // =====================HandleFileUpload====================
 
-		public async Task<string?> HandleFileUploadAsync(IFormFile? file, string? existingFileUrl, string folderPath, bool removeFile = false)
-		{
-			if (removeFile)
-			{
-				if (!string.IsNullOrEmpty(existingFileUrl))
-					DocumentSettings.DeleteFile(existingFileUrl, folderPath, _env);
-				return null;
-			}
+        public async Task<string?> HandleFileUploadAsync(
+            IFormFile? file,
+            string? existingFileUrl,
+            string folderPath,
+            bool removeFile = false,
+            string? defaultFileUrl = null)
+        {
+            if (removeFile)
+            {
+                if (!string.IsNullOrEmpty(existingFileUrl) && existingFileUrl != defaultFileUrl)
+                {
+                    DocumentSettings.DeleteFile(existingFileUrl, folderPath, _env);
+                }
 
-			if (file != null && file.Length > 0)
-			{
-				if (!string.IsNullOrEmpty(existingFileUrl))
-					DocumentSettings.DeleteFile(existingFileUrl, folderPath, _env);
+                return defaultFileUrl;
+            }
 
-				var uploadedUrl = await DocumentSettings.UploadFileAsync(file, folderPath, _env, _configuration);
-				return uploadedUrl;
-			}
+            if (file != null && file.Length > 0)
+            {
+                if (!string.IsNullOrEmpty(existingFileUrl))
+                    DocumentSettings.DeleteFile(existingFileUrl, folderPath, _env);
 
-			return existingFileUrl;
-		}
+                var uploadedUrl = await DocumentSettings.UploadFileAsync(file, folderPath, _env, _configuration);
+                return uploadedUrl;
+            }
 
-		// =================== Upload Files ===================
-		// Add this method to your SeekerService class
+            return existingFileUrl ?? defaultFileUrl;
+        }
 
-		public async Task<(string? CvUrl, string? ProfileImageUrl)> UploadFilesAsync(string userId, SeekerFileUploadDto dto)
-		{
-			var seeker = await _context.SeekerProfiles
-				.FirstOrDefaultAsync(s => s.UserId == userId);
 
-			if (seeker == null)
-				return (null, null);
+        // =================== Upload Files ===================
+        // Add this method to your SeekerService class
 
-			// Handle CV upload/removal
-			var newCvUrl = await HandleFileUploadAsync(dto.CV_Url,seeker.CV_Url,"cv",dto.RemoveCV);
+        public async Task<(string? CvUrl, string? ProfileImageUrl)> UploadFilesAsync(string userId, SeekerFileUploadDto dto)
+        {
+            var seeker = await _context.SeekerProfiles
+                .FirstOrDefaultAsync(s => s.UserId == userId);
 
-			// Handle Profile Image upload/removal
-			var newProfileImageUrl = await HandleFileUploadAsync(dto.ProfileImageUrl,seeker.ProfileImageUrl,"images/profilepic",dto.RemoveProfileImage);
+            if (seeker == null)
+                return (null, null);
 
-			// Update the seeker profile with new URLs
-			seeker.CV_Url = newCvUrl;
-			seeker.ProfileImageUrl = newProfileImageUrl;
+            // Handle CV upload/removal
+            var newCvUrl = await HandleFileUploadAsync(
+                dto.CV_Url,
+                seeker.CV_Url,
+                "cv",
+                dto.RemoveCV
+            );
 
-			await _context.SaveChangesAsync();
+            // Handle Profile Image upload/removal مع default image
+            var defaultProfileImage = "/images/profilepic/user.jpg";
+            var newProfileImageUrl = await HandleFileUploadAsync(
+                dto.ProfileImageUrl,
+                seeker.ProfileImageUrl,
+                "images/profilepic",
+                dto.RemoveProfileImage,
+                defaultProfileImage
+            );
 
-			return (newCvUrl, newProfileImageUrl);
-		}
+            // Update the seeker profile with new URLs
+            seeker.CV_Url = newCvUrl;
+            seeker.ProfileImageUrl = newProfileImageUrl;
 
+            await _context.SaveChangesAsync();
+
+            return (newCvUrl, newProfileImageUrl);
+        }
 
         // ================== DELETE ==================
         public async Task<bool> DeleteAsync(int Id)

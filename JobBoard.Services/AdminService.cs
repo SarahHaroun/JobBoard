@@ -9,6 +9,8 @@ using JobBoard.Domain.Repositories.Contract;
 using JobBoard.Domain.Shared;
 using JobBoard.Repositories.Persistence;
 using JobBoard.Repositories.Specifications;
+using JobBoard.Repositories.Specifications.AdminSpecifications;
+using JobBoard.Services.NotificationsService;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -24,13 +26,16 @@ namespace JobBoard.Services.AdminService
 		private readonly IUnitOfWork _unitOfWork;
 		private readonly UserManager<ApplicationUser> _userManager;
 		private readonly IMapper _mapper;
+        private readonly INotificationService _notificationService;
 
-		public AdminService(IUnitOfWork unitOfWork, UserManager<ApplicationUser> userManager, IMapper mapper)
+
+        public AdminService(IUnitOfWork unitOfWork, UserManager<ApplicationUser> userManager, IMapper mapper, INotificationService notificationService)
 		{
 			_unitOfWork = unitOfWork;
 			_userManager = userManager;
 			_mapper = mapper;
-		}
+			_notificationService = notificationService;
+        }
 
 		public async Task<List<SeekerProfileDto>> GetAllSeekersAsync()
 		{
@@ -77,7 +82,16 @@ namespace JobBoard.Services.AdminService
 			_unitOfWork.Repository<Job>().Update(job);
 
 			var result = await _unitOfWork.CompleteAsync();
-			return result > 0;
+
+            var notificationMessage = $"Your job {job.Title} has been approved!";
+             var jobLink = $"/jobDtl/{job.Id}"; // رابط للوظيفة
+
+            await _notificationService.AddNotificationAsync(
+                job.Employer.UserId,
+                notificationMessage,
+               jobLink
+            );
+            return result > 0;
 		}
 
 		public async Task<bool> RejectJobAsync(int jobId)

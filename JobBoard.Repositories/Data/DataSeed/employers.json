@@ -23,18 +23,18 @@
     "EstablishedYear": 2014,
     "UserEmail": "deserttech@example.com"
   },
-  {
-    "CompanyName": "Oasis Marketing Group",
-    "CompanyLocation": "Amman, Jordan",
-    "CompanyImage": "images/companies/oasismarketing.png",
-    "Website": "https://oasismarketing.jo",
-    "Industry": "Marketing & Advertising",
-    "CompanyDescription": "An award-winning digital marketing agency offering a full suite of services, including social media management, SEO, and brand strategy.",
-    "CompanyMission": "To help brands connect with their audiences and grow their business through creative, data-driven marketing campaigns.",
-    "EmployeeRange": "[20-50]",
-    "EstablishedYear": 2016,
-    "UserEmail": "oasismarketing@example.com"
-  },
+    {
+        "CompanyName": "Oasis Marketing Group",
+        "CompanyLocation": "Amman, Jordan",
+        "CompanyImage": "images/companies/oasismarketing.png",
+        "Website": "https://oasismarketing.jo",
+        "Industry": "Marketing & Advertising",
+        "CompanyDescription": "An award-winning digital marketing agency offering a full suite of services, including social media management, SEO, and brand strategy.",
+        "CompanyMission": "To help brands connect with their audiences and grow their business through creative, data-driven marketing campaigns.",
+        "EmployeeRange": "[20-50]",
+        "EstablishedYear": 2016,
+        "UserEmail": "oasismarketing@example.com"
+    },
   {
     "CompanyName": "Nile Logistics",
     "CompanyLocation": "Cairo, Egypt",
