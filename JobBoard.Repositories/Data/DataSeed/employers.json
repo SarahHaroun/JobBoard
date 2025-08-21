@@ -7,7 +7,7 @@
     "Industry": "Investment & Finance",
     "CompanyDescription": "A leading holding company with diverse investments across real estate, technology, and financial services in the Kingdom of Saudi Arabia.",
     "CompanyMission": "To drive economic growth and diversification by investing in high-potential sectors and creating sustainable value for our stakeholders.",
-    "EmployeeRange": "[500-1000]",
+    "EmployeeRange": "500-1000",
     "EstablishedYear": 1995,
     "UserEmail": "alnour@example.com"
   },
@@ -19,7 +19,7 @@
     "Industry": "Renewable Energy",
     "CompanyDescription": "We specialize in developing and implementing solar and wind energy solutions for commercial and public projects across the Middle East.",
     "CompanyMission": "To power a sustainable future for the desert region by harnessing renewable energy and promoting environmental stewardship.",
-    "EmployeeRange": "[100-200]",
+    "EmployeeRange": "100-200",
     "EstablishedYear": 2014,
     "UserEmail": "deserttech@example.com"
   },
@@ -31,7 +31,7 @@
     "Industry": "Marketing & Advertising",
     "CompanyDescription": "An award-winning digital marketing agency offering a full suite of services, including social media management, SEO, and brand strategy.",
     "CompanyMission": "To help brands connect with their audiences and grow their business through creative, data-driven marketing campaigns.",
-    "EmployeeRange": "[20-50]",
+    "EmployeeRange": "20-50",
     "EstablishedYear": 2016,
     "UserEmail": "oasismarketing@example.com"
   },
@@ -43,7 +43,7 @@
     "Industry": "Logistics & Supply Chain",
     "CompanyDescription": "A leading provider of logistics and freight forwarding services, connecting Egypt to the world with efficient and reliable solutions.",
     "CompanyMission": "To be the backbone of commerce by delivering seamless and timely logistics solutions that exceed customer expectations.",
-    "EmployeeRange": "[200-500]",
+    "EmployeeRange": "200-500",
     "EstablishedYear": 2008,
     "UserEmail": "nilelogistics@example.com"
   },
@@ -55,7 +55,7 @@
     "Industry": "Software Development",
     "CompanyDescription": "We are a software development firm focused on building enterprise solutions and mobile applications for the MENA region.",
     "CompanyMission": "To innovate and build robust software that solves complex business challenges and promotes technological advancement in the region.",
-    "EmployeeRange": "[50-100]",
+    "EmployeeRange": "50-100",
     "EstablishedYear": 2017,
     "UserEmail": "lth@example.com"
   },
@@ -67,7 +67,7 @@
     "Industry": "Energy & Oil",
     "CompanyDescription": "A major player in the energy sector, involved in exploration, production, and distribution of oil and gas.",
     "CompanyMission": "To provide reliable energy resources that fuel economic development while adhering to the highest safety and environmental standards.",
-    "EmployeeRange": "[1000+]",
+    "EmployeeRange": "1000+",
     "EstablishedYear": 1990,
     "UserEmail": "atlasenergy@example.com"
   },
@@ -79,7 +79,7 @@
     "Industry": "Fashion & Luxury Goods",
     "CompanyDescription": "A renowned fashion house known for its handcrafted luxury garments and accessories, blending traditional artistry with modern design.",
     "CompanyMission": "To celebrate timeless elegance and creativity, setting the benchmark for luxury fashion globally.",
-    "EmployeeRange": "[50-100]",
+    "EmployeeRange": "50-100",
     "EstablishedYear": 1985,
     "UserEmail": "parisiancouture@example.com"
   },
@@ -91,7 +91,7 @@
     "Industry": "Robotics & AI",
     "CompanyDescription": "A cutting-edge company at the forefront of robotic technology, developing intelligent systems for manufacturing, healthcare, and home automation.",
     "CompanyMission": "To innovate and create smart robotics that improve lives and enhance efficiency in all aspects of society.",
-    "EmployeeRange": "[300-500]",
+    "EmployeeRange": "300-500",
     "EstablishedYear": 2013,
     "UserEmail": "tokyorobotics@example.com"
   },
@@ -103,7 +103,7 @@
     "Industry": "Biotechnology",
     "CompanyDescription": "A research-focused biotech firm specializing in genetic engineering and pharmaceutical development for life-threatening diseases.",
     "CompanyMission": "To advance human health through groundbreaking scientific research and the development of innovative therapeutic solutions.",
-    "EmployeeRange": "[100-200]",
+    "EmployeeRange": "100-200",
     "EstablishedYear": 2005,
     "UserEmail": "sydneybiotech@example.com"
   },
@@ -115,7 +115,7 @@
     "Industry": "Logistics & Shipping",
     "CompanyDescription": "We manage global supply chains and freight forwarding, with a special focus on connecting Latin America to the rest of the world.",
     "CompanyMission": "To provide seamless and reliable logistics services that facilitate international trade and support global business growth.",
-    "EmployeeRange": "[200-400]",
+    "EmployeeRange": "200-400",
     "EstablishedYear": 2010,
     "UserEmail": "riologistics@example.com"
   },
@@ -127,7 +127,7 @@
     "Industry": "Healthcare Technology",
     "CompanyDescription": "A tech company that develops software and platforms for the healthcare sector, including patient management systems and telemedicine applications.",
     "CompanyMission": "To use technology to improve healthcare delivery, making it more efficient, accessible, and patient-centric.",
-    "EmployeeRange": "[80-150]",
+    "EmployeeRange": "80-150",
     "EstablishedYear": 2016,
     "UserEmail": "canadianhealth@example.com"
   },
@@ -139,7 +139,7 @@
     "Industry": "Telecommunications",
     "CompanyDescription": "A leading telecommunications provider offering mobile, internet, and enterprise connectivity solutions across East Africa.",
     "CompanyMission": "To connect people and businesses across Africa with reliable, high-speed communication services.",
-    "EmployeeRange": "[500-1000]",
+    "EmployeeRange": "500-1000",
     "EstablishedYear": 2002,
     "UserEmail": "nairobitelecom@example.com"
   },
@@ -151,7 +151,7 @@
     "Industry": "Automotive",
     "CompanyDescription": "A global automotive manufacturer known for its innovative electric vehicles and advanced mobility solutions.",
     "CompanyMission": "To drive the future of transportation with sustainable, safe, and technologically advanced vehicles.",
-    "EmployeeRange": "[1000+]",
+    "EmployeeRange": "1000+",
     "EstablishedYear": 1999,
     "UserEmail": "seoulmotors@example.com"
   },
@@ -163,7 +163,7 @@
     "Industry": "Agriculture Technology",
     "CompanyDescription": "We develop technology solutions for the agricultural sector, including smart farming systems, crop management software, and precision irrigation.",
     "CompanyMission": "To enhance food security and agricultural productivity through sustainable and scalable technology solutions.",
-    "EmployeeRange": "[50-80]",
+    "EmployeeRange": "50-80",
     "EstablishedYear": 2015,
     "UserEmail": "globalagritech@example.com"
   },
@@ -175,7 +175,7 @@
     "Industry": "Engineering & Manufacturing",
     "CompanyDescription": "A high-precision engineering firm specializing in advanced manufacturing for the aerospace and medical industries.",
     "CompanyMission": "To uphold the Swiss tradition of excellence by delivering precision-engineered components with unmatched quality and reliability.",
-    "EmployeeRange": "[150-250]",
+    "EmployeeRange": "150-250",
     "EstablishedYear": 1978,
     "UserEmail": "swissprecision@example.com"
   },
@@ -187,7 +187,7 @@
     "Industry": "E-commerce",
     "CompanyDescription": "A major e-commerce platform that connects millions of buyers and sellers, specializing in consumer electronics and fashion.",
     "CompanyMission": "To create a seamless and trustworthy online marketplace that empowers businesses and enriches consumer lives.",
-    "EmployeeRange": "[1000+]",
+    "EmployeeRange": "1000+",
     "EstablishedYear": 2006,
     "UserEmail": "shanghaiecommerce@example.com"
   },
@@ -199,7 +199,7 @@
     "Industry": "Creative Arts & Design",
     "CompanyDescription": "A boutique design studio focusing on digital art, motion graphics, and brand identity for local and international clients.",
     "CompanyMission": "To translate ideas into visually stunning and memorable designs that tell a unique story.",
-    "EmployeeRange": "[10-30]",
+    "EmployeeRange": "50-90",
     "EstablishedYear": 2019,
     "UserEmail": "capetowncreative@example.com"
   },
@@ -211,7 +211,7 @@
     "Industry": "Financial Services",
     "CompanyDescription": "A diversified financial services company providing investment banking, wealth management, and asset management for institutional and private clients.",
     "CompanyMission": "To provide strategic financial solutions that help our clients achieve their long-term financial goals and contribute to the economic development of Kuwait.",
-    "EmployeeRange": "[300-600]",
+    "EmployeeRange": "300-600",
     "EstablishedYear": 1992,
     "UserEmail": "kuwaitinvestment@example.com"
   },
@@ -223,7 +223,7 @@
     "Industry": "IT Consulting",
     "CompanyDescription": "We offer a range of IT consulting services, including cloud migration, cybersecurity, and enterprise resource planning (ERP) implementation.",
     "CompanyMission": "To partner with businesses to optimize their technology infrastructure and drive efficiency through expert IT consultation.",
-    "EmployeeRange": "[50-100]",
+    "EmployeeRange": "50-100",
     "EstablishedYear": 2011,
     "UserEmail": "dohatech@example.com"
   },
@@ -235,7 +235,7 @@
     "Industry": "Research & Development",
     "CompanyDescription": "A research and innovation center focused on developing new technologies in renewable energy, biotechnology, and sustainable urban planning.",
     "CompanyMission": "To be a catalyst for technological advancement and a hub for scientific collaboration in North Africa.",
-    "EmployeeRange": "[30-60]",
+    "EmployeeRange": "30-60",
     "EstablishedYear": 2018,
     "UserEmail": "rabatinnovation@example.com"
   },
@@ -247,7 +247,7 @@
     "Industry": "Software Development",
     "CompanyDescription": "A software company building bespoke applications and digital solutions for local and international clients, with a focus on web and mobile development.",
     "CompanyMission": "To deliver high-quality, user-friendly software that helps our clients achieve their business goals.",
-    "EmployeeRange": "[40-80]",
+    "EmployeeRange": "40-80",
     "EstablishedYear": 2016,
     "UserEmail": "tunissoftworks@example.com"
   },
@@ -259,7 +259,7 @@
     "Industry": "Construction & Engineering",
     "CompanyDescription": "A leading construction firm specializing in residential, commercial, and infrastructure projects, committed to rebuilding communities.",
     "CompanyMission": "To build a better future for Yemen by delivering durable, safe, and sustainable construction projects.",
-    "EmployeeRange": "[500+]",
+    "EmployeeRange": "500+",
     "EstablishedYear": 2005,
     "UserEmail": "sanaaconstruction@example.com"
   },
@@ -271,7 +271,7 @@
     "Industry": "IT Services",
     "CompanyDescription": "We provide a wide range of IT services to businesses and government agencies, including network management, data security, and system integration.",
     "CompanyMission": "To support the digital transformation of Iraq by providing reliable and secure IT solutions.",
-    "EmployeeRange": "[100-200]",
+    "EmployeeRange": "100-200",
     "EstablishedYear": 2010,
     "UserEmail": "baghdadit@example.com"
   },
@@ -283,7 +283,7 @@
     "Industry": "Trading & Import/Export",
     "CompanyDescription": "A prominent trading company that facilitates the import and export of goods across the Middle East, with a focus on textiles and agricultural products.",
     "CompanyMission": "To connect the Syrian market with global suppliers and buyers, promoting commerce and economic stability.",
-    "EmployeeRange": "[50-100]",
+    "EmployeeRange": "50-100",
     "EstablishedYear": 1998,
     "UserEmail": "damascustrading@example.com"
   },
@@ -295,7 +295,7 @@
     "Industry": "Shipping & Maritime",
     "CompanyDescription": "A key player in the Libyan maritime sector, offering port management, shipping, and logistics services for commercial cargo.",
     "CompanyMission": "To ensure efficient and safe maritime operations that support Libya's trade and economic activities.",
-    "EmployeeRange": "[200-400]",
+    "EmployeeRange": "200-400",
     "EstablishedYear": 2007,
     "UserEmail": "tripolimaritime@example.com"
   },
@@ -307,7 +307,7 @@
     "Industry": "FinTech",
     "CompanyDescription": "We develop digital financial solutions, including mobile banking apps and secure payment gateways, to modernize Algeria's financial sector.",
     "CompanyMission": "To make financial services more accessible and secure for all Algerians through innovative technology.",
-    "EmployeeRange": "[60-120]",
+    "EmployeeRange": "60-120",
     "EstablishedYear": 2017,
     "UserEmail": "algiersfintech@example.com"
   },
@@ -319,7 +319,7 @@
     "Industry": "Healthcare",
     "CompanyDescription": "A private healthcare group operating hospitals and clinics, providing a wide range of medical and surgical services.",
     "CompanyMission": "To provide compassionate and high-quality healthcare services that meet the diverse needs of our community.",
-    "EmployeeRange": "[300-500]",
+    "EmployeeRange": "300-500",
     "EstablishedYear": 2003,
     "UserEmail": "manamahealth@example.com"
   },
@@ -331,7 +331,7 @@
     "Industry": "Oil & Gas",
     "CompanyDescription": "A state-owned company responsible for the exploration, production, and refining of oil and natural gas, a cornerstone of the Omani economy.",
     "CompanyMission": "To responsibly manage Oman's energy resources and contribute to the country's economic prosperity and energy security.",
-    "EmployeeRange": "[1000+]",
+    "EmployeeRange": "1000+",
     "EstablishedYear": 1980,
     "UserEmail": "omanioil@example.com"
   },
@@ -343,7 +343,7 @@
     "Industry": "Agriculture",
     "CompanyDescription": "A leading agricultural company specializing in the production and export of olive oil, dates, and other crops from the West Bank.",
     "CompanyMission": "To support Palestinian farmers and promote high-quality agricultural products on a global scale.",
-    "EmployeeRange": "[50-100]",
+    "EmployeeRange": "50-100",
     "EstablishedYear": 2000,
     "UserEmail": "palestineagri@example.com"
   },
@@ -355,7 +355,7 @@
     "Industry": "Logistics & Maritime",
     "CompanyDescription": "Manages all commercial and passenger operations at Hamad Port, a key hub for trade in the Arabian Gulf.",
     "CompanyMission": "To be a world-class maritime gateway that facilitates Qatar's trade and economic diversification.",
-    "EmployeeRange": "[200-500]",
+    "EmployeeRange": "200-500",
     "EstablishedYear": 2016,
     "UserEmail": "dohaport@example.com"
   },
@@ -367,7 +367,7 @@
     "Industry": "Telecommunications",
     "CompanyDescription": "A national provider of internet, mobile, and landline services, connecting millions of Algerians.",
     "CompanyMission": "To bridge the digital divide and provide reliable communication services to all Algerians.",
-    "EmployeeRange": "[500-1000]",
+    "EmployeeRange": "500-1000",
     "EstablishedYear": 1995,
     "UserEmail": "algierstelecom@example.com"
   },
@@ -379,7 +379,7 @@
     "Industry": "Banking & Finance",
     "CompanyDescription": "One of Iraq's largest banks, offering a wide range of retail, corporate, and investment banking services.",
     "CompanyMission": "To be a trusted financial partner for individuals and businesses, contributing to the economic stability of Iraq.",
-    "EmployeeRange": "[1000+]",
+    "EmployeeRange": "1000+",
     "EstablishedYear": 1988,
     "UserEmail": "baghdadbank@example.com"
   },
@@ -391,7 +391,7 @@
     "Industry": "Digital Media",
     "CompanyDescription": "A leading digital media company creating content, managing social media channels, and running ad campaigns for major brands in Egypt.",
     "CompanyMission": "To shape the future of digital storytelling and empower brands to connect with their audience in a meaningful way.",
-    "EmployeeRange": "[30-60]",
+    "EmployeeRange": "30-60",
     "EstablishedYear": 2015,
     "UserEmail": "cairodigital@example.com"
   },
@@ -403,7 +403,7 @@
     "Industry": "Pharmaceuticals",
     "CompanyDescription": "A pharmaceutical company specializing in the research, development, and manufacturing of generic and branded medications.",
     "CompanyMission": "To provide high-quality and affordable medicines that improve the health and well-being of the community.",
-    "EmployeeRange": "[200-500]",
+    "EmployeeRange": "200-500",
     "EstablishedYear": 2001,
     "UserEmail": "alexandriapharma@example.com"
   },
@@ -415,7 +415,7 @@
     "Industry": "Renewable Energy",
     "CompanyDescription": "We develop and install solar energy systems for residential and commercial properties, contributing to Egypt's clean energy transition.",
     "CompanyMission": "To make clean energy accessible to everyone and help build a sustainable future for Egypt.",
-    "EmployeeRange": "[40-80]",
+    "EmployeeRange": "40-80",
     "EstablishedYear": 2018,
     "UserEmail": "gizagreenenergy@example.com"
   },
@@ -427,7 +427,7 @@
     "Industry": "Tourism & Hospitality",
     "CompanyDescription": "A leading travel agency and hotel management company specializing in providing unique and memorable experiences in Upper Egypt.",
     "CompanyMission": "To showcase the rich history and culture of Luxor, offering exceptional hospitality and unforgettable travel experiences.",
-    "EmployeeRange": "[100-200]",
+    "EmployeeRange": "100-200",
     "EstablishedYear": 2005,
     "UserEmail": "luxortourism@example.com"
   },
@@ -439,7 +439,7 @@
     "Industry": "Environmental Services",
     "CompanyDescription": "We provide innovative water purification and management solutions, focusing on sustainable practices and technology.",
     "CompanyMission": "To ensure access to clean and safe water through advanced water treatment and conservation technologies.",
-    "EmployeeRange": "[50-100]",
+    "EmployeeRange": "50-100",
     "EstablishedYear": 2012,
     "UserEmail": "aswanwater@example.com"
   },
@@ -451,7 +451,7 @@
     "Industry": "Agriculture",
     "CompanyDescription": "An agricultural company specializing in desert farming and the cultivation of crops using modern, efficient irrigation techniques.",
     "CompanyMission": "To transform arid lands into productive farms, contributing to food security and sustainable agriculture in Egypt.",
-    "EmployeeRange": "[200-400]",
+    "EmployeeRange": "200-400",
     "EstablishedYear": 2010,
     "UserEmail": "newvalleyagri@example.com"
   },
@@ -463,7 +463,7 @@
     "Industry": "Mining & Resources",
     "CompanyDescription": "We are involved in the extraction and processing of mineral resources, with a strong commitment to environmental responsibility and safety.",
     "CompanyMission": "To responsibly harness the natural resources of the Sinai Peninsula, creating economic value while protecting the environment.",
-    "EmployeeRange": "[150-300]",
+    "EmployeeRange": "150-300",
     "EstablishedYear": 1995,
     "UserEmail": "sinaiminerals@example.com"
   },
@@ -475,7 +475,7 @@
     "Industry": "Logistics & Shipping",
     "CompanyDescription": "A key logistics provider facilitating international trade through the Suez Canal, offering port services and cargo handling.",
     "CompanyMission": "To be a strategic logistics partner for global trade, leveraging the unique geographical advantage of the Suez Canal.",
-    "EmployeeRange": "[500+]",
+    "EmployeeRange": "500+",
     "EstablishedYear": 2015,
     "UserEmail": "suezlogistics@example.com"
   },
@@ -487,7 +487,7 @@
     "Industry": "Software Development",
     "CompanyDescription": "We build innovative software products that help businesses streamline operations, enhance user experiences, and stay ahead in the digital world. Our team is dedicated to delivering high-quality, scalable, and secure software tailored to our clients' unique needs.",
     "CompanyMission": "Empowering businesses with technology by providing smart, efficient, and cutting-edge software solutions. We aim to foster innovation, drive digital transformation, and create lasting impact through our products and services.",
-    "EmployeeRange": "[100 - 150]",
+    "EmployeeRange": "100 - 150",
     "EstablishedYear": 2010,
     "UserEmail": "employer1@example.com"
   },
@@ -499,7 +499,7 @@
     "Industry": "IT Services",
     "CompanyDescription": "Innovatech provides cutting-edge IT solutions for enterprises, helping them optimize operations, enhance customer engagement, and embrace digital transformation. Our expert teams deliver tailored solutions that align with business goals.",
     "CompanyMission": "To empower organizations through reliable and scalable technology services. We aim to build long-term partnerships by delivering innovative solutions that add real value.",
-    "EmployeeRange": "[50 - 100]",
+    "EmployeeRange": "50 - 100",
     "EstablishedYear": 2015,
     "UserEmail": "employer2@example.com"
   },
@@ -511,7 +511,7 @@
     "Industry": "Green Tech",
     "CompanyDescription": "GreenByte focuses on developing sustainable technology solutions that reduce environmental impact. From energy-efficient systems to smart agriculture, we build for a better future.",
     "CompanyMission": "To lead the way in sustainable innovation by integrating environmental consciousness into every tech solution we develop.",
-    "EmployeeRange": "[30 - 60]",
+    "EmployeeRange": "30 - 60",
     "EstablishedYear": 2018,
     "UserEmail": "employer3@example.com"
   },
@@ -523,7 +523,7 @@
     "Industry": "FinTech",
     "CompanyDescription": "Finovate is revolutionizing digital banking and financial services in Egypt through innovative platforms that prioritize security, speed, and user experience. We collaborate with major banks and startups alike.",
     "CompanyMission": "To reshape the financial landscape by making financial services accessible, intelligent, and secure for everyone.",
-    "EmployeeRange": "[80 - 120]",
+    "EmployeeRange": "80 - 120",
     "EstablishedYear": 2012,
     "UserEmail": "employer4@example.com"
   },
@@ -535,7 +535,7 @@
     "Industry": "Digital Transformation",
     "CompanyDescription": "Emirates Digital Hub is a leading provider of digital transformation solutions for government and enterprise sectors. Our focus is on smart city technologies, cloud services, and AI-powered applications.",
     "CompanyMission": "To drive the UAE’s vision of becoming a global leader in digital innovation by providing world-class technological infrastructure and intelligent digital services.",
-    "EmployeeRange": "[200 - 300]",
+    "EmployeeRange": "200 - 300",
     "EstablishedYear": 2008,
     "UserEmail": "employer5@example.com"
   },
@@ -547,7 +547,7 @@
     "Industry": "Software Engineering",
     "CompanyDescription": "ByteForge is a German software engineering firm specializing in high-performance systems, DevOps automation, and open-source contributions. We partner with clients across Europe to build robust digital products.",
     "CompanyMission": "To engineer reliable, scalable, and maintainable software solutions that meet the evolving needs of modern businesses and support open innovation in the tech ecosystem.",
-    "EmployeeRange": "[60 - 90]",
+    "EmployeeRange": "60 - 90",
     "EstablishedYear": 2011,
     "UserEmail": "employer6@example.com"
   }

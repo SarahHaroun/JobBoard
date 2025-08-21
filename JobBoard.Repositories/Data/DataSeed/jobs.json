@@ -289,7 +289,7 @@
     "Benefits": "Competitive salary with annual bonus. Comprehensive health, dental, and vision insurance. Hybrid work model for flexible working arrangements. Professional development budget for certifications and courses. Access to state-of-the-art cloud tools and platforms. Opportunities for career growth and leadership. Generous paid time off and holidays. Retirement savings plan with company matching.",
     "IsActive": false,
     "IsApproved": true,
-    "EmployerId": 39,
+    "EmployerId": 7,
     "SkillIds": [ 3, 9, 10, 31, 32 ],
     "CategoryIds": [ 1 ]
   },
@@ -310,7 +310,7 @@
     "Benefits": "Competitive salary with performance-based bonuses. Comprehensive health, dental, and vision insurance. Professional development and training budget. Opportunities to attend industry conferences. Team-oriented and results-driven culture. Paid time off and company holidays. Leadership development programs.",
     "IsActive": false,
     "IsApproved": true,
-    "EmployerId": 33,
+    "EmployerId": 37,
     "SkillIds": [ 11, 12, 31, 33, 47, 52 ],
     "CategoryIds": [ 6 ]
   },
@@ -352,7 +352,7 @@
     "Benefits": "Flexible part-time schedule with potential for full-time conversion. Mentorship from senior designers. Access to premium design software and tools. Professional development opportunities. Creative and collaborative work environment. Opportunity to work on diverse projects. Health insurance subsidy. Paid time off proportional to hours worked.",
     "IsActive": false,
     "IsApproved": true,
-    "EmployerId": 17,
+    "EmployerId": 7,
     "SkillIds": [ 7, 8, 17, 34, 39 ],
     "CategoryIds": [ 3 ]
   },
@@ -373,7 +373,7 @@
     "Benefits": "Competitive salary with performance incentives. Hybrid work model for optimal work-life balance. Comprehensive benefits package including health and dental. Professional certification reimbursement and training budget. Access to cutting-edge security tools and technologies. Opportunity to work with industry experts. Flexible working hours. Career advancement opportunities in cybersecurity.",
     "IsActive": false,
     "IsApproved": true,
-    "EmployerId": 11,
+    "EmployerId": 14,
     "SkillIds": [ 10, 32, 39, 54, 55 ],
     "CategoryIds": [ 4 ]
   },
@@ -499,7 +499,7 @@
     "Benefits": "Competitive salary with annual bonus. Comprehensive health, dental, and vision insurance. Hybrid work model for flexible working arrangements. Professional development budget for certifications and courses. Access to state-of-the-art cloud tools and platforms. Opportunities for career growth and leadership. Generous paid time off and holidays. Retirement savings plan with company matching.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 39,
+    "EmployerId": 9,
     "SkillIds": [ 3, 9, 10, 31, 32 ],
     "CategoryIds": [ 1 ]
   },
@@ -520,7 +520,7 @@
     "Benefits": "Competitive salary with annual bonuses. Comprehensive health insurance. Modern office environment. Professional development opportunities. Team building events. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 21,
+    "EmployerId": 11,
     "SkillIds": [ 1, 2, 3, 5, 6, 7, 8, 9, 10 ],
     "CategoryIds": [ 1 ]
   },
@@ -541,7 +541,7 @@
     "Benefits": "Competitive salary with performance incentives. Comprehensive health and dental insurance. Professional development budget for courses and conferences. Creative and collaborative work environment. Opportunities for career growth. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 17,
+    "EmployerId": 30,
     "SkillIds": [ 7, 8, 17, 34, 39 ],
     "CategoryIds": [ 3 ]
   },
@@ -562,7 +562,7 @@
     "Benefits": "Competitive salary with annual bonuses. Hybrid work model with flexible arrangements. Comprehensive health and retirement benefits. Professional development opportunities. Opportunities for career growth within the company. Collaborative and supportive team environment. Generous paid time off.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 18,
+    "EmployerId": 2,
     "SkillIds": [ 11, 12, 15, 16, 33, 35 ],
     "CategoryIds": [ 8 ]
   },
@@ -646,7 +646,7 @@
     "Benefits": "Competitive salary with performance bonuses. Comprehensive health and dental insurance. On-site training and mentorship. Opportunities for professional certification. Team-oriented and collaborative work environment. Paid time off and company holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 4,
+    "EmployerId": 15,
     "SkillIds": [ 31, 32, 33, 39, 41, 42 ],
     "CategoryIds": [ 19 ]
   },
@@ -667,7 +667,7 @@
     "Benefits": "Competitive salary with a clear path for advancement. Comprehensive health and dental insurance. On-site training and mentorship from senior marketers. Opportunities for professional development. Creative and collaborative work environment. Paid time off and company holidays. Team social events.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 3,
+    "EmployerId": 1,
     "SkillIds": [ 11, 12, 33, 48, 52, 53 ],
     "CategoryIds": [ 6 ]
   },
@@ -709,7 +709,7 @@
     "Benefits": "Competitive salary with annual bonus. Comprehensive health, dental, and vision insurance. Hybrid work model for flexible working arrangements. Professional development budget for certifications and courses. Access to state-of-the-art cloud tools and platforms. Opportunities for career growth and leadership. Generous paid time off and holidays. Retirement savings plan with company matching.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 39,
+    "EmployerId": 33,
     "SkillIds": [ 3, 9, 10, 31, 32 ],
     "CategoryIds": [ 1 ]
   },
@@ -730,7 +730,7 @@
     "Benefits": "Competitive salary with annual bonuses. Comprehensive health insurance. Modern office environment. Professional development opportunities. Team building events. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 21,
+    "EmployerId": 22,
     "SkillIds": [ 1, 2, 3, 5, 6, 7, 8, 9, 10 ],
     "CategoryIds": [ 1 ]
   },
@@ -751,7 +751,7 @@
     "Benefits": "Competitive salary with performance incentives. Comprehensive health and dental insurance. Professional development budget for courses and conferences. Creative and collaborative work environment. Opportunities for career growth. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 17,
+    "EmployerId": 39,
     "SkillIds": [ 7, 8, 17, 34, 39 ],
     "CategoryIds": [ 3 ]
   },
@@ -772,7 +772,7 @@
     "Benefits": "Competitive salary with annual bonuses. Hybrid work model with flexible arrangements. Comprehensive health and retirement benefits. Professional development opportunities. Opportunities for career growth within the company. Collaborative and supportive team environment. Generous paid time off.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 18,
+    "EmployerId": 38,
     "SkillIds": [ 11, 12, 15, 16, 33, 35 ],
     "CategoryIds": [ 8 ]
   },
@@ -793,7 +793,7 @@
     "Benefits": "Competitive salary with annual bonuses. Comprehensive health, dental, and vision insurance. Hybrid work model. Professional development budget. Opportunities for career growth and leadership. Team-oriented culture. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 11,
+    "EmployerId": 6,
     "SkillIds": [ 20, 31, 33, 39, 55 ],
     "CategoryIds": [ 5 ]
   },
@@ -814,7 +814,7 @@
     "Benefits": "Competitive salary with annual bonuses. Comprehensive health, dental, and vision insurance. Professional development budget. Collaborative and supportive team environment. Opportunities for career growth. Paid time off and holidays. Employee recognition programs.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 25,
+    "EmployerId": 5,
     "SkillIds": [ 21, 22, 31, 33, 38 ],
     "CategoryIds": [ 11 ]
   },
@@ -856,7 +856,7 @@
     "Benefits": "Competitive salary with performance bonuses. Comprehensive health and dental insurance. On-site training and mentorship. Opportunities for professional certification. Team-oriented and collaborative work environment. Paid time off and company holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 4,
+    "EmployerId": 45,
     "SkillIds": [ 31, 32, 33, 39, 41, 42 ],
     "CategoryIds": [ 19 ]
   },
@@ -877,7 +877,7 @@
     "Benefits": "Competitive salary with a clear path for advancement. Comprehensive health and dental insurance. On-site training and mentorship from senior marketers. Opportunities for professional development. Creative and collaborative work environment. Paid time off and company holidays. Team social events.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 3,
+    "EmployerId": 2,
     "SkillIds": [ 11, 12, 33, 48, 52, 53 ],
     "CategoryIds": [ 6 ]
   },
@@ -905,9 +905,9 @@
   {
     "Title": "DevOps Engineer",
     "Description": "We are seeking a highly skilled DevOps Engineer to join our team. You will be responsible for managing and improving our continuous integration and continuous delivery (CI/CD) pipelines. This role requires strong skills in cloud infrastructure, automation, and a deep understanding of the software development lifecycle. You will work closely with development and operations teams to streamline our deployment processes.",
-    "Salary": 92000.00,
+    "Salary": 70000.00,
     "WorkplaceType": "Hybrid",
-    "JobType": "FullTime",
+    "JobType": "PartTime",
     "PostedDate": "2025-06-15T00:00:00",
     "ExpireDate": "2025-09-15T00:00:00",
     "EducationLevel": "Bachelor",
@@ -919,7 +919,7 @@
     "Benefits": "Competitive salary with annual bonus. Comprehensive health, dental, and vision insurance. Hybrid work model for flexible working arrangements. Professional development budget for certifications and courses. Access to state-of-the-art cloud tools and platforms. Opportunities for career growth and leadership. Generous paid time off and holidays. Retirement savings plan with company matching.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 39,
+    "EmployerId": 44,
     "SkillIds": [ 3, 9, 10, 31, 32 ],
     "CategoryIds": [ 1 ]
   },
@@ -940,7 +940,7 @@
     "Benefits": "Competitive salary with annual bonuses. Comprehensive health insurance. Modern office environment. Professional development opportunities. Team building events. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 21,
+    "EmployerId": 3,
     "SkillIds": [ 1, 2, 3, 5, 6, 7, 8, 9, 10 ],
     "CategoryIds": [ 1 ]
   },
@@ -961,7 +961,7 @@
     "Benefits": "Competitive salary with performance incentives. Comprehensive health and dental insurance. Professional development budget for courses and conferences. Creative and collaborative work environment. Opportunities for career growth. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 17,
+    "EmployerId": 13,
     "SkillIds": [ 7, 8, 17, 34, 39 ],
     "CategoryIds": [ 3 ]
   },
@@ -982,7 +982,7 @@
     "Benefits": "Competitive salary with annual bonuses. Hybrid work model with flexible arrangements. Comprehensive health and retirement benefits. Professional development opportunities. Opportunities for career growth within the company. Collaborative and supportive team environment. Generous paid time off.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 18,
+    "EmployerId": 42,
     "SkillIds": [ 11, 12, 15, 16, 33, 35 ],
     "CategoryIds": [ 8 ]
   },
@@ -1003,7 +1003,7 @@
     "Benefits": "Competitive salary with annual bonuses. Comprehensive health, dental, and vision insurance. Hybrid work model. Professional development budget. Opportunities for career growth and leadership. Team-oriented culture. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 11,
+    "EmployerId": 7,
     "SkillIds": [ 20, 31, 33, 39, 55 ],
     "CategoryIds": [ 5 ]
   },
@@ -1045,7 +1045,7 @@
     "Benefits": "Paid internship with a competitive stipend. Mentorship from senior data analysts. Hands-on experience with real-world business problems. Opportunity to build a professional network. Potential for a full-time job offer upon graduation. Access to premium software licenses and learning resources. Collaborative and supportive team environment.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 18,
+    "EmployerId": 11,
     "SkillIds": [ 3, 35, 39, 50, 51 ],
     "CategoryIds": [ 2 ]
   },
@@ -1066,7 +1066,7 @@
     "Benefits": "Competitive salary with performance bonuses. Comprehensive health and dental insurance. On-site training and mentorship. Opportunities for professional certification. Team-oriented and collaborative work environment. Paid time off and company holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 4,
+    "EmployerId": 46,
     "SkillIds": [ 31, 32, 33, 39, 41, 42 ],
     "CategoryIds": [ 19 ]
   },
@@ -1087,7 +1087,7 @@
     "Benefits": "Competitive salary with a clear path for advancement. Comprehensive health and dental insurance. On-site training and mentorship from senior marketers. Opportunities for professional development. Creative and collaborative work environment. Paid time off and company holidays. Team social events.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 3,
+    "EmployerId": 5,
     "SkillIds": [ 11, 12, 33, 48, 52, 53 ],
     "CategoryIds": [ 6 ]
   },
@@ -1108,7 +1108,7 @@
     "Benefits": "Competitive salary with performance incentives. Free gym membership. Professional development budget for certifications. Collaborative and supportive team environment. Opportunities for career growth. Flexible working hours. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 25,
+    "EmployerId": 31,
     "SkillIds": [ 34, 59, 60 ],
     "CategoryIds": [ 21 ]
   },
@@ -1129,7 +1129,7 @@
     "Benefits": "Competitive salary with annual bonus. Comprehensive health, dental, and vision insurance. Hybrid work model for flexible working arrangements. Professional development budget for certifications and courses. Access to state-of-the-art cloud tools and platforms. Opportunities for career growth and leadership. Generous paid time off and holidays. Retirement savings plan with company matching.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 39,
+    "EmployerId": 27,
     "SkillIds": [ 3, 9, 10, 31, 32 ],
     "CategoryIds": [ 1 ]
   },
@@ -1150,7 +1150,7 @@
     "Benefits": "Competitive salary with performance-based bonuses. Comprehensive health, dental, and vision insurance. Professional development and training budget. Opportunities to attend industry conferences. Team-oriented and results-driven culture. Paid time off and company holidays. Leadership development programs.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 33,
+    "EmployerId": 38,
     "SkillIds": [ 11, 12, 31, 33, 47, 52 ],
     "CategoryIds": [ 6 ]
   },
@@ -1171,7 +1171,7 @@
     "Benefits": "Highly competitive salary with stock options. Remote work flexibility with home office stipend. Premium health insurance with family coverage options. Annual learning and development allowance. Access to cutting-edge technology and tools. Flexible vacation policy. Mental health and wellness programs. Conference attendance and professional networking opportunities.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 18,
+    "EmployerId": 29,
     "SkillIds": [ 3, 35, 39, 50, 51 ],
     "CategoryIds": [ 2 ]
   },
@@ -1192,7 +1192,7 @@
     "Benefits": "Competitive salary with performance incentives. Comprehensive health and dental insurance. Professional development budget for courses and conferences. Creative and collaborative work environment. Opportunities for career growth. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 17,
+    "EmployerId": 9,
     "SkillIds": [ 7, 8, 17, 34, 39 ],
     "CategoryIds": [ 3 ]
   },
@@ -1255,7 +1255,7 @@
     "Benefits": "Competitive salary with annual bonuses. Comprehensive health, dental, and vision insurance. Professional development budget for certifications. Opportunities for career growth and leadership. Collaborative and supportive work environment. Paid time off and holidays. Retirement savings plan with company matching.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 15,
+    "EmployerId": 19,
     "SkillIds": [ 19, 20, 31, 32, 33, 55 ],
     "CategoryIds": [ 10, 26 ]
   },
@@ -1297,7 +1297,7 @@
     "Benefits": "Competitive salary with annual bonuses. Comprehensive health and dental insurance. Professional development budget. Opportunities to work on impactful projects that contribute to food security. Collaborative and supportive work environment. Paid time off and holidays. Retirement savings plan with company matching.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 14,
+    "EmployerId": 20,
     "SkillIds": [ 20, 31, 32, 33, 35 ],
     "CategoryIds": [ 27 ]
   },
@@ -1339,7 +1339,7 @@
     "Benefits": "Competitive salary with annual bonus. Comprehensive health, dental, and vision insurance. Hybrid work model for flexible working arrangements. Professional development budget for certifications and courses. Access to state-of-the-art cloud tools and platforms. Opportunities for career growth and leadership. Generous paid time off and holidays. Retirement savings plan with company matching.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 39,
+    "EmployerId": 20,
     "SkillIds": [ 3, 9, 10, 31, 32 ],
     "CategoryIds": [ 1 ]
   },
@@ -1360,7 +1360,7 @@
     "Benefits": "Competitive salary with annual bonuses. Comprehensive health insurance. Modern office environment. Professional development opportunities. Team building events. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 21,
+    "EmployerId": 4,
     "SkillIds": [ 1, 2, 3, 5, 6, 7, 8, 9, 10 ],
     "CategoryIds": [ 1 ]
   },
@@ -1381,7 +1381,7 @@
     "Benefits": "Competitive salary with performance incentives. Comprehensive health and dental insurance. Professional development budget for courses and conferences. Creative and collaborative work environment. Opportunities for career growth. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 17,
+    "EmployerId": 5,
     "SkillIds": [ 7, 8, 17, 34, 39 ],
     "CategoryIds": [ 3 ]
   },
@@ -1402,7 +1402,7 @@
     "Benefits": "Competitive salary with annual bonuses. Hybrid work model with flexible arrangements. Comprehensive health and retirement benefits. Professional development opportunities. Opportunities for career growth within the company. Collaborative and supportive team environment. Generous paid time off.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 18,
+    "EmployerId": 28,
     "SkillIds": [ 11, 12, 15, 16, 33, 35 ],
     "CategoryIds": [ 8 ]
   },
@@ -1423,7 +1423,7 @@
     "Benefits": "Competitive salary with annual bonuses. Comprehensive health, dental, and vision insurance. Hybrid work model. Professional development budget. Opportunities for career growth and leadership. Team-oriented culture. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 11,
+    "EmployerId": 10,
     "SkillIds": [ 20, 31, 33, 39, 55 ],
     "CategoryIds": [ 5 ]
   },
@@ -1444,7 +1444,7 @@
     "Benefits": "Competitive salary with annual bonuses. Comprehensive health, dental, and vision insurance. Professional development budget. Collaborative and supportive team environment. Opportunities for career growth. Paid time off and holidays. Employee recognition programs.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 25,
+    "EmployerId": 28,
     "SkillIds": [ 21, 22, 31, 33, 38 ],
     "CategoryIds": [ 11 ]
   },
@@ -1486,7 +1486,7 @@
     "Benefits": "Competitive salary with performance bonuses. Comprehensive health and dental insurance. On-site training and mentorship. Opportunities for professional certification. Team-oriented and collaborative work environment. Paid time off and company holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 4,
+    "EmployerId": 41,
     "SkillIds": [ 31, 32, 33, 39, 41, 42 ],
     "CategoryIds": [ 19 ]
   },
@@ -1507,7 +1507,7 @@
     "Benefits": "Competitive salary with a clear path for advancement. Comprehensive health and dental insurance. On-site training and mentorship from senior marketers. Opportunities for professional development. Creative and collaborative work environment. Paid time off and company holidays. Team social events.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 3,
+    "EmployerId": 4,
     "SkillIds": [ 11, 12, 33, 48, 52, 53 ],
     "CategoryIds": [ 6 ]
   },
@@ -1535,7 +1535,7 @@
   {
     "Title": "DevOps Engineer",
     "Description": "We are seeking a skilled DevOps Engineer to join our team. You will be responsible for managing and improving our continuous integration and continuous delivery (CI/CD) pipelines. This role requires strong skills in cloud infrastructure, automation, and a deep understanding of the software development lifecycle. You will work closely with development and operations teams to streamline our deployment processes.",
-    "Salary": 92000.00,
+    "Salary": 70000.00,
     "WorkplaceType": "Hybrid",
     "JobType": "FullTime",
     "PostedDate": "2025-06-30T00:00:00",
@@ -1549,7 +1549,7 @@
     "Benefits": "Competitive salary with annual bonus. Comprehensive health, dental, and vision insurance. Hybrid work model for flexible working arrangements. Professional development budget for certifications and courses. Access to state-of-the-art cloud tools and platforms. Opportunities for career growth and leadership. Generous paid time off and holidays. Retirement savings plan with company matching.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 39,
+    "EmployerId": 16,
     "SkillIds": [ 3, 9, 10, 31, 32 ],
     "CategoryIds": [ 1 ]
   },
@@ -1570,7 +1570,7 @@
     "Benefits": "Competitive salary with annual bonuses. Comprehensive health insurance. Modern office environment. Professional development opportunities. Team building events. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 21,
+    "EmployerId": 5,
     "SkillIds": [ 1, 2, 3, 5, 6, 7, 8, 9, 10 ],
     "CategoryIds": [ 1 ]
   },
@@ -1591,7 +1591,7 @@
     "Benefits": "Competitive salary with performance incentives. Comprehensive health and dental insurance. Professional development budget for courses and conferences. Creative and collaborative work environment. Opportunities for career growth. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 17,
+    "EmployerId": 23,
     "SkillIds": [ 7, 8, 17, 34, 39 ],
     "CategoryIds": [ 3 ]
   },
@@ -1612,7 +1612,7 @@
     "Benefits": "Competitive salary with annual bonuses. Hybrid work model with flexible arrangements. Comprehensive health and retirement benefits. Professional development opportunities. Opportunities for career growth within the company. Collaborative and supportive team environment. Generous paid time off.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 18,
+    "EmployerId": 38,
     "SkillIds": [ 11, 12, 15, 16, 33, 35 ],
     "CategoryIds": [ 8 ]
   },
@@ -1633,7 +1633,7 @@
     "Benefits": "Competitive salary with annual bonuses. Comprehensive health, dental, and vision insurance. Hybrid work model. Professional development budget. Opportunities for career growth and leadership. Team-oriented culture. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 11,
+    "EmployerId": 13,
     "SkillIds": [ 20, 31, 33, 39, 55 ],
     "CategoryIds": [ 5 ]
   },
@@ -1675,7 +1675,7 @@
     "Benefits": "Paid internship with a competitive stipend. Mentorship from senior data analysts. Hands-on experience with real-world business problems. Opportunity to build a professional network. Potential for a full-time job offer upon graduation. Access to premium software licenses and learning resources. Collaborative and supportive team environment.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 18,
+    "EmployerId": 11,
     "SkillIds": [ 3, 35, 39, 50, 51 ],
     "CategoryIds": [ 2 ]
   },
@@ -1696,7 +1696,7 @@
     "Benefits": "Competitive salary with performance bonuses. Comprehensive health and dental insurance. On-site training and mentorship. Opportunities for professional certification. Team-oriented and collaborative work environment. Paid time off and company holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 4,
+    "EmployerId": 36,
     "SkillIds": [ 31, 32, 33, 39, 41, 42 ],
     "CategoryIds": [ 19 ]
   },
@@ -1717,7 +1717,7 @@
     "Benefits": "Competitive salary with a clear path for advancement. Comprehensive health and dental insurance. On-site training and mentorship from senior marketers. Opportunities for professional development. Creative and collaborative work environment. Paid time off and company holidays. Team social events.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 3,
+    "EmployerId": 11,
     "SkillIds": [ 11, 12, 33, 48, 52, 53 ],
     "CategoryIds": [ 6 ]
   },
@@ -1759,7 +1759,7 @@
     "Benefits": "Competitive salary with annual bonus. Comprehensive health, dental, and vision insurance. Hybrid work model for flexible working arrangements. Professional development budget for certifications and courses. Access to state-of-the-art cloud tools and platforms. Opportunities for career growth and leadership. Generous paid time off and holidays. Retirement savings plan with company matching.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 39,
+    "EmployerId": 44,
     "SkillIds": [ 3, 9, 10, 31, 32 ],
     "CategoryIds": [ 1 ]
   },
@@ -1780,7 +1780,7 @@
     "Benefits": "Competitive salary with annual bonuses. Comprehensive health insurance. Modern office environment. Professional development opportunities. Team building events. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 21,
+    "EmployerId": 7,
     "SkillIds": [ 1, 2, 3, 5, 6, 7, 8, 9, 10 ],
     "CategoryIds": [ 1 ]
   },
@@ -1801,7 +1801,7 @@
     "Benefits": "Competitive salary with performance incentives. Comprehensive health and dental insurance. Professional development budget for courses and conferences. Creative and collaborative work environment. Opportunities for career growth. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 17,
+    "EmployerId": 3,
     "SkillIds": [ 7, 8, 17, 34, 39 ],
     "CategoryIds": [ 3 ]
   },
@@ -1843,7 +1843,7 @@
     "Benefits": "Competitive salary with annual bonuses. Comprehensive health, dental, and vision insurance. Hybrid work model. Professional development budget. Opportunities for career growth and leadership. Team-oriented culture. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 11,
+    "EmployerId": 22,
     "SkillIds": [ 20, 31, 33, 39, 55 ],
     "CategoryIds": [ 5 ]
   },
@@ -1906,7 +1906,7 @@
     "Benefits": "Competitive salary with performance bonuses. Comprehensive health and dental insurance. On-site training and mentorship. Opportunities for professional certification. Team-oriented and collaborative work environment. Paid time off and company holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 4,
+    "EmployerId": 34,
     "SkillIds": [ 31, 32, 33, 39, 41, 42 ],
     "CategoryIds": [ 19 ]
   },
@@ -1927,7 +1927,7 @@
     "Benefits": "Competitive salary with a clear path for advancement. Comprehensive health and dental insurance. On-site training and mentorship from senior marketers. Opportunities for professional development. Creative and collaborative work environment. Paid time off and company holidays. Team social events.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 3,
+    "EmployerId": 15,
     "SkillIds": [ 11, 12, 33, 48, 52, 53 ],
     "CategoryIds": [ 6 ]
   },
@@ -1969,7 +1969,7 @@
     "Benefits": "Competitive salary with annual bonus. Comprehensive health, dental, and vision insurance. Hybrid work model for flexible working arrangements. Professional development budget for certifications and courses. Access to state-of-the-art cloud tools and platforms. Opportunities for career growth and leadership. Generous paid time off and holidays. Retirement savings plan with company matching.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 39,
+    "EmployerId": 3,
     "SkillIds": [ 3, 9, 10, 31, 32 ],
     "CategoryIds": [ 1 ]
   },
@@ -1990,7 +1990,7 @@
     "Benefits": "Competitive salary with annual bonuses. Comprehensive health insurance. Modern office environment. Professional development opportunities. Team building events. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 21,
+    "EmployerId": 27,
     "SkillIds": [ 1, 2, 3, 5, 6, 7, 8, 9, 10 ],
     "CategoryIds": [ 1 ]
   },
@@ -2011,7 +2011,7 @@
     "Benefits": "Competitive salary with performance incentives. Comprehensive health and dental insurance. Professional development budget for courses and conferences. Creative and collaborative work environment. Opportunities for career growth. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 17,
+    "EmployerId": 4,
     "SkillIds": [ 7, 8, 17, 34, 39 ],
     "CategoryIds": [ 3 ]
   },
@@ -2047,13 +2047,13 @@
     "EducationLevel": "Bachelor",
     "MinTeamSize": 5,
     "MaxTeamSize": 10,
-    "ExperienceLevel": "Manager",
-    "Requirements": "5+ years of experience in project management. Bachelor's degree in a related field. PMP certification is highly desirable. Strong knowledge of project management methodologies (Agile, Scrum). Excellent leadership, communication, and problem-solving skills. Proven ability to manage project timelines and budgets. Experience with risk management and quality assurance.",
+    "ExperienceLevel": "Experienced",
+    "Requirements": "3+ years of experience in project management. Bachelor's degree in a related field. PMP certification is highly desirable. Strong knowledge of project management methodologies (Agile, Scrum). Excellent leadership, communication, and problem-solving skills. Proven ability to manage project timelines and budgets. Experience with risk management and quality assurance.",
     "Responsabilities": "Lead project planning and execution from start to finish. Define project scope, goals, and deliverables. Coordinate with cross-functional teams and stakeholders. Manage project budgets and resource allocation. Monitor project progress and ensure timely completion. Identify and mitigate project risks. Communicate project status to all stakeholders. Ensure compliance with quality standards.",
     "Benefits": "Competitive salary with annual bonuses. Comprehensive health, dental, and vision insurance. Hybrid work model. Professional development budget. Opportunities for career growth and leadership. Team-oriented culture. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 11,
+    "EmployerId": 25,
     "SkillIds": [ 20, 31, 33, 39, 55 ],
     "CategoryIds": [ 5 ]
   },
@@ -2116,7 +2116,7 @@
     "Benefits": "Competitive salary with performance bonuses. Comprehensive health and dental insurance. On-site training and mentorship. Opportunities for professional certification. Team-oriented and collaborative work environment. Paid time off and company holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 4,
+    "EmployerId": 29,
     "SkillIds": [ 31, 32, 33, 39, 41, 42 ],
     "CategoryIds": [ 19 ]
   },
@@ -2137,7 +2137,7 @@
     "Benefits": "Competitive salary with a clear path for advancement. Comprehensive health and dental insurance. On-site training and mentorship from senior marketers. Opportunities for professional development. Creative and collaborative work environment. Paid time off and company holidays. Team social events.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 3,
+    "EmployerId": 16,
     "SkillIds": [ 11, 12, 33, 48, 52, 53 ],
     "CategoryIds": [ 6 ]
   },
@@ -2158,7 +2158,7 @@
     "Benefits": "Competitive salary with performance incentives. Free gym membership. Professional development budget for certifications. Collaborative and supportive team environment. Opportunities for career growth. Flexible working hours. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 25,
+    "EmployerId": 4,
     "SkillIds": [ 34, 59, 60 ],
     "CategoryIds": [ 21 ]
   },
@@ -2347,7 +2347,7 @@
     "Benefits": "Competitive salary with performance bonuses. Comprehensive health and dental insurance. Professional development budget for certifications. Opportunities for career growth and specialization. Collaborative and supportive team environment. Paid time off and company holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 25,
+    "EmployerId": 5,
     "SkillIds": [ 21, 22, 33, 38, 39 ],
     "CategoryIds": [ 11 ]
   },
@@ -2767,7 +2767,7 @@
     "Benefits": "Competitive salary with annual bonuses. Hybrid work model with flexible arrangements. Comprehensive health and retirement benefits. Professional development opportunities. Opportunities for career growth within the company. Collaborative and supportive team environment. Generous paid time off.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 8,
+    "EmployerId": 6,
     "SkillIds": [ 11, 12, 15, 16, 33, 35 ],
     "CategoryIds": [ 8 ]
   },
@@ -2830,7 +2830,7 @@
     "Benefits": "Competitive entry-level salary with opportunities for growth. Comprehensive health and dental insurance. On-site training and mentorship. Opportunities for professional certification. Team-oriented and collaborative work environment. Paid time off and company holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 4,
+    "EmployerId": 45,
     "SkillIds": [ 32, 39, 41, 42 ],
     "CategoryIds": [ 19 ]
   },
@@ -2893,7 +2893,7 @@
     "Benefits": "Competitive salary with annual bonuses. Comprehensive health and dental insurance. Professional development budget for certifications and courses. Opportunity to work on impactful and innovative projects. Collaborative and interdisciplinary work environment. Generous paid time off and holidays. Retirement savings plan with company matching.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 20,
+    "EmployerId": 25,
     "SkillIds": [ 19, 20, 31, 32, 33, 40 ],
     "CategoryIds": [ 32 ]
   },
@@ -2914,7 +2914,7 @@
     "Benefits": "Competitive salary with uncapped commissions. Comprehensive health insurance with vision and dental. Car allowance and travel expenses. Professional development and training programs. Opportunities for career advancement in sales leadership. Team-oriented and supportive work culture. Paid time off and company holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 34,
+    "EmployerId": 33,
     "SkillIds": [ 13, 14, 33, 36, 38, 45 ],
     "CategoryIds": [ 39 ]
   },
@@ -2956,7 +2956,7 @@
     "Benefits": "Competitive salary with annual bonuses. Comprehensive health insurance. Modern office environment. Professional development opportunities. Team building events. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 21,
+    "EmployerId": 1,
     "SkillIds": [ 1, 2, 3, 5, 6, 7, 8, 9, 10 ],
     "CategoryIds": [ 1 ]
   },
@@ -3005,9 +3005,9 @@
   {
     "Title": "Human Resources Generalist",
     "Description": "Join our HR team as a Generalist to support various human resources functions, including recruitment, employee relations, and HR policy management. You will play a key role in maintaining a positive and productive work environment. This on-site role is for a detail-oriented professional with a strong understanding of HR best practices.",
-    "Salary": 55000.00,
+    "Salary": 25000.00,
     "WorkplaceType": "OnSite",
-    "JobType": "FullTime",
+    "JobType": "PartTime",
     "PostedDate": "2025-08-16T00:00:00",
     "ExpireDate": "2025-11-25T00:00:00",
     "EducationLevel": "Bachelor",
@@ -3082,16 +3082,16 @@
     "Benefits": "Highly competitive salary with performance bonuses. Hybrid work model with flexible hours. Comprehensive health and retirement benefits. Professional development budget. Opportunities for career growth and leadership. Team-oriented and results-driven culture. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 4,
+    "EmployerId": 10,
     "SkillIds": [ 31, 32, 38, 41, 42, 55 ],
     "CategoryIds": [ 19 ]
   },
   {
     "Title": "Fitness Trainer",
     "Description": "Join our fitness team as a certified Personal Trainer. You will be responsible for creating personalized workout plans, guiding clients through exercises, and providing dietary planning advice. This on-site role is for an energetic and knowledgeable professional with a passion for health and wellness.",
-    "Salary": 50000.00,
+    "Salary": 20000.00,
     "WorkplaceType": "OnSite",
-    "JobType": "FullTime",
+    "JobType": "PartTime",
     "PostedDate": "2025-08-16T00:00:00",
     "ExpireDate": "2025-10-10T00:00:00",
     "EducationLevel": "Diploma",
@@ -3103,7 +3103,7 @@
     "Benefits": "Competitive salary with performance incentives. Free gym membership. Professional development budget for certifications. Collaborative and supportive team environment. Opportunities for career growth. Flexible working hours. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 25,
+    "EmployerId": 2,
     "SkillIds": [ 34, 59, 60 ],
     "CategoryIds": [ 21 ]
   },
@@ -3131,9 +3131,9 @@
   {
     "Title": "Hotel Manager",
     "Description": "We are seeking an experienced Hotel Manager to oversee all aspects of hotel operations. You will be responsible for ensuring guest satisfaction, managing staff, and maintaining the hotel's financial performance. This on-site role is for a dedicated and professional leader with a proven track record in hospitality management.",
-    "Salary": 75000.00,
+    "Salary": 50000.00,
     "WorkplaceType": "OnSite",
-    "JobType": "FullTime",
+    "JobType": "PartTime",
     "PostedDate": "2025-08-16T00:00:00",
     "ExpireDate": "2025-12-20T00:00:00",
     "EducationLevel": "Bachelor",
@@ -3229,7 +3229,7 @@
     "Benefits": "Competitive salary with performance incentives. Comprehensive health and dental insurance. Professional development budget. Creative and collaborative work environment. Opportunities for career growth. Paid time off and holidays. Team social events.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 17,
+    "EmployerId": 32,
     "SkillIds": [ 7, 8, 17, 18, 34, 37 ],
     "CategoryIds": [ 9 ]
   },
@@ -3334,7 +3334,7 @@
     "Benefits": "Competitive salary with performance incentives. Hybrid work model with a flexible schedule. Comprehensive health and dental insurance. Professional development budget for courses and certifications. Opportunities for career growth. Collaborative and supportive work environment. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 33,
+    "EmployerId": 27,
     "SkillIds": [ 3, 11, 12, 35, 37, 39 ],
     "CategoryIds": [ 6 ]
   },
@@ -3376,7 +3376,7 @@
     "Benefits": "Competitive salary with annual bonus. Comprehensive health, dental, and vision insurance. Hybrid work model for flexible working arrangements. Professional development budget for certifications and courses. Access to state-of-the-art cloud tools and platforms. Opportunities for career growth and leadership. Generous paid time off and holidays. Retirement savings plan with company matching.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 39,
+    "EmployerId": 1,
     "SkillIds": [ 3, 9, 10, 31, 32 ],
     "CategoryIds": [ 1 ]
   },
@@ -3628,7 +3628,7 @@
     "Benefits": "Competitive salary with performance bonuses. Hybrid work model for work-life balance. Professional development budget. Comprehensive health insurance. Collaborative and supportive team environment. Opportunities for career advancement in HR leadership. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 11,
+    "EmployerId": 20,
     "SkillIds": [ 21, 22, 31, 33, 38 ],
     "CategoryIds": [ 11 ]
   },
@@ -3649,7 +3649,7 @@
     "Benefits": "Competitive entry-level salary with opportunities for growth. Comprehensive health and dental insurance. On-site training and mentorship. Opportunities for professional certification. Team-oriented and collaborative work environment. Paid time off and company holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 4,
+    "EmployerId": 46,
     "SkillIds": [ 32, 39, 41, 42 ],
     "CategoryIds": [ 19 ]
   },
@@ -3670,7 +3670,7 @@
     "Benefits": "Competitive salary with performance bonuses. Comprehensive health and dental benefits. Professional development budget for courses and conferences. Modern office with a creative atmosphere. Opportunities for rapid career progression. Team social events and discounts on company products. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 16,
+    "EmployerId": 4,
     "SkillIds": [ 3, 11, 45, 46, 47 ],
     "CategoryIds": [ 25 ]
   },
@@ -3775,7 +3775,7 @@
     "Benefits": "Competitive salary with annual bonuses. Comprehensive health insurance. Modern office environment. Professional development opportunities. Team building events. Paid time off and holidays.",
     "IsActive": true,
     "IsApproved": true,
-    "EmployerId": 21,
+    "EmployerId": 2,
     "SkillIds": [ 1, 2, 3, 5, 6, 7, 8, 9, 10 ],
     "CategoryIds": [ 1 ]
   }

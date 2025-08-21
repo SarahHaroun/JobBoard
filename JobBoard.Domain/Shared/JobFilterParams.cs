@@ -30,7 +30,7 @@ namespace JobBoard.Domain.Shared
 			set => _pageIndex = (value < 1) ? 1 : value;
 		}
 
-		private int _pageSize = 10;
+		private int _pageSize = 6;
 		public int PageSize
 		{
 			get => _pageSize;
