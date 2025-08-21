@@ -32,12 +32,11 @@ namespace JobBoard.API.Controllers
                 return BadRequest("Invalid notification data.");
             }
             await _notificationService.AddNotificationAsync(dto.UserId, dto.Message, dto.Link);
-            return Ok("Notification added successfully.");
+            return Ok(new { message = "Notification added successfully." });
         }
 
-        // PUT: api/notifications/{id}/mark-as-read
-        [HttpPut("read/{id}")]
-        public async Task<IActionResult> MarkAsRead([FromBody] int notificationId)
+        [HttpPut("read/{notificationId}")]
+        public async Task<IActionResult> MarkAsRead(int notificationId)
         {
             try
             {
