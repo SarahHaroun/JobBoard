@@ -34,7 +34,7 @@ namespace JobBoard.API
             await app.InitializeDatabaseAsync();
 			app.ConfigureMiddleware();
 
-			app.Run();
+            app.Run();
 		}
 	}
 }

@@ -88,7 +88,10 @@ namespace JobBoard.Services._ِAuthService
                 Succeeded = true,
                 Token = new JwtSecurityTokenHandler().WriteToken(token),
                 Expiration = expiration,   //token.ValidTo,
-                Role = userRole.FirstOrDefault() ?? ""
+                Role = userRole.FirstOrDefault() ?? "",
+                Message = "Login successful.",
+                UserId = user.Id
+
             };
 
 

@@ -1,7 +1,6 @@
 ﻿using JobBoard.Domain.DTO.NotificationsDto;
 using JobBoard.Services.NotificationsService;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -9,7 +8,7 @@ namespace JobBoard.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize] // for users only
+    [Authorize]
     public class NotificationsController : ControllerBase
     {
         private readonly INotificationService _notificationService;
@@ -18,51 +17,46 @@ namespace JobBoard.API.Controllers
         {
             _notificationService = notificationService;
         }
-    
+
+        // جلب كل الإشعارات للمستخدم
         [HttpGet("user/{userId}")]
         public async Task<IActionResult> GetUserNotifications(string userId)
         {
             var notifications = await _notificationService.GetUserNotificationsAsync(userId);
             return Ok(notifications);
         }
+
+        // إضافة إشعار جديد
         [HttpPost]
         public async Task<IActionResult> AddNotification([FromBody] CreateNotificationDto dto)
         {
-            if (dto == null || string.IsNullOrEmpty(dto.Message))
-                return BadRequest("Invalid notification data.");
-
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (string.IsNullOrEmpty(userId))
-                return Unauthorized("User not found in token.");
-
             await _notificationService.AddNotificationAsync(userId, dto.Message, dto.Link);
-
-            return Ok("Notification added successfully.");
+            return Ok(new { message = "Notification added successfully." });
         }
 
-        // PUT: api/notifications/{id}/mark-as-read
-        [HttpPut("{id}/mark-as-read")]
+        // تعليم إشعار واحد كمقروء
+        [HttpPut("read/{notificationId}")]
         public async Task<IActionResult> MarkAsRead(int notificationId)
         {
-            try
-            {
-                await _notificationService.MarkAsReadAsync(notificationId);
-                return Ok(new { message = "Notification marked as read" });
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
-            }
+            await _notificationService.MarkAsReadAsync(notificationId);
+            return Ok(new { message = "Notification marked as read" });
         }
 
+        // تعليم كل الإشعارات كمقروءة
+        [HttpPut("user/{userId}/read-all")]
+        public async Task<IActionResult> MarkAllAsRead(string userId)
+        {
+            await _notificationService.MarkAllAsReadAsync(userId);
+            return Ok(new { message = "All notifications marked as read" });
+        }
 
-
-
-
-
+        // مسح إشعار واحد
+        [HttpDelete("{notificationId}")]
+        public async Task<IActionResult> DeleteNotification(int notificationId)
+        {
+            await _notificationService.DeleteNotificationAsync(notificationId);
+            return Ok(new { message = "Notification deleted" });
+        }
     }
 }
