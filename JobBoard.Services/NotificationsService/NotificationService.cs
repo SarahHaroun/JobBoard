@@ -25,6 +25,8 @@ namespace JobBoard.Services.NotificationsService
             _mapper = mapper;
             _notificationSender = notificationSender;
         }
+
+        /////////////////////////////// Add Notification //////////////////////////////////////////
         public async Task AddNotificationAsync(string userId, string message, string? link = null)
         {
 
@@ -42,6 +44,9 @@ namespace JobBoard.Services.NotificationsService
             // Send the notification to the user via SignalR
             await _notificationSender.SendNotificationAsync(userId, message, link);
         }
+
+
+        /////////////////////////////// Mark As Read //////////////////////////////////////////
         public async Task MarkAsReadAsync(int notificationId)
         {
 
@@ -57,10 +62,17 @@ namespace JobBoard.Services.NotificationsService
             await _unitOfWork.CompleteAsync();
 
 
-            // Optionally, you could also send a SignalR message to update the UI
-            await _notificationSender.SendNotificationAsync(notification.UserId, "Notification marked as read.");
+            await _notificationSender.SendNotificationUpdateAsync(notification.UserId, new
+            {
+                Action = "MarkAsRead",
+                NotificationId = notificationId,
+                IsRead = true
+            });
 
         }
+
+
+        /////////////////////////////// Get User Notification //////////////////////////////////////////
         public async Task<IEnumerable<NotificationDto>> GetUserNotificationsAsync(string userId)
         {
             var specification = new NotificationsForUserSpecification(userId);
@@ -71,6 +83,52 @@ namespace JobBoard.Services.NotificationsService
                 return Enumerable.Empty<NotificationDto>();
             }
             return _mapper.Map<IEnumerable<NotificationDto>>(notifications);
+        }
+
+
+        /////////////////////////////// Mark All As Read //////////////////////////////////////////
+
+        public async Task MarkAllAsReadAsync(string userId)
+        {
+            var specification = new NotificationsForUserSpecification(userId);
+            var repository = _unitOfWork.Repository<Notification>();
+            var notifications = await repository.GetAllAsync(specification);
+
+            foreach (var notification in notifications.Where(n => !n.IsRead))
+            {
+                notification.IsRead = true;
+                repository.Update(notification);
+            }
+
+            await _unitOfWork.CompleteAsync();
+            if (notifications.Any())
+            {
+                await _notificationSender.SendNotificationUpdateAsync(userId, new
+                {
+                    Action = "MarkAllAsRead",
+                    NotificationIds = notifications
+                });
+            }
+        }
+
+        /////////////////////////////// Delete Notification //////////////////////////////////////////
+
+        public async Task DeleteNotificationAsync(int notificationId)
+        {
+            var repository = _unitOfWork.Repository<Notification>();
+            var notification = await repository.GetByIdAsync(notificationId);
+
+            if (notification == null)
+                throw new KeyNotFoundException($"Notification with ID {notificationId} not found.");
+
+            repository.Delete(notification);
+            await _unitOfWork.CompleteAsync();
+
+            await _notificationSender.SendNotificationUpdateAsync(notification.UserId, new
+            {
+                Action = "Delete",
+                NotificationId = notificationId
+            });
         }
     }
 }

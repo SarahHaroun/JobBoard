@@ -56,21 +56,37 @@ namespace JobBoard.API
 				 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;  //return unAuthorized
 				 options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
 			 })
-			 .AddJwtBearer(options =>         /// Validate the token
-			 {
-				 options.RequireHttpsMetadata = true; // Use HTTPS for production
-				 options.SaveToken = true; // Save the token in the request
-				 options.TokenValidationParameters = new TokenValidationParameters
-				 {
-					 ValidateIssuer = true,
-					 ValidateAudience = true,
-					 ValidateLifetime = true,
-					 ValidateIssuerSigningKey = true,
-					 ValidIssuer = configuration["JWT:ValidIssuer"],
-					 ValidAudience = configuration["JWT:ValidAudience"],
-					 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"])) // Secret key for signing the token
-				 };
-			 })
+            .AddJwtBearer(options =>
+            {
+                options.RequireHttpsMetadata = false; // خليها false أثناء التطوير
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = configuration["JWT:ValidIssuer"],
+                    ValidAudience = configuration["JWT:ValidAudience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(configuration["JWT:Secret"]))
+                };
+                options.Events = new JwtBearerEvents
+                {
+                    OnMessageReceived = context =>
+                    {
+                        var accessToken = context.Request.Query["access_token"];
+                        var path = context.HttpContext.Request.Path;
+
+                        if (!string.IsNullOrEmpty(accessToken) &&
+                            path.StartsWithSegments("/notifications"))
+                        {
+                            context.Token = accessToken;
+                        }
+                        return Task.CompletedTask;
+                    }
+                };
+            })
               .AddGoogle(options =>
                 {
                     options.ClientId = configuration["GoogleAuthSettings:ClientId"]!;
@@ -84,7 +100,7 @@ namespace JobBoard.API
 			{
 				options.AddPolicy("AllowAngularApp", policy =>
 				{
-					policy.WithOrigins("http://localhost:11439")
+					policy.WithOrigins("http://localhost:4200")
 						  .AllowAnyHeader()
 						  .AllowAnyMethod()
 						  .AllowCredentials();
