@@ -6,15 +6,13 @@ namespace JobBoard.API.Hubs
     public class SignalRNotificationSender : INotificationSender
     {
         private readonly IHubContext<NotificationsHub> _hubContext;
-
         public SignalRNotificationSender(IHubContext<NotificationsHub> hubContext)
         {
             _hubContext = hubContext;
         }
-
-        public async Task SendNotificationAsync(string userId, string message, string? link = null, int id = 0)
+        public async Task SendNotificationAsync(string userId, string message, string? link = null)
         {
-            await _hubContext.Clients.User(userId).SendAsync("ReceiveNotification", message, link, id);
+            await _hubContext.Clients.User(userId).SendAsync("ReceiveNotification", message, link);
         }
 
         public async Task SendNotificationUpdateAsync(string userId, object updateData)
@@ -22,5 +20,5 @@ namespace JobBoard.API.Hubs
             await _hubContext.Clients.Group($"User_{userId}").SendAsync("NotificationUpdate", updateData);
         }
     }
-
+  
 }
