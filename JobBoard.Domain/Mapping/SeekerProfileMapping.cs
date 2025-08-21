@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
 using JobBoard.Domain.DTO.SeekerDto;
+using JobBoard.Domain.DTO.SeekerDto.SeekerSeedDto;
 using JobBoard.Domain.Entities;
+using JobBoard.Domain.Entities.Enums;
+using JobBoard.Domain.Mapping.Resolvers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,21 +42,103 @@ namespace JobBoard.Domain.Mapping
 				.ForMember(dest => dest.SeekerTraining, opt => opt.MapFrom(src => src.Trainings.Select(t => new SeekerTraining { TrainingName = t })))
 				.ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
 
-			// -----------------------------
-			// Education
-			// -----------------------------
-			CreateMap<SeekerEducation, SeekerEducationDto>().ReverseMap();
+
+			//------------------------------
+			// Seeker Profile Seed
+			//------------------------------
+			CreateMap<SeekerSeedDto, SeekerProfile>()
+				.ForMember(dest => dest.Id, opt => opt.Ignore())
+				.ForMember(dest => dest.UserId, opt => opt.Ignore())
+				.ForMember(dest => dest.User, opt => opt.Ignore())
+				.ForMember(dest => dest.UserApplications, opt => opt.Ignore())
+
+				// Handle nullable Gender properly
+				.ForMember(dest => dest.Gender, opt => opt.MapFrom(src => src.Gender ?? Gender.Male))
+
+				// Use resolvers only if they exist, otherwise direct mapping
+				.ForMember(dest => dest.CV_Url, opt => opt.MapFrom<SeekerCvUrlResolver>())
+				.ForMember(dest => dest.ProfileImageUrl, opt => opt.MapFrom<ProfileImageUrlResolver>())
+				//.ForMember(dest => dest.CV_Url, opt => opt.MapFrom(src => src.CV_Url))
+				//.ForMember(dest => dest.ProfileImageUrl, opt => opt.MapFrom(src => src.ProfileImageUrl))
+
+				// Collections - will be handled manually in seeder
+				.ForMember(dest => dest.Skills, opt => opt.Ignore())
+				.ForMember(dest => dest.seekerCertificates, opt => opt.Ignore())
+				.ForMember(dest => dest.SeekerTraining, opt => opt.Ignore())
+				.ForMember(dest => dest.seekerInterests, opt => opt.Ignore())
+				.ForMember(dest => dest.SeekerExperiences, opt => opt.Ignore())
+				.ForMember(dest => dest.SeekerEducations, opt => opt.Ignore());
+
+
+            // -----------------------------
+            // Education
+            // -----------------------------
+            CreateMap<SeekerEducation, SeekerEducationDto>().ReverseMap();
 
 
 			CreateMap<SeekerEducationUpdateDto, SeekerEducation>()
 				.ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
 
-			// -----------------------------
-			// Experience
-			// -----------------------------
-			CreateMap<SeekerExperience, SeekerExperienceDto>().ReverseMap();
+
+			CreateMap<SeekerEducationSeedDto, SeekerEducation>()
+				.ForMember(dest => dest.Id, opt => opt.Ignore())
+				.ForMember(dest => dest.SeekerProfileId, opt => opt.Ignore())
+				.ForMember(dest => dest.SeekerProfile, opt => opt.Ignore())
+				.ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
+
+
+
+            // -----------------------------
+            // Experience
+            // -----------------------------
+            CreateMap<SeekerExperience, SeekerExperienceDto>().ReverseMap();
+
+
 			CreateMap<SeekerExperienceUpdateDto, SeekerExperience>()
 				.ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
-		}
-	}
-}
+
+			CreateMap<SeekerExperienceSeedDto, SeekerExperience>()
+				.ForMember(dest => dest.Id, opt => opt.Ignore())
+				.ForMember(dest => dest.SeekerProfileId, opt => opt.Ignore())
+				.ForMember(dest => dest.SeekerProfile, opt => opt.Ignore())
+				.ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
+
+
+			// -----------------------------
+			// Seeker Intersts Seed
+			// -----------------------------
+			CreateMap<SeekerInterstsSeedDto, SeekerInterest>()
+				.ForMember(dest => dest.Id, opt => opt.Ignore())
+				.ForMember(dest => dest.SeekerProfileId, opt => opt.Ignore())
+				.ForMember(dest => dest.SeekerProfile, opt => opt.Ignore());
+			//.ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
+
+			// -----------------------------
+			// Seeker Training Seed
+			// -----------------------------
+			CreateMap<SeekerTrainingSeedDto, SeekerTraining>()
+				.ForMember(dest => dest.Id, opt => opt.Ignore())
+				.ForMember(dest => dest.SeekerProfileId, opt => opt.Ignore())
+				.ForMember(dest => dest.SeekerProfile, opt => opt.Ignore());
+			//.ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
+
+
+			// -----------------------------
+			// Seeker Certificate Seed
+			// -----------------------------
+			CreateMap<SeekerCertificateSeedDto, SeekerCertificate>()
+				.ForMember(dest => dest.Id, opt => opt.Ignore())
+				.ForMember(dest => dest.SeekerProfileId, opt => opt.Ignore())
+				.ForMember(dest => dest.SeekerProfile, opt => opt.Ignore());
+            //.ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
+
+
+
+        }
+
+
+
+
+
+    }
+    }

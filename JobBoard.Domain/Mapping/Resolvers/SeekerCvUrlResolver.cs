@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.Execution;
-using JobBoard.Domain.DTO.SeekerDto;
+using JobBoard.Domain.DTO.SeekerDto.SeekerSeedDto;
 using JobBoard.Domain.Entities;
 using Microsoft.Extensions.Configuration;
 using System;

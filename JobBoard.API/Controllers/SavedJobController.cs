@@ -26,13 +26,14 @@ namespace JobBoard.API.Controllers
 
 		// GET: api/SavedJob
 		[HttpGet]
+		[HttpGet]
 		public async Task<IActionResult> GetAllSavedJobs([FromQuery] SavedJobFilterParams filterParams)
 		{
 			var seekerId = await GetSeekerIdAsync();
 			if (seekerId.Result != null)
 				return seekerId.Result;
 
-			var result = await _savedJobService.GetSavedJobsAsync(filterParams);
+			var result = await _savedJobService.GetSavedJobsAsync(seekerId.Value, filterParams);
 			return Ok(result);
 		}
 
@@ -44,10 +45,9 @@ namespace JobBoard.API.Controllers
 			if (seekerId.Result != null)
 				return seekerId.Result;
 
-			var savedJob = await _savedJobService.GetSavedJobByIdAsync(jobId);
+			var savedJob = await _savedJobService.GetSavedJobByIdAsync(seekerId.Value, jobId);
 			if (savedJob == null)
 				return NotFound();
-
 			return Ok(savedJob);
 		}
 

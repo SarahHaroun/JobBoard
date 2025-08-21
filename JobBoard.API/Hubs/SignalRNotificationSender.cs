@@ -16,6 +16,11 @@ namespace JobBoard.API.Hubs
         {
             await _hubContext.Clients.User(userId).SendAsync("ReceiveNotification", message, link, id);
         }
+
+        public async Task SendNotificationUpdateAsync(string userId, object updateData)
+        {
+            await _hubContext.Clients.Group($"User_{userId}").SendAsync("NotificationUpdate", updateData);
+        }
     }
 
 }

@@ -25,10 +25,10 @@ namespace JobBoard.Domain.DTO.SeekerDto
 
 
         // Navigation collections
-        public List<string>? CertificateName { get; set; } = new List<string>();
-        public List<string>? TrainingName { get; set; } = new List<string>();
-        public List<string>? InterestName { get; set; } = new List<string>();
-        public List<string>? SkillName { get; set; } = new List<string>();
+        public List<string>? CertificateName { get; set; } = new();
+        public List<string>? TrainingName { get; set; } = new();
+        public List<string>? InterestName { get; set; } = new();
+        public List<string>? SkillName { get; set; } = new();
 
         public List<SeekerExperienceDto>? SeekerExperiences { get; set; } = new();
         public List<SeekerEducationDto>? SeekerEducations { get; set; } = new();

@@ -9,6 +9,8 @@ namespace JobBoard.Domain.Services.Contract
 {
     public interface INotificationSender
     {
-        public Task SendNotificationAsync(string userId, string message, string? link = null, int id = 0);
+        Task SendNotificationAsync(string userId, string message, string? link = null);
+        Task SendNotificationUpdateAsync(string userId, object updateData);
+
     }
 }

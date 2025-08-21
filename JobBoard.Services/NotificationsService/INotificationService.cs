@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,5 +26,10 @@ namespace JobBoard.Services.NotificationsService
         /// </summary>
         /// <param name="userId">The ID of the user whose notifications are to be retrieved.</param>
         Task<IEnumerable<NotificationDto>> GetUserNotificationsAsync(string userId);
+        Task MarkAllAsReadAsync(string userId);
+        Task DeleteNotificationAsync(int notificationId);
+
+
+
     }
 }

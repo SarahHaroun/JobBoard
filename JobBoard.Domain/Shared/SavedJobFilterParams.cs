@@ -11,5 +11,6 @@ namespace JobBoard.Domain.Shared
 	{
 		public string? SearchValue { get; set; }
 		public SortingDateOptions SortingOption { get; set; } = SortingDateOptions.DateDesc;
+		public int? SeekerId { get; set; }
 	}
 }

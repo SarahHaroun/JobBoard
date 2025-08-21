@@ -1,12 +1,19 @@
 [
-    {
+  {
+    "Email": "admin@example.com",
+    "Password": "Admin@123",
+    "PhoneNumber": "01020257223",
+    "UserName": "admin",
+    "User_Type": 2
+  },
+  {
     "Email": "employer1@example.com",
     "Password": "Test@123",
     "PhoneNumber": "01012300001",
     "UserName": "employer1",
     "User_Type": 0
-    },
-    {
+  },
+  {
     "Email": "seeker1@example.com",
     "Password": "Test@123",
     "PhoneNumber": "01000065402",
@@ -47,5 +54,677 @@
     "PhoneNumber": "+4915200000006",
     "UserName": "employer6",
     "User_Type": 0
+  },
+  {
+    "Email": "seeker2@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+4915259000006",
+    "UserName": "seeker2",
+    "User_Type": 0
+  },
+  {
+    "Email": "alnour@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+966500001001",
+    "UserName": "alnour",
+    "User_Type": 0
+  },
+  {
+    "Email": "deserttech@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+971500001002",
+    "UserName": "deserttech",
+    "User_Type": 0
+  },
+  {
+    "Email": "oasismarketing@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+962600001003",
+    "UserName": "oasismarketing",
+    "User_Type": 0
+  },
+  {
+    "Email": "nilelogistics@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "01012001004",
+    "UserName": "nilelogistics",
+    "User_Type": 0
+  },
+  {
+    "Email": "lth@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+961700001005",
+    "UserName": "lth",
+    "User_Type": 0
+  },
+  {
+    "Email": "atlasenergy@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+212600001006",
+    "UserName": "atlasenergy",
+    "User_Type": 0
+  },
+  {
+    "Email": "parisiancouture@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+33600001007",
+    "UserName": "parisiancouture",
+    "User_Type": 0
+  },
+  {
+    "Email": "tokyorobotics@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+81900001008",
+    "UserName": "tokyorobotics",
+    "User_Type": 0
+  },
+  {
+    "Email": "sydneybiotech@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+61400001009",
+    "UserName": "sydneybiotech",
+    "User_Type": 0
+  },
+  {
+    "Email": "riologistics@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+5521900001010",
+    "UserName": "riologistics",
+    "User_Type": 0
+  },
+  {
+    "Email": "canadianhealth@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+1416900001011",
+    "UserName": "canadianhealth",
+    "User_Type": 0
+  },
+  {
+    "Email": "nairobitelecom@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+254700001012",
+    "UserName": "nairobitelecom",
+    "User_Type": 0
+  },
+  {
+    "Email": "seoulmotors@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+821000001013",
+    "UserName": "seoulmotors",
+    "User_Type": 0
+  },
+  {
+    "Email": "globalagritech@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+919800001014",
+    "UserName": "globalagritech",
+    "User_Type": 0
+  },
+  {
+    "Email": "swissprecision@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+41440001015",
+    "UserName": "swissprecision",
+    "User_Type": 0
+  },
+  {
+    "Email": "shanghaiecommerce@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+862100001016",
+    "UserName": "shanghaiecommerce",
+    "User_Type": 0
+  },
+  {
+    "Email": "capetowncreative@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+27210001017",
+    "UserName": "capetowncreative",
+    "User_Type": 0
+  },
+  {
+    "Email": "kuwaitinvestment@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+96550001018",
+    "UserName": "kuwaitinvestment",
+    "User_Type": 0
+  },
+  {
+    "Email": "dohatech@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+97430001019",
+    "UserName": "dohatech",
+    "User_Type": 0
+  },
+  {
+    "Email": "rabatinnovation@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+212600001020",
+    "UserName": "rabatinnovation",
+    "User_Type": 0
+  },
+  {
+    "Email": "tunissoftworks@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+21620001021",
+    "UserName": "tunissoftworks",
+    "User_Type": 0
+  },
+  {
+    "Email": "sanaaconstruction@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+96770001022",
+    "UserName": "sanaaconstruction",
+    "User_Type": 0
+  },
+  {
+    "Email": "baghdadit@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+96470001023",
+    "UserName": "baghdadit",
+    "User_Type": 0
+  },
+  {
+    "Email": "damascustrading@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+96390001024",
+    "UserName": "damascustrading",
+    "User_Type": 0
+  },
+  {
+    "Email": "tripolimaritime@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+21890001025",
+    "UserName": "tripolimaritime",
+    "User_Type": 0
+  },
+  {
+    "Email": "algiersfintech@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+21350001026",
+    "UserName": "algiersfintech",
+    "User_Type": 0
+  },
+  {
+    "Email": "manamahealth@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+97330001027",
+    "UserName": "manamahealth",
+    "User_Type": 0
+  },
+  {
+    "Email": "omanioil@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+96890001028",
+    "UserName": "omanioil",
+    "User_Type": 0
+  },
+  {
+    "Email": "palestineagri@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+97050001029",
+    "UserName": "palestineagri",
+    "User_Type": 0
+  },
+  {
+    "Email": "dohaport@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+97430001030",
+    "UserName": "dohaport",
+    "User_Type": 0
+  },
+  {
+    "Email": "algierstelecom@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+21350001031",
+    "UserName": "algierstelecom",
+    "User_Type": 0
+  },
+  {
+    "Email": "baghdadbank@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+96470001032",
+    "UserName": "baghdadbank",
+    "User_Type": 0
+  },
+  {
+    "Email": "cairodigital@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "01012001033",
+    "UserName": "cairodigital",
+    "User_Type": 0
+  },
+  {
+    "Email": "alexandriapharma@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "01012001034",
+    "UserName": "alexandriapharma",
+    "User_Type": 0
+  },
+  {
+    "Email": "gizagreenenergy@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "01012001035",
+    "UserName": "gizagreenenergy",
+    "User_Type": 0
+  },
+  {
+    "Email": "luxortourism@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "01012001036",
+    "UserName": "luxortourism",
+    "User_Type": 0
+  },
+  {
+    "Email": "aswanwater@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "01012001037",
+    "UserName": "aswanwater",
+    "User_Type": 0
+  },
+  {
+    "Email": "newvalleyagri@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "01012001038",
+    "UserName": "newvalleyagri",
+    "User_Type": 0
+  },
+  {
+    "Email": "sinaiminerals@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "01012001039",
+    "UserName": "sinaiminerals",
+    "User_Type": 0
+  },
+  {
+    "Email": "suezlogistics@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "01012001040",
+    "UserName": "suezlogistics",
+    "User_Type": 0
+  },
+  {
+    "Email": "alnour@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+966500001001",
+    "UserName": "alnour",
+    "User_Type": 0
+  },
+  {
+    "Email": "deserttech@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+971500001002",
+    "UserName": "deserttech",
+    "User_Type": 0
+  },
+  {
+    "Email": "oasismarketing@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+962600001003",
+    "UserName": "oasismarketing",
+    "User_Type": 0
+  },
+  {
+    "Email": "nilelogistics@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "01012001004",
+    "UserName": "nilelogistics",
+    "User_Type": 0
+  },
+  {
+    "Email": "lth@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+961700001005",
+    "UserName": "lth",
+    "User_Type": 0
+  },
+  {
+    "Email": "atlasenergy@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+212600001006",
+    "UserName": "atlasenergy",
+    "User_Type": 0
+  },
+  {
+    "Email": "parisiancouture@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+33600001007",
+    "UserName": "parisiancouture",
+    "User_Type": 0
+  },
+  {
+    "Email": "tokyorobotics@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+81900001008",
+    "UserName": "tokyorobotics",
+    "User_Type": 0
+  },
+  {
+    "Email": "sydneybiotech@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+61400001009",
+    "UserName": "sydneybiotech",
+    "User_Type": 0
+  },
+  {
+    "Email": "riologistics@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+5521900001010",
+    "UserName": "riologistics",
+    "User_Type": 0
+  },
+  {
+    "Email": "canadianhealth@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+1416900001011",
+    "UserName": "canadianhealth",
+    "User_Type": 0
+  },
+  {
+    "Email": "nairobitelecom@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+254700001012",
+    "UserName": "nairobitelecom",
+    "User_Type": 0
+  },
+  {
+    "Email": "seoulmotors@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+821000001013",
+    "UserName": "seoulmotors",
+    "User_Type": 0
+  },
+  {
+    "Email": "globalagritech@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+919800001014",
+    "UserName": "globalagritech",
+    "User_Type": 0
+  },
+  {
+    "Email": "swissprecision@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+41440001015",
+    "UserName": "swissprecision",
+    "User_Type": 0
+  },
+  {
+    "Email": "shanghaiecommerce@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+862100001016",
+    "UserName": "shanghaiecommerce",
+    "User_Type": 0
+  },
+  {
+    "Email": "capetowncreative@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+27210001017",
+    "UserName": "capetowncreative",
+    "User_Type": 0
+  },
+  {
+    "Email": "kuwaitinvestment@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+96550001018",
+    "UserName": "kuwaitinvestment",
+    "User_Type": 0
+  },
+  {
+    "Email": "dohatech@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+97430001019",
+    "UserName": "dohatech",
+    "User_Type": 0
+  },
+  {
+    "Email": "rabatinnovation@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+212600001020",
+    "UserName": "rabatinnovation",
+    "User_Type": 0
+  },
+  {
+    "Email": "tunissoftworks@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+21620001021",
+    "UserName": "tunissoftworks",
+    "User_Type": 0
+  },
+  {
+    "Email": "sanaaconstruction@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+96770001022",
+    "UserName": "sanaaconstruction",
+    "User_Type": 0
+  },
+  {
+    "Email": "baghdadit@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+96470001023",
+    "UserName": "baghdadit",
+    "User_Type": 0
+  },
+  {
+    "Email": "damascustrading@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+96390001024",
+    "UserName": "damascustrading",
+    "User_Type": 0
+  },
+  {
+    "Email": "tripolimaritime@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+21890001025",
+    "UserName": "tripolimaritime",
+    "User_Type": 0
+  },
+  {
+    "Email": "algiersfintech@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+21350001026",
+    "UserName": "algiersfintech",
+    "User_Type": 0
+  },
+  {
+    "Email": "manamahealth@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+97330001027",
+    "UserName": "manamahealth",
+    "User_Type": 0
+  },
+  {
+    "Email": "omanioil@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+96890001028",
+    "UserName": "omanioil",
+    "User_Type": 0
+  },
+  {
+    "Email": "palestineagri@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+97050001029",
+    "UserName": "palestineagri",
+    "User_Type": 0
+  },
+  {
+    "Email": "dohaport@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+97430001030",
+    "UserName": "dohaport",
+    "User_Type": 0
+  },
+  {
+    "Email": "algierstelecom@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+21350001031",
+    "UserName": "algierstelecom",
+    "User_Type": 0
+  },
+  {
+    "Email": "baghdadbank@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+96470001032",
+    "UserName": "baghdadbank",
+    "User_Type": 0
+  },
+  {
+    "Email": "cairodigital@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "01012001033",
+    "UserName": "cairodigital",
+    "User_Type": 0
+  },
+  {
+    "Email": "alexandriapharma@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "01012001034",
+    "UserName": "alexandriapharma",
+    "User_Type": 0
+  },
+  {
+    "Email": "gizagreenenergy@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "01012001035",
+    "UserName": "gizagreenenergy",
+    "User_Type": 0
+  },
+  {
+    "Email": "luxortourism@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "01012001036",
+    "UserName": "luxortourism",
+    "User_Type": 0
+  },
+  {
+    "Email": "aswanwater@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "01012001037",
+    "UserName": "aswanwater",
+    "User_Type": 0
+  },
+  {
+    "Email": "newvalleyagri@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "01012001038",
+    "UserName": "newvalleyagri",
+    "User_Type": 0
+  },
+  {
+    "Email": "sinaiminerals@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "01012001039",
+    "UserName": "sinaiminerals",
+    "User_Type": 0
+  },
+  {
+    "Email": "suezlogistics@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "01012001040",
+    "UserName": "suezlogistics",
+    "User_Type": 0
+  },
+  {
+    "Email": "employer1@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "01012300001",
+    "UserName": "employer1",
+    "User_Type": 0
+  },
+    {
+        "Email": "ahmedtarek@example.com",
+        "Password": "Ahmed@123",
+        "PhoneNumber": "01000065402",
+        "UserName": "ahmed12",
+        "User_Type": 1
+    },
+    {
+        "Email": "maramali@example.com",
+        "Password": "Maram@123",
+        "PhoneNumber": "201000012345",
+        "UserName": "maram12",
+        "User_Type": 1
+    },
+    {
+        "Email": "mohamed12@example.com",
+        "Password": "Mohamed@123",
+        "PhoneNumber": "01098765432",
+        "UserName": "mohamed12",
+        "User_Type": 1
+    },
+    {
+        "Email": "sara12@example.com",
+        "Password": "Sara@123",
+        "PhoneNumber": "01055667788",
+        "UserName": "sara12",
+        "User_Type": 1
+    },
+    {
+        "Email": "employer2@example.com",
+        "Password": "Test@123",
+        "PhoneNumber": "010000032002",
+        "UserName": "employer2",
+        "User_Type": 0
+    },
+  {
+    "Email": "employer3@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "01000033203",
+    "UserName": "employer3",
+    "User_Type": 0
+  },
+  {
+    "Email": "employer4@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "01006570004",
+    "UserName": "employer4",
+    "User_Type": 0
+  },
+  {
+    "Email": "employer5@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+971500000005",
+    "UserName": "employer5",
+    "User_Type": 0
+  },
+    {
+        "Email": "employer6@example.com",
+        "Password": "Test@123",
+        "PhoneNumber": "+4915200000006",
+        "UserName": "employer6",
+        "User_Type": 0
+    },
+    {
+        "Email": "seeker5@example.com",
+        "Password": "Test@123",
+        "PhoneNumber": "01033445566",
+        "UserName": "omarKhaled",
+        "User_Type": 1
+    },
+    {
+        "Email": "seeker6@example.com",
+        "Password": "Test@123",
+        "PhoneNumber": "01155667788",
+        "UserName": "norhanAdel",
+        "User_Type": 1
+    },
+    {
+        "Email": "seeker7@example.com",
+        "Password": "Test@123",
+        "PhoneNumber": "01099887766",
+        "UserName": "mohamedYasser",
+        "User_Type": 1
+    },
+    {
+        "Email": "seeker8@example.com",
+        "Password": "Test@123",
+        "PhoneNumber": "01222334455",
+        "UserName": "saraMohamed",
+        "User_Type": 1
+    },
+    {
+        "Email": "seeker9@example.com",
+        "Password": "Test@123",
+        "PhoneNumber": "01066554433",
+        "UserName": "ahmedSamir",
+        "User_Type": 1
     }
 ]

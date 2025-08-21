@@ -10,8 +10,9 @@ namespace JobBoard.Domain.Services.Contract
 {
     public interface ISavedJobService
     {
-		Task<IEnumerable<SavedJobDto>> GetSavedJobsAsync(SavedJobFilterParams filterParams);
-		Task<SavedJobDto> GetSavedJobByIdAsync(int id);
+
+		Task<IEnumerable<SavedJobDto>> GetSavedJobsAsync(int seekerId, SavedJobFilterParams filterParams);
+		Task<SavedJobDto> GetSavedJobByIdAsync(int seekerId, int jobId);
 		Task<SavedJobDto> SaveJobAsync(int seekerId, CreateSavedJobDto createSavedJobDto);
 		Task<bool> UnsaveJobAsync(int seekerId, int jobId);
 		Task<bool> IsJobSavedAsync(int seekerId, int jobId);
