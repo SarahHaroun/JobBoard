@@ -9,7 +9,6 @@ using JobBoard.Domain.Repositories.Contract;
 using JobBoard.Domain.Shared;
 using JobBoard.Repositories.Persistence;
 using JobBoard.Repositories.Specifications;
-using JobBoard.Repositories.Specifications.AdminSpecifications;
 using JobBoard.Services.NotificationsService;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
