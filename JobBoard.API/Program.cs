@@ -1,6 +1,7 @@
 ﻿
 using JobBoard.API.Extensions;
 using JobBoard.API.Helpers;
+using JobBoard.Services.CleanupUsersService;
 
 namespace JobBoard.API
 {
@@ -22,9 +23,15 @@ namespace JobBoard.API
 				.AddAutoMapperProfiles()
 				.AddApiConfiguration();
 
-			var app = builder.Build();
 
-			await app.InitializeDatabaseAsync();
+            builder.Services.AddHostedService<CleanupUnconfirmedUsersService>();
+
+
+            var app = builder.Build();
+
+
+
+            await app.InitializeDatabaseAsync();
 			app.ConfigureMiddleware();
 
 			app.Run();

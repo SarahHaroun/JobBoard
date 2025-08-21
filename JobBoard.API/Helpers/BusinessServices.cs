@@ -4,6 +4,7 @@ using JobBoard.Repositories;
 using JobBoard.Services;
 using JobBoard.Services._ِAuthService;
 using JobBoard.Services.AdminService;
+using JobBoard.Services.CleanupUsersService;
 using JobBoard.Services.EmailService;
 using JobBoard.Services.EmployerService;
 using JobBoard.Services.SeekerService;
@@ -24,7 +25,7 @@ namespace JobBoard.API.Extensions
 			services.AddScoped<IAdminService, AdminService>();
 			services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-			return services;
+            return services;
 		}
 	}
 }
