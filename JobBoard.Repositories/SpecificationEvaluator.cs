@@ -32,14 +32,36 @@ namespace JobBoard.Repositories
 			if (!isForCount)
 			{
 				if (specifications.Order is not null)
-					query = query.OrderBy(specifications.Order);
+				{
+					var orderedQuery = query.OrderBy(specifications.Order);
 
-				if (specifications.OrderDesc is not null)
-					query = query.OrderByDescending(specifications.OrderDesc);
+					// Apply ThenBy if any
+					foreach (var thenBy in specifications.ThenBy)
+						orderedQuery = orderedQuery.ThenBy(thenBy);
+
+					foreach (var thenByDesc in specifications.ThenByDesc)
+						orderedQuery = orderedQuery.ThenByDescending(thenByDesc);
+
+					query = orderedQuery;
+				}
+				else if (specifications.OrderDesc is not null)
+				{
+					var orderedQuery = query.OrderByDescending(specifications.OrderDesc);
+
+					// Apply ThenBy if any
+					foreach (var thenBy in specifications.ThenBy)
+						orderedQuery = orderedQuery.ThenBy(thenBy);
+
+					foreach (var thenByDesc in specifications.ThenByDesc)
+						orderedQuery = orderedQuery.ThenByDescending(thenByDesc);
+
+					query = orderedQuery;
+				}
 
 				if (specifications.IsPaginationEnabled)
 					query = query.Skip(specifications.Skip).Take(specifications.Take);
 			}
+
 
 			return query;
 		}

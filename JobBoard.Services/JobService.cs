@@ -13,6 +13,10 @@ using JobBoard.Repositories.Specifications;
 using JobBoard.Domain.Shared;
 using JobBoard.Domain.DTO.CategoryDto;
 using JobBoard.Domain.DTO.SkillAndCategoryDto;
+using JobBoard.Domain.DTO.JobsDto;
+using JobBoard.Repositories.Specifications.JobSpecifications;
+using JobBoard.Domain.DTO.EmployerDto;
+using JobBoard.Repositories.Specifications.DashboardSpecifications;
 
 namespace JobBoard.Services
 {
@@ -35,6 +39,31 @@ namespace JobBoard.Services
 			return mappedJobs;
 
 		}
+		public async Task<IEnumerable<PostedJobsDto>> GetEmployerJobsAsync(int employerId, EmployerJobFilterParams filterParams)
+		{
+			var spec = new EmployerJobsWithFilterSpecification(employerId, filterParams);
+			var jobs = await _unitOfWork.Repository<Job>().GetAllAsync(spec);
+			var mappedJobs = _mapper.Map<IEnumerable<PostedJobsDto>>(jobs);
+
+			return mappedJobs;
+		}
+
+		public async Task<IEnumerable<TopPerformingJobDto>> GetTopPerformingJobsAsync(int employerId, int limit = 5)
+		{
+			var spec = new TopPerformingJobsSpecification(employerId, limit);
+			var jobs = await _unitOfWork.Repository<Job>().GetAllAsync(spec);
+			var mappedJobs = _mapper.Map<IEnumerable<TopPerformingJobDto>>(jobs);
+			return mappedJobs;
+		}
+
+		public async Task<IEnumerable<RecentJobDto>> GetRecentJobsAsync(int employerId, int limit = 3)
+		{
+			var spec = new RecentJobsSpecification(employerId, limit);
+			var jobs = await _unitOfWork.Repository<Job>().GetAllAsync(spec);
+			var mappedJobs = _mapper.Map<IEnumerable<RecentJobDto>>(jobs);
+			return mappedJobs;
+		}
+
 		public async Task<JobDto> GetJobByIdAsync(int id)
 		{
 			var spec = new JobsWithFilterSpecifications(id);
@@ -60,7 +89,7 @@ namespace JobBoard.Services
 			return _mapper.Map<JobDto>(job);
 		}
 
-		public async Task<JobDto> UpdateJobAsync(int id, CreateUpdateJobDto jobDto, int employerId)
+		public async Task<JobDto> UpdateJob(int id, CreateUpdateJobDto jobDto, int employerId)
 		{
 			var spec = new JobUpdateSpecification(id, employerId);
 			var job = await _unitOfWork.Repository<Job>().GetByIdAsync(spec);
@@ -83,10 +112,13 @@ namespace JobBoard.Services
 			return _mapper.Map<JobDto>(job);
 		}
 
-		public async Task<bool> DeleteJobAsync(int id)
+		public async Task<bool> DeleteJob(int id, int employerId)
 		{
 			var job = await _unitOfWork.Repository<Job>().GetByIdAsync(id);
 			if (job == null)
+				return false;
+
+			if (job.EmployerId != employerId)
 				return false;
 
 			_unitOfWork.Repository<Job>().Delete(job);
@@ -96,50 +128,56 @@ namespace JobBoard.Services
             return true;
 		}
 
+		public async Task<EmployerDashboardStatsDto> GetEmployerDashboardStatsAsync(int employerId)
+		{
+			var currDate = DateTime.Now;
+			var startOfMonth = new DateTime(currDate.Year, currDate.Month, 1);
+
+			// Active Jobs
+			var activeJobsSpec = new ActiveJobsSpecification(employerId);
+			var activeJobs = await _unitOfWork.Repository<Job>().CountAsync(activeJobsSpec);
+
+			// Applications this month  
+			var applicationsSpec = new ApplicationsMonthSpecification(employerId, startOfMonth);
+			var applicationsThisMonth = await _unitOfWork.Repository<Application>().CountAsync(applicationsSpec);
+
+			// Jobs expiring soon
+			var expiringSoonSpec = new JobsExpiringSoonSpecification(employerId, currDate.AddDays(7));
+			var jobsExpiringSoon = await _unitOfWork.Repository<Job>().CountAsync(expiringSoonSpec);
+
+			return new EmployerDashboardStatsDto
+			{
+				TotalActiveJobs = activeJobs,
+				ApplicationsThisMonth = applicationsThisMonth,
+				JobsExpiringSoon = jobsExpiringSoon
+			};
+		}
+
 		private async Task MapSkillsAndCategoriesAsync(Job job, CreateUpdateJobDto jobDto)
 		{
 		
+			// Categories
 			if (job.Categories == null)
 				job.Categories = new List<Category>();
 
-			if (job.Skills == null)
-				job.Skills = new List<Skill>();
-
-			// Categories
 			job.Categories.Clear();
 
-			if (jobDto.CategoryIds != null && jobDto.CategoryIds.Count > 0)
+			if (jobDto.CategoryIds?.Count > 0)
 			{
-				var allCategories = await _unitOfWork.Repository<Category>().GetAllAsync();
-				List<Category> selectedCategories = new List<Category>();
-
-				foreach (var category in allCategories)
-				{
-					if (jobDto.CategoryIds.Contains(category.Id))
-					{
-						selectedCategories.Add(category);
-					}
-				}
-
-				job.Categories = selectedCategories;
+				var spec = new CategoriesByIdsSpecifications(jobDto.CategoryIds);
+				var categories = await _unitOfWork.Repository<Category>().GetAllAsync(spec);
+				job.Categories = categories.ToList();
 			}
 			// Skills
+			if (job.Skills == null)
+				job.Skills = new List<Skill>();
 			job.Skills.Clear();
 
-			if (jobDto.SkillIds != null && jobDto.SkillIds.Count > 0)
+			if (jobDto.SkillIds?.Count > 0)
 			{
-				var allSkills = await _unitOfWork.Repository<Skill>().GetAllAsync();
-				List<Skill> selectedSkills = new List<Skill>();
-
-				foreach (var skill in allSkills)
-				{
-					if (jobDto.SkillIds.Contains(skill.Id))
-					{
-						selectedSkills.Add(skill);
-					}
-				}
-
-				job.Skills = selectedSkills;
+				var spec = new SkillsByIdsSpecifications(jobDto.SkillIds);
+				var skills = await _unitOfWork.Repository<Skill>().GetAllAsync(spec);
+				job.Skills = skills.ToList();
 			}
 		}
 

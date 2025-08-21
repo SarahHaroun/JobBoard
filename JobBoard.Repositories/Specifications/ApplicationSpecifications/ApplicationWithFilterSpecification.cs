@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JobBoard.Repositories.Specifications
+namespace JobBoard.Repositories.Specifications.ApplicationSpecifications
 {
 	public class ApplicationWithFilterSpecification : BaseSpecifications<Application>
 	{

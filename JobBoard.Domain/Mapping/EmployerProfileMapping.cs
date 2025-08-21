@@ -20,6 +20,8 @@ namespace JobBoard.Domain.Mapping
 
             CreateMap<EmpProfileUpdateDto, EmployerProfile>()
                 .ForMember(dest => dest.CompanyImage, opt => opt.Ignore());
+
+
 		}
 	}
 }

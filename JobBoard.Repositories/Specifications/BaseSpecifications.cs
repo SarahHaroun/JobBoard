@@ -22,6 +22,9 @@ namespace JobBoard.Repositories.Specifications
 		public List<Expression<Func<TEntity, object>>> Includes { get; } = [];
 		public Expression<Func<TEntity, object>> Order { get; private set; }
 		public Expression<Func<TEntity, object>> OrderDesc { get; private set; }
+		public List<Expression<Func<TEntity, object>>> ThenBy { get; } = [];
+		public List<Expression<Func<TEntity, object>>> ThenByDesc { get; } = [];
+
 		public int Skip { get; set; }
 		public int Take { get; set; }
 		public bool IsPaginationEnabled { get; set; } = false;
@@ -43,6 +46,17 @@ namespace JobBoard.Repositories.Specifications
 		{
 			if (orderDesc is not null)
 				OrderDesc = orderDesc;
+		}
+		protected void AddThenBy(Expression<Func<TEntity, object>> thenByExp)
+		{
+			if (thenByExp is not null)
+				ThenBy.Add(thenByExp);
+		}
+
+		protected void AddThenByDesc(Expression<Func<TEntity, object>> thenByDescExp)
+		{
+			if (thenByDescExp is not null)
+				ThenByDesc.Add(thenByDescExp);
 		}
 
 		protected void AddPagination(int skip, int take)

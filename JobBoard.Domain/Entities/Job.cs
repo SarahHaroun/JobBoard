@@ -29,7 +29,6 @@ namespace JobBoard.Domain.Entities
         public bool IsApproved { get; set; } = false;
 
 
-
         /*------------------------Category--------------------------*/
         public ICollection<Category>? Categories { get; set; }
 

@@ -12,6 +12,7 @@ using JobBoard.Domain.Repositories.Contract;
 using JobBoard.Domain.Shared;
 using JobBoard.Repositories.Persistence;
 using JobBoard.Repositories.Specifications;
+using JobBoard.Repositories.Specifications.JobSpecifications;
 using JobBoard.Services.AIChatHistoryServices;
 using JobBoard.Services.AIServices;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
