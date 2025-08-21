@@ -9,7 +9,7 @@ namespace JobBoard.Repositories.Specifications.JobSpecifications
 {
     public class JobsWithDetailsSpec : BaseSpecifications<Job>
     {
-        public JobsWithDetailsSpec() {
+        public JobsWithDetailsSpec():base(j => j.IsApproved) {
             AddIncludes(j => j.Employer);
             AddIncludes(j => j.Skills);
             AddIncludes(j => j.Categories);
