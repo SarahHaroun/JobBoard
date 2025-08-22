@@ -48,23 +48,10 @@ namespace JobBoard.Services
 			application.Status = ApplicationStatus.Pending;
 
 			if (createDto.ResumeUrl != null && createDto.ResumeUrl.Length > 0)
-			{
-				// Delete the old profile image from the server if it exists
-				if (!string.IsNullOrEmpty(application.ResumeUrl))
-					DocumentSettings.DeleteFile(application.ResumeUrl, "applications", _env);
+			{ 
+				application.ResumeUrl = await DocumentSettings.UploadFileAsync(createDto.ResumeUrl, "cv", _env, _configuration);
+			}
 
-				// Upload the new profile image and update the database 
-				application.ResumeUrl = await DocumentSettings.UploadFileAsync(createDto.ResumeUrl, "applications", _env, _configuration);
-			}
-			else if (createDto.RemoveResume)
-			{
-				// if user wants to delete the old image
-				if (!string.IsNullOrEmpty(application.ResumeUrl))
-				{
-					DocumentSettings.DeleteFile(application.ResumeUrl, "applications", _env);
-					application.ResumeUrl = null;
-				}
-			}
 			await _unitOfWork.Repository<Application>().AddAsync(application);
 
 			var result = await _unitOfWork.CompleteAsync();
@@ -102,7 +89,6 @@ namespace JobBoard.Services
 				return false;
 
 			_unitOfWork.Repository<Application>().Delete(application);
-			DocumentSettings.DeleteFile(application.ResumeUrl, "applications", _env);
 
 			var deleted = await _unitOfWork.CompleteAsync();
 			return deleted > 0;
