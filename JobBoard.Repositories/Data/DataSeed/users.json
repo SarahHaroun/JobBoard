@@ -696,35 +696,35 @@
     "Email": "seeker5@example.com",
     "Password": "Test@123",
     "PhoneNumber": "01033445566",
-    "UserName": "omarKhaled",
+    "UserName": "OmarKhaled",
     "User_Type": 1
   },
   {
     "Email": "seeker6@example.com",
     "Password": "Test@123",
     "PhoneNumber": "01155667788",
-    "UserName": "norhanAdel",
+    "UserName": "NorhanAdel",
     "User_Type": 1
   },
   {
     "Email": "seeker7@example.com",
     "Password": "Test@123",
     "PhoneNumber": "01099887766",
-    "UserName": "mohamedYasser",
+    "UserName": "MohamedYasser",
     "User_Type": 1
   },
   {
     "Email": "seeker8@example.com",
     "Password": "Test@123",
     "PhoneNumber": "01222334455",
-    "UserName": "saraMahmoud",
+    "UserName": "SaraMahmoud",
     "User_Type": 1
   },
   {
     "Email": "seeker9@example.com",
     "Password": "Test@123",
     "PhoneNumber": "01066554433",
-    "UserName": "ahmedSamir",
+    "UserName": "AhmedSamir",
     "User_Type": 1
   },
   {
@@ -738,84 +738,91 @@
     "Email": "seeker11@example.com",
     "Password": "Test@123",
     "PhoneNumber": "01233445566",
-    "UserName": "mohamedAki",
+    "UserName": "MohamedAki",
     "User_Type": 1
   },
   {
     "Email": "seeker12@example.com",
     "Password": "Test@123",
     "PhoneNumber": "01099887766",
-    "UserName": "saraKhaled",
+    "UserName": "SaraKhaled",
     "User_Type": 1
   },
   {
     "Email": "seeker13@example.com",
     "Password": "Test@123",
     "PhoneNumber": "01555443322",
-    "UserName": "omarAhmed",
+    "UserName": "OmarAhmed",
     "User_Type": 1
   },
   {
     "Email": "seeker14@example.com",
     "Password": "Test@123",
     "PhoneNumber": "01011223344",
-    "UserName": "mariemNasser",
+    "UserName": "MariemNasser",
     "User_Type": 1
   },
   {
     "Email": "seeker15@example.com",
     "Password": "Test@123",
     "PhoneNumber": "01144556677",
-    "UserName": "amrHany",
+    "UserName": "AmrHany",
     "User_Type": 1
   },
   {
     "Email": "seeker16@example.com",
     "Password": "Test@123",
     "PhoneNumber": "01288776655",
-    "UserName": "omniaHassan",
+    "UserName": "OmniaHassan",
     "User_Type": 1
   },
   {
     "Email": "seeker17@example.com",
     "Password": "Test@123",
     "PhoneNumber": "01022334488",
-    "UserName": "basmallaYasser",
+    "UserName": "BasmallaYasser",
     "User_Type": 1
   },
   {
     "Email": "seeker18@example.com",
     "Password": "Test@123",
     "PhoneNumber": "01155667788",
-    "UserName": "emanAtef",
+    "UserName": "EmanAtef",
     "User_Type": 1
   },
   {
     "Email": "seeker19@example.com",
     "Password": "Test@123",
     "PhoneNumber": "01266778899",
-    "UserName": "nadaAli",
+    "UserName": "NadaAli",
     "User_Type": 1
   },
   {
     "Email": "seeker20@example.com",
     "Password": "Test@123",
     "PhoneNumber": "01566778800",
-    "UserName": "youssefEid",
+    "UserName": "YoussefEid",
     "User_Type": 1
   },
   {
     "Email": "seeker21@example.com",
     "Password": "Test@123",
     "PhoneNumber": "01123456789",
-    "UserName": "yasmineMahmoud",
+    "UserName": "YasmineMahmoud",
     "User_Type": 1
   },
   {
     "Email": "seeker22@example.com",
     "Password": "Test@123",
     "PhoneNumber": "01098765432",
-    "UserName": "omarHassan",
+    "UserName": "OmarHassan",
     "User_Type": 1
+  },
+  {
+    "Email": "globaltimes@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+1 (202) 555-0147",
+    "UserName": "GlobalTimes",
+    "User_Type": 0
   }
 ]

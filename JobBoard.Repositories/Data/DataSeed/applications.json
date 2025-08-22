@@ -61,7 +61,7 @@
         "CoverLetter": "As a frontend developer, I am excited about the opportunity to work with your team.",
         "AppliedDate": "2025-07-16T09:15:00",
         "Status": "Rejected",
-        "JobId": 45
+        "JobId": 44
       }
     ]
   },
@@ -100,7 +100,7 @@
         "CoverLetter": "I have extensive experience in backend development and would love to join your team.",
         "AppliedDate": "2025-08-19T17:30:00",
         "Status": "UnderReview",
-        "JobId": 180
+        "JobId": 178
       }
     ]
   },
@@ -322,7 +322,7 @@
         "CoverLetter": "I am motivated to apply for the Public Relations Specialist role, where I can combine my marketing and communication skills to strengthen brand reputation.",
         "AppliedDate": "2025-08-19T00:00:00",
         "Status": "Pending",
-        "JobId": 179
+        "JobId": 177
       }
     ]
   },
