@@ -24,10 +24,4 @@
     <ProjectReference Include="..\JobBoard.Services\JobBoard.Services.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\images\profilepic\" />
-    <Folder Include="wwwroot\applications\" />
-    <Folder Include="wwwroot\cv\" />
-  </ItemGroup>
-
 </Project>

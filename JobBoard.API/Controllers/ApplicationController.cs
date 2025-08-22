@@ -126,6 +126,48 @@ namespace JobBoard.API.Controllers
 		}
 
 
+		// GET: api/application/employer-applications
+		[HttpGet("employer-applications")]
+		[Authorize(Roles = "Employer")]
+		public async Task<ActionResult<IEnumerable<EmployerApplicationListDto>>> GetEmployerApplications([FromQuery] ApplicationFilterParams filterParams)
+		{
+			if (userId == null)
+				return Unauthorized();
+
+			var employerProfile = await _employerService.GetByUserId(userId);
+			if (employerProfile == null)
+				return Unauthorized("Employer profile not found");
+
+			var applications = await _applicationService.GetApplicationsForEmployerJobsAsync(employerProfile.Id, filterParams);
+			return Ok(applications);
+		}
+
+		// PUT: api/application/{id}/status
+		[HttpPut("{id}/status")]
+		[Authorize(Roles = "Employer")]
+		public async Task<IActionResult> UpdateApplicationStatus(int id, [FromBody] UpdateApplicationStatusDto statusDto)
+		{
+			if (id <= 0)
+				return BadRequest("Invalid application Id.");
+
+			if (!ModelState.IsValid)
+				return BadRequest(ModelState);
+
+			if (userId == null)
+				return Unauthorized();
+
+			var employerProfile = await _employerService.GetByUserId(userId);
+			if (employerProfile == null)
+				return Unauthorized("Employer profile not found");
+
+			var updated = await _applicationService.UpdateApplicationStatusAsync(id, statusDto.Status, employerProfile.Id);
+			if (!updated)
+				return NotFound("Application not found or you don't have permission to update it.");
+
+			return NoContent();
+		}
+
+
 		//--------------------------Admin----------------------
 		// DELETE: api/application/{id}
 		[HttpDelete("{id}")]

@@ -32,13 +32,13 @@ namespace JobBoard.Services.AdminService
 		public AdminService(IUnitOfWork unitOfWork, 
 			UserManager<ApplicationUser> userManager,
 			IMapper mapper, 
-			IAIEmbeddingService aiEmbeddingService)
+			IAIEmbeddingService aiEmbeddingService,
+			INotificationService notificationService)
 		{
 			_unitOfWork = unitOfWork;
 			_userManager = userManager;
 			_mapper = mapper;
 			_aiEmbeddingService = aiEmbeddingService;
-		}
 			_notificationService = notificationService;
         }
 
@@ -102,7 +102,7 @@ namespace JobBoard.Services.AdminService
 			var result = await _unitOfWork.CompleteAsync();
 
             var notificationMessage = $"Your job {job.Title} has been approved!";
-             var jobLink = $"/jobDtl/{job.Id}"; // رابط للوظيفة
+             var jobLink = $"/jobDtl/{job.Id}"; 
 
             await _notificationService.AddNotificationAsync(
                 job.Employer.UserId,
@@ -122,6 +122,7 @@ namespace JobBoard.Services.AdminService
 			_unitOfWork.Repository<Job>().Delete(job);
 
 			var result = await _unitOfWork.CompleteAsync();
+			await _aiEmbeddingService.DeleteEmbeddingForJobAsync(jobId);
 			return result > 0;
 		}
 
