@@ -437,66 +437,6 @@ namespace JobBoard.Services.SeekerService
 			}
 		}
 
-
-
-		// ===================== HandleFileUpload ====================
-		public async Task<string?> HandleFileUploadAsync(
-			IFormFile? file,
-			string? existingFileUrl,
-			string folderPath,
-			bool removeFile = false,
-			string? defaultFileUrl = null
-		)
-		{
-			// If the user chose to remove the file
-			if (removeFile)
-			{
-				// Delete existing file only if it's not null, empty, or the default
-				if (!string.IsNullOrEmpty(existingFileUrl) && !IsDefaultImage(existingFileUrl, defaultFileUrl))
-				{
-					DocumentSettings.DeleteFile(existingFileUrl, folderPath, _env);
-				}
-				// Return default if provided, otherwise null
-				return defaultFileUrl;
-			}
-
-			// If the user uploaded a new file
-			if (file != null && file.Length > 0)
-			{
-				// Delete the old file only if it exists and is not the default
-				if (!string.IsNullOrEmpty(existingFileUrl) && !IsDefaultImage(existingFileUrl, defaultFileUrl))
-				{
-					DocumentSettings.DeleteFile(existingFileUrl, folderPath, _env);
-				}
-				var uploadedUrl = await DocumentSettings.UploadFileAsync(file, folderPath, _env, _configuration);
-				return uploadedUrl;
-			}
-
-			// If neither upload nor removal → return the existing file or the default
-			return existingFileUrl ?? defaultFileUrl;
-		}
-
-		// ===================== Helper method to check if image is default ====================
-		private bool IsDefaultImage(string? imageUrl, string? defaultImageUrl)
-		{
-			if (string.IsNullOrEmpty(imageUrl) || string.IsNullOrEmpty(defaultImageUrl))
-				return false;
-
-			// Direct comparison
-			if (imageUrl.Equals(defaultImageUrl, StringComparison.OrdinalIgnoreCase))
-				return true;
-
-			// Check if the URL ends with the default image path
-			if (imageUrl.EndsWith("/images/profilepic/user.jpg", StringComparison.OrdinalIgnoreCase))
-				return true;
-
-			// Check if it contains the default filename
-			if (imageUrl.Contains("user.jpg", StringComparison.OrdinalIgnoreCase))
-				return true;
-
-			return false;
-		}
-
 		// =================== Upload Files ===================
 		public async Task<(string? CvUrl, string? ProfileImageUrl)> UploadFilesAsync(string userId, SeekerFileUploadDto dto)
 		{
@@ -505,26 +445,16 @@ namespace JobBoard.Services.SeekerService
 			if (seeker == null)
 				return (null, null);
 
-			// Handle CV upload/update (no default image for CVs, if removed → null)
-			var newCvUrl = await HandleFileUploadAsync(
-				dto.CV_Url,
-				seeker.CV_Url,
-				"cv",
-				dto.RemoveCV,
-				null
-			);
+			// Handle CV upload/update 
+			var newCvUrl = await FileUploadHelper.HandleFileUploadAsync(
+				dto.CV_Url, seeker.CV_Url, "cv", _env, _configuration, dto.RemoveCV,null);
 
 			// Handle Profile Image upload/removal with default image
 			var defaultProfileImage = $"{_configuration["ApiBaseUrl"]}/images/profilepic/user.jpg";
-			var newProfileImageUrl = await HandleFileUploadAsync(
-				dto.ProfileImageUrl,
-				seeker.ProfileImageUrl,
-				"images/profilepic",
-				dto.RemoveProfileImage,
-				defaultProfileImage
-			);
+			var newProfileImageUrl = await FileUploadHelper.HandleFileUploadAsync(
+				dto.ProfileImageUrl, seeker.ProfileImageUrl, "images/profilepic",
+				_env, _configuration, dto.RemoveProfileImage, defaultProfileImage);
 
-			// Update seeker profile with new file URLs
 			seeker.CV_Url = newCvUrl;
 			seeker.ProfileImageUrl = newProfileImageUrl;
 
@@ -541,15 +471,9 @@ namespace JobBoard.Services.SeekerService
 
 			// Delete profile image only if it is not the default
 			var defaultProfileImage = $"{_configuration["ApiBaseUrl"]}/images/profilepic/user.jpg";
-			if (!string.IsNullOrEmpty(seeker.ProfileImageUrl) && !IsDefaultImage(seeker.ProfileImageUrl, defaultProfileImage))
+			if (!string.IsNullOrEmpty(seeker.ProfileImageUrl) && !FileUploadHelper.IsDefaultImage(seeker.ProfileImageUrl, defaultProfileImage))
 			{
 				DocumentSettings.DeleteFile(seeker.ProfileImageUrl, "images/profilepic", _env);
-			}
-
-			// Delete CV if exists
-			if (!string.IsNullOrEmpty(seeker.CV_Url))
-			{
-				DocumentSettings.DeleteFile(seeker.CV_Url, "cv", _env);
 			}
 
 			_context.SeekerProfiles.Remove(seeker);

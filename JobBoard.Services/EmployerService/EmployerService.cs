@@ -53,8 +53,14 @@ namespace JobBoard.Services.EmployerService
 			{
 				return false;
 			}
-			DocumentSettings.DeleteFile(employer.CompanyImage, "images/companies", env);
+			var defaultCompanyImage = $"{configuration["ApiBaseUrl"]}/images/companies/default.jpg";
 
+
+			// Delete company image only if it's not the default
+			if (!string.IsNullOrEmpty(employer.CompanyImage) && !FileUploadHelper.IsDefaultImage(employer.CompanyImage, defaultCompanyImage))
+			{
+				DocumentSettings.DeleteFile(employer.CompanyImage, "images/companies", env);
+			}
 			context.EmployerProfiles.Remove(employer);
 			await context.SaveChangesAsync();
 			return true;
@@ -89,25 +95,12 @@ namespace JobBoard.Services.EmployerService
 				return false;
 
 			// ================= Profile Image =================
-			if (model.CompanyImage != null && model.CompanyImage.Length > 0)
-			{
-				// Delete the old profile image from the server if it exists
-				if (!string.IsNullOrEmpty(employer.CompanyImage))
-					DocumentSettings.DeleteFile(employer.CompanyImage, "images/companies", env);
+			var defaultCompanyImage = $"{configuration["ApiBaseUrl"]}/images/companies/default.jpg";
 
-				// Upload the new profile image and update the database 
-				employer.CompanyImage = await DocumentSettings.UploadFileAsync(model.CompanyImage, "images/companies", env, configuration);
-			}
-			else if (model.RemoveCompanyImage)
-			{
-				// if user wants to delete the old image
-				if (!string.IsNullOrEmpty(employer.CompanyImage))
-				{
-					DocumentSettings.DeleteFile(employer.CompanyImage, "images/companies", env);
-					employer.CompanyImage = null;
-				}
-			}
-
+			// Handle Company Image upload/removal with default
+			employer.CompanyImage = await FileUploadHelper.HandleFileUploadAsync(
+				model.CompanyImage, employer.CompanyImage, "images/companies", env,
+				configuration, model.RemoveCompanyImage, defaultCompanyImage);
 
 			// Update the employer profile using AutoMapper
 			mapper.Map(model, employer);
