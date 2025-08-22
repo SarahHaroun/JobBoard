@@ -11,8 +11,7 @@ namespace JobBoard.Repositories.Specifications.JobSpecifications
 	{
 		public TopPerformingJobsSpecification(int employerId, int limit = 5)
 			: base(j => j.EmployerId == employerId &&
-					   j.IsApproved &&
-					   j.JobApplications.Any())
+					   j.IsApproved)
 		{
 			AddIncludes(j => j.JobApplications);
 			AddOrderByDesc(j => j.JobApplications.Count);
