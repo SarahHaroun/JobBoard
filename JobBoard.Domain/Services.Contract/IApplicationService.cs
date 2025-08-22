@@ -1,5 +1,6 @@
 ﻿using JobBoard.Domain.DTO.ApplicationDto;
 using JobBoard.Domain.Entities;
+using JobBoard.Domain.Entities.Enums;
 using JobBoard.Domain.Shared;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,11 @@ namespace JobBoard.Domain.Services.Contract
 		Task<bool> HasUserAppliedToJobAsync(int applicantId, int jobId);
 		Task<bool> DeleteApplicationAsync(int id);
 
+		// Methods for employer
+		Task<IEnumerable<EmployerApplicationListDto>> GetApplicationsForEmployerJobsAsync(int employerId, ApplicationFilterParams filterParams);
+		Task<bool> UpdateApplicationStatusAsync(int applicationId, ApplicationStatus status, int employerId);
+
 	}
 
 }
+

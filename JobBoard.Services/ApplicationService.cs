@@ -82,6 +82,34 @@ namespace JobBoard.Services
 			var existing = await _unitOfWork.Repository<Application>().GetAllAsync(spec);
 			return existing.Any();
 		}
+
+		// Method for getting applications for employer's jobs
+		public async Task<IEnumerable<EmployerApplicationListDto>> GetApplicationsForEmployerJobsAsync(int employerId, ApplicationFilterParams filterParams)
+		{
+			var spec = new ApplicationForEmployerJobsSpecification(employerId, filterParams);
+			var applications = await _unitOfWork.Repository<Application>().GetAllAsync(spec);
+			var mappedApplications = _mapper.Map<IEnumerable<EmployerApplicationListDto>>(applications);
+			return mappedApplications;
+		}
+
+		// Method for updating application status
+		public async Task<bool> UpdateApplicationStatusAsync(int applicationId, ApplicationStatus status, int employerId)
+		{
+			// First get the application to verify employer ownership
+			var spec = new ApplicationWithFilterSpecification(applicationId);
+			var applications = await _unitOfWork.Repository<Application>().GetAllAsync(spec);
+			var application = applications.FirstOrDefault();
+
+			if (application == null || application.Job?.EmployerId != employerId)
+				return false;
+
+			application.Status = status;
+			_unitOfWork.Repository<Application>().Update(application);
+			var result = await _unitOfWork.CompleteAsync();
+
+			return result > 0;
+		}
+
 		public async Task<bool> DeleteApplicationAsync(int id)
 		{
 			var application = await _unitOfWork.Repository<Application>().GetByIdAsync(id);
