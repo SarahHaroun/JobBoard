@@ -20,14 +20,7 @@ namespace JobBoard.Repositories.Specifications.ApplicationSpecifications
 		{
 			AddIncludes(a => a.Job);
 			AddIncludes(a => a.Applicant);
-
-			// Sorting option
-			switch (filterParams.SortingOption)
-			{
-				default:
-					AddOrderByDesc(a => a.AppliedDate);
-					break;
-			}
+			AddOrderByDesc(a => a.AppliedDate);
 
 			// Pagination
 			var skip = filterParams.PageSize * (filterParams.PageIndex - 1);
