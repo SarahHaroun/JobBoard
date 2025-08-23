@@ -116,23 +116,42 @@ namespace JobBoard.Services
 		// Method for updating application status
 		public async Task<bool> UpdateApplicationStatusAsync(int applicationId, ApplicationStatus status, int employerId)
 		{
-			// First get the application to verify employer ownership
+			// Retrieve the application with job information
 			var spec = new ApplicationWithFilterSpecification(applicationId);
 			var applications = await _unitOfWork.Repository<Application>().GetAllAsync(spec);
 			var application = applications.FirstOrDefault();
 
+			// Validate application existence and employer ownership
 			if (application == null || application.Job?.EmployerId != employerId)
 				return false;
 
-			// Store the old status to check if it actually changed
+			// Check if the status is actually changing
 			var oldStatus = application.Status;
+			if (oldStatus == status)
+				return false;
 
+			// Update status
 			application.Status = status;
 			_unitOfWork.Repository<Application>().Update(application);
 			var result = await _unitOfWork.CompleteAsync();
 
+			if (result > 0)
+			{
+				// Generate notification message
+				var notificationMessage = GetNotificationMessage(status, application.Job?.Title);
+				var applicationLink = $"/applicationDtl/{application.Id}";
+
+				// Send notification to the applicant
+				await _notificationService.AddNotificationAsync(
+					application.Applicant.UserId,
+					notificationMessage,
+					applicationLink
+				);
+			}
+
 			return result > 0;
 		}
+
 
 		public async Task<bool> DeleteApplicationAsync(int id)
 		{
@@ -152,6 +171,27 @@ namespace JobBoard.Services
 			var applicationLink = $"/appView/{applicationId}";
 			await _notificationService.AddNotificationAsync(job.Employer.UserId, notificationMessage, applicationLink);
 		}
-		
+
+		private string GetNotificationMessage(ApplicationStatus status, string jobTitle)
+		{
+			switch (status)
+			{
+				case ApplicationStatus.Accepted:
+					return $"🎉 Congratulations! Your application for '{jobTitle}' has been accepted.";
+
+				case ApplicationStatus.Rejected:
+					return $"🙏 Thank you for your interest. Your application for '{jobTitle}' was not selected at this time.";
+
+				case ApplicationStatus.UnderReview:
+					return $"🔎 Your application for '{jobTitle}' is now under review.";
+
+				case ApplicationStatus.Interviewed:
+					return $"📅 You have been selected for an interview for '{jobTitle}'.";
+
+				default:
+					return $"Your application for '{jobTitle}' has been updated.";
+			}
+		}
+
 	}
 }
