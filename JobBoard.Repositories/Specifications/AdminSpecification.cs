@@ -17,14 +17,14 @@ namespace JobBoard.Repositories.Specifications
 
 			// Include all related collections
 			AddIncludes(s => s.Skills);
-			AddIncludes(s => s.SeekerEducations);
-			AddIncludes(s => s.SeekerExperiences);
-			AddIncludes(s => s.SeekerTraining);
-			AddIncludes(s => s.seekerCertificates);
-			AddIncludes(s => s.seekerInterests);
-			AddIncludes(s => s.UserApplications);
-			
-			
+			//AddIncludes(s => s.SeekerEducations);
+			//AddIncludes(s => s.SeekerExperiences);
+			//AddIncludes(s => s.SeekerTraining);
+			//AddIncludes(s => s.seekerCertificates);
+			//AddIncludes(s => s.seekerInterests);
+			//AddIncludes(s => s.UserApplications);
+
+
 			AddOrderByDesc(e => e.Id);
 
 		}
@@ -35,8 +35,8 @@ namespace JobBoard.Repositories.Specifications
 		public AllEmployersSpecification()
 		{
 			AddIncludes(e => e.User);
-			
-			
+
+		
 			AddOrderByDesc(e => e.Id);
 		}
 	}

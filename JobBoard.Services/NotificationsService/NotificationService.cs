@@ -19,7 +19,7 @@ namespace JobBoard.Services.NotificationsService
         private readonly IMapper _mapper;
         private readonly INotificationSender _notificationSender;
 
-        public NotificationService(IUnitOfWork unitOfWork , IMapper mapper , INotificationSender notificationSender )
+        public NotificationService(IUnitOfWork unitOfWork, IMapper mapper, INotificationSender notificationSender)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -29,23 +29,20 @@ namespace JobBoard.Services.NotificationsService
         /////////////////////////////// Add Notification //////////////////////////////////////////
         public async Task AddNotificationAsync(string userId, string message, string? link = null)
         {
-            try
+
+            // This would typically involve saving the notification to a database
+            var notification = new Notification
             {
-                var notification = new Notification
-                {
-                    UserId = userId,
-                    Message = message,
-                    Link = link
-                };
-                var repository = _unitOfWork.Repository<Notification>();
-                await repository.AddAsync(notification);
-                await _unitOfWork.CompleteAsync();
-                await _notificationSender.SendNotificationAsync(userId, message, link, notification.Id); // أضيفي Id
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Error adding notification: {ex.Message}", ex);
-            }
+                UserId = userId,
+                Message = message,
+                Link = link
+            };
+            var repository = _unitOfWork.Repository<Notification>();
+            await repository.AddAsync(notification);
+            await _unitOfWork.CompleteAsync();
+
+            // Send the notification to the user via SignalR
+            await _notificationSender.SendNotificationAsync(userId, message, link);
         }
 
 
