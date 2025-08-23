@@ -23,6 +23,8 @@ namespace JobBoard.Domain.Repositories.Contract
 		void Delete(TEntity entity);
 
 		Task<bool> AnyAsync(Expression<Func<TEntity, bool>> predicate);
+		Task<bool> ExistsAsync(ISpecifications<TEntity> specifications);
+
 		Task<int> CountAsync(ISpecifications<TEntity> specifications = null);
 
 

@@ -96,8 +96,9 @@ namespace JobBoard.Services
 		public async Task<bool> HasUserAppliedToJobAsync(int applicantId, int jobId)
 		{
 			var spec = new ApplicationWithFilterSpecification(applicantId, jobId);
-			var existing = await _unitOfWork.Repository<Application>().GetAllAsync(spec);
-			return existing.Any();
+			var isExisted = await _unitOfWork.Repository<Application>().ExistsAsync(spec);
+
+			return isExisted;
 		}
 
 		// ---------------------EMPLOYER METHODS--------------------
@@ -188,8 +189,7 @@ namespace JobBoard.Services
 		public async Task<ApplicationDto> GetApplicationByIdAsync(int id)
 		{
 			var spec = new ApplicationWithFilterSpecification(id);
-			var applications = await _unitOfWork.Repository<Application>().GetAllAsync(spec);
-			var application = applications.FirstOrDefault();
+			var application = await _unitOfWork.Repository<Application>().GetByIdAsync(spec);
 			var mappedApplication = _mapper.Map<ApplicationDto>(application);
 			return mappedApplication;
 		}

@@ -76,7 +76,7 @@ namespace JobBoard.API.Controllers
 
 		/// Checks if the current seeker has already applied to a specific job
 		// GET: api/application/has-applied/{jobId}
-		[HttpGet("has-applied/{jobId}")]
+		[HttpGet("has-applied/{jobId:int}")]
 		[Authorize(Roles = "Seeker")]
 		public async Task<ActionResult<bool>> HasApplied(int jobId)
 		{
@@ -115,7 +115,7 @@ namespace JobBoard.API.Controllers
 
 		/// Get all applications for a specific job posted by the current employer
 		// GET: api/job-applications/{id}
-		[HttpGet("job-applications/{jobId}")]
+		[HttpGet("job-applications/{jobId:int}")]
 		[Authorize(Roles = "Employer")]
 		public async Task<ActionResult<IEnumerable<EmployerApplicationListDto>>> GetApplicationsByJobId(int jobId)
 		{
@@ -133,8 +133,8 @@ namespace JobBoard.API.Controllers
 			return Ok(applications);
 		}
 		/// Update the status of an application 
-		// PUT: api/application/{id}/status
-		[HttpPut("{id}/status")]
+		// PUT: api/application/status/{id}
+		[HttpPut("status/{id:int}")]
 		[Authorize(Roles = "Employer")]
 		public async Task<IActionResult> UpdateApplicationStatus(int id, [FromBody] UpdateApplicationStatusDto statusDto)
 		{
@@ -162,7 +162,7 @@ namespace JobBoard.API.Controllers
 		//--------------------------Admin----------------------
 		/// Delete an application (Admin only)
 		// DELETE: api/application/{id}
-		[HttpDelete("{id}")]
+		[HttpDelete("{id:int}")]
 		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> DeleteApplication(int id)
 		{
@@ -180,7 +180,7 @@ namespace JobBoard.API.Controllers
 		//-------------------------- Mutual endpoint (Shared across roles)----------------------
 		/// Gets a specific application by ID
 		// GET: api/application/{id}
-		[HttpGet("{id}")]
+		[HttpGet("{id:int}")]
 		[Authorize]
 		public async Task<ActionResult<ApplicationDto>> GetApplicationById(int id)
 		{
