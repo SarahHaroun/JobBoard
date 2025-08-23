@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace JobBoard.Domain.Shared
 {
-    public class ApplicationFilterParams
-    {
+	public class ApplicationFilterParams
+	{
 		public int? JobId { get; set; }
 		public int? ApplicantId { get; set; }
 		public ApplicationStatus? Status { get; set; }
-		
+
 		public string? SearchValue { get; set; }
 		private int _pageIndex = 1;
 		public int PageIndex
@@ -22,7 +22,6 @@ namespace JobBoard.Domain.Shared
 			get => _pageIndex;
 			set => _pageIndex = (value < 1) ? 1 : value;
 		}
-
 		private int _pageSize = 10;
 		public int PageSize
 		{

@@ -12,15 +12,20 @@ namespace JobBoard.Domain.Services.Contract
 {
 	public interface IApplicationService
 	{
+		//SEEKER METHODS
 		Task<ApplicationDto> CreateApplicationAsync(CreateApplicationDto createDto, int applicantId);
-		Task<ApplicationDto> GetApplicationByIdAsync(int id);
 		Task<IEnumerable<ApplicationDto>> GetApplicationsByApplicantIdAsync(int applicantId);
 		Task<bool> HasUserAppliedToJobAsync(int applicantId, int jobId);
-		Task<bool> DeleteApplicationAsync(int id);
 
-		// Methods for employer
+		//EMPLOYER METHODS
 		Task<IEnumerable<EmployerApplicationListDto>> GetApplicationsForEmployerJobsAsync(int employerId, ApplicationFilterParams filterParams);
+		Task<IEnumerable<EmployerApplicationListDto>> GetApplicationsByJobIdAsync(int jobId, int employerId);
 		Task<bool> UpdateApplicationStatusAsync(int applicationId, ApplicationStatus status, int employerId);
+		
+		//ADMIN METHODS
+		Task<bool> DeleteApplicationAsync(int id);
+		//MUTUAL METHODS
+		Task<ApplicationDto> GetApplicationByIdAsync(int id);
 
 	}
 

@@ -43,6 +43,9 @@ namespace JobBoard.Services
 			_configuration = configuration;
 			_notificationService = notificationService;
 		}
+
+		// ---------------------SEEKER METHODS--------------------
+		/// Create an application for a seeker
 		public async Task<ApplicationDto> CreateApplicationAsync(CreateApplicationDto createDto, int applicantId)
 		{
 			//Verify if user has already applied to this job
@@ -52,7 +55,7 @@ namespace JobBoard.Services
 
 
 			// Get the job details to access employer information
-			var spec = new Repositories.Specifications.ApplicationSpecifications.JobByIdSpecification(createDto.JobId);
+			var spec = new JobFinderSpecification(createDto.JobId);
 			var job = await _unitOfWork.Repository<Job>().GetByIdAsync(spec);
 			if (job == null)
 				return null;
@@ -73,22 +76,14 @@ namespace JobBoard.Services
 			if (result <= 0)
 				return null;
 
-
 			// Send notification to employer after successful save
 			await SendApplicationNotificationAsync(job, createDto.FullName, application.Id);
 
 			return _mapper.Map<ApplicationDto>(application);
 
 		}
-		public async Task<ApplicationDto> GetApplicationByIdAsync(int id)
-		{
-			var spec = new ApplicationWithFilterSpecification(id);
-			var applications = await _unitOfWork.Repository<Application>().GetAllAsync(spec);
-			var application = applications.FirstOrDefault();
-			var mappedApplication = _mapper.Map<ApplicationDto>(application);
-			return mappedApplication;
-		}
 
+		/// Gets all applications of a specific seeker
 		public async Task<IEnumerable<ApplicationDto>> GetApplicationsByApplicantIdAsync(int applicantId)
 		{
 			var spec = new ApplicationWithFilterSpecification(applicantId, isApplicantId: true);
@@ -97,6 +92,7 @@ namespace JobBoard.Services
 			return mappedApplications;
 		}
 
+		/// Checks if a seeker has already applied to a specific job
 		public async Task<bool> HasUserAppliedToJobAsync(int applicantId, int jobId)
 		{
 			var spec = new ApplicationWithFilterSpecification(applicantId, jobId);
@@ -104,7 +100,8 @@ namespace JobBoard.Services
 			return existing.Any();
 		}
 
-		// Method for getting applications for employer's jobs
+		// ---------------------EMPLOYER METHODS--------------------
+		/// Method for getting applications for employer's jobs
 		public async Task<IEnumerable<EmployerApplicationListDto>> GetApplicationsForEmployerJobsAsync(int employerId, ApplicationFilterParams filterParams)
 		{
 			var spec = new ApplicationForEmployerJobsSpecification(employerId, filterParams);
@@ -113,7 +110,28 @@ namespace JobBoard.Services
 			return mappedApplications;
 		}
 
-		// Method for updating application status
+		/// Get all applications for a specific job 
+		public async Task<IEnumerable<EmployerApplicationListDto>> GetApplicationsByJobIdAsync(int jobId, int employerId)
+		{
+			// First verify that the job belongs to this employer
+			var jobSpec = new JobFinderSpecification(jobId);
+			var job = await _unitOfWork.Repository<Job>().GetByIdAsync(jobSpec);
+
+			if (job == null || job.EmployerId != employerId)
+				return Enumerable.Empty<EmployerApplicationListDto>();
+
+			var filterParams = new ApplicationFilterParams
+			{
+				JobId = jobId
+			};
+
+			var spec = new ApplicationForEmployerJobsSpecification(employerId, filterParams);
+			var applications = await _unitOfWork.Repository<Application>().GetAllAsync(spec);
+			var mappedApplications = _mapper.Map<IEnumerable<EmployerApplicationListDto>>(applications);
+			return mappedApplications;
+		}
+
+		/// Method for updating application status
 		public async Task<bool> UpdateApplicationStatusAsync(int applicationId, ApplicationStatus status, int employerId)
 		{
 			// Retrieve the application with job information
@@ -148,11 +166,11 @@ namespace JobBoard.Services
 					applicationLink
 				);
 			}
-
 			return result > 0;
 		}
 
-
+		// ---------------------ADMIN METHODS--------------------
+		/// Delete an application (admin only)
 		public async Task<bool> DeleteApplicationAsync(int id)
 		{
 			var application = await _unitOfWork.Repository<Application>().GetByIdAsync(id);
@@ -165,6 +183,19 @@ namespace JobBoard.Services
 			return deleted > 0;
 		}
 
+		// ---------------------MUTUAL METHODS--------------------
+		/// Gets a specific application by ID (accessible by seeker, employer or admin)
+		public async Task<ApplicationDto> GetApplicationByIdAsync(int id)
+		{
+			var spec = new ApplicationWithFilterSpecification(id);
+			var applications = await _unitOfWork.Repository<Application>().GetAllAsync(spec);
+			var application = applications.FirstOrDefault();
+			var mappedApplication = _mapper.Map<ApplicationDto>(application);
+			return mappedApplication;
+		}
+
+		// ---------------------PRIVATE HELPER METHODS--------------------
+		/// Sends notification to employer when a new application is received
 		private async Task SendApplicationNotificationAsync(Job job, string applicantName, int applicationId)
 		{
 			var notificationMessage = $"{applicantName} has applied for the job: {job.Title}";
@@ -172,6 +203,7 @@ namespace JobBoard.Services
 			await _notificationService.AddNotificationAsync(job.Employer.UserId, notificationMessage, applicationLink);
 		}
 
+		/// Method for generating appropriate notification messages based on application status
 		private string GetNotificationMessage(ApplicationStatus status, string jobTitle)
 		{
 			switch (status)
@@ -192,6 +224,5 @@ namespace JobBoard.Services
 					return $"Your application for '{jobTitle}' has been updated.";
 			}
 		}
-
 	}
 }

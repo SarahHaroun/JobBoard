@@ -8,7 +8,7 @@ public class ApplicationForEmployerJobsSpecification : BaseSpecifications<Applic
 	public ApplicationForEmployerJobsSpecification(int employerId, ApplicationFilterParams filterParams)
 	   : base(a =>
 		   a.Job.EmployerId == employerId &&
-	   	   (string.IsNullOrWhiteSpace(filterParams.SearchValue) || a.Job.Title.ToLower().Contains(filterParams.SearchValue.ToLower())) &&
+			  (string.IsNullOrWhiteSpace(filterParams.SearchValue) || a.Job.Title.ToLower().Contains(filterParams.SearchValue.ToLower())) &&
 		   (!filterParams.JobId.HasValue || a.JobId == filterParams.JobId) &&
 		   (!filterParams.ApplicantId.HasValue || a.ApplicantId == filterParams.ApplicantId) &&
 		   (!filterParams.Status.HasValue || a.Status == filterParams.Status))
@@ -17,7 +17,6 @@ public class ApplicationForEmployerJobsSpecification : BaseSpecifications<Applic
 		AddIncludes(a => a.Job.Employer);
 		AddIncludes(a => a.Applicant);
 		AddOrderByDesc(a => a.AppliedDate);
-		
 
 		//// Pagination
 		//var skip = filterParams.PageSize * (filterParams.PageIndex - 1);
