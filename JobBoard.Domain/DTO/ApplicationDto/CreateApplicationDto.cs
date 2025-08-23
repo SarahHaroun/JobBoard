@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace JobBoard.Domain.DTO.ApplicationDto
 {
-    public class CreateApplicationDto
+	public class CreateApplicationDto
 	{
 		[Required]
 		public string FullName { get; set; }
@@ -44,4 +44,3 @@ namespace JobBoard.Domain.DTO.ApplicationDto
 		public int JobId { get; set; }
 	}
 }
-

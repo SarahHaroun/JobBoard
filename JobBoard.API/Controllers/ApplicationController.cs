@@ -125,7 +125,7 @@ namespace JobBoard.API.Controllers
 			return Ok(hasApplied);
 		}
 
-
+		//--------------------------Employer----------------------
 		// GET: api/application/employer-applications
 		[HttpGet("employer-applications")]
 		[Authorize(Roles = "Employer")]
