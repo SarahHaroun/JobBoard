@@ -13,122 +13,122 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace JobBoard.Services.NotificationsService
 {
-    public class NotificationService : INotificationService
-    {
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IMapper _mapper;
-        private readonly INotificationSender _notificationSender;
+	public class NotificationService : INotificationService
+	{
+		private readonly IUnitOfWork _unitOfWork;
+		private readonly IMapper _mapper;
+		private readonly INotificationSender _notificationSender;
 
-        public NotificationService(IUnitOfWork unitOfWork, IMapper mapper, INotificationSender notificationSender)
-        {
-            _unitOfWork = unitOfWork;
-            _mapper = mapper;
-            _notificationSender = notificationSender;
-        }
+		public NotificationService(IUnitOfWork unitOfWork, IMapper mapper, INotificationSender notificationSender)
+		{
+			_unitOfWork = unitOfWork;
+			_mapper = mapper;
+			_notificationSender = notificationSender;
+		}
 
-        /////////////////////////////// Add Notification //////////////////////////////////////////
-        public async Task AddNotificationAsync(string userId, string message, string? link = null)
-        {
+		/////////////////////////////// Add Notification //////////////////////////////////////////
+		public async Task AddNotificationAsync(string userId, string message, string? link = null)
+		{
 
-            // This would typically involve saving the notification to a database
-            var notification = new Notification
-            {
-                UserId = userId,
-                Message = message,
-                Link = link
-            };
-            var repository = _unitOfWork.Repository<Notification>();
-            await repository.AddAsync(notification);
-            await _unitOfWork.CompleteAsync();
+			// This would typically involve saving the notification to a database
+			var notification = new Notification
+			{
+				UserId = userId,
+				Message = message,
+				Link = link
+			};
+			var repository = _unitOfWork.Repository<Notification>();
+			await repository.AddAsync(notification);
+			await _unitOfWork.CompleteAsync();
 
-            // Send the notification to the user via SignalR
-            await _notificationSender.SendNotificationAsync(userId, message, link);
-        }
-
-
-        /////////////////////////////// Mark As Read //////////////////////////////////////////
-        public async Task MarkAsReadAsync(int notificationId)
-        {
-
-            // This would typically involve updating the notification in the database
-            var repository = _unitOfWork.Repository<Notification>();
-            var notification = await repository.GetByIdAsync(notificationId);
-            if (notification == null)
-            {
-                throw new KeyNotFoundException($"Notification with ID {notificationId} not found.");
-            }
-            notification.IsRead = true;
-            repository.Update(notification);
-            await _unitOfWork.CompleteAsync();
+			// Send the notification to the user via SignalR
+			await _notificationSender.SendNotificationAsync(userId, message, link);
+		}
 
 
-            await _notificationSender.SendNotificationUpdateAsync(notification.UserId, new
-            {
-                Action = "MarkAsRead",
-                NotificationId = notificationId,
-                IsRead = true
-            });
+		/////////////////////////////// Mark As Read //////////////////////////////////////////
+		public async Task MarkAsReadAsync(int notificationId)
+		{
 
-        }
-
-
-        /////////////////////////////// Get User Notification //////////////////////////////////////////
-        public async Task<IEnumerable<NotificationDto>> GetUserNotificationsAsync(string userId)
-        {
-            var specification = new NotificationsForUserSpecification(userId);
-            var repository = _unitOfWork.Repository<Notification>();
-            var notifications = await repository.GetAllAsync(specification);
-            if (notifications == null || !notifications.Any())
-            {
-                return Enumerable.Empty<NotificationDto>();
-            }
-            return _mapper.Map<IEnumerable<NotificationDto>>(notifications);
-        }
+			// This would typically involve updating the notification in the database
+			var repository = _unitOfWork.Repository<Notification>();
+			var notification = await repository.GetByIdAsync(notificationId);
+			if (notification == null)
+			{
+				throw new KeyNotFoundException($"Notification with ID {notificationId} not found.");
+			}
+			notification.IsRead = true;
+			repository.Update(notification);
+			await _unitOfWork.CompleteAsync();
 
 
-        /////////////////////////////// Mark All As Read //////////////////////////////////////////
+			await _notificationSender.SendNotificationUpdateAsync(notification.UserId, new
+			{
+				Action = "MarkAsRead",
+				NotificationId = notificationId,
+				IsRead = true
+			});
 
-        public async Task MarkAllAsReadAsync(string userId)
-        {
-            var specification = new NotificationsForUserSpecification(userId);
-            var repository = _unitOfWork.Repository<Notification>();
-            var notifications = await repository.GetAllAsync(specification);
+		}
 
-            foreach (var notification in notifications.Where(n => !n.IsRead))
-            {
-                notification.IsRead = true;
-                repository.Update(notification);
-            }
 
-            await _unitOfWork.CompleteAsync();
-            if (notifications.Any())
-            {
-                await _notificationSender.SendNotificationUpdateAsync(userId, new
-                {
-                    Action = "MarkAllAsRead",
-                    NotificationIds = notifications
-                });
-            }
-        }
+		/////////////////////////////// Get User Notification //////////////////////////////////////////
+		public async Task<IEnumerable<NotificationDto>> GetUserNotificationsAsync(string userId)
+		{
+			var specification = new NotificationsForUserSpecification(userId);
+			var repository = _unitOfWork.Repository<Notification>();
+			var notifications = await repository.GetAllAsync(specification);
+			if (notifications == null || !notifications.Any())
+			{
+				return Enumerable.Empty<NotificationDto>();
+			}
+			return _mapper.Map<IEnumerable<NotificationDto>>(notifications);
+		}
 
-        /////////////////////////////// Delete Notification //////////////////////////////////////////
 
-        public async Task DeleteNotificationAsync(int notificationId)
-        {
-            var repository = _unitOfWork.Repository<Notification>();
-            var notification = await repository.GetByIdAsync(notificationId);
+		/////////////////////////////// Mark All As Read //////////////////////////////////////////
 
-            if (notification == null)
-                throw new KeyNotFoundException($"Notification with ID {notificationId} not found.");
+		public async Task MarkAllAsReadAsync(string userId)
+		{
+			var specification = new NotificationsForUserSpecification(userId);
+			var repository = _unitOfWork.Repository<Notification>();
+			var notifications = await repository.GetAllAsync(specification);
 
-            repository.Delete(notification);
-            await _unitOfWork.CompleteAsync();
+			foreach (var notification in notifications.Where(n => !n.IsRead))
+			{
+				notification.IsRead = true;
+				repository.Update(notification);
+			}
 
-            await _notificationSender.SendNotificationUpdateAsync(notification.UserId, new
-            {
-                Action = "Delete",
-                NotificationId = notificationId
-            });
-        }
-    }
+			await _unitOfWork.CompleteAsync();
+			if (notifications.Any())
+			{
+				await _notificationSender.SendNotificationUpdateAsync(userId, new
+				{
+					Action = "MarkAllAsRead",
+					NotificationIds = notifications
+				});
+			}
+		}
+
+		/////////////////////////////// Delete Notification //////////////////////////////////////////
+
+		public async Task DeleteNotificationAsync(int notificationId)
+		{
+			var repository = _unitOfWork.Repository<Notification>();
+			var notification = await repository.GetByIdAsync(notificationId);
+
+			if (notification == null)
+				throw new KeyNotFoundException($"Notification with ID {notificationId} not found.");
+
+			repository.Delete(notification);
+			await _unitOfWork.CompleteAsync();
+
+			await _notificationSender.SendNotificationUpdateAsync(notification.UserId, new
+			{
+				Action = "Delete",
+				NotificationId = notificationId
+			});
+		}
+	}
 }

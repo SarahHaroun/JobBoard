@@ -266,7 +266,7 @@
   {
     "CompanyName": "Baghdad IT",
     "CompanyLocation": "Baghdad, Iraq",
-    "CompanyImage": "images/companies/baghdadit.png",
+    "CompanyImage": "images/companies/baghdadit.jpg",
     "Website": "https://baghdadit.iq",
     "Industry": "IT Services",
     "CompanyDescription": "We provide a wide range of IT services to businesses and government agencies, including network management, data security, and system integration.",
@@ -550,5 +550,18 @@
     "EmployeeRange": "60 - 90",
     "EstablishedYear": 2011,
     "UserEmail": "employer6@example.com"
+  },
+  {
+    "CompanyName": "The Global Times",
+    "CompanyLocation": "Cairo, Egypt",
+    "CompanyImage": "images/companies/globaltimes.jpg",
+    "Website": "https://globaltimes.news",
+    "Industry": "Media & Journalism",
+    "CompanyDescription": "The Global Times is a leading newspaper and digital media outlet providing in-depth coverage of politics, business, culture, and global affairs. With a team of experienced journalists, we are dedicated to delivering accurate, timely, and insightful reporting.",
+    "CompanyMission": "To inform, engage, and inspire readers through responsible journalism, while upholding integrity, accuracy, and freedom of expression.",
+    "EmployeeRange": "150 - 200",
+    "EstablishedYear": 1998,
+    "UserEmail": "globaltimes@example.com"
   }
+
 ]

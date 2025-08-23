@@ -29,17 +29,17 @@ namespace JobBoard.Services.AdminService
         private readonly IAIEmbeddingService _aiEmbeddingService;
         private readonly INotificationService _notificationService;
 
-        public AdminService(IUnitOfWork unitOfWork,
-            UserManager<ApplicationUser> userManager,
-            IMapper mapper,
-            IAIEmbeddingService aiEmbeddingService,
-            INotificationService notificationService)
-        {
-            _unitOfWork = unitOfWork;
-            _userManager = userManager;
-            _mapper = mapper;
-            _aiEmbeddingService = aiEmbeddingService;
-            _notificationService = notificationService;
+		public AdminService(IUnitOfWork unitOfWork, 
+			UserManager<ApplicationUser> userManager,
+			IMapper mapper, 
+			IAIEmbeddingService aiEmbeddingService,
+			INotificationService notificationService)
+		{
+			_unitOfWork = unitOfWork;
+			_userManager = userManager;
+			_mapper = mapper;
+			_aiEmbeddingService = aiEmbeddingService;
+			_notificationService = notificationService;
         }
 
         public async Task<List<SeekerProfileDto>> GetAllSeekersAsync()
@@ -102,13 +102,9 @@ namespace JobBoard.Services.AdminService
             var result = await _unitOfWork.CompleteAsync();
 
             var notificationMessage = $"Your job {job.Title} has been approved!";
-            var jobLink = $"/jobDtl/{job.Id}";
+             var jobLink = $"/jobDtl/{job.Id}"; 
 
-            await _notificationService.AddNotificationAsync(
-                job.Employer.UserId,
-                notificationMessage,
-               jobLink
-            );
+            await _notificationService.AddNotificationAsync(job.Employer.UserId,notificationMessage,jobLink);
             return result > 0;
         }
 
@@ -121,10 +117,15 @@ namespace JobBoard.Services.AdminService
 
             _unitOfWork.Repository<Job>().Delete(job);
 
-            var result = await _unitOfWork.CompleteAsync();
-            await _aiEmbeddingService.DeleteEmbeddingForJobAsync(jobId);
-            return result > 0;
-        }
+			var result = await _unitOfWork.CompleteAsync();
+
+			var notificationMessage = $"Your job {job.Title} has been rejected!";
+			var jobLink = $"/jobDtl/{job.Id}";
+
+			await _notificationService.AddNotificationAsync(job.Employer.UserId, notificationMessage,jobLink);
+			await _aiEmbeddingService.DeleteEmbeddingForJobAsync(jobId);
+			return result > 0;
+		}
 
         public async Task<bool> DeleteUserAsync(string userId)
         {

@@ -16,7 +16,19 @@ namespace JobBoard.Domain.Shared
 		public ApplicationStatus? Status { get; set; }
 		public DateTime? AppliedDateFrom { get; set; }
 		public DateTime? AppliedDateTo { get; set; }
-		public string? SearchValue { get; set; }
 		public SortingDateOptions SortingOption { get; set; } = SortingDateOptions.DateDesc;
+		private int _pageIndex = 1;
+		public int PageIndex
+		{
+			get => _pageIndex;
+			set => _pageIndex = (value < 1) ? 1 : value;
+		}
+
+		private int _pageSize = 6;
+		public int PageSize
+		{
+			get => _pageSize;
+			set => _pageSize = (value > 100) ? 100 : (value < 1 ? 1 : value);
+		}
 	}
 }

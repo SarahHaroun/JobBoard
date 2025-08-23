@@ -54,5 +54,7 @@ namespace JobBoard.Repositories.Specifications.JobSpecifications
 				AddIncludes(j => j.Employer);
 			}
 		}
+
+
 	}
 }

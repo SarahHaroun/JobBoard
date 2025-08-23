@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace JobBoard.Domain.Services.Contract
 {
-    public interface INotificationSender
-    {
-        Task SendNotificationAsync(string userId, string message, string? link = null);
-        Task SendNotificationUpdateAsync(string userId, object updateData);
+	public interface INotificationSender
+	{
+		Task SendNotificationAsync(string userId, string message, string? link = null);
+		Task SendNotificationUpdateAsync(string userId, object updateData);
 
-    }
+	}
 }

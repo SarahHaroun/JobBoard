@@ -13,7 +13,8 @@ namespace JobBoard.Repositories.Specifications.JobSpecifications
 		: base(j => j.EmployerId == employerId && j.IsApproved)
 		{
 			AddIncludes(j => j.JobApplications);
-			AddOrderByDesc(j => j.PostedDate); 
+			AddOrderByDesc(j => j.PostedDate);
+			AddPagination(0, limit);
 		}
 	}
 }
