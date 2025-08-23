@@ -104,11 +104,7 @@ namespace JobBoard.Services.AdminService
             var notificationMessage = $"Your job {job.Title} has been approved!";
              var jobLink = $"/jobDtl/{job.Id}"; 
 
-            await _notificationService.AddNotificationAsync(
-                job.Employer.UserId,
-                notificationMessage,
-               jobLink
-            );
+            await _notificationService.AddNotificationAsync(job.Employer.UserId,notificationMessage,jobLink);
             return result > 0;
 		}
 
@@ -122,6 +118,11 @@ namespace JobBoard.Services.AdminService
 			_unitOfWork.Repository<Job>().Delete(job);
 
 			var result = await _unitOfWork.CompleteAsync();
+
+			var notificationMessage = $"Your job {job.Title} has been rejected!";
+			var jobLink = $"/jobDtl/{job.Id}";
+
+			await _notificationService.AddNotificationAsync(job.Employer.UserId, notificationMessage,jobLink);
 			await _aiEmbeddingService.DeleteEmbeddingForJobAsync(jobId);
 			return result > 0;
 		}
