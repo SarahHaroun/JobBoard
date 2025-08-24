@@ -42,6 +42,7 @@ namespace JobBoard.Services.AdminService
 			_notificationService = notificationService;
         }
 
+        ///////////////////////get all seekers///////////////////////
         public async Task<List<SeekerProfileDto>> GetAllSeekersAsync()
         {
             var spec = new AllSeekersSpecification();
@@ -49,6 +50,7 @@ namespace JobBoard.Services.AdminService
             return _mapper.Map<List<SeekerProfileDto>>(seekers);
         }
 
+        ///////////////////////get all employers///////////////////////
         public async Task<List<EmpProfileDto>> GetAllEmployersAsync()
         {
             var spec = new AllEmployersSpecification();
@@ -56,6 +58,26 @@ namespace JobBoard.Services.AdminService
             return _mapper.Map<List<EmpProfileDto>>(employers);
         }
 
+        ///////////////////////get seeker by id///////////////////////
+        public async Task<SeekerProfileDto> GetSeekerByIdAsync(string userId)
+        {
+            var spec = new SeekerByUserIdSpecification(userId);
+            var seeker = await _unitOfWork.Repository<SeekerProfile>().GetByIdAsync(spec);
+            return _mapper.Map<SeekerProfileDto>(seeker);
+        }
+
+
+        ///////////////////////get employer by id///////////////////////
+        
+        public async Task<EmpProfileDto> GetEmployerByIdAsync(string userId)
+        {
+            var spec = new EmployerByUserIdSpecification(userId);
+            var employer = await _unitOfWork.Repository<EmployerProfile>().GetByIdAsync(spec);
+            return _mapper.Map<EmpProfileDto>(employer);
+        }
+
+
+        ///////////////////////get all jobs///////////////////////
         public async Task<List<JobDto>> GetAllJobsAsync()
         {
             var spec = new AllJobsSpecification();
@@ -63,6 +85,8 @@ namespace JobBoard.Services.AdminService
             return _mapper.Map<List<JobDto>>(jobs);
         }
 
+
+        ////////////////////////delete job by id///////////////////////
         public async Task<bool> DeleteJob(int id)
         {
             var job = await _unitOfWork.Repository<Job>().GetByIdAsync(id);
@@ -76,6 +100,8 @@ namespace JobBoard.Services.AdminService
             return true;
         }
 
+
+        ///////////////////////get all pending jobs///////////////////////
         public async Task<List<JobDto>> GetPendingJobsAsync()
         {
             var spec = new PendingJobsSpecification();
@@ -84,6 +110,8 @@ namespace JobBoard.Services.AdminService
 
         }
 
+
+        ///////////////////////approve job by id///////////////////////
         public async Task<bool> ApproveJobAsync(int jobId)
         {
             var spec = new JobByIdSpecification(jobId);
@@ -108,6 +136,9 @@ namespace JobBoard.Services.AdminService
             return result > 0;
         }
 
+
+
+        //////////////////////reject job by id///////////////////////
         public async Task<bool> RejectJobAsync(int jobId)
         {
             var spec = new JobByIdSpecification(jobId);
@@ -127,6 +158,8 @@ namespace JobBoard.Services.AdminService
 			return result > 0;
 		}
 
+
+        //////////////////////delete user by id///////////////////////
         public async Task<bool> DeleteUserAsync(string userId)
         {
             var user = await _userManager.FindByIdAsync(userId);
@@ -136,6 +169,8 @@ namespace JobBoard.Services.AdminService
             return result.Succeeded;
         }
 
+
+        //////////////////////get stats///////////////////////
         public async Task<StatsDto> GetStatsAsync()
         {
             var seekersCount = (await _userManager.GetUsersInRoleAsync(UserType.Seeker.ToString())).Count;

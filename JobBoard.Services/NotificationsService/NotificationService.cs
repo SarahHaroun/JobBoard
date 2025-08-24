@@ -40,9 +40,10 @@ namespace JobBoard.Services.NotificationsService
 			var repository = _unitOfWork.Repository<Notification>();
 			await repository.AddAsync(notification);
 			await _unitOfWork.CompleteAsync();
+			await Task.Delay(500);
 
-			// Send the notification to the user via SignalR
-			await _notificationSender.SendNotificationAsync(userId, message, link);
+            // Send the notification to the user via SignalR
+            await _notificationSender.SendNotificationAsync(userId, message, link);
 		}
 
 

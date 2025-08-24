@@ -17,7 +17,8 @@ namespace JobBoard.API.Controllers
             _adminService = adminService;
         }
 
-        // --- Users ---
+
+        /////////////////////////get all seekers///////////////////////
         [HttpGet("seekers")]
         public async Task<IActionResult> GetSeekers()
         {
@@ -29,6 +30,20 @@ namespace JobBoard.API.Controllers
             return Ok(seekers);
         }
 
+        /////////////////////////get seeker by id///////////////////////
+        [HttpGet("seeker/{seekerId}")]
+        public async Task<IActionResult> GetSeekerById(string seekerId)
+        {
+            var seeker = await _adminService.GetSeekerByIdAsync(seekerId);
+            if (seeker == null)
+            {
+                return NotFound();
+            }
+            return Ok(seeker);
+        }
+
+
+        /////////////////////////get all employers///////////////////////
         [HttpGet("employers")]
         public async Task<IActionResult> GetEmployers()
         {
@@ -40,6 +55,20 @@ namespace JobBoard.API.Controllers
             return Ok(employers);
         }
 
+        /////////////////////////get employer by id///////////////////////
+        [HttpGet("employer/{employerId}")]
+        public async Task<IActionResult> GetEmployerById(string employerId)
+        {
+            var employer = await _adminService.GetEmployerByIdAsync(employerId);
+            if (employer == null)
+            {
+                return NotFound();
+            }
+            return Ok(employer);
+        }
+
+
+        /// //////////////////delete user by id///////////////////////
         [HttpDelete("user/{userId}")]
         public async Task<IActionResult> DeleteUser(string userId)
         {
@@ -48,7 +77,8 @@ namespace JobBoard.API.Controllers
             return Ok("User deleted successfully.");
         }
 
-        // --- Jobs ---
+
+        ////////////////////////get all jobs///////////////////////
         [HttpGet("jobs")]
         public async Task<IActionResult> GetAllJobs()
         {
@@ -60,6 +90,8 @@ namespace JobBoard.API.Controllers
             return Ok(jobs);
         }
 
+
+        ////////////////////////pending jobs///////////////////////
         [HttpGet("jobs/pending")]
         public async Task<IActionResult> GetPendingJobs()
         {
@@ -71,6 +103,8 @@ namespace JobBoard.API.Controllers
             return Ok(jobs);
         }
 
+
+        // //////////////////approve job by id///////////////////////
         [HttpPut("jobs/{jobId}/approve")]
         public async Task<IActionResult> ApproveJob(int jobId)
         {
@@ -82,6 +116,8 @@ namespace JobBoard.API.Controllers
         }
 
 
+
+        // //////////////////reject job by id///////////////////////
         [HttpDelete("jobs/{jobId}/reject")]
         public async Task<IActionResult> RejectJob(int jobId)
         {
@@ -90,7 +126,9 @@ namespace JobBoard.API.Controllers
             return Ok("Job rejected successfully.");
         }
 
-        // --- Stats ---
+
+
+        ////////////////////////get stats///////////////////////
         [HttpGet("stats")]
         public async Task<IActionResult> GetStats()
         {
