@@ -1,4 +1,5 @@
-﻿using JobBoard.Domain.DTO.EmployerDto;
+﻿using JobBoard.API.Helpers;
+using JobBoard.Domain.DTO.EmployerDto;
 using JobBoard.Domain.DTO.JobDto;
 using JobBoard.Domain.Services.Contract;
 using JobBoard.Domain.Shared;
@@ -29,7 +30,8 @@ namespace JobBoard.API.Controllers
 		//Get: api/jobs
 		[HttpGet]
 		[AllowAnonymous]
-		public async Task<IActionResult> GetAllJobs([FromQuery] JobFilterParams filterParams)
+		[CachedAttribute(300)]
+        public async Task<IActionResult> GetAllJobs([FromQuery] JobFilterParams filterParams)
 		{
 			var result = await _jobService.GetAllJobsAsync(filterParams);
 			return Ok(result);

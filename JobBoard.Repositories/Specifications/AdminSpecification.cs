@@ -7,41 +7,60 @@ using System.Threading.Tasks;
 
 namespace JobBoard.Repositories.Specifications
 {
-	// Admin Specifications
-	public class AllSeekersSpecification : BaseSpecifications<SeekerProfile>
+    // Admin Specifications
+
+    /////////////////////////get all seekers///////////////////////
+    public class AllSeekersSpecification : BaseSpecifications<SeekerProfile>
 	{
 		public AllSeekersSpecification()
 		{
 			// Include User data
 			AddIncludes(s => s.User);
-
-			// Include all related collections
 			AddIncludes(s => s.Skills);
-			AddIncludes(s => s.SeekerEducations);
-			AddIncludes(s => s.SeekerExperiences);
-			AddIncludes(s => s.SeekerTraining);
-			AddIncludes(s => s.seekerCertificates);
-			AddIncludes(s => s.seekerInterests);
-			AddIncludes(s => s.UserApplications);
-			
-			
 			AddOrderByDesc(e => e.Id);
 
 		}
+
 	}
 
-	public class AllEmployersSpecification : BaseSpecifications<EmployerProfile>
+	/////////////////////////get seeker by id///////////////////////
+	public class SeekerByUserIdSpecification : BaseSpecifications<SeekerProfile>
+	{
+		public SeekerByUserIdSpecification(string seekerId) : base(s => s.UserId == seekerId)
+		{
+			AddIncludes(s => s.User);
+			AddIncludes(s => s.seekerCertificates);
+			AddIncludes(s => s.seekerInterests);
+			AddIncludes(s => s.Skills);
+			AddIncludes(s => s.SeekerTraining);
+
+        }
+	
+	}
+
+    /////////////////////////get all employers///////////////////////
+    public class AllEmployersSpecification : BaseSpecifications<EmployerProfile>
 	{
 		public AllEmployersSpecification()
 		{
-			AddIncludes(e => e.User);
-			
-			
+			AddIncludes(e => e.User);	
 			AddOrderByDesc(e => e.Id);
 		}
 	}
 
-	public class AllJobsSpecification : BaseSpecifications<Job>
+	
+	/////////////////////////get employer by id///////////////////////
+	public class EmployerByUserIdSpecification : BaseSpecifications<EmployerProfile>
+	{
+		public EmployerByUserIdSpecification(string employerId) : base(e => e.UserId == employerId)
+		{
+			AddIncludes(e => e.User);
+			
+        }
+	}
+    /////////////////////////get all jobs///////////////////////
+
+    public class AllJobsSpecification : BaseSpecifications<Job>
 	{
 		public AllJobsSpecification()
 		{
@@ -53,18 +72,20 @@ namespace JobBoard.Repositories.Specifications
 		}
 	}
 
-	public class PendingJobsSpecification : BaseSpecifications<Job>
+    /////////////////////////get pending jobs///////////////////////
+    public class PendingJobsSpecification : BaseSpecifications<Job>
 	{
 		public PendingJobsSpecification() : base(j => !j.IsApproved)
 		{
-			AddIncludes(j => j.Employer);
+			AddIncludes(j => j.Employer.User);
 			AddIncludes(j => j.Categories);
 			AddIncludes(j => j.Skills);
 			AddOrderByDesc(j => j.PostedDate);
 		}
 	}
 
-	public class JobByIdSpecification : BaseSpecifications<Job>
+    /////////////////////////get job by id///////////////////////
+    public class JobByIdSpecification : BaseSpecifications<Job>
 	{
 		public JobByIdSpecification(int jobId) : base(j => j.Id == jobId)
 		{
