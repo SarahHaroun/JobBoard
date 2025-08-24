@@ -1128,6 +1128,122 @@
         "EducationLevel": "Bachelor"
       }
     ]
+  },
+  {
+    "UserEmail": "samehmahmoud@example.com",
+    "Name": "Sameh Mahmoud",
+    "PhoneNumber": "010633778810",
+    "Title": "Content Writer",
+    "DateOfBirth": "1997-04-15T00:00:00",
+    "Address": "Nasr City, Cairo, Egypt",
+    "CV_Url": "cv/sameh_mahmoud_cv.pdf",
+    "Gender": "Male",
+    "Summary": "Creative and detail-oriented content writer with experience in producing engaging articles, blog posts, and social media content. Skilled in research, storytelling, and tailoring messages to different audiences. Passionate about digital media and brand communication.",
+    "ProfileImageUrl": "images/profilepic/user.jpg",
+    "Skills": [ 48, 51, 50, 33, 35, 37, 39 ],
+    "seekerCertificates": [
+      { "CertificateName": "Content Marketing Certification - HubSpot" },
+      { "CertificateName": "SEO Fundamentals - SEMrush" }
+    ],
+    "SeekerTraining": [
+      { "TrainingName": "Creative Writing Workshop" },
+      { "TrainingName": "Digital Content Strategy" },
+      { "TrainingName": "Social Media Storytelling" }
+    ],
+    "seekerInterests": [
+      { "InterestName": "Creative Writing" },
+      { "InterestName": "Content Marketing" },
+      { "InterestName": "Storytelling" },
+      { "InterestName": "Digital Media" }
+    ],
+    "SeekerExperiences": [
+      {
+        "JobTitle": "Junior Content Writer",
+        "CompanyName": "Bright Media",
+        "Location": "Cairo",
+        "StartDate": "2021-06-01T00:00:00",
+        "EndDate": "2023-03-01T00:00:00",
+        "Description": "Wrote blog posts, articles, and social media content for clients in various industries. Conducted keyword research and collaborated with the marketing team to develop content calendars."
+      },
+      {
+        "JobTitle": "Freelance Writer",
+        "CompanyName": "Self-Employed",
+        "Location": "Remote",
+        "StartDate": "2019-01-01T00:00:00",
+        "EndDate": "2021-05-01T00:00:00",
+        "Description": "Provided writing services including web content, product descriptions, and creative copy. Worked with startups and small businesses to enhance their online presence."
+      }
+    ],
+    "SeekerEducations": [
+      {
+        "Major": "English Literature",
+        "Faculty": "Faculty of Arts",
+        "University": "Ain Shams University",
+        "Date": "2018-07-01T00:00:00",
+        "Location": "Cairo",
+        "GPA": 3.5,
+        "EducationLevel": "Bachelor"
+      }
+    ]
+  },
+  {
+    "UserEmail": "jason.miller@example.com",
+    "Name": "Jason Miller",
+    "PhoneNumber": "+1 415 987 4521",
+    "Title": "Fitness Trainer",
+    "DateOfBirth": "1990-08-12T00:00:00",
+    "Address": "San Francisco, California, USA",
+    "CV_Url": "cv/jason_miller_fitness_cv.pdf",
+    "Gender": "Male",
+    "Summary": "Certified fitness trainer with over 6 years of experience in personal training, group classes, and wellness coaching. Skilled in strength training, cardio programs, and dietary planning. Dedicated to helping clients achieve their fitness goals through tailored workout plans and motivational support.",
+    "ProfileImageUrl": "images/profilepic/user.jpg",
+    "Skills": [ 59, 60, 33, 30, 37 ],
+    "seekerCertificates": [
+      { "CertificateName": "NASM Certified Personal Trainer (CPT)" },
+      { "CertificateName": "First Aid & CPR Certification" },
+      { "CertificateName": "Nutrition and Wellness Consultant" }
+    ],
+    "SeekerTraining": [
+      { "TrainingName": "Strength & Conditioning Workshop" },
+      { "TrainingName": "Functional Training Program" },
+      { "TrainingName": "Sports Nutrition Basics" }
+    ],
+    "seekerInterests": [
+      { "InterestName": "Strength Training" },
+      { "InterestName": "Nutrition Coaching" },
+      { "InterestName": "Wellness Programs" },
+      { "InterestName": "Outdoor Fitness" }
+    ],
+    "SeekerExperiences": [
+      {
+        "JobTitle": "Personal Trainer",
+        "CompanyName": "FitLife Gym",
+        "Location": "San Francisco, USA",
+        "StartDate": "2018-01-01T00:00:00",
+        "EndDate": "2022-12-01T00:00:00",
+        "Description": "Designed customized training plans, conducted one-on-one sessions, and guided clients in achieving weight loss and muscle gain goals."
+      },
+      {
+        "JobTitle": "Group Fitness Instructor",
+        "CompanyName": "Urban Active Fitness",
+        "Location": "Los Angeles, USA",
+        "StartDate": "2015-06-01T00:00:00",
+        "EndDate": "2017-12-01T00:00:00",
+        "Description": "Led group classes including HIIT, circuit training, and bootcamps. Motivated participants and ensured safe exercise practices."
+      }
+    ],
+    "SeekerEducations": [
+      {
+        "Major": "Kinesiology",
+        "Faculty": "Faculty of Health Sciences",
+        "University": "University of California, Los Angeles (UCLA)",
+        "Date": "2014-07-01T00:00:00",
+        "Location": "Los Angeles, USA",
+        "GPA": 3.6,
+        "EducationLevel": "Bachelor"
+      }
+    ]
   }
+
 
 ]

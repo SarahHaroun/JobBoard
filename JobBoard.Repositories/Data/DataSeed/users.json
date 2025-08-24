@@ -782,5 +782,27 @@
     "PhoneNumber": "+1 (202) 555-0147",
     "UserName": "GlobalTimes",
     "User_Type": 0
+  },
+  {
+    "Email": "samehmahmoud@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "010633778810",
+    "UserName": "SamehMahmoud",
+    "User_Type": 1
+  },
+  {
+    "Email": "jason.miller@example.com",
+    "Password": "Test@123",
+    "PhoneNumber": "+1 415 987 4521",
+    "UserName": "JasonMiller",
+    "User_Type": 1
+  },
+  {
+    "Email": "contact@pulsefitness.ae",
+    "Password": "Test@123",
+    "PhoneNumber": "+971 52 345 6789",
+    "UserName": "PulseFitness",
+    "User_Type": 1
   }
+
 ]

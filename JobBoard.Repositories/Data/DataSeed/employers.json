@@ -84,6 +84,18 @@
     "UserEmail": "parisiancouture@example.com"
   },
   {
+    "CompanyName": "Pulse Fitness Center",
+    "CompanyLocation": "Dubai, United Arab Emirates",
+    "CompanyImage": "images/companies/pulsefitness.jpg",
+    "Website": "https://pulsefitness.ae",
+    "Industry": "Health & Fitness",
+    "CompanyDescription": "Pulse Fitness Center is a modern gym facility offering state-of-the-art equipment, group classes, and personal training programs. Our mission is to empower individuals to achieve their fitness goals in a supportive and motivating environment.",
+    "CompanyMission": "To inspire healthier lifestyles by providing accessible, high-quality fitness solutions for people of all ages and fitness levels.",
+    "EmployeeRange": "50-100",
+    "EstablishedYear": 2018,
+    "UserEmail": "contact@pulsefitness.ae"
+  },
+  {
     "CompanyName": "Tokyo Robotics",
     "CompanyLocation": "Tokyo, Japan",
     "CompanyImage": "images/companies/tokyorobotics.jpg",
