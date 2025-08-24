@@ -30,7 +30,7 @@ namespace JobBoard.Repositories.Data.Configurations
 			builder.HasOne(j => j.Employer)
 				.WithMany(e => e.PostedJobs)
 				.HasForeignKey(j => j.EmployerId)
-				.OnDelete(DeleteBehavior.Restrict);
+				.OnDelete(DeleteBehavior.Cascade);
 
 			builder.HasMany(j => j.Skills)
 				   .WithMany(s => s.Jobs)

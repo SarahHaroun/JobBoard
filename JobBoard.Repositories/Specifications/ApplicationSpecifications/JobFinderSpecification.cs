@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace JobBoard.Repositories.Specifications.ApplicationSpecifications
 {
-	public class JobByIdSpecification : BaseSpecifications<Job>
+	public class JobFinderSpecification : BaseSpecifications<Job>
 	{
-		public JobByIdSpecification(int jobId) : base(j => j.Id == jobId)
+		public JobFinderSpecification(int jobId) : base(j => j.Id == jobId)
 		{
 			AddIncludes(j => j.Employer);
 		}

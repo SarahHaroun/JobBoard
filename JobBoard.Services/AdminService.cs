@@ -151,9 +151,8 @@ namespace JobBoard.Services.AdminService
 			var result = await _unitOfWork.CompleteAsync();
 
 			var notificationMessage = $"Your job {job.Title} has been rejected!";
-			var jobLink = $"/jobDtl/{job.Id}";
 
-			await _notificationService.AddNotificationAsync(job.Employer.UserId, notificationMessage,jobLink);
+			await _notificationService.AddNotificationAsync(job.Employer.UserId, notificationMessage);
 			await _aiEmbeddingService.DeleteEmbeddingForJobAsync(jobId);
 			return result > 0;
 		}

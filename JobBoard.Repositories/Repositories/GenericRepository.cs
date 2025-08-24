@@ -57,6 +57,10 @@ namespace JobBoard.Repositories.Repositories
 		{
 			return await _context.Set<TEntity>().AnyAsync(predicate);
 		}
+		public async Task<bool> ExistsAsync(ISpecifications<TEntity> specifications)
+		{
+			return await SpecificationEvaluator.CreateQuery(_context.Set<TEntity>(), specifications).AnyAsync();
+		}
 
 		public async Task<int> CountAsync(ISpecifications<TEntity> specifications = null)
 		{
