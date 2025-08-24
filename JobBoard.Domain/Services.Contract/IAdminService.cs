@@ -11,6 +11,8 @@ namespace JobBoard.Services.AdminService
     {
         Task<List<SeekerProfileDto>> GetAllSeekersAsync();
         Task<List<EmpProfileDto>> GetAllEmployersAsync();
+        Task<SeekerProfileDto> GetSeekerByIdAsync(string id);
+        Task<EmpProfileDto> GetEmployerByIdAsync(string id);
         Task<List<JobDto>> GetAllJobsAsync();
 		Task<bool> DeleteJob(int id);
 		Task<List<JobDto>> GetPendingJobsAsync();

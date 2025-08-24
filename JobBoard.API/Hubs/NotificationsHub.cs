@@ -7,17 +7,15 @@ namespace JobBoard.API.Hubs
     [Authorize] 
     public class NotificationsHub : Hub
     {
-        
+
         public override async Task OnConnectedAsync()
         {
             var userId = Context.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-
             if (!string.IsNullOrEmpty(userId))
             {
                 await Groups.AddToGroupAsync(Context.ConnectionId, $"User_{userId}");
-                Console.WriteLine($"User {userId} connected with connection ID: {Context.ConnectionId}");
+                Console.WriteLine($"User {userId} connected with connection ID: {Context.ConnectionId}"); // Add this line
             }
-
             await base.OnConnectedAsync();
         }
 

@@ -10,7 +10,7 @@ namespace JobBoard.Domain.DTO.JobsDto
     {
 		public int Id { get; set; }
 		public string Title { get; set; }
-		private DateTime PostedDate { get; set; }
+		public DateTime PostedDate { get; set; }
 		public DateTime? ExpireDate { get; set; }
 		public int ApplicationsCount { get; set; }
 		public string PostedDateFormatted => PostedDate.ToString("yyyy-MM-dd");
