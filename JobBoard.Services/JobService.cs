@@ -17,6 +17,7 @@ using JobBoard.Domain.DTO.JobsDto;
 using JobBoard.Repositories.Specifications.JobSpecifications;
 using JobBoard.Domain.DTO.EmployerDto;
 using JobBoard.Repositories.Specifications.DashboardSpecifications;
+using JobBoard.Repositories.Redis;
 
 namespace JobBoard.Services
 {
@@ -25,11 +26,14 @@ namespace JobBoard.Services
 		private readonly IUnitOfWork _unitOfWork;
 		private readonly IMapper _mapper;
         private readonly IAIEmbeddingService _aiEmbeddingService;
-        public JobService(IUnitOfWork unitOfWork, IMapper mapper , IAIEmbeddingService aiEmbeddingService)
+        private readonly IRedisService _redisService;
+
+        public JobService(IUnitOfWork unitOfWork, IMapper mapper , IAIEmbeddingService aiEmbeddingService ,IRedisService redisService)
 		{
 			_unitOfWork = unitOfWork;
 			_mapper = mapper;
             _aiEmbeddingService = aiEmbeddingService;
+            _redisService = redisService;
         }
 		public async Task<IEnumerable<JobListDto>> GetAllJobsAsync(JobFilterParams filterParams)
 		{
@@ -85,8 +89,12 @@ namespace JobBoard.Services
 			await _unitOfWork.CompleteAsync();
 
 			await _aiEmbeddingService.GenerateEmbeddingForJobAsync(job);
+            // remove Cache jobs in Redis
+            await _redisService.RemoveAsync("api/jobs");
 
-			return _mapper.Map<JobDto>(job);
+
+
+            return _mapper.Map<JobDto>(job);
 		}
 
 		public async Task<JobDto> UpdateJob(int id, CreateUpdateJobDto jobDto, int employerId)
