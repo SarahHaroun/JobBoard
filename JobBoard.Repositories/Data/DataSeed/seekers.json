@@ -700,7 +700,7 @@
     "CV_Url": "cv/Amr_Hany.pdf",
     "Gender": "Male",
     "Summary": "Backend developer with expertise in designing and implementing scalable server-side applications using Node.js and Python, with a focus on API development and database optimization.",
-    "ProfileImageUrl": "images/profilepic/amr.jpg",
+    "ProfileImageUrl": "images/profilepic/user.jpg",
     "Skills": [ 7, 13, 19 ],
     "seekerCertificates": [
       { "CertificateName": "Node.js Certified Developer" },
