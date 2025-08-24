@@ -30,7 +30,20 @@ namespace JobBoard.Repositories.Redis
          * It serializes the value to JSON before storing it.*/
         public async Task SetAsync<T>(string key, T value, TimeSpan? expiry = null)
         {
-            var jsonData = JsonSerializer.Serialize(value);
+            if (value == null) return;
+            var expiryTime = expiry ?? TimeSpan.FromDays(1); // Default to 1 day if no expiry is provided
+            // Create a JsonSerializerOptions object to configure serialization settings
+
+            var options  = new JsonSerializerOptions()
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                WriteIndented = true // Optional: makes the JSON more readable
+
+            };
+
+            // Serialize the value to JSON
+            var jsonData = JsonSerializer.Serialize(value,options);
+            // Store the JSON data in Redis with the specified expiry time
             await _db.StringSetAsync(key, jsonData, expiry);
         }
 
@@ -43,7 +56,20 @@ namespace JobBoard.Repositories.Redis
             if (jsonData.IsNullOrEmpty)
                 return default;
 
-            return JsonSerializer.Deserialize<T>(jsonData!);
+            if (typeof(T) == typeof(string))
+            {
+                return (T)(object)jsonData.ToString();
+            }
+
+            // Create a JsonSerializerOptions object to configure deserialization settings
+            var options = new JsonSerializerOptions()
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                WriteIndented = true // Optional: makes the JSON more readable
+            };
+            // Deserialize the JSON data back to the original type
+            var value = JsonSerializer.Deserialize<T>(jsonData, options);
+            return value;
         }
 
         /*This method removes a value from Redis using the key.
@@ -58,7 +84,14 @@ namespace JobBoard.Repositories.Redis
 
         public async Task AddToListAsync<T>(string key, T value)
         {
-            var jsonData = JsonSerializer.Serialize(value);
+
+            var options = new JsonSerializerOptions()
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                WriteIndented = true // Optional: makes the JSON more readable
+
+            };
+            var jsonData = JsonSerializer.Serialize(value , options);
             await _db.ListRightPushAsync(key, jsonData);
         }
 
