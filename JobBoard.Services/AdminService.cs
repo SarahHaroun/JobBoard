@@ -21,12 +21,12 @@ using System.Threading.Tasks;
 
 namespace JobBoard.Services.AdminService
 {
-	public class AdminService : IAdminService
-	{
-		private readonly IUnitOfWork _unitOfWork;
-		private readonly UserManager<ApplicationUser> _userManager;
-		private readonly IMapper _mapper;
-		private readonly IAIEmbeddingService _aiEmbeddingService;
+    public class AdminService : IAdminService
+    {
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IMapper _mapper;
+        private readonly IAIEmbeddingService _aiEmbeddingService;
         private readonly INotificationService _notificationService;
 
 		public AdminService(IUnitOfWork unitOfWork, 
@@ -42,80 +42,111 @@ namespace JobBoard.Services.AdminService
 			_notificationService = notificationService;
         }
 
-		public async Task<List<SeekerProfileDto>> GetAllSeekersAsync()
-		{
-			var spec = new AllSeekersSpecification();
-			var seekers = await _unitOfWork.Repository<SeekerProfile>().GetAllAsync(spec);
-			return _mapper.Map<List<SeekerProfileDto>>(seekers);
-		}
+        ///////////////////////get all seekers///////////////////////
+        public async Task<List<SeekerProfileDto>> GetAllSeekersAsync()
+        {
+            var spec = new AllSeekersSpecification();
+            var seekers = await _unitOfWork.Repository<SeekerProfile>().GetAllAsync(spec);
+            return _mapper.Map<List<SeekerProfileDto>>(seekers);
+        }
 
-		public async Task<List<EmpProfileDto>> GetAllEmployersAsync()
-		{
-			var spec = new AllEmployersSpecification();
-			var employers = await _unitOfWork.Repository<EmployerProfile>().GetAllAsync(spec);
-			return _mapper.Map<List<EmpProfileDto>>(employers);
-		}
+        ///////////////////////get all employers///////////////////////
+        public async Task<List<EmpProfileDto>> GetAllEmployersAsync()
+        {
+            var spec = new AllEmployersSpecification();
+            var employers = await _unitOfWork.Repository<EmployerProfile>().GetAllAsync(spec);
+            return _mapper.Map<List<EmpProfileDto>>(employers);
+        }
 
-		public async Task<List<JobDto>> GetAllJobsAsync()
-		{
-			var spec = new AllJobsSpecification();
-			var jobs = await _unitOfWork.Repository<Job>().GetAllAsync(spec);
-			return _mapper.Map<List<JobDto>>(jobs);
-		}
+        ///////////////////////get seeker by id///////////////////////
+        public async Task<SeekerProfileDto> GetSeekerByIdAsync(string userId)
+        {
+            var spec = new SeekerByUserIdSpecification(userId);
+            var seeker = await _unitOfWork.Repository<SeekerProfile>().GetByIdAsync(spec);
+            return _mapper.Map<SeekerProfileDto>(seeker);
+        }
 
-		public async Task<bool> DeleteJob(int id)
-		{
-			var job = await _unitOfWork.Repository<Job>().GetByIdAsync(id);
-			if (job == null)
-				return false;
 
-			_unitOfWork.Repository<Job>().Delete(job);
-			await _unitOfWork.CompleteAsync();
-			await _aiEmbeddingService.DeleteEmbeddingForJobAsync(id);
+        ///////////////////////get employer by id///////////////////////
+        
+        public async Task<EmpProfileDto> GetEmployerByIdAsync(string userId)
+        {
+            var spec = new EmployerByUserIdSpecification(userId);
+            var employer = await _unitOfWork.Repository<EmployerProfile>().GetByIdAsync(spec);
+            return _mapper.Map<EmpProfileDto>(employer);
+        }
 
-			return true;
-		}
 
-		public async Task<List<JobDto>> GetPendingJobsAsync()
-		{
-			var spec = new PendingJobsSpecification();
-			var jobs = await _unitOfWork.Repository<Job>().GetAllAsync(spec);
-			return _mapper.Map<List<JobDto>>(jobs);
+        ///////////////////////get all jobs///////////////////////
+        public async Task<List<JobDto>> GetAllJobsAsync()
+        {
+            var spec = new AllJobsSpecification();
+            var jobs = await _unitOfWork.Repository<Job>().GetAllAsync(spec);
+            return _mapper.Map<List<JobDto>>(jobs);
+        }
 
-		}
 
-		public async Task<bool> ApproveJobAsync(int jobId)
-		{
-			var spec = new JobByIdSpecification(jobId);
-			var job = await _unitOfWork.Repository<Job>().GetByIdAsync(spec);
+        ////////////////////////delete job by id///////////////////////
+        public async Task<bool> DeleteJob(int id)
+        {
+            var job = await _unitOfWork.Repository<Job>().GetByIdAsync(id);
+            if (job == null)
+                return false;
 
-			if (job == null) 
-				return false;
-			//Check if job is already approved
-			if (job.IsApproved) 
-				return false;
+            _unitOfWork.Repository<Job>().Delete(job);
+            await _unitOfWork.CompleteAsync();
+            await _aiEmbeddingService.DeleteEmbeddingForJobAsync(id);
 
-			job.IsApproved = true;
-			job.PostedDate = DateTime.Now;
-			_unitOfWork.Repository<Job>().Update(job);
+            return true;
+        }
 
-			var result = await _unitOfWork.CompleteAsync();
+
+        ///////////////////////get all pending jobs///////////////////////
+        public async Task<List<JobDto>> GetPendingJobsAsync()
+        {
+            var spec = new PendingJobsSpecification();
+            var jobs = await _unitOfWork.Repository<Job>().GetAllAsync(spec);
+            return _mapper.Map<List<JobDto>>(jobs);
+
+        }
+
+
+        ///////////////////////approve job by id///////////////////////
+        public async Task<bool> ApproveJobAsync(int jobId)
+        {
+            var spec = new JobByIdSpecification(jobId);
+            var job = await _unitOfWork.Repository<Job>().GetByIdAsync(spec);
+
+            if (job == null)
+                return false;
+            //Check if job is already approved
+            if (job.IsApproved)
+                return false;
+
+            job.IsApproved = true;
+            job.PostedDate = DateTime.Now;
+            _unitOfWork.Repository<Job>().Update(job);
+
+            var result = await _unitOfWork.CompleteAsync();
 
             var notificationMessage = $"Your job {job.Title} has been approved!";
              var jobLink = $"/jobDtl/{job.Id}"; 
 
             await _notificationService.AddNotificationAsync(job.Employer.UserId,notificationMessage,jobLink);
             return result > 0;
-		}
+        }
 
-		public async Task<bool> RejectJobAsync(int jobId)
-		{
-			var spec = new JobByIdSpecification(jobId);
-			var job = await _unitOfWork.Repository<Job>().GetByIdAsync(spec);
 
-			if (job == null) return false;
 
-			_unitOfWork.Repository<Job>().Delete(job);
+        //////////////////////reject job by id///////////////////////
+        public async Task<bool> RejectJobAsync(int jobId)
+        {
+            var spec = new JobByIdSpecification(jobId);
+            var job = await _unitOfWork.Repository<Job>().GetByIdAsync(spec);
+
+            if (job == null) return false;
+
+            _unitOfWork.Repository<Job>().Delete(job);
 
 			var result = await _unitOfWork.CompleteAsync();
 
@@ -127,34 +158,38 @@ namespace JobBoard.Services.AdminService
 			return result > 0;
 		}
 
-		public async Task<bool> DeleteUserAsync(string userId)
-		{
-			var user = await _userManager.FindByIdAsync(userId);
-			if (user == null) return false;
 
-			var result = await _userManager.DeleteAsync(user);
-			return result.Succeeded;
-		}
+        //////////////////////delete user by id///////////////////////
+        public async Task<bool> DeleteUserAsync(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null) return false;
 
-		public async Task<StatsDto> GetStatsAsync()
-		{
-			var seekersCount = (await _userManager.GetUsersInRoleAsync(UserType.Seeker.ToString())).Count;
-			var employersCount = (await _userManager.GetUsersInRoleAsync(UserType.Employer.ToString())).Count;
+            var result = await _userManager.DeleteAsync(user);
+            return result.Succeeded;
+        }
 
-			// Using repository for counting jobs
-			var jobsCount = await _unitOfWork.Repository<Job>().CountAsync();
 
-			var pendingJobsSpec = new PendingJobsSpecification();
-			var pendingJobsCount = await _unitOfWork.Repository<Job>().CountAsync(pendingJobsSpec);
+        //////////////////////get stats///////////////////////
+        public async Task<StatsDto> GetStatsAsync()
+        {
+            var seekersCount = (await _userManager.GetUsersInRoleAsync(UserType.Seeker.ToString())).Count;
+            var employersCount = (await _userManager.GetUsersInRoleAsync(UserType.Employer.ToString())).Count;
 
-			return new StatsDto()
-			{
-				TotalSeekers = seekersCount,
-				TotalEmployers = employersCount,
-				TotalJobs = jobsCount,
-				PendingJobs = pendingJobsCount
-			};
-		}
+            // Using repository for counting jobs
+            var jobsCount = await _unitOfWork.Repository<Job>().CountAsync();
 
-	}
+            var pendingJobsSpec = new PendingJobsSpecification();
+            var pendingJobsCount = await _unitOfWork.Repository<Job>().CountAsync(pendingJobsSpec);
+
+            return new StatsDto()
+            {
+                TotalSeekers = seekersCount,
+                TotalEmployers = employersCount,
+                TotalJobs = jobsCount,
+                PendingJobs = pendingJobsCount
+            };
+        }
+
+    }
 }

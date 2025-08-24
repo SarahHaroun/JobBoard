@@ -1,5 +1,7 @@
-﻿using JobBoard.Domain.Services.Contract;
+﻿using JobBoard.Domain.Entities;
+using JobBoard.Domain.Services.Contract;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.EntityFrameworkCore;
 
 namespace JobBoard.API.Hubs
 {
@@ -10,12 +12,14 @@ namespace JobBoard.API.Hubs
 		{
 			_hubContext = hubContext;
 		}
-		public async Task SendNotificationAsync(string userId, string message, string? link = null)
-		{
-			await _hubContext.Clients.User(userId).SendAsync("ReceiveNotification", message, link);
-		}
 
-		public async Task SendNotificationUpdateAsync(string userId, object updateData)
+        public async Task SendNotificationAsync(string userId, string message, string? link = null)
+        {
+            Console.WriteLine($"Sending notification to User_{userId} with message: {message}"); // Add this line
+            await _hubContext.Clients.Group($"User_{userId}").SendAsync("ReceiveNotification", message, link);
+        }
+
+        public async Task SendNotificationUpdateAsync(string userId, object updateData)
 		{
 			await _hubContext.Clients.Group($"User_{userId}").SendAsync("NotificationUpdate", updateData);
 		}

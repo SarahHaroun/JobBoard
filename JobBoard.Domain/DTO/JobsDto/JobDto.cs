@@ -38,6 +38,9 @@ namespace JobBoard.Domain.DTO.JobDto
 		public string? CompanyMission { get; set; }
 		public string? EmployeeRange { get; set; }
 		public int? EstablishedYear { get; set; }
+		public string? Locaton { get; set; }
+		public string? Email { get; set; }
+		public string? Phone { get; set; }
 
 		// Lists
 		public List<string> Categories { get; set; } = new();
