@@ -60,6 +60,15 @@ namespace JobBoard.Domain.Mapping
 		   .ForMember(dest => dest.Experience, opt => opt.MapFrom(src => $"{src.YearsOfExperience} years experience"))
 		   .ForMember(dest => dest.StatusDisplay, opt => opt.MapFrom(src => ApplicationStatusHelper.GetStatusDisplay(src.Status)));
 
+			CreateMap<Application, SeekerApplicationListDto>()
+		   .ForMember(dest => dest.ApplicationId, opt => opt.MapFrom(src => src.Id))
+		   .ForMember(dest => dest.JobTitle, opt => opt.MapFrom(src => src.Job.Title))
+		   .ForMember(dest => dest.CompanyName, opt => opt.MapFrom(src => src.Job.Employer.CompanyName))
+		   .ForMember(dest => dest.CompanyLocation, opt => opt.MapFrom(src => src.Job.Employer.CompanyLocation))
+		   .ForMember(dest => dest.CompanyImage, opt => opt.MapFrom(src => src.Job.Employer.CompanyImage))
+		   .ForMember(dest => dest.AppliedDate, opt => opt.MapFrom(src => DateTimeHelper.CalculateTimeAgo(src.AppliedDate)))
+		   .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status));
+
 		}
 	}
 }

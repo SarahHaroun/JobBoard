@@ -14,7 +14,7 @@ namespace JobBoard.Domain.Services.Contract
 	{
 		//SEEKER METHODS
 		Task<ApplicationDto> CreateApplicationAsync(CreateApplicationDto createDto, int applicantId);
-		Task<IEnumerable<ApplicationDto>> GetApplicationsByApplicantIdAsync(int applicantId);
+		Task<IEnumerable<SeekerApplicationListDto>> GetApplicationsByApplicantIdAsync(int applicantId);
 		Task<bool> HasUserAppliedToJobAsync(int applicantId, int jobId);
 
 		//EMPLOYER METHODS
