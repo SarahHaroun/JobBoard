@@ -845,7 +845,7 @@ namespace JobBoard.Repositories.Data.Migrations
                     b.HasOne("JobBoard.Domain.Entities.EmployerProfile", "Employer")
                         .WithMany("PostedJobs")
                         .HasForeignKey("EmployerId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Employer");
