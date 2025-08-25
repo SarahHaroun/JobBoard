@@ -190,5 +190,35 @@ namespace JobBoard.Services.AdminService
             };
         }
 
+		
+        //////////////////////get public stats for home page///////////////////////
+        public async Task<PublicStatsDto> GetPublicStatsAsync()
+        {
+            var fullStats = await GetStatsAsync();
+			var approvedJobsCount = await _unitOfWork.Repository<Job>()
+					.CountAsync(new ApprovedJobsCountSpecification());
+            var activeJobsCount = await _unitOfWork.Repository<Job>()
+					.CountAsync(new ActiveJobsCountSpecification());
+
+			return new PublicStatsDto()
+            {
+                TotalSeekers = fullStats.TotalSeekers,
+                TotalEmployers = fullStats.TotalEmployers,
+                TotalJobs = fullStats.TotalJobs,
+                ApprovedJobs = approvedJobsCount,
+                ActiveJobs = activeJobsCount
+            };
+        }
+
+
+		//////////////////////get active users count (seekers + employers)///////////////////////
+		public async Task<int> GetActiveUsersCountAsync()
+		{
+			var stats = await GetStatsAsync();
+			return stats.TotalSeekers + stats.TotalEmployers;
+		}
+
+      
+
     }
 }

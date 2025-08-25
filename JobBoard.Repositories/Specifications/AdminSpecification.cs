@@ -78,8 +78,6 @@ namespace JobBoard.Repositories.Specifications
 		public PendingJobsSpecification() : base(j => !j.IsApproved)
 		{
 			AddIncludes(j => j.Employer.User);
-			AddIncludes(j => j.Categories);
-			AddIncludes(j => j.Skills);
 			AddOrderByDesc(j => j.PostedDate);
 		}
 	}
@@ -92,6 +90,20 @@ namespace JobBoard.Repositories.Specifications
 			AddIncludes(j => j.Employer);
 			AddIncludes(j => j.Categories);
 			AddIncludes(j => j.Skills);
+		}
+	}
+
+	public class ApprovedJobsCountSpecification : BaseSpecifications<Job>
+	{
+		public ApprovedJobsCountSpecification() : base(j => j.IsApproved == true)
+		{
+		}
+	}
+
+	public class ActiveJobsCountSpecification : BaseSpecifications<Job>
+	{
+		public ActiveJobsCountSpecification() : base(j => j.IsActive == true)
+		{
 		}
 	}
 }
