@@ -89,9 +89,14 @@ namespace JobBoard.Services.AdminService
         ////////////////////////delete job by id///////////////////////
         public async Task<bool> DeleteJob(int id)
         {
-            var job = await _unitOfWork.Repository<Job>().GetByIdAsync(id);
+            var job = await _unitOfWork.Repository<Job>().GetByIdAsync(new JobByIdWithApplication(id));
             if (job == null)
                 return false;
+
+            foreach (var app in job.JobApplications)
+            {
+                _unitOfWork.Repository<Application>().Delete(app);
+            }
 
             _unitOfWork.Repository<Job>().Delete(job);
             await _unitOfWork.CompleteAsync();

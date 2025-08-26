@@ -46,7 +46,6 @@ namespace JobBoard.API.Controllers
 
 
         /////////////////////////get all employers//////////////////////
-        [CachedAttribute(5000)]
         [HttpGet("employers")]
         public async Task<IActionResult> GetEmployers()
         {
@@ -59,7 +58,6 @@ namespace JobBoard.API.Controllers
         }
 
         /////////////////////////get employer by id///////////////////////
-        [CachedAttribute(5000)]
         [HttpGet("employer/{employerId}")]
         public async Task<IActionResult> GetEmployerById(string employerId)
         {
@@ -83,7 +81,6 @@ namespace JobBoard.API.Controllers
 
 
         ////////////////////////get all jobs///////////////////////
-        [CachedAttribute(5000)]
         [HttpGet("jobs")]
         public async Task<IActionResult> GetAllJobs()
         {
@@ -97,7 +94,6 @@ namespace JobBoard.API.Controllers
 
 
         ////////////////////////pending jobs///////////////////////
-        [CachedAttribute(5000)]
         [HttpGet("jobs/pending")]
         public async Task<IActionResult> GetPendingJobs()
         {
@@ -111,7 +107,6 @@ namespace JobBoard.API.Controllers
 
 
         // //////////////////approve job by id///////////////////////
-        [CachedAttribute(5000)]
         [HttpPut("jobs/{jobId}/approve")]
         public async Task<IActionResult> ApproveJob(int jobId)
         {
