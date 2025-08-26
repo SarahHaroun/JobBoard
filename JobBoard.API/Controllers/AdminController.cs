@@ -138,6 +138,27 @@ namespace JobBoard.API.Controllers
             var stats = await _adminService.GetStatsAsync();
             return Ok(stats);
         }
-    }
+
+		////////////////////////get public"home" stats///////////////////////
+		[HttpGet("home-stats")]
+        [AllowAnonymous]
+		public async Task<IActionResult> GetPublicStats()
+		{
+			var stats = await _adminService.GetPublicStatsAsync();
+			if (stats == null)
+			{
+				return NotFound();
+			}
+			return Ok(stats);
+		}
+
+		[HttpGet("active-users")]
+		[AllowAnonymous]
+		public async Task<IActionResult> GetActiveUsers()
+		{
+			var stats = await _adminService.GetActiveUsersCountAsync();
+			return Ok(stats);
+		}
+	}
 
 }

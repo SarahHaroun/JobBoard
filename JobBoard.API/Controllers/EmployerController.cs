@@ -9,7 +9,7 @@ namespace JobBoard.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles ="Employer")]
+   
     public class EmployerController : ControllerBase
     {
         private string? userId => User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -24,7 +24,8 @@ namespace JobBoard.API.Controllers
 
         /*------------------------Get All Profiles --------------------------*/
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+		[Authorize(Roles = "Admin")]
+		public async Task<IActionResult> GetAll()
         {      
             if (userId == null)
                 return Unauthorized();
@@ -37,7 +38,8 @@ namespace JobBoard.API.Controllers
 
         /*------------------------Get my Profile --------------------------*/
         [HttpGet("my-profile")]
-        public async Task<IActionResult> GetById()
+		[Authorize(Roles = "Employer")]
+		public async Task<IActionResult> GetById()
         {
             if (userId == null)
                 return Unauthorized();
@@ -67,6 +69,7 @@ namespace JobBoard.API.Controllers
 		/*------------------------Update --------------------------*/
 		[HttpPut]
 		[Consumes("multipart/form-data")]
+		[Authorize(Roles = "Employer")]
 		public async Task<IActionResult> Update([FromForm] EmpProfileUpdateDto dto)
 		{
 			if (userId == null)
@@ -83,6 +86,7 @@ namespace JobBoard.API.Controllers
 
 		/*------------------------Delete --------------------------*/
 		[HttpDelete("{id}")]
+		[Authorize(Roles = "Admin")]
 		public async Task<IActionResult> Delete([FromRoute] int id)
 		{
 			if (userId == null)
