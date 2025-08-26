@@ -30,7 +30,7 @@ namespace JobBoard.API.Controllers
 		//Get: api/jobs
 		[HttpGet]
 		[AllowAnonymous]
-		[CachedAttribute(300)]
+		[Cached(300,"jobs:")]
         public async Task<IActionResult> GetAllJobs([FromQuery] JobFilterParams filterParams)
 		{
 			var result = await _jobService.GetAllJobsAsync(filterParams);

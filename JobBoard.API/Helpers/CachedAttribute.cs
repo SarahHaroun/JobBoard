@@ -8,12 +8,14 @@ namespace JobBoard.API.Helpers
     public class CachedAttribute : Attribute , IAsyncActionFilter
     {
         private readonly int _expireTimeInSec;
+        private readonly string _cachePrefix; //  Prefix as parameter
 
         public int Duration { get; set; } = 60;
        
-        public CachedAttribute(int ExpireTimeInSec)
+        public CachedAttribute(int ExpireTimeInSec, string cachePrefix = "default:")
         {
             _expireTimeInSec = ExpireTimeInSec;
+            _cachePrefix = cachePrefix;
         }
         public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
@@ -46,6 +48,7 @@ namespace JobBoard.API.Helpers
         {
             
             var keyBuilder = new StringBuilder();
+            keyBuilder.Append(_cachePrefix); // Use configurable prefix
             keyBuilder.Append(request.Path); //api/controller
 
             foreach(var (key , value) in request.Query.OrderBy(x=>x.Key))

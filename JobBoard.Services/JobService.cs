@@ -89,10 +89,9 @@ namespace JobBoard.Services
 			await _unitOfWork.CompleteAsync();
 
 			await _aiEmbeddingService.GenerateEmbeddingForJobAsync(job);
-            // remove Cache jobs in Redis
-            await _redisService.RemoveAsync("api/jobs");
+            
 
-
+			await _redisService.DeleteByPrefixAsync("jobs:");
 
             return _mapper.Map<JobDto>(job);
 		}
