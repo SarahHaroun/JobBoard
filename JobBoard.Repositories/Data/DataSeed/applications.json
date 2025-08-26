@@ -1,363 +1,1588 @@
 [
-  {
-    "FullName": "Ahmed Tarek",
-    "Email": "ahmedtarek@example.com",
-    "PhoneNumber": "01000065402",
-    "CurrentLocation": "Cairo, Egypt",
-    "CurrentJobTitle": "Software Engineer",
-    "YearsOfExperience": "2 Years",
-    "ResumeUrl": "cv/ahmedtarek.pdf",
-    "PortfolioUrl": "https://ahmedtarek.portfolio.com",
-    "LinkedInUrl": "https://linkedin.com/in/ahmedtarek",
-    "GitHubUrl": "https://github.com/ahmedtarek",
-    "ApplicantId": 1,
-    "Applications": [
-      {
-        "CoverLetter": "I am very interested in this position and believe my skills in software development make me a great fit.",
-        "AppliedDate": "2025-07-16T10:30:00",
-        "Status": "Rejected",
-        "JobId": 1
-      },
-      {
-        "CoverLetter": "Looking forward to contributing to your development team.",
-        "AppliedDate": "2025-08-25T10:30:00",
-        "Status": "UnderReview",
-        "JobId": 3
-      },
-      {
-        "CoverLetter": "Looking forward to contributing to your development team.",
-        "AppliedDate": "2025-08-11T10:30:00",
-        "Status": "Rejected",
-        "JobId": 6
-      }
-    ]
-  },
-  {
-    "FullName": "Maram Ali",
-    "Email": "maramali@example.com",
-    "PhoneNumber": "201000012345",
-    "CurrentLocation": "Giza, Egypt",
-    "CurrentJobTitle": "Frontend Developer",
-    "YearsOfExperience": "2 Years",
-    "ResumeUrl": "cv/maramali.pdf",
-    "PortfolioUrl": "https://maramali.portfolio.com",
-    "LinkedInUrl": "https://linkedin.com/in/maramali",
-    "GitHubUrl": "https://github.com/maramali",
-    "ApplicantId": 2,
-    "Applications": [
-      {
-        "CoverLetter": "As a frontend developer, I am excited about the opportunity to work with your team.",
-        "AppliedDate": "2025-08-12T09:15:00",
-        "Status": "UnderReview",
-        "JobId": 2
-      },
-      {
-        "CoverLetter": "As a frontend developer, I am excited about the opportunity to work with your team.",
-        "AppliedDate": "2025-08-22T16:45:00",
-        "Status": "Rejected",
-        "JobId": 14
-      },
-      {
-        "CoverLetter": "As a frontend developer, I am excited about the opportunity to work with your team.",
-        "AppliedDate": "2025-07-16T09:15:00",
-        "Status": "Rejected",
-        "JobId": 44
-      }
-    ]
-  },
-  {
-    "FullName": "Mohamed Hassan",
-    "Email": "mohamed12@example.com",
-    "PhoneNumber": "01098765432",
-    "CurrentLocation": "Alexandria, Egypt",
-    "CurrentJobTitle": "Backend Developer",
-    "YearsOfExperience": "3 Years",
-    "ResumeUrl": "cv/Mohamed_Hassan.pdf",
-    "PortfolioUrl": null,
-    "LinkedInUrl": "https://linkedin.com/in/mohamedhassan",
-    "GitHubUrl": "https://github.com/mohamedhassan",
-    "ApplicantId": 3,
-    "Applications": [
-      {
-        "CoverLetter": "I have extensive experience in backend development and would love to join your team.",
-        "AppliedDate": "2025-07-16T11:20:00",
-        "Status": "Rejected",
-        "JobId": 1
-      },
-      {
-        "CoverLetter": "My expertise in .NET Core aligns perfectly with this role.",
-        "AppliedDate": "2025-08-20T13:30:00",
-        "Status": "Rejected",
-        "JobId": 5
-      },
-      {
-        "CoverLetter": "My expertise in .NET Core aligns perfectly with this role.",
-        "AppliedDate": "2025-08-22T08:00:00",
-        "Status": "Rejected",
-        "JobId": 6
-      },
-      {
-        "CoverLetter": "I have extensive experience in backend development and would love to join your team.",
-        "AppliedDate": "2025-07-15T17:30:00",
-        "Status": "Rejected",
-        "JobId": 178
-      }
-    ]
-  },
-  {
-    "FullName": "Sara Mostafa",
-    "Email": "sara12@example.com",
-    "PhoneNumber": "01055667788",
-    "CurrentLocation": "Cairo, Egypt",
-    "CurrentJobTitle": "Data Analyst",
-    "YearsOfExperience": "3 Years",
-    "ResumeUrl": "cv/Sara_Mostafa.pdf",
-    "PortfolioUrl": "https://saramostafa.analytics.com",
-    "LinkedInUrl": "https://linkedin.com/in/saramostafa",
-    "GitHubUrl": null,
-    "ApplicantId": 4,
-    "Applications": [
-      {
-        "CoverLetter": "My experience with Power BI and SQL makes me a perfect fit for this data analysis role.",
-        "AppliedDate": "2025-08-22T14:20:00",
-        "Status": "UnderReview",
-        "JobId": 7
-      },
-      {
-        "CoverLetter": "I'm passionate about data visualization and business intelligence.",
-        "AppliedDate": "2025-08-07T10:15:00",
-        "Status": "Accepted",
-        "JobId": 8
-      }
-    ]
-  },
-  {
-    "FullName": "Omar Khaled",
-    "Email": "seeker5@example.com",
-    "PhoneNumber": "01033445566",
-    "CurrentLocation": "Giza, Egypt",
-    "CurrentJobTitle": "Mobile App Developer",
-    "YearsOfExperience": "2 Years",
-    "ResumeUrl": "cv/Omar_Khaled.pdf",
-    "PortfolioUrl": "https://omarkhaled.mobile.dev",
-    "LinkedInUrl": "https://linkedin.com/in/omarkhaled",
-    "GitHubUrl": "https://github.com/omarkhaled",
-    "ApplicantId": 5,
-    "Applications": [
-      {
-        "CoverLetter": "With my Flutter expertise, I can develop high-quality cross-platform mobile applications.",
-        "AppliedDate": "2025-08-18T09:30:00",
-        "Status": "Rejected",
-        "JobId": 9
-      },
-      {
-        "CoverLetter": "I'm excited about the mobile development opportunities at your company.",
-        "AppliedDate": "2025-08-22T11:45:00",
-        "Status": "UnderReview",
-        "JobId": 10
-      }
-    ]
-  },
-  {
-    "FullName": "Nourhan Adel",
-    "Email": "seeker6@example.com",
-    "PhoneNumber": "01155667788",
-    "CurrentLocation": "Cairo, Egypt",
-    "CurrentJobTitle": "Full Stack .NET Developer",
-    "YearsOfExperience": "2 Years",
-    "ResumeUrl": "cv/Nourhan_Adel.pdf",
-    "PortfolioUrl": "https://nourhanadel.dev",
-    "LinkedInUrl": "https://linkedin.com/in/nourhanadel",
-    "GitHubUrl": "https://github.com/nourhanadel",
-    "ApplicantId": 6,
-    "Applications": [
-      {
-        "CoverLetter": "My full stack .NET experience and cloud computing knowledge make me ideal for this position.",
-        "AppliedDate": "2025-08-22T13:20:00",
-        "Status": "Accepted",
-        "JobId": 11
-      },
-      {
-        "CoverLetter": "I'm passionate about web security and building robust applications.",
-        "AppliedDate": "2025-07-08T15:30:00",
-        "Status": "Rejected",
-        "JobId": 12
-      },
-      {
-        "CoverLetter": "I'm passionate about web security and building robust applications.",
-        "AppliedDate": "2025-08-22T15:30:00",
-        "Status": "UnderReview",
-        "JobId": 180
-      }
-    ]
-  },
-  {
-    "FullName": "Mohamed Yasser",
-    "Email": "seeker7@example.com",
-    "PhoneNumber": "01099887766",
-    "CurrentLocation": "Alexandria, Egypt",
-    "CurrentJobTitle": "Data Scientist",
-    "YearsOfExperience": "3 Years",
-    "ResumeUrl": "cv/Mohamed_Yasser.pdf",
-    "PortfolioUrl": "https://mohamedyasser.datascience.com",
-    "LinkedInUrl": "https://linkedin.com/in/mohamedyasser",
-    "GitHubUrl": "https://github.com/mohamedyasser",
-    "ApplicantId": 7,
-    "Applications": [
-      {
-        "CoverLetter": "My expertise in machine learning and AI makes me perfect for advanced data science roles.",
-        "AppliedDate": "2025-08-17T10:00:00",
-        "Status": "Rejected",
-        "JobId": 13
-      },
-      {
-        "CoverLetter": "I have proven experience in building predictive models and big data analytics.",
-        "AppliedDate": "2025-08-22T12:45:00",
-        "Status": "UnderReview",
-        "JobId": 14
-      }
-    ]
-  },
-  {
-    "FullName": "Sara Mahmoud",
-    "Email": "seeker8@example.com",
-    "PhoneNumber": "01222334455",
-    "CurrentLocation": "Cairo, Egypt",
-    "CurrentJobTitle": "Cyber Security Specialist",
-    "YearsOfExperience": "3 Years",
-    "ResumeUrl": "cv/Sara_Mahmoud.pdf",
-    "PortfolioUrl": null,
-    "LinkedInUrl": "https://linkedin.com/in/saramahmoud",
-    "GitHubUrl": null,
-    "ApplicantId": 8,
-    "Applications": [
-      {
-        "CoverLetter": "My expertise in penetration testing and network security aligns with your cybersecurity needs.",
-        "AppliedDate": "2025-08-02T14:15:00",
-        "Status": "Accepted",
-        "JobId": 15
-      }
-    ]
-  },
-  {
-    "FullName": "Ahmed Samir",
-    "Email": "seeker9@example.com",
-    "PhoneNumber": "01066554433",
-    "CurrentLocation": "Cairo, Egypt",
-    "CurrentJobTitle": "Cloud Engineer",
-    "YearsOfExperience": "4 Years",
-    "ResumeUrl": "cv/Ahmed_Samir.pdf",
-    "PortfolioUrl": "https://ahmedsamir.cloud",
-    "LinkedInUrl": "https://linkedin.com/in/ahmedsamir",
-    "GitHubUrl": "https://github.com/ahmedsamir",
-    "ApplicantId": 9,
-    "Applications": [
-      {
-        "CoverLetter": "With my AWS and Azure certifications, I can design and implement scalable cloud solutions.",
-        "AppliedDate": "2025-08-11T09:20:00",
-        "Status": "Rejected",
-        "JobId": 16
-      }
-    ]
-  },
-  {
-    "FullName": "Fatima Hassan",
-    "Email": "seeker10@example.com",
-    "PhoneNumber": "01122334455",
-    "CurrentLocation": "Cairo, Egypt",
-    "CurrentJobTitle": "UI/UX Designer",
-    "YearsOfExperience": "3 Years",
-    "ResumeUrl": "cv/Fatima_Hassan.pdf",
-    "PortfolioUrl": "https://FatimaHassan.portfolio.com",
-    "LinkedInUrl": "https://linkedin.com/in/FatimaHassan",
-    "GitHubUrl": "https://github.com/FatimaHassan",
-    "ApplicantId": 10,
-    "Applications": [
-      {
-        "CoverLetter": "I am highly motivated to join as UI/UX Designer and contribute with my skills.",
-        "AppliedDate": "2025-08-21T00:00:00",
-        "Status": "Rejected",
-        "JobId": 17
-      },
-      {
-        "CoverLetter": "I am highly motivated to join as UI/UX Designer and contribute with my skills.",
-        "AppliedDate": "2025-08-16T00:00:00",
-        "Status": "Rejected",
-        "JobId": 86
-      }
-    ]
-  },
-  {
-    "FullName": "Yasmine Mahmoud",
-    "Email": "seeker21@example.com",
-    "PhoneNumber": "01123456789",
-    "CurrentLocation": "New Cairo, Egypt",
-    "CurrentJobTitle": "Content Marketing Specialist",
-    "YearsOfExperience": "3+ Years",
-    "ResumeUrl": "cv/Yasmine_Mahmoud.pdf",
-    "PortfolioUrl": "https://YasmineMahmoud.portfolio.com",
-    "LinkedInUrl": "https://linkedin.com/in/YasmineMahmoud",
-    "GitHubUrl": "",
-    "ApplicantId": 21,
-    "Applications": [
-      {
-        "CoverLetter": "I am excited to apply for the Content Marketing Specialist role, where I can leverage my skills in content creation, SEO, and social media strategy to deliver measurable impact.",
-        "AppliedDate": "2025-08-22T00:00:00",
-        "Status": "Pending",
-        "JobId": 2
-      },
-      {
-        "CoverLetter": "I am eager to contribute as a Marketing Assistant, supporting campaigns with my creativity and experience in content and social media management.",
-        "AppliedDate": "2025-08-21T00:00:00",
-        "Status": "Pending",
-        "JobId": 5
-      },
-      {
-        "CoverLetter": "I am motivated to apply for the Public Relations Specialist role, where I can combine my marketing and communication skills to strengthen brand reputation.",
-        "AppliedDate": "2025-08-12T00:00:00",
-        "Status": "Pending",
-        "JobId": 4
-      },
-      {
-        "CoverLetter": "I am motivated to apply for the Public Relations Specialist role, where I can combine my marketing and communication skills to strengthen brand reputation.",
-        "AppliedDate": "2025-08-22T00:00:00",
-        "Status": "Pending",
-        "JobId": 177
-      }
-    ]
-  },
-  {
-    "FullName": "Omar Hassan",
-    "Email": "seeker22@example.com",
-    "PhoneNumber": "01098765432",
-    "CurrentLocation": "Maadi, Cairo, Egypt",
-    "CurrentJobTitle": "Public Relations Specialist",
-    "YearsOfExperience": "4+ Years",
-    "ResumeUrl": "cv/Omar_Hassan_pr.pdf",
-    "PortfolioUrl": "",
-    "LinkedInUrl": "https://linkedin.com/in/OmarHassan",
-    "GitHubUrl": "",
-    "ApplicantId": 22,
-    "Applications": [
-      {
-        "CoverLetter": "I am eager to apply for the Public Relations Manager position to lead strategic PR initiatives and enhance the company's reputation with my proven expertise.",
-        "AppliedDate": "2025-07-20T00:00:00",
-        "Status": "Rejected",
-        "JobId": 1
-      },
-      {
-        "CoverLetter": "As a dedicated PR professional, I am applying for the Public Relations Specialist role to contribute my skills in media relations and crisis communication.",
-        "AppliedDate": "2025-08-21T00:00:00",
-        "Status": "Pending",
-        "JobId": 4
-      },
-      {
-        "CoverLetter": "I am interested in the Content Marketing Specialist role to expand my expertise and integrate PR with content strategies for greater brand visibility.",
-        "AppliedDate": "2025-08-22T00:00:00",
-        "Status": "Pending",
-        "JobId": 2
-      }
-    ]
-  }
+    {
+        "FullName": "Ahmed Tarek",
+        "Email": "ahmedtarek@example.com",
+        "PhoneNumber": "01000065402",
+        "CurrentLocation": "Cairo, Egypt",
+        "CurrentJobTitle": "Software Engineer",
+        "YearsOfExperience": "2 Years",
+        "ResumeUrl": "cv/ahmedtarek.pdf",
+        "PortfolioUrl": "https://ahmedtarek.portfolio.com",
+        "LinkedInUrl": "https://linkedin.com/in/ahmedtarek",
+        "GitHubUrl": "https://github.com/ahmedtarek",
+        "ApplicantId": 1,
+        "Applications": [
+            {
+                "CoverLetter": "I am very interested in this position and believe my skills in software development make me a great fit.",
+                "AppliedDate": "2025-07-16T10:30:00Z",
+                "Status": "Rejected",
+                "JobId": 1
+            },
+            {
+                "CoverLetter": "Looking forward to contributing to your development team.",
+                "AppliedDate": "2025-08-25T10:30:00Z",
+                "Status": "UnderReview",
+                "JobId": 3
+            },
+            {
+                "CoverLetter": "Looking forward to contributing to your development team.",
+                "AppliedDate": "2025-08-11T10:30:00Z",
+                "Status": "Rejected",
+                "JobId": 6
+            }
+        ]
+    },
+    {
+        "FullName": "Maram Ali",
+        "Email": "maramali@example.com",
+        "PhoneNumber": "201000012345",
+        "CurrentLocation": "Giza, Egypt",
+        "CurrentJobTitle": "Frontend Developer",
+        "YearsOfExperience": "2 Years",
+        "ResumeUrl": "cv/maramali.pdf",
+        "PortfolioUrl": "https://maramali.portfolio.com",
+        "LinkedInUrl": "https://linkedin.com/in/maramali",
+        "GitHubUrl": "https://github.com/maramali",
+        "ApplicantId": 2,
+        "Applications": [
+            {
+                "CoverLetter": "As a frontend developer, I am excited about the opportunity to work with your team.",
+                "AppliedDate": "2025-08-12T09:15:00Z",
+                "Status": "UnderReview",
+                "JobId": 2
+            },
+            {
+                "CoverLetter": "As a frontend developer, I am excited about the opportunity to work with your team.",
+                "AppliedDate": "2025-08-22T16:45:00Z",
+                "Status": "Rejected",
+                "JobId": 14
+            },
+            {
+                "CoverLetter": "As a frontend developer, I am excited about the opportunity to work with your team.",
+                "AppliedDate": "2025-07-16T09:15:00Z",
+                "Status": "Rejected",
+                "JobId": 44
+            }
+        ]
+    },
+    {
+        "FullName": "Mohamed Hassan",
+        "Email": "mohamed12@example.com",
+        "PhoneNumber": "01098765432",
+        "CurrentLocation": "Alexandria, Egypt",
+        "CurrentJobTitle": "Backend Developer",
+        "YearsOfExperience": "3 Years",
+        "ResumeUrl": "cv/Mohamed_Hassan.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/mohamedhassan",
+        "GitHubUrl": "https://github.com/mohamedhassan",
+        "ApplicantId": 3,
+        "Applications": [
+            {
+                "CoverLetter": "I have extensive experience in backend development and would love to join your team.",
+                "AppliedDate": "2025-07-16T11:20:00Z",
+                "Status": "Rejected",
+                "JobId": 1
+            },
+            {
+                "CoverLetter": "My expertise in .NET Core aligns perfectly with this role.",
+                "AppliedDate": "2025-08-20T13:30:00Z",
+                "Status": "Rejected",
+                "JobId": 5
+            },
+            {
+                "CoverLetter": "My expertise in .NET Core aligns perfectly with this role.",
+                "AppliedDate": "2025-08-22T08:00:00Z",
+                "Status": "Rejected",
+                "JobId": 6
+            },
+            {
+                "CoverLetter": "I have extensive experience in backend development and would love to join your team.",
+                "AppliedDate": "2025-07-15T17:30:00Z",
+                "Status": "Rejected",
+                "JobId": 178
+            }
+        ]
+    },
+    {
+        "FullName": "Sara Mostafa",
+        "Email": "sara12@example.com",
+        "PhoneNumber": "01055667788",
+        "CurrentLocation": "Cairo, Egypt",
+        "CurrentJobTitle": "Data Analyst",
+        "YearsOfExperience": "3 Years",
+        "ResumeUrl": "cv/Sara_Mostafa.pdf",
+        "PortfolioUrl": "https://saramostafa.analytics.com",
+        "LinkedInUrl": "https://linkedin.com/in/saramostafa",
+        "GitHubUrl": null,
+        "ApplicantId": 4,
+        "Applications": [
+            {
+                "CoverLetter": "My experience with Power BI and SQL makes me a perfect fit for this data analysis role.",
+                "AppliedDate": "2025-08-22T14:20:00Z",
+                "Status": "UnderReview",
+                "JobId": 7
+            },
+            {
+                "CoverLetter": "I'm passionate about data visualization and business intelligence.",
+                "AppliedDate": "2025-08-07T10:15:00Z",
+                "Status": "Accepted",
+                "JobId": 8
+            }
+        ]
+    },
+    {
+        "FullName": "Omar Khaled",
+        "Email": "seeker5@example.com",
+        "PhoneNumber": "01033445566",
+        "CurrentLocation": "Giza, Egypt",
+        "CurrentJobTitle": "Mobile App Developer",
+        "YearsOfExperience": "2 Years",
+        "ResumeUrl": "cv/Omar_Khaled.pdf",
+        "PortfolioUrl": "https://omarkhaled.mobile.dev",
+        "LinkedInUrl": "https://linkedin.com/in/omarkhaled",
+        "GitHubUrl": "https://github.com/omarkhaled",
+        "ApplicantId": 5,
+        "Applications": [
+            {
+                "CoverLetter": "With my Flutter expertise, I can develop high-quality cross-platform mobile applications.",
+                "AppliedDate": "2025-08-18T09:30:00Z",
+                "Status": "Rejected",
+                "JobId": 9
+            },
+            {
+                "CoverLetter": "I'm excited about the mobile development opportunities at your company.",
+                "AppliedDate": "2025-08-22T11:45:00Z",
+                "Status": "UnderReview",
+                "JobId": 10
+            }
+        ]
+    },
+    {
+        "FullName": "Nourhan Adel",
+        "Email": "seeker6@example.com",
+        "PhoneNumber": "01155667788",
+        "CurrentLocation": "Cairo, Egypt",
+        "CurrentJobTitle": "Full Stack .NET Developer",
+        "YearsOfExperience": "2 Years",
+        "ResumeUrl": "cv/Nourhan_Adel.pdf",
+        "PortfolioUrl": "https://nourhanadel.dev",
+        "LinkedInUrl": "https://linkedin.com/in/nourhanadel",
+        "GitHubUrl": "https://github.com/nourhanadel",
+        "ApplicantId": 6,
+        "Applications": [
+            {
+                "CoverLetter": "My full stack .NET experience and cloud computing knowledge make me ideal for this position.",
+                "AppliedDate": "2025-08-22T13:20:00Z",
+                "Status": "Accepted",
+                "JobId": 11
+            },
+            {
+                "CoverLetter": "I'm passionate about web security and building robust applications.",
+                "AppliedDate": "2025-07-08T15:30:00Z",
+                "Status": "Rejected",
+                "JobId": 12
+            },
+            {
+                "CoverLetter": "I'm passionate about web security and building robust applications.",
+                "AppliedDate": "2025-08-22T15:30:00Z",
+                "Status": "UnderReview",
+                "JobId": 180
+            }
+        ]
+    },
+    {
+        "FullName": "Mohamed Yasser",
+        "Email": "seeker7@example.com",
+        "PhoneNumber": "01099887766",
+        "CurrentLocation": "Alexandria, Egypt",
+        "CurrentJobTitle": "Data Scientist",
+        "YearsOfExperience": "3 Years",
+        "ResumeUrl": "cv/Mohamed_Yasser.pdf",
+        "PortfolioUrl": "https://mohamedyasser.datascience.com",
+        "LinkedInUrl": "https://linkedin.com/in/mohamedyasser",
+        "GitHubUrl": "https://github.com/mohamedyasser",
+        "ApplicantId": 7,
+        "Applications": [
+            {
+                "CoverLetter": "My expertise in machine learning and AI makes me perfect for advanced data science roles.",
+                "AppliedDate": "2025-08-17T10:00:00Z",
+                "Status": "Rejected",
+                "JobId": 13
+            },
+            {
+                "CoverLetter": "I have proven experience in building predictive models and big data analytics.",
+                "AppliedDate": "2025-08-22T12:45:00Z",
+                "Status": "UnderReview",
+                "JobId": 14
+            }
+        ]
+    },
+    {
+        "FullName": "Sara Mahmoud",
+        "Email": "seeker8@example.com",
+        "PhoneNumber": "01222334455",
+        "CurrentLocation": "Cairo, Egypt",
+        "CurrentJobTitle": "Cyber Security Specialist",
+        "YearsOfExperience": "3 Years",
+        "ResumeUrl": "cv/Sara_Mahmoud.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/saramahmoud",
+        "GitHubUrl": null,
+        "ApplicantId": 8,
+        "Applications": [
+            {
+                "CoverLetter": "My expertise in penetration testing and network security aligns with your cybersecurity needs.",
+                "AppliedDate": "2025-08-02T14:15:00Z",
+                "Status": "Accepted",
+                "JobId": 15
+            }
+        ]
+    },
+    {
+        "FullName": "Ahmed Samir",
+        "Email": "seeker9@example.com",
+        "PhoneNumber": "01066554433",
+        "CurrentLocation": "Cairo, Egypt",
+        "CurrentJobTitle": "Cloud Engineer",
+        "YearsOfExperience": "4 Years",
+        "ResumeUrl": "cv/Ahmed_Samir.pdf",
+        "PortfolioUrl": "https://ahmedsamir.cloud",
+        "LinkedInUrl": "https://linkedin.com/in/ahmedsamir",
+        "GitHubUrl": "https://github.com/ahmedsamir",
+        "ApplicantId": 9,
+        "Applications": [
+            {
+                "CoverLetter": "With my AWS and Azure certifications, I can design and implement scalable cloud solutions.",
+                "AppliedDate": "2025-08-11T09:20:00Z",
+                "Status": "Rejected",
+                "JobId": 16
+            }
+        ]
+    },
+    {
+        "FullName": "Fatima Hassan",
+        "Email": "seeker10@example.com",
+        "PhoneNumber": "01122334455",
+        "CurrentLocation": "Cairo, Egypt",
+        "CurrentJobTitle": "UI/UX Designer",
+        "YearsOfExperience": "3 Years",
+        "ResumeUrl": "cv/Fatima_Hassan.pdf",
+        "PortfolioUrl": "https://FatimaHassan.portfolio.com",
+        "LinkedInUrl": "https://linkedin.com/in/FatimaHassan",
+        "GitHubUrl": "https://github.com/FatimaHassan",
+        "ApplicantId": 10,
+        "Applications": [
+            {
+                "CoverLetter": "I am highly motivated to join as UI/UX Designer and contribute with my skills.",
+                "AppliedDate": "2025-08-21T00:00:00Z",
+                "Status": "Rejected",
+                "JobId": 17
+            },
+            {
+                "CoverLetter": "I am highly motivated to join as UI/UX Designer and contribute with my skills.",
+                "AppliedDate": "2025-08-16T00:00:00Z",
+                "Status": "Rejected",
+                "JobId": 86
+            }
+        ]
+    },
+    {
+        "FullName": "Yasmine Mahmoud",
+        "Email": "seeker21@example.com",
+        "PhoneNumber": "01123456789",
+        "CurrentLocation": "New Cairo, Egypt",
+        "CurrentJobTitle": "Content Marketing Specialist",
+        "YearsOfExperience": "3+ Years",
+        "ResumeUrl": "cv/Yasmine_Mahmoud.pdf",
+        "PortfolioUrl": "https://YasmineMahmoud.portfolio.com",
+        "LinkedInUrl": "https://linkedin.com/in/YasmineMahmoud",
+        "GitHubUrl": "",
+        "ApplicantId": 21,
+        "Applications": [
+            {
+                "CoverLetter": "I am excited to apply for the Content Marketing Specialist role, where I can leverage my skills in content creation, SEO, and social media strategy to deliver measurable impact.",
+                "AppliedDate": "2025-08-22T00:00:00Z",
+                "Status": "Pending",
+                "JobId": 2
+            },
+            {
+                "CoverLetter": "I am eager to contribute as a Marketing Assistant, supporting campaigns with my creativity and experience in content and social media management.",
+                "AppliedDate": "2025-08-21T00:00:00Z",
+                "Status": "Pending",
+                "JobId": 5
+            },
+            {
+                "CoverLetter": "I am motivated to apply for the Public Relations Specialist role, where I can combine my marketing and communication skills to strengthen brand reputation.",
+                "AppliedDate": "2025-08-12T00:00:00Z",
+                "Status": "Pending",
+                "JobId": 4
+            },
+            {
+                "CoverLetter": "I am motivated to apply for the Public Relations Specialist role, where I can combine my marketing and communication skills to strengthen brand reputation.",
+                "AppliedDate": "2025-08-22T00:00:00Z",
+                "Status": "Pending",
+                "JobId": 177
+            }
+        ]
+    },
+    {
+        "FullName": "Omar Hassan",
+        "Email": "seeker22@example.com",
+        "PhoneNumber": "01098765432",
+        "CurrentLocation": "Maadi, Cairo, Egypt",
+        "CurrentJobTitle": "Public Relations Specialist",
+        "YearsOfExperience": "4+ Years",
+        "ResumeUrl": "cv/Omar_Hassan_pr.pdf",
+        "PortfolioUrl": "",
+        "LinkedInUrl": "https://linkedin.com/in/OmarHassan",
+        "GitHubUrl": "",
+        "ApplicantId": 22,
+        "Applications": [
+            {
+                "CoverLetter": "I am eager to apply for the Public Relations Manager position to lead strategic PR initiatives and enhance the company's reputation with my proven expertise.",
+                "AppliedDate": "2025-07-20T00:00:00Z",
+                "Status": "Rejected",
+                "JobId": 1
+            },
+            {
+                "CoverLetter": "As a dedicated PR professional, I am applying for the Public Relations Specialist role to contribute my skills in media relations and crisis communication.",
+                "AppliedDate": "2025-08-21T00:00:00Z",
+                "Status": "Pending",
+                "JobId": 4
+            },
+            {
+                "CoverLetter": "I am interested in the Content Marketing Specialist role to expand my expertise and integrate PR with content strategies for greater brand visibility.",
+                "AppliedDate": "2025-08-22T00:00:00Z",
+                "Status": "Pending",
+                "JobId": 2
+            }
+        ]
+    },
+    {
+        "FullName": "Sameh Mahmoud",
+        "Email": "samehmahmoud@example.com",
+        "PhoneNumber": "010633778810",
+        "CurrentLocation": "Nasr City, Cairo, Egypt",
+        "CurrentJobTitle": "Content Writer",
+        "YearsOfExperience": "4 Years",
+        "ResumeUrl": "cv/sameh_mahmoud_cv.pdf",
+        "PortfolioUrl": "https://samehmahmoud.portfolio.com",
+        "LinkedInUrl": "https://linkedin.com/in/samehmahmoud",
+        "GitHubUrl": null,
+        "ApplicantId": 23,
+        "Applications": [
+            {
+                "CoverLetter": "I am excited to apply for the Content Writer position, leveraging my expertise in creating engaging content.",
+                "AppliedDate": "2025-07-21T14:00:00Z",
+                "Status": "UnderReview",
+                "JobId": 1
+            },
+            {
+                "CoverLetter": "My experience in content creation aligns perfectly with the Copywriter role.",
+                "AppliedDate": "2025-08-02T09:00:00Z",
+                "Status": "Pending",
+                "JobId": 2
+            },
+            {
+                "CoverLetter": "I am eager to contribute my storytelling skills to the Technical Writer position.",
+                "AppliedDate": "2025-08-11T11:30:00Z",
+                "Status": "Rejected",
+                "JobId": 3
+            }
+        ]
+    },
+    {
+        "FullName": "Jason Miller",
+        "Email": "jason.miller@example.com",
+        "PhoneNumber": "+1 415 987 4521",
+        "CurrentLocation": "San Francisco, California, USA",
+        "CurrentJobTitle": "Fitness Trainer",
+        "YearsOfExperience": "6 Years",
+        "ResumeUrl": "cv/jason_miller_fitness_cv.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/jasonmiller",
+        "GitHubUrl": null,
+        "ApplicantId": 24,
+        "Applications": [
+            {
+                "CoverLetter": "My expertise in fitness training makes me a strong candidate for the Fitness Trainer role.",
+                "AppliedDate": "2025-08-15T10:00:00Z",
+                "Status": "Accepted",
+                "JobId": 47
+            }
+        ]
+    },
+    {
+        "FullName": "Layla Ahmed",
+        "Email": "laylaahmed@example.com",
+        "PhoneNumber": "01123456789",
+        "CurrentLocation": "Alexandria, Egypt",
+        "CurrentJobTitle": "UI/UX Designer",
+        "YearsOfExperience": "5 Years",
+        "ResumeUrl": "cv/laylaahmed.pdf",
+        "PortfolioUrl": "https://laylaahmed.portfolio.com",
+        "LinkedInUrl": "https://linkedin.com/in/laylaahmed",
+        "GitHubUrl": null,
+        "ApplicantId": 25,
+        "Applications": [
+            {
+                "CoverLetter": "I am passionate about designing user-friendly interfaces for the UI/UX Designer role.",
+                "AppliedDate": "2025-08-16T12:00:00Z",
+                "Status": "UnderReview",
+                "JobId": 25
+            },
+            {
+                "CoverLetter": "My design skills align with the requirements of the UI/UX Researcher position.",
+                "AppliedDate": "2025-08-23T09:30:00Z",
+                "Status": "Pending",
+                "JobId": 13
+            },
+            {
+                "CoverLetter": "Excited to contribute to innovative UI designs in this role.",
+                "AppliedDate": "2025-08-17T15:00:00Z",
+                "Status": "Rejected",
+                "JobId": 27
+            }
+        ]
+    },
+    {
+        "FullName": "Karim Nasser",
+        "Email": "karimnasser@example.com",
+        "PhoneNumber": "+201122334455",
+        "CurrentLocation": "Dubai, UAE",
+        "CurrentJobTitle": "Marketing Specialist",
+        "YearsOfExperience": "6 Years",
+        "ResumeUrl": "cv/karimnasser.pdf",
+        "PortfolioUrl": "https://karimnasser.portfolio.com",
+        "LinkedInUrl": "https://linkedin.com/in/karimnasser",
+        "GitHubUrl": null,
+        "ApplicantId": 26,
+        "Applications": [
+            {
+                "CoverLetter": "My digital marketing expertise makes me a great fit for the Digital Marketing Manager role.",
+                "AppliedDate": "2025-08-04T11:00:00Z",
+                "Status": "Accepted",
+                "JobId": 10
+            },
+            {
+                "CoverLetter": "I am eager to leverage my skills in the Marketing Manager position.",
+                "AppliedDate": "2025-08-02T14:30:00Z",
+                "Status": "UnderReview",
+                "JobId": 22
+            }
+        ]
+    },
+    {
+        "FullName": "Emily Johnson",
+        "Email": "emilyjohnson@example.com",
+        "PhoneNumber": "+1 555 123 4567",
+        "CurrentLocation": "New York, USA",
+        "CurrentJobTitle": "Data Scientist",
+        "YearsOfExperience": "8 Years",
+        "ResumeUrl": "cv/emilyjohnson.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/emilyjohnson",
+        "GitHubUrl": "https://github.com/emilyjohnson",
+        "ApplicantId": 27,
+        "Applications": [
+            {
+                "CoverLetter": "My machine learning expertise aligns with the Data Scientist role requirements.",
+                "AppliedDate": "2025-07-02T10:00:00Z",
+                "Status": "UnderReview",
+                "JobId": 19
+            },
+            {
+                "CoverLetter": "Excited to apply my analytics skills to the Senior Data Analyst position.",
+                "AppliedDate": "2025-08-04T09:00:00Z",
+                "Status": "Pending",
+                "JobId": 171
+            },
+            {
+                "CoverLetter": "My experience in predictive modeling suits the Data Scientist position.",
+                "AppliedDate": "2025-08-09T12:00:00Z",
+                "Status": "Rejected",
+                "JobId": 24
+            }
+        ]
+    },
+    {
+        "FullName": "Omar Farouk",
+        "Email": "omarfarouk@example.com",
+        "PhoneNumber": "01234567890",
+        "CurrentLocation": "Mansoura, Egypt",
+        "CurrentJobTitle": "Accountant",
+        "YearsOfExperience": "5 Years",
+        "ResumeUrl": "cv/omarfarouk.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/omarfarouk",
+        "GitHubUrl": null,
+        "ApplicantId": 28,
+        "Applications": [
+            {
+                "CoverLetter": "My financial reporting skills make me a strong candidate for the Financial Analyst role.",
+                "AppliedDate": "2025-07-24T11:00:00Z",
+                "Status": "Pending",
+                "JobId": 35
+            }
+        ]
+    },
+    {
+        "FullName": "Sophia Brown",
+        "Email": "sophiabrown@example.com",
+        "PhoneNumber": "+44 20 1234 5678",
+        "CurrentLocation": "London, UK",
+        "CurrentJobTitle": "Teacher",
+        "YearsOfExperience": "10 Years",
+        "ResumeUrl": "cv/sophiabrown.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/sophiabrown",
+        "GitHubUrl": null,
+        "ApplicantId": 29,
+        "Applications": [
+            {
+                "CoverLetter": "My experience in curriculum development suits the Healthcare Administrator role.",
+                "AppliedDate": "2025-08-01T10:00:00Z",
+                "Status": "UnderReview",
+                "JobId": 116
+            }
+        ]
+    },
+    {
+        "FullName": "Ali Hassan",
+        "Email": "alihassan@example.com",
+        "PhoneNumber": "01098765432",
+        "CurrentLocation": "Riyadh, Saudi Arabia",
+        "CurrentJobTitle": "Network Engineer",
+        "YearsOfExperience": "6 Years",
+        "ResumeUrl": "cv/alihassan.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/alihassan",
+        "GitHubUrl": null,
+        "ApplicantId": 30,
+        "Applications": [
+            {
+                "CoverLetter": "My expertise in network security aligns with the Network Security Engineer role.",
+                "AppliedDate": "2025-08-08T09:00:00Z",
+                "Status": "Accepted",
+                "JobId": 8
+            },
+            {
+                "CoverLetter": "I am eager to contribute to the Senior Network Administrator position.",
+                "AppliedDate": "2025-07-24T12:00:00Z",
+                "Status": "UnderReview",
+                "JobId": 186
+            }
+        ]
+    },
+    {
+        "FullName": "Nora Smith",
+        "Email": "norasmith@example.com",
+        "PhoneNumber": "+1 415 555 7890",
+        "CurrentLocation": "San Francisco, USA",
+        "CurrentJobTitle": "HR Manager",
+        "YearsOfExperience": "12 Years",
+        "ResumeUrl": "cv/norasmith.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/norasmith",
+        "GitHubUrl": null,
+        "ApplicantId": 31,
+        "Applications": [
+            {
+                "CoverLetter": "My HR expertise makes me a great fit for the HR Manager role.",
+                "AppliedDate": "2025-08-03T10:30:00Z",
+                "Status": "Accepted",
+                "JobId": 198
+            },
+            {
+                "CoverLetter": "Excited to contribute to employee wellness in the Human Resources Generalist role.",
+                "AppliedDate": "2025-08-16T11:00:00Z",
+                "Status": "UnderReview",
+                "JobId": 173
+            }
+        ]
+    },
+    {
+        "FullName": "Youssef Ali",
+        "Email": "youssefali@example.com",
+        "PhoneNumber": "01567890123",
+        "CurrentLocation": "Cairo, Egypt",
+        "CurrentJobTitle": "Sales Executive",
+        "YearsOfExperience": "4 Years",
+        "ResumeUrl": "cv/youssefali.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/youssefali",
+        "GitHubUrl": null,
+        "ApplicantId": 32,
+        "Applications": [
+            {
+                "CoverLetter": "My sales experience aligns with the Pharmaceutical Sales Representative role.",
+                "AppliedDate": "2025-08-23T09:00:00Z",
+                "Status": "Pending",
+                "JobId": 166
+            },
+            {
+                "CoverLetter": "I am eager to leverage my skills in the Sales Executive role.",
+                "AppliedDate": "2025-08-10T14:00:00Z",
+                "Status": "Rejected",
+                "JobId": 159
+            }
+        ]
+    },
+    {
+        "FullName": "Linda Wilson",
+        "Email": "lindawilson@example.com",
+        "PhoneNumber": "+49 30 1234567",
+        "CurrentLocation": "Berlin, Germany",
+        "CurrentJobTitle": "Project Manager",
+        "YearsOfExperience": "8 Years",
+        "ResumeUrl": "cv/lindawilson.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/lindawilson",
+        "GitHubUrl": null,
+        "ApplicantId": 33,
+        "Applications": [
+            {
+                "CoverLetter": "My project management skills suit the Project Manager role perfectly.",
+                "AppliedDate": "2025-08-23T10:00:00Z",
+                "Status": "UnderReview",
+                "JobId": 36
+            },
+            {
+                "CoverLetter": "Excited to lead teams in the Senior Project Manager position.",
+                "AppliedDate": "2025-07-06T12:00:00Z",
+                "Status": "Accepted",
+                "JobId": 111
+            },
+            {
+                "CoverLetter": "My agile expertise aligns with the Healthcare Project Manager role.",
+                "AppliedDate": "2025-07-28T11:30:00Z",
+                "Status": "Pending",
+                "JobId": 172
+            }
+        ]
+    },
+    {
+        "FullName": "Hassan Elmasry",
+        "Email": "hassanelmasry@example.com",
+        "PhoneNumber": "01011223344",
+        "CurrentLocation": "Giza, Egypt",
+        "CurrentJobTitle": "Civil Engineer",
+        "YearsOfExperience": "7 Years",
+        "ResumeUrl": "cv/hassanelmasry.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/hassanelmasry",
+        "GitHubUrl": null,
+        "ApplicantId": 34,
+        "Applications": [
+            {
+                "CoverLetter": "My structural design experience makes me a great fit for the Civil Engineer role.",
+                "AppliedDate": "2025-08-23T09:00:00Z",
+                "Status": "UnderReview",
+                "JobId": 176
+            },
+            {
+                "CoverLetter": "Excited to contribute to infrastructure projects in this role.",
+                "AppliedDate": "2025-08-21T10:00:00Z",
+                "Status": "Pending",
+                "JobId": 219
+            }
+        ]
+    },
+    {
+        "FullName": "Fatima Mohamed",
+        "Email": "fatimamohamed@example.com",
+        "PhoneNumber": "01298765432",
+        "CurrentLocation": "Cairo, Egypt",
+        "CurrentJobTitle": "Software Developer",
+        "YearsOfExperience": "4 Years",
+        "ResumeUrl": "cv/fatimamohamed.pdf",
+        "PortfolioUrl": "https://fatimamohamed.portfolio.com",
+        "LinkedInUrl": "https://linkedin.com/in/fatimamohamed",
+        "GitHubUrl": "https://github.com/fatimamohamed",
+        "ApplicantId": 35,
+        "Applications": [
+            {
+                "CoverLetter": "My expertise in web development aligns with the Senior Full Stack Developer role.",
+                "AppliedDate": "2025-08-23T10:30:00Z",
+                "Status": "UnderReview",
+                "JobId": 15
+            },
+            {
+                "CoverLetter": "I am eager to contribute to the Web Developer position.",
+                "AppliedDate": "2025-08-11T12:00:00Z",
+                "Status": "Pending",
+                "JobId": 34
+            },
+            {
+                "CoverLetter": "My skills in REST APIs suit the Senior Backend Engineer role.",
+                "AppliedDate": "2025-08-02T09:00:00Z",
+                "Status": "Rejected",
+                "JobId": 179
+            }
+        ]
+    },
+    {
+        "FullName": "James Thompson",
+        "Email": "jamesthompson@example.com",
+        "PhoneNumber": "+1 202 555 1234",
+        "CurrentLocation": "Los Angeles, USA",
+        "CurrentJobTitle": "Graphic Designer",
+        "YearsOfExperience": "5 Years",
+        "ResumeUrl": "cv/jamesthompson.pdf",
+        "PortfolioUrl": "https://jamesthompson.portfolio.com",
+        "LinkedInUrl": "https://linkedin.com/in/jamesthompson",
+        "GitHubUrl": null,
+        "ApplicantId": 36,
+        "Applications": [
+            {
+                "CoverLetter": "My branding expertise aligns with the Web Designer role.",
+                "AppliedDate": "2025-07-31T11:00:00Z",
+                "Status": "UnderReview",
+                "JobId": 31
+            }
+        ]
+    },
+    {
+        "FullName": "Sarah Khalid",
+        "Email": "sarahkhalid@example.com",
+        "PhoneNumber": "+966 50 123 4567",
+        "CurrentLocation": "Jeddah, Saudi Arabia",
+        "CurrentJobTitle": "Nurse",
+        "YearsOfExperience": "8 Years",
+        "ResumeUrl": "cv/sarahkhalid.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/sarahkhalid",
+        "GitHubUrl": null,
+        "ApplicantId": 37,
+        "Applications": [
+            {
+                "CoverLetter": "My patient care experience makes me a strong fit for the Pharmacist role.",
+                "AppliedDate": "2025-08-07T10:00:00Z",
+                "Status": "Pending",
+                "JobId": 122
+            },
+            {
+                "CoverLetter": "Excited to contribute to healthcare in the Healthcare Administrator role.",
+                "AppliedDate": "2025-08-09T12:00:00Z",
+                "Status": "UnderReview",
+                "JobId": 117
+            }
+        ]
+    },
+    {
+        "FullName": "Michael Young",
+        "Email": "michaelyoung@example.com",
+        "PhoneNumber": "+44 20 9876 5432",
+        "CurrentLocation": "Manchester, UK",
+        "CurrentJobTitle": "Lawyer",
+        "YearsOfExperience": "10 Years",
+        "ResumeUrl": "cv/michaelyoung.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/michaelyoung",
+        "GitHubUrl": null,
+        "ApplicantId": 38,
+        "Applications": [
+            {
+                "CoverLetter": "My legal expertise aligns with the Legal Assistant role requirements.",
+                "AppliedDate": "2025-08-03T11:00:00Z",
+                "Status": "Accepted",
+                "JobId": 112
+            },
+            {
+                "CoverLetter": "Excited to contribute to corporate law in this role.",
+                "AppliedDate": "2025-08-20T09:30:00Z",
+                "Status": "UnderReview",
+                "JobId": 113
+            }
+        ]
+    },
+    {
+        "FullName": "Hanan Ibrahim",
+        "Email": "hananibrahim@example.com",
+        "PhoneNumber": "01134567890",
+        "CurrentLocation": "Amman, Jordan",
+        "CurrentJobTitle": "Content Writer",
+        "YearsOfExperience": "4 Years",
+        "ResumeUrl": "cv/hananibrahim.pdf",
+        "PortfolioUrl": "https://hananibrahim.portfolio.com",
+        "LinkedInUrl": "https://linkedin.com/in/hananibrahim",
+        "GitHubUrl": null,
+        "ApplicantId": 39,
+        "Applications": [
+            {
+                "CoverLetter": "My content creation skills make me a great fit for the Content Creator role.",
+                "AppliedDate": "2025-07-05T10:00:00Z",
+                "Status": "UnderReview",
+                "JobId": 132
+            },
+            {
+                "CoverLetter": "Excited to contribute my writing expertise to the Content Marketing Specialist role.",
+                "AppliedDate": "2025-07-12T11:30:00Z",
+                "Status": "Pending",
+                "JobId": 168
+            }
+        ]
+    },
+
+    {
+        "FullName": "Mohamed Ali",
+        "Email": "seeker11@example.com",
+        "PhoneNumber": "01233445566",
+        "CurrentLocation": "Giza, Egypt",
+        "CurrentJobTitle": "Data Scientist",
+        "YearsOfExperience": "3 Years",
+        "ResumeUrl": "cv/Mohamed_Ali.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/mohamedali",
+        "GitHubUrl": null,
+        "ApplicantId": 11,
+        "Applications": [
+            {
+                "CoverLetter": "I am interested in the Data Scientist - Machine Learning position and believe my skills in machine learning, data analysis, and statistical modeling make me a great fit. My experience in developing machine learning models for predictive analytics aligns with the role requirements.",
+                "AppliedDate": "2025-07-15T14:00:00Z",
+                "Status": "UnderReview",
+                "JobId": 19
+            },
+            {
+                "CoverLetter": "My background in Python and R makes me a strong candidate for the Data Scientist role.",
+                "AppliedDate": "2025-08-10T09:30:00Z",
+                "Status": "Pending",
+                "JobId": 24
+            },
+            {
+                "CoverLetter": "Excited to contribute my expertise in big data analytics to your team.",
+                "AppliedDate": "2025-08-18T11:45:00Z",
+                "Status": "Rejected",
+                "JobId": 58
+            }
+        ]
+    },
+    {
+        "FullName": "Sara Khaled",
+        "Email": "seeker12@example.com",
+        "PhoneNumber": "01099887766",
+        "CurrentLocation": "Mansoura, Egypt",
+        "CurrentJobTitle": "Cybersecurity Analyst",
+        "YearsOfExperience": "3 Years",
+        "ResumeUrl": "cv/Sara_Khaled.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/sarakhaled",
+        "GitHubUrl": null,
+        "ApplicantId": 12,
+        "Applications": [
+            {
+                "CoverLetter": "My expertise in threat detection and incident response makes me a great fit for the Cybersecurity Analyst role.",
+                "AppliedDate": "2025-07-10T10:15:00Z",
+                "Status": "Accepted",
+                "JobId": 26
+            },
+            {
+                "CoverLetter": "I am eager to contribute my skills in network security to your team.",
+                "AppliedDate": "2025-07-08T12:00:00Z",
+                "Status": "UnderReview",
+                "JobId": 28
+            },
+            {
+                "CoverLetter": "My CEH certification and experience in penetration testing align with this position.",
+                "AppliedDate": "2025-07-30T15:30:00Z",
+                "Status": "Rejected",
+                "JobId": 60
+            },
+            {
+                "CoverLetter": "Looking forward to applying my knowledge in cybersecurity to this opportunity.",
+                "AppliedDate": "2025-07-30T09:00:00Z",
+                "Status": "Pending",
+                "JobId": 98
+            }
+        ]
+    },
+    {
+        "FullName": "Omar Ahmed",
+        "Email": "seeker13@example.com",
+        "PhoneNumber": "01555443322",
+        "CurrentLocation": "Assiut, Egypt",
+        "CurrentJobTitle": "Mobile App Developer",
+        "YearsOfExperience": "3 Years",
+        "ResumeUrl": "cv/Omar_Ahmed.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/omarahmed",
+        "GitHubUrl": null,
+        "ApplicantId": 13,
+        "Applications": [
+            {
+                "CoverLetter": "My experience in Flutter and React Native makes me ideal for the Mobile App Developer - Android role.",
+                "AppliedDate": "2025-07-05T11:00:00Z",
+                "Status": "Accepted",
+                "JobId": 197
+            }
+        ]
+    },
+    {
+        "FullName": "Mariem Nasser",
+        "Email": "seeker14@example.com",
+        "PhoneNumber": "01011223344",
+        "CurrentLocation": "Suez, Egypt",
+        "CurrentJobTitle": "AI Engineer",
+        "YearsOfExperience": "3 Years",
+        "ResumeUrl": "cv/Mariem_Nasser.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/mariemnasser",
+        "GitHubUrl": null,
+        "ApplicantId": 14,
+        "Applications": [
+            {
+                "CoverLetter": "I am passionate about AI and machine learning, and my experience in Python and TensorFlow aligns with the AI/ML Engineer role.",
+                "AppliedDate": "2025-07-15T13:00:00Z",
+                "Status": "UnderReview",
+                "JobId": 94
+            },
+            {
+                "CoverLetter": "Excited to contribute to AI projects with my background in natural language processing.",
+                "AppliedDate": "2025-08-15T10:45:00Z",
+                "Status": "Pending",
+                "JobId": 156
+            },
+            {
+                "CoverLetter": "My skills in model deployment make me a strong candidate for this position.",
+                "AppliedDate": "2025-08-23T14:20:00Z",
+                "Status": "Rejected",
+                "JobId": 157
+            }
+        ]
+    },
+    {
+        "FullName": "Amr Hany",
+        "Email": "seeker15@example.com",
+        "PhoneNumber": "01144556677",
+        "CurrentLocation": "Tanta, Egypt",
+        "CurrentJobTitle": "Backend Developer",
+        "YearsOfExperience": "4 Years",
+        "ResumeUrl": "cv/Amr_Hany.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/amrhany",
+        "GitHubUrl": null,
+        "ApplicantId": 15,
+        "Applications": [
+            {
+                "CoverLetter": "My expertise in Node.js and Python makes me a great fit for the Senior Backend Engineer role.",
+                "AppliedDate": "2025-08-05T09:30:00Z",
+                "Status": "Accepted",
+                "JobId": 179
+            },
+            {
+                "CoverLetter": "I am eager to contribute to backend development with my experience in API design.",
+                "AppliedDate": "2025-07-05T12:00:00Z",
+                "Status": "UnderReview",
+                "JobId": 180
+            },
+            {
+                "CoverLetter": "My skills in database optimization align with this position.",
+                "AppliedDate": "2025-08-15T15:00:00Z",
+                "Status": "Pending",
+                "JobId": 218
+            }
+        ]
+    },
+    {
+        "FullName": "Omnia Hassan",
+        "Email": "seeker16@example.com",
+        "PhoneNumber": "01288776655",
+        "CurrentLocation": "Ismailia, Egypt",
+        "CurrentJobTitle": "Frontend Developer",
+        "YearsOfExperience": "4 Years",
+        "ResumeUrl": "cv/Omnia_Hassan.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/omniahassan",
+        "GitHubUrl": null,
+        "ApplicantId": 16,
+        "Applications": [
+            {
+                "CoverLetter": "My experience with React and Vue.js makes me ideal for the Web Developer role.",
+                "AppliedDate": "2025-08-12T10:00:00Z",
+                "Status": "UnderReview",
+                "JobId": 34
+            },
+            {
+                "CoverLetter": "I am excited to contribute to frontend development with my skills in responsive design.",
+                "AppliedDate": "2025-07-29T13:45:00Z",
+                "Status": "Pending",
+                "JobId": 41
+            }
+        ]
+    },
+    {
+        "FullName": "Basmalla Yasser",
+        "Email": "seeker17@example.com",
+        "PhoneNumber": "01022334488",
+        "CurrentLocation": "Port Said, Egypt",
+        "CurrentJobTitle": "DevOps Engineer",
+        "YearsOfExperience": "3 Years",
+        "ResumeUrl": "cv/Basmalla_Yasser.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/basmallayasser",
+        "GitHubUrl": null,
+        "ApplicantId": 17,
+        "Applications": [
+            {
+                "CoverLetter": "My expertise in CI/CD pipelines and Kubernetes makes me a great fit for the DevOps Engineer role.",
+                "AppliedDate": "2025-07-16T11:00:00Z",
+                "Status": "Accepted",
+                "JobId": 4
+            },
+            {
+                "CoverLetter": "I am eager to contribute to cloud infrastructure management with my AWS certification.",
+                "AppliedDate": "2025-08-23T09:15:00Z",
+                "Status": "UnderReview",
+                "JobId": 21
+            },
+            {
+                "CoverLetter": "My experience in automation aligns with this position.",
+                "AppliedDate": "2025-07-11T14:30:00Z",
+                "Status": "Rejected",
+                "JobId": 33
+            },
+            {
+                "CoverLetter": "Looking forward to applying my Docker skills in your team.",
+                "AppliedDate": "2025-07-26T12:00:00Z",
+                "Status": "Pending",
+                "JobId": 40
+            }
+        ]
+    },
+    {
+        "FullName": "Eman Atef",
+        "Email": "seeker18@example.com",
+        "PhoneNumber": "01155667788",
+        "CurrentLocation": "Damietta, Egypt",
+        "CurrentJobTitle": "Data Analyst",
+        "YearsOfExperience": "3 Years",
+        "ResumeUrl": "cv/Eman_Atef.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/emanatef",
+        "GitHubUrl": null,
+        "ApplicantId": 18,
+        "Applications": [
+            {
+                "CoverLetter": "My skills in SQL and Power BI make me a strong candidate for the Data Analyst Intern role.",
+                "AppliedDate": "2025-08-21T10:45:00Z",
+                "Status": "UnderReview",
+                "JobId": 7
+            },
+            {
+                "CoverLetter": "I am interested in contributing to data visualization projects.",
+                "AppliedDate": "2025-07-18T13:00:00Z",
+                "Status": "Pending",
+                "JobId": 37
+            }
+        ]
+    },
+    {
+        "FullName": "Nada Ali",
+        "Email": "seeker19@example.com",
+        "PhoneNumber": "01266778899",
+        "CurrentLocation": "Zagazig, Egypt",
+        "CurrentJobTitle": "UI/UX Designer",
+        "YearsOfExperience": "3 Years",
+        "ResumeUrl": "cv/Nada_Ali.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/nadaali",
+        "GitHubUrl": null,
+        "ApplicantId": 19,
+        "Applications": [
+            {
+                "CoverLetter": "My expertise in Figma and user research aligns with the UI/UX Designer role.",
+                "AppliedDate": "2025-08-17T11:30:00Z",
+                "Status": "Accepted",
+                "JobId": 20
+            },
+            {
+                "CoverLetter": "I am excited to create intuitive interfaces for your team.",
+                "AppliedDate": "2025-08-22T14:00:00Z",
+                "Status": "UnderReview",
+                "JobId": 25
+            },
+            {
+                "CoverLetter": "My experience in prototyping makes me a great fit.",
+                "AppliedDate": "2025-08-22T09:15:00Z",
+                "Status": "Rejected",
+                "JobId": 27
+            }
+        ]
+    },
+    {
+        "FullName": "Youssef Eid",
+        "Email": "seeker20@example.com",
+        "PhoneNumber": "01566778800",
+        "CurrentLocation": "Beni Suef, Egypt",
+        "CurrentJobTitle": "Full Stack Developer",
+        "YearsOfExperience": "4 Years",
+        "ResumeUrl": "cv/Youssef_Eid.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/youssefeid",
+        "GitHubUrl": null,
+        "ApplicantId": 20,
+        "Applications": [
+            {
+                "CoverLetter": "My skills in MERN stack and Django make me ideal for the Senior Full Stack Developer role.",
+                "AppliedDate": "2025-08-23T10:00:00Z",
+                "Status": "UnderReview",
+                "JobId": 15
+            },
+            {
+                "CoverLetter": "I am eager to build scalable applications with your team.",
+                "AppliedDate": "2025-08-16T12:30:00Z",
+                "Status": "Pending",
+                "JobId": 16
+            },
+            {
+                "CoverLetter": "My experience in front-end and back-end integration aligns with this position.",
+                "AppliedDate": "2025-08-21T15:00:00Z",
+                "Status": "Accepted",
+                "JobId": 17
+            }
+        ]
+    },
+    {
+        "FullName": "David Martinez",
+        "Email": "davidmartinez@example.com",
+        "PhoneNumber": "+1 305 555 6789",
+        "CurrentLocation": "Miami, USA",
+        "CurrentJobTitle": "DevOps Engineer",
+        "YearsOfExperience": "5 Years",
+        "ResumeUrl": "cv/davidmartinez.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/davidmartinez",
+        "GitHubUrl": null,
+        "ApplicantId": 40,
+        "Applications": [
+            {
+                "CoverLetter": "My experience in CI/CD and AWS makes me a strong candidate for the DevOps Engineer role.",
+                "AppliedDate": "2025-07-16T11:00:00Z",
+                "Status": "Accepted",
+                "JobId": 4
+            },
+            {
+                "CoverLetter": "I am interested in contributing to cloud infrastructure with my skills.",
+                "AppliedDate": "2025-08-23T14:30:00Z",
+                "Status": "UnderReview",
+                "JobId": 21
+            }
+        ]
+    },
+    {
+        "FullName": "Noor Mahmoud",
+        "Email": "nooramahmoud@example.com",
+        "PhoneNumber": "01023456789",
+        "CurrentLocation": "Giza, Egypt",
+        "CurrentJobTitle": "Pharmacist",
+        "YearsOfExperience": "8 Years",
+        "ResumeUrl": "cv/nooramahmoud.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/noormahmoud",
+        "GitHubUrl": null,
+        "ApplicantId": 41,
+        "Applications": [
+            {
+                "CoverLetter": "My expertise in medication dispensing and patient counseling aligns with the Pharmacist role.",
+                "AppliedDate": "2025-08-02T10:00:00Z",
+                "Status": "Pending",
+                "JobId": 122
+            },
+            {
+                "CoverLetter": "I am eager to contribute to healthcare with my experience.",
+                "AppliedDate": "2025-08-05T13:00:00Z",
+                "Status": "UnderReview",
+                "JobId": 123
+            },
+            {
+                "CoverLetter": "My skills in clinical pharmacy make me a great fit.",
+                "AppliedDate": "2025-08-02T15:30:00Z",
+                "Status": "Accepted",
+                "JobId": 124
+            }
+        ]
+    },
+    {
+        "FullName": "Lucas Fernandez",
+        "Email": "lucasfernandez@example.com",
+        "PhoneNumber": "+34 91 234 5678",
+        "CurrentLocation": "Madrid, Spain",
+        "CurrentJobTitle": "Event Planner",
+        "YearsOfExperience": "10 Years",
+        "ResumeUrl": "cv/lucasfernandez.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/lucasfernandez",
+        "GitHubUrl": null,
+        "ApplicantId": 42,
+        "Applications": [
+            {
+                "CoverLetter": "My experience in event planning and coordination makes me ideal for the Hotel Manager role.",
+                "AppliedDate": "2025-08-20T09:00:00Z",
+                "Status": "Rejected",
+                "JobId": 93
+            }
+        ]
+    },
+    {
+        "FullName": "Ayman Saleh",
+        "Email": "aymansaleh@example.com",
+        "PhoneNumber": "+201234567890",
+        "CurrentLocation": "Alexandria, Egypt",
+        "CurrentJobTitle": "Mechanical Engineer",
+        "YearsOfExperience": "9 Years",
+        "ResumeUrl": "cv/aymansaleh.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/aymansaleh",
+        "GitHubUrl": null,
+        "ApplicantId": 43,
+        "Applications": [
+            {
+                "CoverLetter": "My expertise in HVAC systems and mechanical design aligns with the Mechanical Engineer role.",
+                "AppliedDate": "2025-08-08T11:00:00Z",
+                "Status": "UnderReview",
+                "JobId": 30
+            },
+            {
+                "CoverLetter": "I am interested in contributing to engineering projects with my skills.",
+                "AppliedDate": "2025-08-06T14:00:00Z",
+                "Status": "Pending",
+                "JobId": 61
+            },
+            {
+                "CoverLetter": "My experience in project coordination makes me a strong candidate.",
+                "AppliedDate": "2025-08-10T09:30:00Z",
+                "Status": "Accepted",
+                "JobId": 62
+            },
+            {
+                "CoverLetter": "Looking forward to applying my knowledge in mechanical engineering.",
+                "AppliedDate": "2025-08-10T12:00:00Z",
+                "Status": "Rejected",
+                "JobId": 63
+            }
+        ]
+    },
+    {
+        "FullName": "Claire Adams",
+        "Email": "claireadams@example.com",
+        "PhoneNumber": "+1 617 555 4321",
+        "CurrentLocation": "Boston, USA",
+        "CurrentJobTitle": "Business Analyst",
+        "YearsOfExperience": "6 Years",
+        "ResumeUrl": "cv/claireadams.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/claireadams",
+        "GitHubUrl": null,
+        "ApplicantId": 44,
+        "Applications": [
+            {
+                "CoverLetter": "My experience in process optimization and data-driven decisions makes me a great fit for the Senior Data Analyst role.",
+                "AppliedDate": "2025-08-04T10:00:00Z",
+                "Status": "UnderReview",
+                "JobId": 171
+            }
+        ]
+    },
+    {
+        "FullName": "Mohamed Said",
+        "Email": "mohamed.said@example.com",
+        "PhoneNumber": "01098765433",
+        "CurrentLocation": "Cairo, Egypt",
+        "CurrentJobTitle": "Software Developer",
+        "YearsOfExperience": "4 Years",
+        "ResumeUrl": "cv/defaultcv.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/mohamedsaid",
+        "GitHubUrl": null,
+        "ApplicantId": 45,
+        "Applications": [
+            {
+                "CoverLetter": "My expertise in .NET Core and React aligns with the Senior Software Engineer role.",
+                "AppliedDate": "2025-08-15T11:00:00Z",
+                "Status": "Accepted",
+                "JobId": 107
+            },
+            {
+                "CoverLetter": "I am eager to contribute to software development with my agile methodology experience.",
+                "AppliedDate": "2025-07-21T14:00:00Z",
+                "Status": "UnderReview",
+                "JobId": 151
+            }
+        ]
+    },
+    {
+        "FullName": "Layan Khalid",
+        "Email": "layan.khalid@example.com",
+        "PhoneNumber": "+971501234567",
+        "CurrentLocation": "Dubai, UAE",
+        "CurrentJobTitle": "Digital Marketing Specialist",
+        "YearsOfExperience": "5 Years",
+        "ResumeUrl": "cv/defaultcv.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/layankhalid",
+        "GitHubUrl": null,
+        "ApplicantId": 46,
+        "Applications": [
+            {
+                "CoverLetter": "My experience in SEO and PPC campaigns makes me a strong candidate for the Digital Marketing Specialist role.",
+                "AppliedDate": "2025-08-01T09:30:00Z",
+                "Status": "Pending",
+                "JobId": 103
+            },
+            {
+                "CoverLetter": "I am interested in driving brand engagement with my social media strategy skills.",
+                "AppliedDate": "2025-07-01T12:00:00Z",
+                "Status": "Rejected",
+                "JobId": 104
+            },
+            {
+                "CoverLetter": "My certifications in Google Ads and HubSpot align with this position.",
+                "AppliedDate": "2025-08-06T15:00:00Z",
+                "Status": "UnderReview",
+                "JobId": 105
+            },
+            {
+                "CoverLetter": "Looking forward to analyzing performance metrics for your team.",
+                "AppliedDate": "2025-08-21T10:00:00Z",
+                "Status": "Accepted",
+                "JobId": 106
+            }
+        ]
+    },
+    {
+        "FullName": "Esraa Mohamed",
+        "Email": "esraa.mohamed@example.com",
+        "PhoneNumber": "01055667799",
+        "CurrentLocation": "Alexandria, Egypt",
+        "CurrentJobTitle": "Data Analyst",
+        "YearsOfExperience": "4 Years",
+        "ResumeUrl": "cv/defaultcv.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/esraamohamed",
+        "GitHubUrl": null,
+        "ApplicantId": 47,
+        "Applications": [
+            {
+                "CoverLetter": "My skills in Python and Tableau make me ideal for the Data Analyst role.",
+                "AppliedDate": "2025-08-04T11:00:00Z",
+                "Status": "UnderReview",
+                "JobId": 171
+            },
+            {
+                "CoverLetter": "I am excited to generate insights for your team with my experience.",
+                "AppliedDate": "2025-07-11T13:30:00Z",
+                "Status": "Pending",
+                "JobId": 193
+            }
+        ]
+    },
+    {
+        "FullName": "Adam Wilson",
+        "Email": "adam.wilson@example.com",
+        "PhoneNumber": "+442071234567",
+        "CurrentLocation": "London, UK",
+        "CurrentJobTitle": "DevOps Engineer",
+        "YearsOfExperience": "5 Years",
+        "ResumeUrl": "cv/defaultcv.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/adamwilson",
+        "GitHubUrl": null,
+        "ApplicantId": 48,
+        "Applications": [
+            {
+                "CoverLetter": "My expertise in Docker and Kubernetes aligns with the DevOps Engineer role.",
+                "AppliedDate": "2025-07-16T10:00:00Z",
+                "Status": "Accepted",
+                "JobId": 4
+            },
+            {
+                "CoverLetter": "I am interested in automating pipelines for your team.",
+                "AppliedDate": "2025-08-17T12:45:00Z",
+                "Status": "UnderReview",
+                "JobId": 21
+            },
+            {
+                "CoverLetter": "My experience in cloud management makes me a great fit.",
+                "AppliedDate": "2025-07-11T15:00:00Z",
+                "Status": "Rejected",
+                "JobId": 33
+            }
+        ]
+    },
+    {
+        "FullName": "Rana Adel",
+        "Email": "rana.adel@example.com",
+        "PhoneNumber": "01122334455",
+        "CurrentLocation": "Giza, Egypt",
+        "CurrentJobTitle": "UI/UX Designer",
+        "YearsOfExperience": "4 Years",
+        "ResumeUrl": "cv/defaultcv.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/ranaadel",
+        "GitHubUrl": null,
+        "ApplicantId": 49,
+        "Applications": [
+            {
+                "CoverLetter": "My experience in Figma and Adobe XD makes me a strong candidate for the UI/UX Designer role.",
+                "AppliedDate": "2025-08-16T09:00:00Z",
+                "Status": "Pending",
+                "JobId": 20
+            },
+            {
+                "CoverLetter": "I am eager to contribute to user experience design with my skills.",
+                "AppliedDate": "2025-08-22T11:30:00Z",
+                "Status": "UnderReview",
+                "JobId": 25
+            }
+        ]
+    },
+    {
+        "FullName": "Emma Jackson",
+        "Email": "emma.jackson@example.com",
+        "PhoneNumber": "+14155556789",
+        "CurrentLocation": "San Francisco, USA",
+        "CurrentJobTitle": "Machine Learning Engineer",
+        "YearsOfExperience": "5 Years",
+        "ResumeUrl": "cv/defaultcv.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/emmajackson",
+        "GitHubUrl": null,
+        "ApplicantId": 50,
+        "Applications": [
+            {
+                "CoverLetter": "My expertise in TensorFlow and PyTorch aligns with the AI/ML Engineer role.",
+                "AppliedDate": "2025-08-12T10:00:00Z",
+                "Status": "Accepted",
+                "JobId": 94
+            },
+            {
+                "CoverLetter": "I am interested in building deep learning models for your team.",
+                "AppliedDate": "2025-08-13T13:00:00Z",
+                "Status": "UnderReview",
+                "JobId": 156
+            },
+            {
+                "CoverLetter": "My experience in NLP and computer vision makes me a great fit.",
+                "AppliedDate": "2025-08-23T15:30:00Z",
+                "Status": "Rejected",
+                "JobId": 157
+            }
+        ]
+    },
+    {
+        "FullName": "Khalid Nasser",
+        "Email": "khalid.nasser@example.com",
+        "PhoneNumber": "+966501234568",
+        "CurrentLocation": "Riyadh, Saudi Arabia",
+        "CurrentJobTitle": "Cybersecurity Analyst",
+        "YearsOfExperience": "4 Years",
+        "ResumeUrl": "cv/defaultcv.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/khalidnasser",
+        "GitHubUrl": null,
+        "ApplicantId": 51,
+        "Applications": [
+            {
+                "CoverLetter": "My skills in threat detection and incident response align with the Cybersecurity Analyst role.",
+                "AppliedDate": "2025-07-05T09:00:00Z",
+                "Status": "Pending",
+                "JobId": 26
+            },
+            {
+                "CoverLetter": "I am eager to contribute to network security with my experience.",
+                "AppliedDate": "2025-07-05T12:00:00Z",
+                "Status": "UnderReview",
+                "JobId": 28
+            }
+        ]
+    },
+    {
+        "FullName": "Ahmed Gamal",
+        "Email": "ahmed.gamal@example.com",
+        "PhoneNumber": "01033445577",
+        "CurrentLocation": "Mansoura, Egypt",
+        "CurrentJobTitle": "Mobile App Developer",
+        "YearsOfExperience": "4 Years",
+        "ResumeUrl": "cv/defaultcv.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/ahmedgamal",
+        "GitHubUrl": null,
+        "ApplicantId": 52,
+        "Applications": [
+            {
+                "CoverLetter": "My expertise in Flutter and Swift makes me a great fit for the Mobile App Developer - Android role.",
+                "AppliedDate": "2025-07-02T10:00:00Z",
+                "Status": "Rejected",
+                "JobId": 197
+            }
+        ]
+    },
+    {
+        "FullName": "Sara Omar",
+        "Email": "sara.omar@example.com",
+        "PhoneNumber": "+962799876543",
+        "CurrentLocation": "Amman, Jordan",
+        "CurrentJobTitle": "Content Writer",
+        "YearsOfExperience": "4 Years",
+        "ResumeUrl": "cv/defaultcv.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/saraomar",
+        "GitHubUrl": null,
+        "ApplicantId": 53,
+        "Applications": [
+            {
+                "CoverLetter": "My skills in SEO and storytelling align with the Content Creator role.",
+                "AppliedDate": "2025-07-05T11:00:00Z",
+                "Status": "UnderReview",
+                "JobId": 132
+            },
+            {
+                "CoverLetter": "I am excited to craft engaging content for your team.",
+                "AppliedDate": "2025-08-05T14:00:00Z",
+                "Status": "Pending",
+                "JobId": 133
+            },
+            {
+                "CoverLetter": "My experience in blogs and social media makes me a strong candidate.",
+                "AppliedDate": "2025-07-08T09:30:00Z",
+                "Status": "Accepted",
+                "JobId": 134
+            }
+        ]
+    },
+    {
+        "FullName": "John Davis",
+        "Email": "john.davis@example.com",
+        "PhoneNumber": "+12125554321",
+        "CurrentLocation": "New York, USA",
+        "CurrentJobTitle": "Project Manager",
+        "YearsOfExperience": "7 Years",
+        "ResumeUrl": "cv/defaultcv.pdf",
+        "PortfolioUrl": null,
+        "LinkedInUrl": "https://linkedin.com/in/johndavis",
+        "GitHubUrl": null,
+        "ApplicantId": 54,
+        "Applications": [
+            {
+                "CoverLetter": "My experience in Agile and Scrum makes me ideal for the Project Manager role.",
+                "AppliedDate": "2025-08-23T10:00:00Z",
+                "Status": "UnderReview",
+                "JobId": 36
+            },
+            {
+                "CoverLetter": "I am eager to lead teams with my PMP certification.",
+                "AppliedDate": "2025-07-31T13:00:00Z",
+                "Status": "Pending",
+                "JobId": 43
+            },
+            {
+                "CoverLetter": "My skills in risk management align with this position.",
+                "AppliedDate": "2025-08-19T15:30:00Z",
+                "Status": "Accepted",
+                "JobId": 51
+            }
+        ]
+    }
 
 ]

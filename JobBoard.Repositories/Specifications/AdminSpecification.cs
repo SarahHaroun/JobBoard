@@ -58,6 +58,15 @@ namespace JobBoard.Repositories.Specifications
 			
         }
 	}
+
+	////////////////////////get jobs related employer//////////////////////////
+    public class JobsByEmployerIdSpecification : BaseSpecifications<Job>
+	{
+		public JobsByEmployerIdSpecification(int employerId) : base(j => j.EmployerId == employerId)
+		{
+			AddIncludes(j => j.JobApplications);
+		}
+    }
     /////////////////////////get all jobs///////////////////////
 
     public class AllJobsSpecification : BaseSpecifications<Job>
@@ -94,4 +103,6 @@ namespace JobBoard.Repositories.Specifications
 			AddIncludes(j => j.Skills);
 		}
 	}
+
+
 }

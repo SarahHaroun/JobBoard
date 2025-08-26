@@ -30,7 +30,7 @@ namespace JobBoard.Repositories.Data.Configurations
 			builder.HasOne(j => j.Employer)
 				.WithMany(e => e.PostedJobs)
 				.HasForeignKey(j => j.EmployerId)
-				.OnDelete(DeleteBehavior.Cascade);
+				.OnDelete(DeleteBehavior.Restrict);
 
 			builder.HasMany(j => j.Skills)
 				   .WithMany(s => s.Jobs)
@@ -40,6 +40,9 @@ namespace JobBoard.Repositories.Data.Configurations
 				   .WithMany(s => s.Jobs)
 				   .UsingEntity(j => j.ToTable("JobCategories"));
 
-		}
+            builder.Property(j => j.IsDeleted).HasDefaultValue(false);
+            builder.HasQueryFilter(j => !j.IsDeleted);
+
+        }
 	}
 }

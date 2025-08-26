@@ -264,6 +264,11 @@ namespace JobBoard.Repositories.Data.Migrations
                     b.Property<string>("Industry")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
@@ -311,6 +316,11 @@ namespace JobBoard.Repositories.Data.Migrations
 
                     b.Property<bool>("IsApproved")
                         .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
 
                     b.Property<string>("JobType")
                         .IsRequired()
@@ -816,13 +826,13 @@ namespace JobBoard.Repositories.Data.Migrations
                     b.HasOne("JobBoard.Domain.Entities.SeekerProfile", "Applicant")
                         .WithMany("UserApplications")
                         .HasForeignKey("ApplicantId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("JobBoard.Domain.Entities.Job", "Job")
                         .WithMany("JobApplications")
                         .HasForeignKey("JobId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Applicant");
@@ -835,7 +845,7 @@ namespace JobBoard.Repositories.Data.Migrations
                     b.HasOne("JobBoard.Domain.Entities.ApplicationUser", "User")
                         .WithOne("employerProfile")
                         .HasForeignKey("JobBoard.Domain.Entities.EmployerProfile", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("User");
                 });
@@ -845,7 +855,7 @@ namespace JobBoard.Repositories.Data.Migrations
                     b.HasOne("JobBoard.Domain.Entities.EmployerProfile", "Employer")
                         .WithMany("PostedJobs")
                         .HasForeignKey("EmployerId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Employer");

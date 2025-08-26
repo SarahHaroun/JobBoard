@@ -164,10 +164,45 @@ namespace JobBoard.Services.AdminService
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null) return false;
 
-            var result = await _userManager.DeleteAsync(user);
-            return result.Succeeded;
-        }
+            if (user.User_Type == UserType.Seeker)
+            {
+                var result = await _userManager.DeleteAsync(user);
+                return result.Succeeded;
+            }
 
+            else if (user.User_Type == UserType.Employer)
+            {
+                var employerSpec = new EmployerByUserIdSpecification(userId);
+                var employer = await _unitOfWork.Repository<EmployerProfile>().GetByIdAsync(employerSpec);
+
+                if (employer != null)
+                {
+                    employer.IsDeleted = true;
+
+                    var jobs = await _unitOfWork.Repository<Job>()
+                        .GetAllAsync(new JobsByEmployerIdSpecification(employer.Id));
+
+                    foreach (var job in jobs)
+                    {
+                        job.IsDeleted = true;
+                        await _aiEmbeddingService.DeleteEmbeddingForJobAsync(job.Id);
+
+                        foreach (var app in job.JobApplications)
+                        {
+                            _unitOfWork.Repository<Application>().Delete(app);  
+                        }
+                    }
+
+                    _unitOfWork.Repository<EmployerProfile>().Update(employer);
+                    await _unitOfWork.CompleteAsync();
+                }
+
+                var deleteResult = await _userManager.DeleteAsync(user);
+                return deleteResult.Succeeded;
+            }
+
+            return false;
+        }
 
         //////////////////////get stats///////////////////////
         public async Task<StatsDto> GetStatsAsync()
