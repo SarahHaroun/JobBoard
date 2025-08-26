@@ -19,6 +19,8 @@ namespace JobBoard.Domain.Entities
 		public string? CompanyMission  { get; set; }
 		public string? EmployeeRange { get; set; }
 		public int? EstablishedYear { get; set; }
+        public bool IsDeleted { get; set; } = false;
+
 
 
         /*------------------------user--------------------------*/

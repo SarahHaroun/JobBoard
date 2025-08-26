@@ -27,6 +27,8 @@ namespace JobBoard.Domain.Entities
 		public string? Responsabilities { get; set; }
 		public string? Benefits { get; set; }
         public bool IsApproved { get; set; } = false;
+        public bool IsDeleted { get; set; } = false;
+
 
 
         /*------------------------Category--------------------------*/

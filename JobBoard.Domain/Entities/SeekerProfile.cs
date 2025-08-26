@@ -20,7 +20,7 @@ namespace JobBoard.Domain.Entities
         public Gender Gender { get; set; }
         public string? Summary { get; set; }
         public string? ProfileImageUrl { get; set; }
-          
+
 
 
         /*------------------------user--------------------------*/
