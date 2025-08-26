@@ -1,4 +1,5 @@
-﻿using JobBoard.Services.AdminService;
+﻿using JobBoard.API.Helpers;
+using JobBoard.Services.AdminService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -31,6 +32,7 @@ namespace JobBoard.API.Controllers
         }
 
         /////////////////////////get seeker by id///////////////////////
+        [CachedAttribute(5000)]
         [HttpGet("seeker/{seekerId}")]
         public async Task<IActionResult> GetSeekerById(string seekerId)
         {
@@ -43,7 +45,7 @@ namespace JobBoard.API.Controllers
         }
 
 
-        /////////////////////////get all employers///////////////////////
+        /////////////////////////get all employers//////////////////////
         [HttpGet("employers")]
         public async Task<IActionResult> GetEmployers()
         {
@@ -129,6 +131,7 @@ namespace JobBoard.API.Controllers
 
 
         ////////////////////////get stats///////////////////////
+        [CachedAttribute(5000)]
         [HttpGet("stats")]
         public async Task<IActionResult> GetStats()
         {
