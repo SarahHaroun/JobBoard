@@ -33,6 +33,7 @@ namespace JobBoard.Repositories.Redis
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 WriteIndented = true // Optional for readability
             };
+            _logger = logger;
         }
 
         /*This method sets a value in Redis using a key, with the option to specify an expiry period.

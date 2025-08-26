@@ -100,6 +100,7 @@ namespace JobBoard.Services.AdminService
             _unitOfWork.Repository<Job>().Delete(job);
             await _unitOfWork.CompleteAsync();
             await _aiEmbeddingService.DeleteEmbeddingForJobAsync(id);
+            //await _redisService.DeleteByPrefixAsync("jobs:");
 
             return true;
         }
@@ -138,7 +139,7 @@ namespace JobBoard.Services.AdminService
 
             //remove job from redis cache
             await _aiEmbeddingService.GenerateEmbeddingForJobAsync(job);
-            await _redisService.DeleteByPrefixAsync("jobs:");
+            //await _redisService.DeleteByPrefixAsync("jobs:");
 
 
             await _notificationService.AddNotificationAsync(job.Employer.UserId,notificationMessage,jobLink);

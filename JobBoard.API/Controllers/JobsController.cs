@@ -7,6 +7,7 @@ using JobBoard.Services;
 using JobBoard.Services.EmployerService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 using System.Security.Claims;
 
 namespace JobBoard.API.Controllers
@@ -30,7 +31,8 @@ namespace JobBoard.API.Controllers
 		//Get: api/jobs
 		[HttpGet]
 		[AllowAnonymous]
-		[Cached(300,"jobs:")]
+        //[Cached(300,"jobs:")]
+        //[OutputCache(PolicyName = "JobsCache")]
         public async Task<IActionResult> GetAllJobs([FromQuery] JobFilterParams filterParams)
 		{
 			var result = await _jobService.GetAllJobsAsync(filterParams);
