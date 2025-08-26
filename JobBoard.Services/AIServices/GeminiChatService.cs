@@ -18,7 +18,7 @@ namespace JobBoard.Services.AIServices
         public GeminiChatService(IConfiguration configuration)
         {
             _apiKey = configuration["Gemini:ApiKey"];
-            _model = new GenerativeModel(model: "gemini-2.5-flash", apiKey: _apiKey);
+            _model = new GenerativeModel(model: "gemini-1.5-flash", apiKey: _apiKey);
         }
         public async Task<string> AskGeminiAsync(string prompt)
         {
