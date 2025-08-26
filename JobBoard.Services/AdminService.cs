@@ -7,10 +7,11 @@ using JobBoard.Domain.Entities;
 using JobBoard.Domain.Entities.Enums;
 using JobBoard.Domain.Repositories.Contract;
 using JobBoard.Domain.Shared;
+using JobBoard.Repositories;
 using JobBoard.Repositories.Persistence;
 using JobBoard.Repositories.Specifications;
-using JobBoard.Services.NotificationsService;
 using JobBoard.Services.AIEmbeddingService;
+using JobBoard.Services.NotificationsService;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -146,21 +147,27 @@ namespace JobBoard.Services.AdminService
         //////////////////////reject job by id///////////////////////
         public async Task<bool> RejectJobAsync(int jobId)
         {
-            var spec = new JobByIdSpecification(jobId);
-            var job = await _unitOfWork.Repository<Job>().GetByIdAsync(spec);
+            var job = await _unitOfWork.Repository<Job>().GetByIdAsync(new JobByIdWithApplication(jobId));
 
             if (job == null) return false;
+            foreach (var app in job.JobApplications)
+            {
+                _unitOfWork.Repository<Application>().Delete(app);
+            }
 
             _unitOfWork.Repository<Job>().Delete(job);
 
 			var result = await _unitOfWork.CompleteAsync();
-
-			var notificationMessage = $"Your job {job.Title} has been rejected!";
-
-			await _notificationService.AddNotificationAsync(job.Employer.UserId, notificationMessage);
+            if (job.Employer != null)
+            {
+                var notificationMessage = $"Your job {job.Title} has been rejected!";
+                await _notificationService.AddNotificationAsync(job.Employer.UserId, notificationMessage);
+            }
+           
 			await _aiEmbeddingService.DeleteEmbeddingForJobAsync(jobId);
 			return result > 0;
 		}
+       
 
 
         //////////////////////delete user by id///////////////////////
