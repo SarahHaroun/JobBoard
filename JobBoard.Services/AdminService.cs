@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using JobBoard.Repositories.Redis;
 
 namespace JobBoard.Services.AdminService
 {
@@ -28,18 +29,21 @@ namespace JobBoard.Services.AdminService
         private readonly IMapper _mapper;
         private readonly IAIEmbeddingService _aiEmbeddingService;
         private readonly INotificationService _notificationService;
+        private readonly IRedisService _redisService;
 
-		public AdminService(IUnitOfWork unitOfWork, 
+        public AdminService(IUnitOfWork unitOfWork, 
 			UserManager<ApplicationUser> userManager,
 			IMapper mapper, 
 			IAIEmbeddingService aiEmbeddingService,
-			INotificationService notificationService)
+			INotificationService notificationService,
+            IRedisService redisService)
 		{
 			_unitOfWork = unitOfWork;
 			_userManager = userManager;
 			_mapper = mapper;
 			_aiEmbeddingService = aiEmbeddingService;
 			_notificationService = notificationService;
+            _redisService = redisService;
         }
 
         ///////////////////////get all seekers///////////////////////
@@ -101,6 +105,7 @@ namespace JobBoard.Services.AdminService
             _unitOfWork.Repository<Job>().Delete(job);
             await _unitOfWork.CompleteAsync();
             await _aiEmbeddingService.DeleteEmbeddingForJobAsync(id);
+            //await _redisService.DeleteByPrefixAsync("jobs:");
 
             return true;
         }
@@ -135,7 +140,12 @@ namespace JobBoard.Services.AdminService
             var result = await _unitOfWork.CompleteAsync();
 
             var notificationMessage = $"Your job {job.Title} has been approved!";
-             var jobLink = $"/jobDtl/{job.Id}"; 
+             var jobLink = $"/jobDtl/{job.Id}";
+
+            //remove job from redis cache
+            await _aiEmbeddingService.GenerateEmbeddingForJobAsync(job);
+            //await _redisService.DeleteByPrefixAsync("jobs:");
+
 
             await _notificationService.AddNotificationAsync(job.Employer.UserId,notificationMessage,jobLink);
             return result > 0;

@@ -19,14 +19,17 @@ namespace JobBoard.API
 				.AddBusinessServices()
 				.AddAIServices()
 				.AddRedisServices(configuration)
-				.AddAutoMapperProfiles()
+                .AddCacheServices(configuration)
+                .AddAutoMapperProfiles()
 				.AddApiConfiguration();
 
 
 			builder.Services.AddHostedService<CleanupUnconfirmedUsersService>();
+          
 
 
-			var app = builder.Build();
+
+            var app = builder.Build();
 
 
 

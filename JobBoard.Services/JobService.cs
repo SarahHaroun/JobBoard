@@ -89,10 +89,9 @@ namespace JobBoard.Services
 			await _unitOfWork.CompleteAsync();
 
 			await _aiEmbeddingService.GenerateEmbeddingForJobAsync(job);
-            // remove Cache jobs in Redis
-            await _redisService.RemoveAsync("api/jobs");
+            
 
-
+			await _redisService.DeleteByPrefixAsync("jobs:");
 
             return _mapper.Map<JobDto>(job);
 		}
@@ -116,8 +115,9 @@ namespace JobBoard.Services
 			_unitOfWork.Repository<Job>().Update(job);
 			await _unitOfWork.CompleteAsync();
 			await _aiEmbeddingService.GenerateEmbeddingForJobAsync(job);
+            await _redisService.DeleteByPrefixAsync("jobs:");
 
-			return _mapper.Map<JobDto>(job);
+            return _mapper.Map<JobDto>(job);
 		}
 
 		public async Task<bool> DeleteJob(int id, int employerId)
@@ -132,6 +132,7 @@ namespace JobBoard.Services
 			_unitOfWork.Repository<Job>().Delete(job);
 			await _unitOfWork.CompleteAsync();
             await _aiEmbeddingService.DeleteEmbeddingForJobAsync(id);
+            await _redisService.DeleteByPrefixAsync("jobs:");
 
             return true;
 		}
