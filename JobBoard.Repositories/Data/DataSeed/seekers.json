@@ -1,284 +1,284 @@
 [
-  {
-    "UserEmail": "ahmedtarek@example.com",
-    "Name": "Ahmed Tarek",
-    "PhoneNumber": "01000065402",
-    "Title": "Software Engineer",
-    "DateOfBirth": "1998-05-01T00:00:00",
-    "Address": "Cairo, Egypt",
-    "CV_Url": "cv/ahmedtarek.pdf",
-    "Gender": "Male",
-    "Summary": "Motivated software engineer...",
-    "ProfileImageUrl": "images/profilepic/ahmedtarek.jpg",
-    "Skills": [ 1, 2 ],
-    "seekerCertificates": [ { "CertificateName": "AWS Certified" } ],
-    "SeekerTraining": [ { "TrainingName": "Flutter Training" } ],
-    "seekerInterests": [ { "InterestName": "AI" } ],
-    "SeekerExperiences": [
-      {
-        "JobTitle": "Intern",
-        "CompanyName": "ABC Corp",
-        "Location": "Cairo",
-        "StartDate": "2020-01-01T00:00:00",
-        "EndDate": "2020-06-01T00:00:00",
-        "Description": "Worked on web apps"
-      }
-    ],
-    "SeekerEducations": [
-      {
-        "Major": "Computer Science",
-        "Faculty": "FCI",
-        "University": "Helwan",
-        "Date": "2021-06-01T00:00:00",
-        "Location": "Cairo",
-        "GPA": 3.7,
-        "EducationLevel": "Bachelor"
-      }
-    ]
-  },
-  {
-    "UserEmail": "maramali@example.com",
-    "Name": "Maram Ali",
-    "PhoneNumber": "201000012345",
-    "Title": "Frontend Developer",
-    "DateOfBirth": "1999-03-15T00:00:00",
-    "Address": "Giza, Egypt",
-    "CV_Url": "cv/maramali.pdf",
-    "Gender": "Female",
-    "Summary": "Passionate frontend developer with strong skills in React and UI design.",
-    "ProfileImageUrl": "images/profilepic/maramali.jpg",
-    "Skills": [ 3, 4 ],
-    "seekerCertificates": [
-      { "CertificateName": "Google UX Design" }
-    ],
-    "SeekerTraining": [
-      { "TrainingName": "React Training" }
-    ],
-    "seekerInterests": [
-      { "InterestName": "UI/UX" }
-    ],
+    {
+        "UserEmail": "ahmedtarek@example.com",
+        "Name": "Ahmed Tarek",
+        "PhoneNumber": "01000065402",
+        "Title": "Software Engineer",
+        "DateOfBirth": "1998-05-01T00:00:00",
+        "Address": "Cairo, Egypt",
+        "CV_Url": "cv/ahmedtarek.pdf",
+        "Gender": "Male",
+        "Summary": "Motivated software engineer...",
+        "ProfileImageUrl": "images/profilepic/ahmedtarek.jpg",
+        "Skills": [ 1, 2 ],
+        "seekerCertificates": [ { "CertificateName": "AWS Certified" } ],
+        "SeekerTraining": [ { "TrainingName": "Flutter Training" } ],
+        "seekerInterests": [ { "InterestName": "AI" } ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Intern",
+                "CompanyName": "ABC Corp",
+                "Location": "Cairo",
+                "StartDate": "2020-01-01T00:00:00",
+                "EndDate": "2020-06-01T00:00:00",
+                "Description": "Worked on web apps"
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Computer Science",
+                "Faculty": "FCI",
+                "University": "Helwan",
+                "Date": "2021-06-01T00:00:00",
+                "Location": "Cairo",
+                "GPA": 3.7,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "maramali@example.com",
+        "Name": "Maram Ali",
+        "PhoneNumber": "201000012345",
+        "Title": "Frontend Developer",
+        "DateOfBirth": "1999-03-15T00:00:00",
+        "Address": "Giza, Egypt",
+        "CV_Url": "cv/maramali.pdf",
+        "Gender": "Female",
+        "Summary": "Passionate frontend developer with strong skills in React and UI design.",
+        "ProfileImageUrl": "images/profilepic/maramali.jpg",
+        "Skills": [ 3, 4 ],
+        "seekerCertificates": [
+            { "CertificateName": "Google UX Design" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "React Training" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "UI/UX" }
+        ],
 
-    "SeekerExperiences": [
-      {
-        "JobTitle": "Frontend Intern",
-        "CompanyName": "Tech Solutions",
-        "Location": "Giza",
-        "StartDate": "2021-02-01T00:00:00",
-        "EndDate": "2021-08-01T00:00:00",
-        "Description": "Worked on building responsive web pages and improving user experience."
-      }
-    ],
-    "SeekerEducations": [
-      {
-        "Major": "Information Technology",
-        "Faculty": "Computer Science",
-        "University": "Cairo University",
-        "Date": "2022-07-01T00:00:00",
-        "Location": "Giza",
-        "GPA": 3.8,
-        "EducationLevel": "Bachelor"
-      }
-    ]
-  },
-  {
-    "UserEmail": "mohamed12@example.com",
-    "Name": "Mohamed Hassan",
-    "PhoneNumber": "01098765432",
-    "Title": "Backend Developer",
-    "DateOfBirth": "1997-11-20T00:00:00",
-    "Address": "Alexandria, Egypt",
-    "CV_Url": "cv/Mohamed_Hassan.pdf",
-    "Gender": "Male",
-    "Summary": "Backend developer with strong experience in .NET Core and database management.",
-    "ProfileImageUrl": "images/profilepic/user.jpg",
-    "Skills": [ 5, 6 ],
-    "seekerCertificates": [
-      { "CertificateName": "Microsoft Azure Fundamentals" }
-    ],
-    "SeekerTraining": [
-      { "TrainingName": "ASP.NET Core Advanced Training" }
-    ],
-    "seekerInterests": [
-      { "InterestName": "Cloud Computing" }
-    ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Frontend Intern",
+                "CompanyName": "Tech Solutions",
+                "Location": "Giza",
+                "StartDate": "2021-02-01T00:00:00",
+                "EndDate": "2021-08-01T00:00:00",
+                "Description": "Worked on building responsive web pages and improving user experience."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Information Technology",
+                "Faculty": "Computer Science",
+                "University": "Cairo University",
+                "Date": "2022-07-01T00:00:00",
+                "Location": "Giza",
+                "GPA": 3.8,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "mohamed12@example.com",
+        "Name": "Mohamed Hassan",
+        "PhoneNumber": "01098765432",
+        "Title": "Backend Developer",
+        "DateOfBirth": "1997-11-20T00:00:00",
+        "Address": "Alexandria, Egypt",
+        "CV_Url": "cv/Mohamed_Hassan.pdf",
+        "Gender": "Male",
+        "Summary": "Backend developer with strong experience in .NET Core and database management.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 5, 6 ],
+        "seekerCertificates": [
+            { "CertificateName": "Microsoft Azure Fundamentals" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "ASP.NET Core Advanced Training" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Cloud Computing" }
+        ],
 
-    "SeekerExperiences": [
-      {
-        "JobTitle": "Backend Developer Intern",
-        "CompanyName": "Smart Tech",
-        "Location": "Alexandria",
-        "StartDate": "2020-07-01T00:00:00",
-        "EndDate": "2021-01-01T00:00:00",
-        "Description": "Built RESTful APIs and optimized database queries for better performance."
-      }
-    ],
-    "SeekerEducations": [
-      {
-        "Major": "Software Engineering",
-        "Faculty": "Engineering",
-        "University": "Alexandria University",
-        "Date": "2020-06-01T00:00:00",
-        "Location": "Alexandria",
-        "GPA": 3.6,
-        "EducationLevel": "Bachelor"
-      }
-    ]
-  },
-  {
-    "UserEmail": "sara12@example.com",
-    "Name": "Sara Mostafa",
-    "PhoneNumber": "01055667788",
-    "Title": "Data Analyst",
-    "DateOfBirth": "1996-09-10T00:00:00",
-    "Address": "Cairo, Egypt",
-    "CV_Url": "cv/Sara_Mosata.pdf",
-    "Gender": "Female",
-    "Summary": "Data analyst with strong background in Python, SQL, and data visualization tools like Power BI.",
-    "ProfileImageUrl": "images/profilepic/user.jpg",
-    "Skills": [ 7, 10 ],
-    "seekerCertificates": [
-      { "CertificateName": "IBM Data Science Professional" }
-    ],
-    "SeekerTraining": [
-      { "TrainingName": "Power BI Advanced Training" }
-    ],
-    "seekerInterests": [
-      { "InterestName": "Data Visualization" }
-    ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Backend Developer Intern",
+                "CompanyName": "Smart Tech",
+                "Location": "Alexandria",
+                "StartDate": "2020-07-01T00:00:00",
+                "EndDate": "2021-01-01T00:00:00",
+                "Description": "Built RESTful APIs and optimized database queries for better performance."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Software Engineering",
+                "Faculty": "Engineering",
+                "University": "Alexandria University",
+                "Date": "2020-06-01T00:00:00",
+                "Location": "Alexandria",
+                "GPA": 3.6,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "sara12@example.com",
+        "Name": "Sara Mostafa",
+        "PhoneNumber": "01055667788",
+        "Title": "Data Analyst",
+        "DateOfBirth": "1996-09-10T00:00:00",
+        "Address": "Cairo, Egypt",
+        "CV_Url": "cv/Sara_Mosata.pdf",
+        "Gender": "Female",
+        "Summary": "Data analyst with strong background in Python, SQL, and data visualization tools like Power BI.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 7, 10 ],
+        "seekerCertificates": [
+            { "CertificateName": "IBM Data Science Professional" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "Power BI Advanced Training" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Data Visualization" }
+        ],
 
-    "SeekerExperiences": [
-      {
-        "JobTitle": "Data Analyst Intern",
-        "CompanyName": "DataTech",
-        "Location": "Cairo",
-        "StartDate": "2021-03-01T00:00:00",
-        "EndDate": "2021-09-01T00:00:00",
-        "Description": "Analyzed business data and created dashboards using Power BI and SQL queries."
-      }
-    ],
-    "SeekerEducations": [
-      {
-        "Major": "Information Systems",
-        "Faculty": "Commerce",
-        "University": "Ain Shams University",
-        "Date": "2019-07-01T00:00:00",
-        "Location": "Cairo",
-        "GPA": 3.5,
-        "EducationLevel": "Bachelor"
-      }
-    ]
-  },
-  {
-    "UserEmail": "seeker5@example.com",
-    "Name": "Omar Khaled",
-    "PhoneNumber": "01033445566",
-    "Title": "Mobile App Developer",
-    "DateOfBirth": "1998-12-05T00:00:00",
-    "Address": "Giza, Egypt",
-    "CV_Url": "cv/Omar_Khaled.pdf",
-    "Gender": "Male",
-    "Summary": "Mobile app developer specialized in Flutter and Android with experience in building cross-platform apps.",
-    "ProfileImageUrl": "images/profilepic/user.jpg",
-    "Skills": [ 9, 10 ],
-    "seekerCertificates": [
-      { "CertificateName": "Google Associate Android Developer" }
-    ],
-    "SeekerTraining": [
-      { "TrainingName": "Flutter Development Bootcamp" }
-    ],
-    "seekerInterests": [
-      { "InterestName": "Mobile Technologies" }
-    ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Data Analyst Intern",
+                "CompanyName": "DataTech",
+                "Location": "Cairo",
+                "StartDate": "2021-03-01T00:00:00",
+                "EndDate": "2021-09-01T00:00:00",
+                "Description": "Analyzed business data and created dashboards using Power BI and SQL queries."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Information Systems",
+                "Faculty": "Commerce",
+                "University": "Ain Shams University",
+                "Date": "2019-07-01T00:00:00",
+                "Location": "Cairo",
+                "GPA": 3.5,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "seeker5@example.com",
+        "Name": "Omar Khaled",
+        "PhoneNumber": "01033445566",
+        "Title": "Mobile App Developer",
+        "DateOfBirth": "1998-12-05T00:00:00",
+        "Address": "Giza, Egypt",
+        "CV_Url": "cv/Omar_Khaled.pdf",
+        "Gender": "Male",
+        "Summary": "Mobile app developer specialized in Flutter and Android with experience in building cross-platform apps.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 9, 10 ],
+        "seekerCertificates": [
+            { "CertificateName": "Google Associate Android Developer" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "Flutter Development Bootcamp" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Mobile Technologies" }
+        ],
 
-    "SeekerExperiences": [
-      {
-        "JobTitle": "Flutter Developer Intern",
-        "CompanyName": "AppMakers",
-        "Location": "Giza",
-        "StartDate": "2021-06-01T00:00:00",
-        "EndDate": "2021-12-01T00:00:00",
-        "Description": "Developed mobile apps for Android and iOS using Flutter, integrated APIs, and implemented responsive UI."
-      }
-    ],
-    "SeekerEducations": [
-      {
-        "Major": "Computer Science",
-        "Faculty": "FCI",
-        "University": "Helwan University",
-        "Date": "2020-07-01T00:00:00",
-        "Location": "Giza",
-        "GPA": 3.4,
-        "EducationLevel": "Bachelor"
-      }
-    ]
-  },
-  {
-    "UserEmail": "seeker6@example.com",
-    "Name": "Nourhan Adel",
-    "PhoneNumber": "01155667788",
-    "Title": "Full Stack .NET Developer",
-    "DateOfBirth": "1999-03-15T00:00:00",
-    "Address": "Cairo, Egypt",
-    "CV_Url": "cv/Nourhan_Adel.pdf",
-    "Gender": "Female",
-    "Summary": "Full stack developer specialized in .NET and Angular with hands-on experience in web application development.",
-    "ProfileImageUrl": "images/profilepic/user.jpg",
-    "Skills": [ 3, 5, 7 ],
-    "seekerCertificates": [
-      { "CertificateName": "Microsoft Certified: Azure Fundamentals" }
-    ],
-    "SeekerTraining": [
-      { "TrainingName": "Full Stack Web Development using .NET" }
-    ],
-    "seekerInterests": [
-      { "InterestName": "Cloud Computing" },
-      { "InterestName": "Web Security" }
-    ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Flutter Developer Intern",
+                "CompanyName": "AppMakers",
+                "Location": "Giza",
+                "StartDate": "2021-06-01T00:00:00",
+                "EndDate": "2021-12-01T00:00:00",
+                "Description": "Developed mobile apps for Android and iOS using Flutter, integrated APIs, and implemented responsive UI."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Computer Science",
+                "Faculty": "FCI",
+                "University": "Helwan University",
+                "Date": "2020-07-01T00:00:00",
+                "Location": "Giza",
+                "GPA": 3.4,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "seeker6@example.com",
+        "Name": "Nourhan Adel",
+        "PhoneNumber": "01155667788",
+        "Title": "Full Stack .NET Developer",
+        "DateOfBirth": "1999-03-15T00:00:00",
+        "Address": "Cairo, Egypt",
+        "CV_Url": "cv/Nourhan_Adel.pdf",
+        "Gender": "Female",
+        "Summary": "Full stack developer specialized in .NET and Angular with hands-on experience in web application development.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 3, 5, 7 ],
+        "seekerCertificates": [
+            { "CertificateName": "Microsoft Certified: Azure Fundamentals" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "Full Stack Web Development using .NET" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Cloud Computing" },
+            { "InterestName": "Web Security" }
+        ],
 
-    "SeekerExperiences": [
-      {
-        "JobTitle": "Backend Developer Intern",
-        "CompanyName": "TechVision",
-        "Location": "Cairo",
-        "StartDate": "2022-02-01T00:00:00",
-        "EndDate": "2022-08-01T00:00:00",
-        "Description": "Worked on building RESTful APIs using ASP.NET Core, optimized database queries, and contributed to team projects with Agile methodology."
-      }
-    ],
-    "SeekerEducations": [
-      {
-        "Major": "Information Systems",
-        "Faculty": "Faculty of Computers and Information",
-        "University": "Cairo University",
-        "Date": "2021-07-01T00:00:00",
-        "Location": "Cairo",
-        "GPA": 3.7,
-        "EducationLevel": "Bachelor"
-      }
-    ]
-  },
-  {
-    "UserEmail": "seeker7@example.com",
-    "Name": "Mohamed Yasser",
-    "PhoneNumber": "01099887766",
-    "Title": "Data Scientist",
-    "DateOfBirth": "1997-09-22T00:00:00",
-    "Address": "Alexandria, Egypt",
-    "CV_Url": "cv/Mohamed_Yasser.pdf",
-    "Gender": "Male",
-    "Summary": "Data scientist with experience in machine learning, data analysis, and building predictive models using Python and R.",
-    "ProfileImageUrl": "images/profilepic/user.jpg",
-    "Skills": [ 4, 8, 10 ],
-    "seekerCertificates": [
-      { "CertificateName": "IBM Data Science Professional Certificate" }
-    ],
-    "SeekerTraining": [
-      { "TrainingName": "Machine Learning Specialization - Coursera" }
-    ],
-    "seekerInterests": [
-      { "InterestName": "Artificial Intelligence" },
-      { "InterestName": "Big Data Analytics" }
-    ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Backend Developer Intern",
+                "CompanyName": "TechVision",
+                "Location": "Cairo",
+                "StartDate": "2022-02-01T00:00:00",
+                "EndDate": "2022-08-01T00:00:00",
+                "Description": "Worked on building RESTful APIs using ASP.NET Core, optimized database queries, and contributed to team projects with Agile methodology."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Information Systems",
+                "Faculty": "Faculty of Computers and Information",
+                "University": "Cairo University",
+                "Date": "2021-07-01T00:00:00",
+                "Location": "Cairo",
+                "GPA": 3.7,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "seeker7@example.com",
+        "Name": "Mohamed Yasser",
+        "PhoneNumber": "01099887766",
+        "Title": "Data Scientist",
+        "DateOfBirth": "1997-09-22T00:00:00",
+        "Address": "Alexandria, Egypt",
+        "CV_Url": "cv/Mohamed_Yasser.pdf",
+        "Gender": "Male",
+        "Summary": "Data scientist with experience in machine learning, data analysis, and building predictive models using Python and R.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 4, 8, 10 ],
+        "seekerCertificates": [
+            { "CertificateName": "IBM Data Science Professional Certificate" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "Machine Learning Specialization - Coursera" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Artificial Intelligence" },
+            { "InterestName": "Big Data Analytics" }
+        ],
 
         "SeekerExperiences": [
             {
@@ -335,915 +335,2355 @@
             { "InterestName": "Incident Response" }
         ],
 
-    "SeekerExperiences": [
-      {
-        "JobTitle": "Security Analyst",
-        "CompanyName": "SecureTech",
-        "Location": "Cairo",
-        "StartDate": "2021-05-01T00:00:00",
-        "EndDate": "2022-02-01T00:00:00",
-        "Description": "Monitored network traffic for suspicious activity, performed vulnerability assessments, and created security reports for clients."
-      },
-      {
-        "JobTitle": "Penetration Tester Intern",
-        "CompanyName": "CyberShield",
-        "Location": "Cairo",
-        "StartDate": "2022-04-01T00:00:00",
-        "EndDate": "2022-10-01T00:00:00",
-        "Description": "Conducted penetration testing on web applications, identified security flaws, and provided recommendations for mitigation."
-      }
-    ],
-    "SeekerEducations": [
-      {
-        "Major": "Information Security",
-        "Faculty": "Faculty of Computers and Information",
-        "University": "Ain Shams University",
-        "Date": "2019-07-01T00:00:00",
-        "Location": "Cairo",
-        "GPA": 3.6,
-        "EducationLevel": "Bachelor"
-      }
-    ]
-  },
-  {
-    "UserEmail": "seeker9@example.com",
-    "Name": "Ahmed Samir",
-    "PhoneNumber": "01066554433",
-    "Title": "Cloud Engineer",
-    "DateOfBirth": "1995-05-18T00:00:00",
-    "Address": "Cairo, Egypt",
-    "CV_Url": "cv/Ahmed_Samir.pdf",
-    "Gender": "Male",
-    "Summary": "Cloud engineer with experience in designing, deploying, and managing cloud infrastructure on AWS and Azure, with a focus on scalability, automation, and security.",
-    "ProfileImageUrl": "images/profilepic/user.jpg",
-    "Skills": [ 1, 7, 13 ],
-    "seekerCertificates": [
-      { "CertificateName": "AWS Certified Solutions Architect – Associate" },
-      { "CertificateName": "Microsoft Certified: Azure Administrator Associate" }
-    ],
-    "SeekerTraining": [
-      { "TrainingName": "AWS Cloud Practitioner Essentials" },
-      { "TrainingName": "Docker & Kubernetes Workshop" }
-    ],
-    "seekerInterests": [
-      { "InterestName": "Cloud Automation" },
-      { "InterestName": "DevOps" }
-    ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Security Analyst",
+                "CompanyName": "SecureTech",
+                "Location": "Cairo",
+                "StartDate": "2021-05-01T00:00:00",
+                "EndDate": "2022-02-01T00:00:00",
+                "Description": "Monitored network traffic for suspicious activity, performed vulnerability assessments, and created security reports for clients."
+            },
+            {
+                "JobTitle": "Penetration Tester Intern",
+                "CompanyName": "CyberShield",
+                "Location": "Cairo",
+                "StartDate": "2022-04-01T00:00:00",
+                "EndDate": "2022-10-01T00:00:00",
+                "Description": "Conducted penetration testing on web applications, identified security flaws, and provided recommendations for mitigation."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Information Security",
+                "Faculty": "Faculty of Computers and Information",
+                "University": "Ain Shams University",
+                "Date": "2019-07-01T00:00:00",
+                "Location": "Cairo",
+                "GPA": 3.6,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "seeker9@example.com",
+        "Name": "Ahmed Samir",
+        "PhoneNumber": "01066554433",
+        "Title": "Cloud Engineer",
+        "DateOfBirth": "1995-05-18T00:00:00",
+        "Address": "Cairo, Egypt",
+        "CV_Url": "cv/Ahmed_Samir.pdf",
+        "Gender": "Male",
+        "Summary": "Cloud engineer with experience in designing, deploying, and managing cloud infrastructure on AWS and Azure, with a focus on scalability, automation, and security.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 1, 7, 13 ],
+        "seekerCertificates": [
+            { "CertificateName": "AWS Certified Solutions Architect – Associate" },
+            { "CertificateName": "Microsoft Certified: Azure Administrator Associate" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "AWS Cloud Practitioner Essentials" },
+            { "TrainingName": "Docker & Kubernetes Workshop" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Cloud Automation" },
+            { "InterestName": "DevOps" }
+        ],
 
-    "SeekerExperiences": [
-      {
-        "JobTitle": "Cloud Engineer",
-        "CompanyName": "CloudTech Solutions",
-        "Location": "Cairo",
-        "StartDate": "2021-07-01T00:00:00",
-        "EndDate": "2023-01-01T00:00:00",
-        "Description": "Designed and implemented cloud infrastructure using AWS and Azure, automated deployments with Terraform, and improved system reliability with CI/CD pipelines."
-      },
-      {
-        "JobTitle": "DevOps Intern",
-        "CompanyName": "NextGen IT",
-        "Location": "Cairo",
-        "StartDate": "2020-06-01T00:00:00",
-        "EndDate": "2020-12-01T00:00:00",
-        "Description": "Worked on containerization using Docker, orchestrated applications with Kubernetes, and assisted in managing cloud environments."
-      }
-    ],
-    "SeekerEducations": [
-      {
-        "Major": "Computer Engineering",
-        "Faculty": "Faculty of Engineering",
-        "University": "Ain Shams University",
-        "Date": "2018-07-01T00:00:00",
-        "Location": "Cairo",
-        "GPA": 3.5,
-        "EducationLevel": "Bachelor"
-      }
-    ]
-  },
-  {
-    "UserEmail": "seeker10@example.com",
-    "Name": "Fatima Hassan",
-    "PhoneNumber": "01122334455",
-    "Title": "Software Developer",
-    "DateOfBirth": "1997-03-22T00:00:00",
-    "Address": "Alexandria, Egypt",
-    "CV_Url": "cv/Fatima_Hassan.pdf",
-    "Gender": "Female",
-    "Summary": "Software developer with expertise in full-stack development, specializing in Python, JavaScript, and building scalable web applications.",
-    "ProfileImageUrl": "images/profilepic/user.jpg",
-    "Skills": [ 2, 8, 14 ],
-    "seekerCertificates": [
-      { "CertificateName": "Google Professional Cloud Developer" },
-      { "CertificateName": "Oracle Certified Professional: Java SE 11 Developer" }
-    ],
-    "SeekerTraining": [
-      { "TrainingName": "Advanced Python Programming" },
-      { "TrainingName": "React.js for Web Development" }
-    ],
-    "seekerInterests": [
-      { "InterestName": "Web Development" },
-      { "InterestName": "Machine Learning" }
-    ],
-    "SeekerExperiences": [
-      {
-        "JobTitle": "Software Developer",
-        "CompanyName": "TechTrend Innovations",
-        "Location": "Alexandria",
-        "StartDate": "2022-01-15T00:00:00",
-        "EndDate": "2024-03-01T00:00:00",
-        "Description": "Developed and maintained web applications using Python (Django) and JavaScript (React), optimized APIs, and integrated third-party services."
-      },
-      {
-        "JobTitle": "Junior Developer",
-        "CompanyName": "CodeWave Solutions",
-        "Location": "Alexandria",
-        "StartDate": "2020-09-01T00:00:00",
-        "EndDate": "2021-12-01T00:00:00",
-        "Description": "Assisted in building responsive front-end interfaces with React and supported back-end development with Node.js."
-      }
-    ],
-    "SeekerEducations": [
-      {
-        "Major": "Computer Science",
-        "Faculty": "Faculty of Computers and Information",
-        "University": "Alexandria University",
-        "Date": "2019-06-01T00:00:00",
-        "Location": "Alexandria",
-        "GPA": 3.7,
-        "EducationLevel": "Bachelor"
-      }
-    ]
-  },
-  {
-    "UserEmail": "seeker11@example.com",
-    "Name": "Mohamed Ali",
-    "PhoneNumber": "01233445566",
-    "Title": "Data Scientist",
-    "DateOfBirth": "1996-08-10T00:00:00",
-    "Address": "Giza, Egypt",
-    "CV_Url": "cv/Mohamed_Ali.pdf",
-    "Gender": "Male",
-    "Summary": "Data scientist with a strong background in machine learning, data analysis, and statistical modeling, proficient in Python and R for building predictive models.",
-    "ProfileImageUrl": "images/profilepic/user.jpg",
-    "Skills": [ 3, 9, 15 ],
-    "seekerCertificates": [
-      { "CertificateName": "TensorFlow Developer Certificate" },
-      { "CertificateName": "IBM Data Science Professional Certificate" }
-    ],
-    "SeekerTraining": [
-      { "TrainingName": "Deep Learning Specialization" },
-      { "TrainingName": "Big Data Analytics with Hadoop" }
-    ],
-    "seekerInterests": [
-      { "InterestName": "Machine Learning" },
-      { "InterestName": "Data Visualization" }
-    ],
-    "SeekerExperiences": [
-      {
-        "JobTitle": "Data Scientist",
-        "CompanyName": "DataCore Analytics",
-        "Location": "Giza",
-        "StartDate": "2022-03-01T00:00:00",
-        "EndDate": "2024-06-01T00:00:00",
-        "Description": "Developed machine learning models for predictive analytics, optimized data pipelines, and created interactive dashboards using Tableau."
-      },
-      {
-        "JobTitle": "Data Analyst Intern",
-        "CompanyName": "Insight Solutions",
-        "Location": "Cairo",
-        "StartDate": "2021-01-01T00:00:00",
-        "EndDate": "2021-12-01T00:00:00",
-        "Description": "Performed data cleaning, exploratory analysis, and visualized trends using Python and R."
-      }
-    ],
-    "SeekerEducations": [
-      {
-        "Major": "Statistics",
-        "Faculty": "Faculty of Science",
-        "University": "Cairo University",
-        "Date": "2020-07-01T00:00:00",
-        "Location": "Giza",
-        "GPA": 3.8,
-        "EducationLevel": "Bachelor"
-      }
-    ]
-  },
-  {
-    "UserEmail": "seeker12@example.com",
-    "Name": "Sara Khaled",
-    "PhoneNumber": "01099887766",
-    "Title": "Cybersecurity Analyst",
-    "DateOfBirth": "1998-11-15T00:00:00",
-    "Address": "Mansoura, Egypt",
-    "CV_Url": "cv/Sara_Khaled.pdf",
-    "Gender": "Female",
-    "Summary": "Cybersecurity analyst with expertise in threat detection, incident response, and network security, skilled in using tools like Wireshark and Splunk.",
-    "ProfileImageUrl": "images/profilepic/user.jpg",
-    "Skills": [ 4, 10, 16 ],
-    "seekerCertificates": [
-      { "CertificateName": "Certified Ethical Hacker (CEH)" },
-      { "CertificateName": "CompTIA Security+" }
-    ],
-    "SeekerTraining": [
-      { "TrainingName": "Cybersecurity Fundamentals" },
-      { "TrainingName": "Advanced Penetration Testing" }
-    ],
-    "seekerInterests": [
-      { "InterestName": "Network Security" },
-      { "InterestName": "Ethical Hacking" }
-    ],
-    "SeekerExperiences": [
-      {
-        "JobTitle": "Cybersecurity Analyst",
-        "CompanyName": "SecureNet Solutions",
-        "Location": "Mansoura",
-        "StartDate": "2022-05-01T00:00:00",
-        "EndDate": "2024-08-01T00:00:00",
-        "Description": "Monitored network traffic for security threats, conducted vulnerability assessments, and implemented incident response strategies using Splunk."
-      },
-      {
-        "JobTitle": "Security Intern",
-        "CompanyName": "TechGuard Systems",
-        "Location": "Cairo",
-        "StartDate": "2021-02-01T00:00:00",
-        "EndDate": "2021-11-01T00:00:00",
-        "Description": "Assisted in penetration testing and configured firewalls to enhance system security."
-      }
-    ],
-    "SeekerEducations": [
-      {
-        "Major": "Information Security",
-        "Faculty": "Faculty of Computers and Artificial Intelligence",
-        "University": "Mansoura University",
-        "Date": "2021-06-01T00:00:00",
-        "Location": "Mansoura",
-        "GPA": 3.9,
-        "EducationLevel": "Bachelor"
-      }
-    ]
-  },
-  {
-    "UserEmail": "seeker13@example.com",
-    "Name": "Omar Ahmed",
-    "PhoneNumber": "01555443322",
-    "Title": "Mobile App Developer",
-    "DateOfBirth": "1999-02-25T00:00:00",
-    "Address": "Assiut, Egypt",
-    "CV_Url": "cv/Omar_Ahmed.pdf",
-    "Gender": "Male",
-    "Summary": "Mobile app developer with experience in building cross-platform applications using Flutter and React Native, specializing in user-friendly interfaces and performance optimization.",
-    "ProfileImageUrl": "images/profilepic/user.jpg",
-    "Skills": [ 5, 11, 17 ],
-    "seekerCertificates": [
-      { "CertificateName": "Google Associate Android Developer" },
-      { "CertificateName": "Flutter Certified Application Developer" }
-    ],
-    "SeekerTraining": [
-      { "TrainingName": "Mobile App Development with Flutter" },
-      { "TrainingName": "React Native Essentials" }
-    ],
-    "seekerInterests": [
-      { "InterestName": "Mobile UI/UX Design" },
-      { "InterestName": "Cross-Platform Development" }
-    ],
-    "SeekerExperiences": [
-      {
-        "JobTitle": "Mobile App Developer",
-        "CompanyName": "AppVibe Solutions",
-        "Location": "Assiut",
-        "StartDate": "2022-07-01T00:00:00",
-        "EndDate": "2024-09-01T00:00:00",
-        "Description": "Developed cross-platform mobile applications using Flutter, integrated RESTful APIs, and optimized app performance for Android and iOS."
-      },
-      {
-        "JobTitle": "Junior Mobile Developer",
-        "CompanyName": "TechTrend Innovations",
-        "Location": "Cairo",
-        "StartDate": "2021-03-01T00:00:00",
-        "EndDate": "2022-06-01T00:00:00",
-        "Description": "Assisted in building mobile apps with React Native and contributed to UI/UX design improvements."
-      }
-    ],
-    "SeekerEducations": [
-      {
-        "Major": "Computer Science",
-        "Faculty": "Faculty of Computers and Information",
-        "University": "Assiut University",
-        "Date": "2020-07-01T00:00:00",
-        "Location": "Assiut",
-        "GPA": 3.6,
-        "EducationLevel": "Bachelor"
-      }
-    ]
-  },
-  {
-    "UserEmail": "seeker14@example.com",
-    "Name": "Mariem Nasser",
-    "PhoneNumber": "01011223344",
-    "Title": "AI Engineer",
-    "DateOfBirth": "1997-06-12T00:00:00",
-    "Address": "Suez, Egypt",
-    "CV_Url": "cv/Mariem_Nasser.pdf",
-    "Gender": "Female",
-    "Summary": "AI engineer with expertise in developing machine learning models and natural language processing systems, proficient in Python and TensorFlow.",
-    "ProfileImageUrl": "images/profilepic/user.jpg",
-    "Skills": [ 6, 12, 18 ],
-    "seekerCertificates": [
-      { "CertificateName": "DeepLearning.AI Machine Learning Specialization" },
-      { "CertificateName": "Google Cloud Professional Machine Learning Engineer" }
-    ],
-    "SeekerTraining": [
-      { "TrainingName": "Natural Language Processing with TensorFlow" },
-      { "TrainingName": "AI for Everyone" }
-    ],
-    "seekerInterests": [
-      { "InterestName": "Artificial Intelligence" },
-      { "InterestName": "Natural Language Processing" }
-    ],
-    "SeekerExperiences": [
-      {
-        "JobTitle": "AI Engineer",
-        "CompanyName": "SmartAI Labs",
-        "Location": "Suez",
-        "StartDate": "2022-09-01T00:00:00",
-        "EndDate": "2024-10-01T00:00:00",
-        "Description": "Designed and deployed machine learning models for predictive analytics, developed NLP systems for text classification, and optimized algorithms for performance."
-      },
-      {
-        "JobTitle": "Machine Learning Intern",
-        "CompanyName": "DataVision Technologies",
-        "Location": "Cairo",
-        "StartDate": "2021-05-01T00:00:00",
-        "EndDate": "2022-08-01T00:00:00",
-        "Description": "Assisted in building and training machine learning models using Python and TensorFlow, and contributed to data preprocessing pipelines."
-      }
-    ],
-    "SeekerEducations": [
-      {
-        "Major": "Artificial Intelligence",
-        "Faculty": "Faculty of Computers and Artificial Intelligence",
-        "University": "Suez Canal University",
-        "Date": "2021-07-01T00:00:00",
-        "Location": "Suez",
-        "GPA": 3.85,
-        "EducationLevel": "Bachelor"
-      }
-    ]
-  },
-  {
-    "UserEmail": "seeker15@example.com",
-    "Name": "Amr Hany",
-    "PhoneNumber": "01144556677",
-    "Title": "Backend Developer",
-    "DateOfBirth": "1996-04-08T00:00:00",
-    "Address": "Tanta, Egypt",
-    "CV_Url": "cv/Amr_Hany.pdf",
-    "Gender": "Male",
-    "Summary": "Backend developer with expertise in designing and implementing scalable server-side applications using Node.js and Python, with a focus on API development and database optimization.",
-    "ProfileImageUrl": "images/profilepic/user.jpg",
-    "Skills": [ 7, 13, 19 ],
-    "seekerCertificates": [
-      { "CertificateName": "Node.js Certified Developer" },
-      { "CertificateName": "MongoDB Certified Developer" }
-    ],
-    "SeekerTraining": [
-      { "TrainingName": "Advanced Node.js Development" },
-      { "TrainingName": "Database Optimization Techniques" }
-    ],
-    "seekerInterests": [
-      { "InterestName": "API Development" },
-      { "InterestName": "Microservices Architecture" }
-    ],
-    "SeekerExperiences": [
-      {
-        "JobTitle": "Backend Developer",
-        "CompanyName": "TechFlow Solutions",
-        "Location": "Tanta",
-        "StartDate": "2022-04-01T00:00:00",
-        "EndDate": "2024-11-01T00:00:00",
-        "Description": "Built and maintained RESTful APIs using Node.js and Express, optimized MongoDB databases, and implemented microservices architecture for scalability."
-      },
-      {
-        "JobTitle": "Junior Backend Developer",
-        "CompanyName": "CodeZap Technologies",
-        "Location": "Cairo",
-        "StartDate": "2020-10-01T00:00:00",
-        "EndDate": "2022-03-01T00:00:00",
-        "Description": "Developed server-side logic with Python (Flask) and assisted in database schema design for MySQL databases."
-      }
-    ],
-    "SeekerEducations": [
-      {
-        "Major": "Computer Engineering",
-        "Faculty": "Faculty of Engineering",
-        "University": "Tanta University",
-        "Date": "2020-07-01T00:00:00",
-        "Location": "Tanta",
-        "GPA": 3.7,
-        "EducationLevel": "Bachelor"
-      }
-    ]
-  },
-  {
-    "UserEmail": "seeker16@example.com",
-    "Name": "Omnia Hassan",
-    "PhoneNumber": "01288776655",
-    "Title": "Frontend Developer",
-    "DateOfBirth": "1998-09-03T00:00:00",
-    "Address": "Ismailia, Egypt",
-    "CV_Url": "cv/Omnia_Hassan.pdf",
-    "Gender": "Female",
-    "Summary": "Frontend developer skilled in creating responsive and interactive web interfaces using React, Vue.js, and modern JavaScript frameworks, with a focus on user experience.",
-    "ProfileImageUrl": "images/profilepic/user.jpg",
-    "Skills": [ 8, 14, 20 ],
-    "seekerCertificates": [
-      { "CertificateName": "React Developer Certificate" },
-      { "CertificateName": "Vue.js Fundamentals" }
-    ],
-    "SeekerTraining": [
-      { "TrainingName": "Advanced React and Redux" },
-      { "TrainingName": "UI/UX Design Principles" }
-    ],
-    "seekerInterests": [
-      { "InterestName": "Web Design" },
-      { "InterestName": "User Experience" }
-    ],
-    "SeekerExperiences": [
-      {
-        "JobTitle": "Frontend Developer",
-        "CompanyName": "WebCraft Solutions",
-        "Location": "Ismailia",
-        "StartDate": "2022-06-01T00:00:00",
-        "EndDate": "2024-12-01T00:00:00",
-        "Description": "Developed responsive web applications using React and Vue.js, collaborated with designers to enhance UI/UX, and optimized performance for cross-browser compatibility."
-      },
-      {
-        "JobTitle": "Junior Frontend Developer",
-        "CompanyName": "TechTrend Innovations",
-        "Location": "Cairo",
-        "StartDate": "2021-01-01T00:00:00",
-        "EndDate": "2022-05-01T00:00:00",
-        "Description": "Built interactive web interfaces using JavaScript and Bootstrap, and assisted in integrating APIs."
-      }
-    ],
-    "SeekerEducations": [
-      {
-        "Major": "Computer Science",
-        "Faculty": "Faculty of Computers and Information",
-        "University": "Suez Canal University",
-        "Date": "2020-07-01T00:00:00",
-        "Location": "Ismailia",
-        "GPA": 3.8,
-        "EducationLevel": "Bachelor"
-      }
-    ]
-  },
-  {
-    "UserEmail": "seeker17@example.com",
-    "Name": "Basmalla Yasser",
-    "PhoneNumber": "01022334488",
-    "Title": "DevOps Engineer",
-    "DateOfBirth": "1995-12-20T00:00:00",
-    "Address": "Port Said, Egypt",
-    "CV_Url": "cv/Basmalla_Yasser.pdf",
-    "Gender": "Female",
-    "Summary": "DevOps engineer with experience in automating CI/CD pipelines, containerization with Docker, and orchestration using Kubernetes for scalable cloud infrastructure.",
-    "ProfileImageUrl": "images/profilepic/user.jpg",
-    "Skills": [ 9, 15, 21 ],
-    "seekerCertificates": [
-      { "CertificateName": "AWS Certified DevOps Engineer" },
-      { "CertificateName": "Kubernetes Certified Administrator" }
-    ],
-    "SeekerTraining": [
-      { "TrainingName": "CI/CD with Jenkins" },
-      { "TrainingName": "Kubernetes for DevOps" }
-    ],
-    "seekerInterests": [
-      { "InterestName": "Cloud Infrastructure" },
-      { "InterestName": "Automation" }
-    ],
-    "SeekerExperiences": [
-      {
-        "JobTitle": "DevOps Engineer",
-        "CompanyName": "CloudSync Technologies",
-        "Location": "Port Said",
-        "StartDate": "2022-08-01T00:00:00",
-        "EndDate": "2024-11-01T00:00:00",
-        "Description": "Automated CI/CD pipelines using Jenkins and GitHub Actions, deployed applications on AWS, and managed Kubernetes clusters."
-      },
-      {
-        "JobTitle": "DevOps Intern",
-        "CompanyName": "TechCore Solutions",
-        "Location": "Cairo",
-        "StartDate": "2021-03-01T00:00:00",
-        "EndDate": "2022-07-01T00:00:00",
-        "Description": "Assisted in containerizing applications with Docker and configuring infrastructure as code using Terraform."
-      }
-    ],
-    "SeekerEducations": [
-      {
-        "Major": "Computer Engineering",
-        "Faculty": "Faculty of Engineering",
-        "University": "Port Said University",
-        "Date": "2020-07-01T00:00:00",
-        "Location": "Port Said",
-        "GPA": 3.9,
-        "EducationLevel": "Bachelor"
-      }
-    ]
-  },
-  {
-    "UserEmail": "seeker18@example.com",
-    "Name": "Eman Atef",
-    "PhoneNumber": "01155667788",
-    "Title": "Data Analyst",
-    "DateOfBirth": "1997-07-14T00:00:00",
-    "Address": "Damietta, Egypt",
-    "CV_Url": "cv/Eman_Atef.pdf",
-    "Gender": "Female",
-    "Summary": "Data analyst proficient in analyzing large datasets, creating visualizations with Power BI, and deriving actionable insights using SQL and Python.",
-    "ProfileImageUrl": "images/profilepic/user.jpg",
-    "Skills": [ 10, 16, 22 ],
-    "seekerCertificates": [
-      { "CertificateName": "Microsoft Certified: Data Analyst Associate" },
-      { "CertificateName": "Google Data Analytics Professional Certificate" }
-    ],
-    "SeekerTraining": [
-      { "TrainingName": "Data Visualization with Power BI" },
-      { "TrainingName": "SQL for Data Analysis" }
-    ],
-    "seekerInterests": [
-      { "InterestName": "Data Visualization" },
-      { "InterestName": "Business Intelligence" }
-    ],
-    "SeekerExperiences": [
-      {
-        "JobTitle": "Data Analyst",
-        "CompanyName": "Insight Analytics",
-        "Location": "Damietta",
-        "StartDate": "2022-05-01T00:00:00",
-        "EndDate": "2024-10-01T00:00:00",
-        "Description": "Analyzed business data to generate actionable insights, created interactive dashboards with Power BI, and optimized SQL queries for performance."
-      },
-      {
-        "JobTitle": "Junior Data Analyst",
-        "CompanyName": "DataWave Solutions",
-        "Location": "Cairo",
-        "StartDate": "2021-02-01T00:00:00",
-        "EndDate": "2022-04-01T00:00:00",
-        "Description": "Conducted data cleaning and preprocessing using Python, and assisted in creating reports with Tableau."
-      }
-    ],
-    "SeekerEducations": [
-      {
-        "Major": "Statistics",
-        "Faculty": "Faculty of Commerce",
-        "University": "Damietta University",
-        "Date": "2020-07-01T00:00:00",
-        "Location": "Damietta",
-        "GPA": 3.6,
-        "EducationLevel": "Bachelor"
-      }
-    ]
-  },
-  {
-    "UserEmail": "seeker19@example.com",
-    "Name": "Nada Ali",
-    "PhoneNumber": "01266778899",
-    "Title": "UI/UX Designer",
-    "DateOfBirth": "1999-03-10T00:00:00",
-    "Address": "Zagazig, Egypt",
-    "CV_Url": "cv/Nada_Ali.pdf",
-    "Gender": "Female",
-    "Summary": "UI/UX designer with a passion for creating intuitive and visually appealing interfaces, proficient in Figma, Adobe XD, and user research methodologies.",
-    "ProfileImageUrl": "images/profilepic/user.jpg",
-    "Skills": [ 11, 17, 23 ],
-    "seekerCertificates": [
-      { "CertificateName": "Google UX Design Professional Certificate" },
-      { "CertificateName": "Adobe Certified Expert in Adobe XD" }
-    ],
-    "SeekerTraining": [
-      { "TrainingName": "User Experience Design Essentials" },
-      { "TrainingName": "Prototyping with Figma" }
-    ],
-    "seekerInterests": [
-      { "InterestName": "User-Centered Design" },
-      { "InterestName": "Interaction Design" }
-    ],
-    "SeekerExperiences": [
-      {
-        "JobTitle": "UI/UX Designer",
-        "CompanyName": "CreativePixel Studio",
-        "Location": "Zagazig",
-        "StartDate": "2022-07-01T00:00:00",
-        "EndDate": "2024-11-01T00:00:00",
-        "Description": "Designed user-friendly interfaces for web and mobile applications using Figma, conducted user research, and created interactive prototypes."
-      },
-      {
-        "JobTitle": "Junior UI/UX Designer",
-        "CompanyName": "DesignWave Agency",
-        "Location": "Cairo",
-        "StartDate": "2021-04-01T00:00:00",
-        "EndDate": "2022-06-01T00:00:00",
-        "Description": "Assisted in creating wireframes and prototypes using Adobe XD, and conducted usability testing."
-      }
-    ],
-    "SeekerEducations": [
-      {
-        "Major": "Graphic Design",
-        "Faculty": "Faculty of Fine Arts",
-        "University": "Zagazig University",
-        "Date": "2021-07-01T00:00:00",
-        "Location": "Zagazig",
-        "GPA": 3.7,
-        "EducationLevel": "Bachelor"
-      }
-    ]
-  },
-  {
-    "UserEmail": "seeker20@example.com",
-    "Name": "Youssef Eid",
-    "PhoneNumber": "01566778800",
-    "Title": "Full Stack Developer",
-    "DateOfBirth": "1996-10-05T00:00:00",
-    "Address": "Beni Suef, Egypt",
-    "CV_Url": "cv/Youssef_Eid.pdf",
-    "Gender": "Male",
-    "Summary": "Full stack developer with expertise in building scalable web applications using MERN stack and Django, with a focus on seamless front-end and back-end integration.",
-    "ProfileImageUrl": "images/profilepic/user.jpg",
-    "Skills": [ 12, 18, 24 ],
-    "seekerCertificates": [
-      { "CertificateName": "Full Stack Web Development with MERN" },
-      { "CertificateName": "Django Developer Certification" }
-    ],
-    "SeekerTraining": [
-      { "TrainingName": "MERN Stack Bootcamp" },
-      { "TrainingName": "Advanced Django Development" }
-    ],
-    "seekerInterests": [
-      { "InterestName": "Full Stack Development" },
-      { "InterestName": "Web Performance Optimization" }
-    ],
-    "SeekerExperiences": [
-      {
-        "JobTitle": "Full Stack Developer",
-        "CompanyName": "TechBit Solutions",
-        "Location": "Beni Suef",
-        "StartDate": "2022-03-01T00:00:00",
-        "EndDate": "2024-11-01T00:00:00",
-        "Description": "Developed full stack web applications using MERN stack, integrated MongoDB databases, and optimized application performance."
-      },
-      {
-        "JobTitle": "Web Developer Intern",
-        "CompanyName": "CodeSpark Technologies",
-        "Location": "Cairo",
-        "StartDate": "2020-12-01T00:00:00",
-        "EndDate": "2022-02-01T00:00:00",
-        "Description": "Built back-end APIs with Django and front-end interfaces with React, and contributed to database design."
-      }
-    ],
-    "SeekerEducations": [
-      {
-        "Major": "Computer Science",
-        "Faculty": "Faculty of Computers and Artificial Intelligence",
-        "University": "Beni Suef University",
-        "Date": "2020-07-01T00:00:00",
-        "Location": "Beni Suef",
-        "GPA": 3.8,
-        "EducationLevel": "Bachelor"
-      }
-    ]
-  },
-  {
-    "UserEmail": "seeker21@example.com",
-    "Name": "Yasmine Mahmoud",
-    "PhoneNumber": "01123456789",
-    "Title": "Content Marketing Specialist",
-    "DateOfBirth": "1996-07-22T00:00:00",
-    "Address": "New Cairo, Egypt",
-    "CV_Url": "cv/Yasmine_Mahmoud.pdf",
-    "Gender": "Female",
-    "Summary": "Creative content marketing specialist with 3+ years of experience in digital marketing, social media management, and brand storytelling. Skilled in creating engaging content across multiple platforms and analyzing campaign performance.",
-    "ProfileImageUrl": "images/profilepic/user.jpg",
-    "Skills": [ 25, 26, 27, 28 ],
-    "seekerCertificates": [
-      { "CertificateName": "Google Ads Certified" },
-      { "CertificateName": "HubSpot Content Marketing Certification" },
-      { "CertificateName": "Facebook Blueprint Certification" }
-    ],
-    "SeekerTraining": [
-      { "TrainingName": "Digital Marketing Strategy" },
-      { "TrainingName": "SEO and Content Optimization" },
-      { "TrainingName": "Social Media Analytics" }
-    ],
-    "seekerInterests": [
-      { "InterestName": "Content Creation" },
-      { "InterestName": "Brand Strategy" },
-      { "InterestName": "Digital Marketing Trends" }
-    ],
-    "SeekerExperiences": [
-      {
-        "JobTitle": "Content Marketing Specialist",
-        "CompanyName": "Digital Edge Agency",
-        "Location": "New Cairo",
-        "StartDate": "2022-01-15T00:00:00",
-        "EndDate": "2024-11-01T00:00:00",
-        "Description": "Developed and executed content marketing strategies for 15+ clients, increased social media engagement by 40%, managed blog content calendar, and created video marketing campaigns."
-      },
-      {
-        "JobTitle": "Social Media Coordinator",
-        "CompanyName": "Brand Builders",
-        "Location": "Cairo",
-        "StartDate": "2021-03-01T00:00:00",
-        "EndDate": "2021-12-31T00:00:00",
-        "Description": "Managed social media accounts for multiple brands, created visual content using Canva and Adobe Creative Suite, and analyzed campaign performance metrics."
-      }
-    ],
-    "SeekerEducations": [
-      {
-        "Major": "Marketing",
-        "Faculty": "Faculty of Commerce",
-        "University": "Cairo University",
-        "Date": "2020-07-01T00:00:00",
-        "Location": "Cairo",
-        "GPA": 3.6,
-        "EducationLevel": "Bachelor"
-      }
-    ]
-  },
-  {
-    "UserEmail": "seeker22@example.com",
-    "Name": "Omar Hassan",
-    "PhoneNumber": "01098765432",
-    "Title": "Public Relations Specialist",
-    "DateOfBirth": "1995-11-08T00:00:00",
-    "Address": "Maadi, Cairo, Egypt",
-    "CV_Url": "cv/Omar_Hassan_pr.pdf",
-    "Gender": "Male",
-    "Summary": "Experienced public relations specialist with strong communication skills and expertise in media relations, crisis management, and corporate communications. Proven track record in building positive brand image and managing stakeholder relationships.",
-    "ProfileImageUrl": "images/profilepic/user.jpg",
-    "Skills": [ 29, 30, 31, 32 ],
-    "seekerCertificates": [
-      { "CertificateName": "APR (Accreditation in Public Relations)" },
-      { "CertificateName": "PRSA Certificate in PR Principles" },
-      { "CertificateName": "Crisis Communication Management" }
-    ],
-    "SeekerTraining": [
-      { "TrainingName": "Media Relations Workshop" },
-      { "TrainingName": "Corporate Communications Strategy" },
-      { "TrainingName": "Digital PR and Influencer Relations" }
-    ],
-    "seekerInterests": [
-      { "InterestName": "Media Relations" },
-      { "InterestName": "Corporate Communications" },
-      { "InterestName": "Crisis Management" },
-      { "InterestName": "Public Speaking" }
-    ],
-    "SeekerExperiences": [
-      {
-        "JobTitle": "Public Relations Specialist",
-        "CompanyName": "Strategic Communications Group",
-        "Location": "Cairo",
-        "StartDate": "2021-06-01T00:00:00",
-        "EndDate": "2024-10-01T00:00:00",
-        "Description": "Managed media relations for corporate clients, organized press conferences and events, handled crisis communications for 3 major incidents, and maintained relationships with key journalists and influencers."
-      },
-      {
-        "JobTitle": "Communications Assistant",
-        "CompanyName": "Orascom Group",
-        "Location": "Cairo",
-        "StartDate": "2020-02-01T00:00:00",
-        "EndDate": "2021-05-01T00:00:00",
-        "Description": "Assisted in internal and external communications, drafted press releases and corporate announcements, managed company social media presence, and coordinated with media outlets."
-      }
-    ],
-    "SeekerEducations": [
-      {
-        "Major": "Mass Communication",
-        "Faculty": "Faculty of Mass Communication",
-        "University": "Cairo University",
-        "Date": "2019-07-01T00:00:00",
-        "Location": "Cairo",
-        "GPA": 3.7,
-        "EducationLevel": "Bachelor"
-      }
-    ]
-  },
-  {
-    "UserEmail": "samehmahmoud@example.com",
-    "Name": "Sameh Mahmoud",
-    "PhoneNumber": "010633778810",
-    "Title": "Content Writer",
-    "DateOfBirth": "1997-04-15T00:00:00",
-    "Address": "Nasr City, Cairo, Egypt",
-    "CV_Url": "cv/sameh_mahmoud_cv.pdf",
-    "Gender": "Male",
-    "Summary": "Creative and detail-oriented content writer with experience in producing engaging articles, blog posts, and social media content. Skilled in research, storytelling, and tailoring messages to different audiences. Passionate about digital media and brand communication.",
-    "ProfileImageUrl": "images/profilepic/user.jpg",
-    "Skills": [ 48, 51, 50, 33, 35, 37, 39 ],
-    "seekerCertificates": [
-      { "CertificateName": "Content Marketing Certification - HubSpot" },
-      { "CertificateName": "SEO Fundamentals - SEMrush" }
-    ],
-    "SeekerTraining": [
-      { "TrainingName": "Creative Writing Workshop" },
-      { "TrainingName": "Digital Content Strategy" },
-      { "TrainingName": "Social Media Storytelling" }
-    ],
-    "seekerInterests": [
-      { "InterestName": "Creative Writing" },
-      { "InterestName": "Content Marketing" },
-      { "InterestName": "Storytelling" },
-      { "InterestName": "Digital Media" }
-    ],
-    "SeekerExperiences": [
-      {
-        "JobTitle": "Junior Content Writer",
-        "CompanyName": "Bright Media",
-        "Location": "Cairo",
-        "StartDate": "2021-06-01T00:00:00",
-        "EndDate": "2023-03-01T00:00:00",
-        "Description": "Wrote blog posts, articles, and social media content for clients in various industries. Conducted keyword research and collaborated with the marketing team to develop content calendars."
-      },
-      {
-        "JobTitle": "Freelance Writer",
-        "CompanyName": "Self-Employed",
-        "Location": "Remote",
-        "StartDate": "2019-01-01T00:00:00",
-        "EndDate": "2021-05-01T00:00:00",
-        "Description": "Provided writing services including web content, product descriptions, and creative copy. Worked with startups and small businesses to enhance their online presence."
-      }
-    ],
-    "SeekerEducations": [
-      {
-        "Major": "English Literature",
-        "Faculty": "Faculty of Arts",
-        "University": "Ain Shams University",
-        "Date": "2018-07-01T00:00:00",
-        "Location": "Cairo",
-        "GPA": 3.5,
-        "EducationLevel": "Bachelor"
-      }
-    ]
-  },
-  {
-    "UserEmail": "jason.miller@example.com",
-    "Name": "Jason Miller",
-    "PhoneNumber": "+1 415 987 4521",
-    "Title": "Fitness Trainer",
-    "DateOfBirth": "1990-08-12T00:00:00",
-    "Address": "San Francisco, California, USA",
-    "CV_Url": "cv/jason_miller_fitness_cv.pdf",
-    "Gender": "Male",
-    "Summary": "Certified fitness trainer with over 6 years of experience in personal training, group classes, and wellness coaching. Skilled in strength training, cardio programs, and dietary planning. Dedicated to helping clients achieve their fitness goals through tailored workout plans and motivational support.",
-    "ProfileImageUrl": "images/profilepic/user.jpg",
-    "Skills": [ 59, 60, 33, 30, 37 ],
-    "seekerCertificates": [
-      { "CertificateName": "NASM Certified Personal Trainer (CPT)" },
-      { "CertificateName": "First Aid & CPR Certification" },
-      { "CertificateName": "Nutrition and Wellness Consultant" }
-    ],
-    "SeekerTraining": [
-      { "TrainingName": "Strength & Conditioning Workshop" },
-      { "TrainingName": "Functional Training Program" },
-      { "TrainingName": "Sports Nutrition Basics" }
-    ],
-    "seekerInterests": [
-      { "InterestName": "Strength Training" },
-      { "InterestName": "Nutrition Coaching" },
-      { "InterestName": "Wellness Programs" },
-      { "InterestName": "Outdoor Fitness" }
-    ],
-    "SeekerExperiences": [
-      {
-        "JobTitle": "Personal Trainer",
-        "CompanyName": "FitLife Gym",
-        "Location": "San Francisco, USA",
-        "StartDate": "2018-01-01T00:00:00",
-        "EndDate": "2022-12-01T00:00:00",
-        "Description": "Designed customized training plans, conducted one-on-one sessions, and guided clients in achieving weight loss and muscle gain goals."
-      },
-      {
-        "JobTitle": "Group Fitness Instructor",
-        "CompanyName": "Urban Active Fitness",
-        "Location": "Los Angeles, USA",
-        "StartDate": "2015-06-01T00:00:00",
-        "EndDate": "2017-12-01T00:00:00",
-        "Description": "Led group classes including HIIT, circuit training, and bootcamps. Motivated participants and ensured safe exercise practices."
-      }
-    ],
-    "SeekerEducations": [
-      {
-        "Major": "Kinesiology",
-        "Faculty": "Faculty of Health Sciences",
-        "University": "University of California, Los Angeles (UCLA)",
-        "Date": "2014-07-01T00:00:00",
-        "Location": "Los Angeles, USA",
-        "GPA": 3.6,
-        "EducationLevel": "Bachelor"
-      }
-    ]
-  }
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Cloud Engineer",
+                "CompanyName": "CloudTech Solutions",
+                "Location": "Cairo",
+                "StartDate": "2021-07-01T00:00:00",
+                "EndDate": "2023-01-01T00:00:00",
+                "Description": "Designed and implemented cloud infrastructure using AWS and Azure, automated deployments with Terraform, and improved system reliability with CI/CD pipelines."
+            },
+            {
+                "JobTitle": "DevOps Intern",
+                "CompanyName": "NextGen IT",
+                "Location": "Cairo",
+                "StartDate": "2020-06-01T00:00:00",
+                "EndDate": "2020-12-01T00:00:00",
+                "Description": "Worked on containerization using Docker, orchestrated applications with Kubernetes, and assisted in managing cloud environments."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Computer Engineering",
+                "Faculty": "Faculty of Engineering",
+                "University": "Ain Shams University",
+                "Date": "2018-07-01T00:00:00",
+                "Location": "Cairo",
+                "GPA": 3.5,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "seeker10@example.com",
+        "Name": "Fatima Hassan",
+        "PhoneNumber": "01122334455",
+        "Title": "Software Developer",
+        "DateOfBirth": "1997-03-22T00:00:00",
+        "Address": "Alexandria, Egypt",
+        "CV_Url": "cv/Fatima_Hassan.pdf",
+        "Gender": "Female",
+        "Summary": "Software developer with expertise in full-stack development, specializing in Python, JavaScript, and building scalable web applications.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 2, 8, 14 ],
+        "seekerCertificates": [
+            { "CertificateName": "Google Professional Cloud Developer" },
+            { "CertificateName": "Oracle Certified Professional: Java SE 11 Developer" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "Advanced Python Programming" },
+            { "TrainingName": "React.js for Web Development" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Web Development" },
+            { "InterestName": "Machine Learning" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Software Developer",
+                "CompanyName": "TechTrend Innovations",
+                "Location": "Alexandria",
+                "StartDate": "2022-01-15T00:00:00",
+                "EndDate": "2024-03-01T00:00:00",
+                "Description": "Developed and maintained web applications using Python (Django) and JavaScript (React), optimized APIs, and integrated third-party services."
+            },
+            {
+                "JobTitle": "Junior Developer",
+                "CompanyName": "CodeWave Solutions",
+                "Location": "Alexandria",
+                "StartDate": "2020-09-01T00:00:00",
+                "EndDate": "2021-12-01T00:00:00",
+                "Description": "Assisted in building responsive front-end interfaces with React and supported back-end development with Node.js."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Computer Science",
+                "Faculty": "Faculty of Computers and Information",
+                "University": "Alexandria University",
+                "Date": "2019-06-01T00:00:00",
+                "Location": "Alexandria",
+                "GPA": 3.7,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "seeker11@example.com",
+        "Name": "Mohamed Ali",
+        "PhoneNumber": "01233445566",
+        "Title": "Data Scientist",
+        "DateOfBirth": "1996-08-10T00:00:00",
+        "Address": "Giza, Egypt",
+        "CV_Url": "cv/Mohamed_Ali.pdf",
+        "Gender": "Male",
+        "Summary": "Data scientist with a strong background in machine learning, data analysis, and statistical modeling, proficient in Python and R for building predictive models.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 3, 9, 15 ],
+        "seekerCertificates": [
+            { "CertificateName": "TensorFlow Developer Certificate" },
+            { "CertificateName": "IBM Data Science Professional Certificate" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "Deep Learning Specialization" },
+            { "TrainingName": "Big Data Analytics with Hadoop" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Machine Learning" },
+            { "InterestName": "Data Visualization" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Data Scientist",
+                "CompanyName": "DataCore Analytics",
+                "Location": "Giza",
+                "StartDate": "2022-03-01T00:00:00",
+                "EndDate": "2024-06-01T00:00:00",
+                "Description": "Developed machine learning models for predictive analytics, optimized data pipelines, and created interactive dashboards using Tableau."
+            },
+            {
+                "JobTitle": "Data Analyst Intern",
+                "CompanyName": "Insight Solutions",
+                "Location": "Cairo",
+                "StartDate": "2021-01-01T00:00:00",
+                "EndDate": "2021-12-01T00:00:00",
+                "Description": "Performed data cleaning, exploratory analysis, and visualized trends using Python and R."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Statistics",
+                "Faculty": "Faculty of Science",
+                "University": "Cairo University",
+                "Date": "2020-07-01T00:00:00",
+                "Location": "Giza",
+                "GPA": 3.8,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "seeker12@example.com",
+        "Name": "Sara Khaled",
+        "PhoneNumber": "01099887766",
+        "Title": "Cybersecurity Analyst",
+        "DateOfBirth": "1998-11-15T00:00:00",
+        "Address": "Mansoura, Egypt",
+        "CV_Url": "cv/Sara_Khaled.pdf",
+        "Gender": "Female",
+        "Summary": "Cybersecurity analyst with expertise in threat detection, incident response, and network security, skilled in using tools like Wireshark and Splunk.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 4, 10, 16 ],
+        "seekerCertificates": [
+            { "CertificateName": "Certified Ethical Hacker (CEH)" },
+            { "CertificateName": "CompTIA Security+" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "Cybersecurity Fundamentals" },
+            { "TrainingName": "Advanced Penetration Testing" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Network Security" },
+            { "InterestName": "Ethical Hacking" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Cybersecurity Analyst",
+                "CompanyName": "SecureNet Solutions",
+                "Location": "Mansoura",
+                "StartDate": "2022-05-01T00:00:00",
+                "EndDate": "2024-08-01T00:00:00",
+                "Description": "Monitored network traffic for security threats, conducted vulnerability assessments, and implemented incident response strategies using Splunk."
+            },
+            {
+                "JobTitle": "Security Intern",
+                "CompanyName": "TechGuard Systems",
+                "Location": "Cairo",
+                "StartDate": "2021-02-01T00:00:00",
+                "EndDate": "2021-11-01T00:00:00",
+                "Description": "Assisted in penetration testing and configured firewalls to enhance system security."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Information Security",
+                "Faculty": "Faculty of Computers and Artificial Intelligence",
+                "University": "Mansoura University",
+                "Date": "2021-06-01T00:00:00",
+                "Location": "Mansoura",
+                "GPA": 3.9,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "seeker13@example.com",
+        "Name": "Omar Ahmed",
+        "PhoneNumber": "01555443322",
+        "Title": "Mobile App Developer",
+        "DateOfBirth": "1999-02-25T00:00:00",
+        "Address": "Assiut, Egypt",
+        "CV_Url": "cv/Omar_Ahmed.pdf",
+        "Gender": "Male",
+        "Summary": "Mobile app developer with experience in building cross-platform applications using Flutter and React Native, specializing in user-friendly interfaces and performance optimization.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 5, 11, 17 ],
+        "seekerCertificates": [
+            { "CertificateName": "Google Associate Android Developer" },
+            { "CertificateName": "Flutter Certified Application Developer" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "Mobile App Development with Flutter" },
+            { "TrainingName": "React Native Essentials" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Mobile UI/UX Design" },
+            { "InterestName": "Cross-Platform Development" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Mobile App Developer",
+                "CompanyName": "AppVibe Solutions",
+                "Location": "Assiut",
+                "StartDate": "2022-07-01T00:00:00",
+                "EndDate": "2024-09-01T00:00:00",
+                "Description": "Developed cross-platform mobile applications using Flutter, integrated RESTful APIs, and optimized app performance for Android and iOS."
+            },
+            {
+                "JobTitle": "Junior Mobile Developer",
+                "CompanyName": "TechTrend Innovations",
+                "Location": "Cairo",
+                "StartDate": "2021-03-01T00:00:00",
+                "EndDate": "2022-06-01T00:00:00",
+                "Description": "Assisted in building mobile apps with React Native and contributed to UI/UX design improvements."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Computer Science",
+                "Faculty": "Faculty of Computers and Information",
+                "University": "Assiut University",
+                "Date": "2020-07-01T00:00:00",
+                "Location": "Assiut",
+                "GPA": 3.6,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "seeker14@example.com",
+        "Name": "Mariem Nasser",
+        "PhoneNumber": "01011223344",
+        "Title": "AI Engineer",
+        "DateOfBirth": "1997-06-12T00:00:00",
+        "Address": "Suez, Egypt",
+        "CV_Url": "cv/Mariem_Nasser.pdf",
+        "Gender": "Female",
+        "Summary": "AI engineer with expertise in developing machine learning models and natural language processing systems, proficient in Python and TensorFlow.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 6, 12, 18 ],
+        "seekerCertificates": [
+            { "CertificateName": "DeepLearning.AI Machine Learning Specialization" },
+            { "CertificateName": "Google Cloud Professional Machine Learning Engineer" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "Natural Language Processing with TensorFlow" },
+            { "TrainingName": "AI for Everyone" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Artificial Intelligence" },
+            { "InterestName": "Natural Language Processing" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "AI Engineer",
+                "CompanyName": "SmartAI Labs",
+                "Location": "Suez",
+                "StartDate": "2022-09-01T00:00:00",
+                "EndDate": "2024-10-01T00:00:00",
+                "Description": "Designed and deployed machine learning models for predictive analytics, developed NLP systems for text classification, and optimized algorithms for performance."
+            },
+            {
+                "JobTitle": "Machine Learning Intern",
+                "CompanyName": "DataVision Technologies",
+                "Location": "Cairo",
+                "StartDate": "2021-05-01T00:00:00",
+                "EndDate": "2022-08-01T00:00:00",
+                "Description": "Assisted in building and training machine learning models using Python and TensorFlow, and contributed to data preprocessing pipelines."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Artificial Intelligence",
+                "Faculty": "Faculty of Computers and Artificial Intelligence",
+                "University": "Suez Canal University",
+                "Date": "2021-07-01T00:00:00",
+                "Location": "Suez",
+                "GPA": 3.85,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "seeker15@example.com",
+        "Name": "Amr Hany",
+        "PhoneNumber": "01144556677",
+        "Title": "Backend Developer",
+        "DateOfBirth": "1996-04-08T00:00:00",
+        "Address": "Tanta, Egypt",
+        "CV_Url": "cv/Amr_Hany.pdf",
+        "Gender": "Male",
+        "Summary": "Backend developer with expertise in designing and implementing scalable server-side applications using Node.js and Python, with a focus on API development and database optimization.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 7, 13, 19 ],
+        "seekerCertificates": [
+            { "CertificateName": "Node.js Certified Developer" },
+            { "CertificateName": "MongoDB Certified Developer" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "Advanced Node.js Development" },
+            { "TrainingName": "Database Optimization Techniques" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "API Development" },
+            { "InterestName": "Microservices Architecture" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Backend Developer",
+                "CompanyName": "TechFlow Solutions",
+                "Location": "Tanta",
+                "StartDate": "2022-04-01T00:00:00",
+                "EndDate": "2024-11-01T00:00:00",
+                "Description": "Built and maintained RESTful APIs using Node.js and Express, optimized MongoDB databases, and implemented microservices architecture for scalability."
+            },
+            {
+                "JobTitle": "Junior Backend Developer",
+                "CompanyName": "CodeZap Technologies",
+                "Location": "Cairo",
+                "StartDate": "2020-10-01T00:00:00",
+                "EndDate": "2022-03-01T00:00:00",
+                "Description": "Developed server-side logic with Python (Flask) and assisted in database schema design for MySQL databases."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Computer Engineering",
+                "Faculty": "Faculty of Engineering",
+                "University": "Tanta University",
+                "Date": "2020-07-01T00:00:00",
+                "Location": "Tanta",
+                "GPA": 3.7,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "seeker16@example.com",
+        "Name": "Omnia Hassan",
+        "PhoneNumber": "01288776655",
+        "Title": "Frontend Developer",
+        "DateOfBirth": "1998-09-03T00:00:00",
+        "Address": "Ismailia, Egypt",
+        "CV_Url": "cv/Omnia_Hassan.pdf",
+        "Gender": "Female",
+        "Summary": "Frontend developer skilled in creating responsive and interactive web interfaces using React, Vue.js, and modern JavaScript frameworks, with a focus on user experience.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 8, 14, 20 ],
+        "seekerCertificates": [
+            { "CertificateName": "React Developer Certificate" },
+            { "CertificateName": "Vue.js Fundamentals" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "Advanced React and Redux" },
+            { "TrainingName": "UI/UX Design Principles" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Web Design" },
+            { "InterestName": "User Experience" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Frontend Developer",
+                "CompanyName": "WebCraft Solutions",
+                "Location": "Ismailia",
+                "StartDate": "2022-06-01T00:00:00",
+                "EndDate": "2024-12-01T00:00:00",
+                "Description": "Developed responsive web applications using React and Vue.js, collaborated with designers to enhance UI/UX, and optimized performance for cross-browser compatibility."
+            },
+            {
+                "JobTitle": "Junior Frontend Developer",
+                "CompanyName": "TechTrend Innovations",
+                "Location": "Cairo",
+                "StartDate": "2021-01-01T00:00:00",
+                "EndDate": "2022-05-01T00:00:00",
+                "Description": "Built interactive web interfaces using JavaScript and Bootstrap, and assisted in integrating APIs."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Computer Science",
+                "Faculty": "Faculty of Computers and Information",
+                "University": "Suez Canal University",
+                "Date": "2020-07-01T00:00:00",
+                "Location": "Ismailia",
+                "GPA": 3.8,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "seeker17@example.com",
+        "Name": "Basmalla Yasser",
+        "PhoneNumber": "01022334488",
+        "Title": "DevOps Engineer",
+        "DateOfBirth": "1995-12-20T00:00:00",
+        "Address": "Port Said, Egypt",
+        "CV_Url": "cv/Basmalla_Yasser.pdf",
+        "Gender": "Female",
+        "Summary": "DevOps engineer with experience in automating CI/CD pipelines, containerization with Docker, and orchestration using Kubernetes for scalable cloud infrastructure.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 9, 15, 21 ],
+        "seekerCertificates": [
+            { "CertificateName": "AWS Certified DevOps Engineer" },
+            { "CertificateName": "Kubernetes Certified Administrator" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "CI/CD with Jenkins" },
+            { "TrainingName": "Kubernetes for DevOps" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Cloud Infrastructure" },
+            { "InterestName": "Automation" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "DevOps Engineer",
+                "CompanyName": "CloudSync Technologies",
+                "Location": "Port Said",
+                "StartDate": "2022-08-01T00:00:00",
+                "EndDate": "2024-11-01T00:00:00",
+                "Description": "Automated CI/CD pipelines using Jenkins and GitHub Actions, deployed applications on AWS, and managed Kubernetes clusters."
+            },
+            {
+                "JobTitle": "DevOps Intern",
+                "CompanyName": "TechCore Solutions",
+                "Location": "Cairo",
+                "StartDate": "2021-03-01T00:00:00",
+                "EndDate": "2022-07-01T00:00:00",
+                "Description": "Assisted in containerizing applications with Docker and configuring infrastructure as code using Terraform."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Computer Engineering",
+                "Faculty": "Faculty of Engineering",
+                "University": "Port Said University",
+                "Date": "2020-07-01T00:00:00",
+                "Location": "Port Said",
+                "GPA": 3.9,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "seeker18@example.com",
+        "Name": "Eman Atef",
+        "PhoneNumber": "01155667788",
+        "Title": "Data Analyst",
+        "DateOfBirth": "1997-07-14T00:00:00",
+        "Address": "Damietta, Egypt",
+        "CV_Url": "cv/Eman_Atef.pdf",
+        "Gender": "Female",
+        "Summary": "Data analyst proficient in analyzing large datasets, creating visualizations with Power BI, and deriving actionable insights using SQL and Python.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 10, 16, 22 ],
+        "seekerCertificates": [
+            { "CertificateName": "Microsoft Certified: Data Analyst Associate" },
+            { "CertificateName": "Google Data Analytics Professional Certificate" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "Data Visualization with Power BI" },
+            { "TrainingName": "SQL for Data Analysis" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Data Visualization" },
+            { "InterestName": "Business Intelligence" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Data Analyst",
+                "CompanyName": "Insight Analytics",
+                "Location": "Damietta",
+                "StartDate": "2022-05-01T00:00:00",
+                "EndDate": "2024-10-01T00:00:00",
+                "Description": "Analyzed business data to generate actionable insights, created interactive dashboards with Power BI, and optimized SQL queries for performance."
+            },
+            {
+                "JobTitle": "Junior Data Analyst",
+                "CompanyName": "DataWave Solutions",
+                "Location": "Cairo",
+                "StartDate": "2021-02-01T00:00:00",
+                "EndDate": "2022-04-01T00:00:00",
+                "Description": "Conducted data cleaning and preprocessing using Python, and assisted in creating reports with Tableau."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Statistics",
+                "Faculty": "Faculty of Commerce",
+                "University": "Damietta University",
+                "Date": "2020-07-01T00:00:00",
+                "Location": "Damietta",
+                "GPA": 3.6,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "seeker19@example.com",
+        "Name": "Nada Ali",
+        "PhoneNumber": "01266778899",
+        "Title": "UI/UX Designer",
+        "DateOfBirth": "1999-03-10T00:00:00",
+        "Address": "Zagazig, Egypt",
+        "CV_Url": "cv/Nada_Ali.pdf",
+        "Gender": "Female",
+        "Summary": "UI/UX designer with a passion for creating intuitive and visually appealing interfaces, proficient in Figma, Adobe XD, and user research methodologies.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 11, 17, 23 ],
+        "seekerCertificates": [
+            { "CertificateName": "Google UX Design Professional Certificate" },
+            { "CertificateName": "Adobe Certified Expert in Adobe XD" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "User Experience Design Essentials" },
+            { "TrainingName": "Prototyping with Figma" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "User-Centered Design" },
+            { "InterestName": "Interaction Design" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "UI/UX Designer",
+                "CompanyName": "CreativePixel Studio",
+                "Location": "Zagazig",
+                "StartDate": "2022-07-01T00:00:00",
+                "EndDate": "2024-11-01T00:00:00",
+                "Description": "Designed user-friendly interfaces for web and mobile applications using Figma, conducted user research, and created interactive prototypes."
+            },
+            {
+                "JobTitle": "Junior UI/UX Designer",
+                "CompanyName": "DesignWave Agency",
+                "Location": "Cairo",
+                "StartDate": "2021-04-01T00:00:00",
+                "EndDate": "2022-06-01T00:00:00",
+                "Description": "Assisted in creating wireframes and prototypes using Adobe XD, and conducted usability testing."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Graphic Design",
+                "Faculty": "Faculty of Fine Arts",
+                "University": "Zagazig University",
+                "Date": "2021-07-01T00:00:00",
+                "Location": "Zagazig",
+                "GPA": 3.7,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "seeker20@example.com",
+        "Name": "Youssef Eid",
+        "PhoneNumber": "01566778800",
+        "Title": "Full Stack Developer",
+        "DateOfBirth": "1996-10-05T00:00:00",
+        "Address": "Beni Suef, Egypt",
+        "CV_Url": "cv/Youssef_Eid.pdf",
+        "Gender": "Male",
+        "Summary": "Full stack developer with expertise in building scalable web applications using MERN stack and Django, with a focus on seamless front-end and back-end integration.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 12, 18, 24 ],
+        "seekerCertificates": [
+            { "CertificateName": "Full Stack Web Development with MERN" },
+            { "CertificateName": "Django Developer Certification" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "MERN Stack Bootcamp" },
+            { "TrainingName": "Advanced Django Development" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Full Stack Development" },
+            { "InterestName": "Web Performance Optimization" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Full Stack Developer",
+                "CompanyName": "TechBit Solutions",
+                "Location": "Beni Suef",
+                "StartDate": "2022-03-01T00:00:00",
+                "EndDate": "2024-11-01T00:00:00",
+                "Description": "Developed full stack web applications using MERN stack, integrated MongoDB databases, and optimized application performance."
+            },
+            {
+                "JobTitle": "Web Developer Intern",
+                "CompanyName": "CodeSpark Technologies",
+                "Location": "Cairo",
+                "StartDate": "2020-12-01T00:00:00",
+                "EndDate": "2022-02-01T00:00:00",
+                "Description": "Built back-end APIs with Django and front-end interfaces with React, and contributed to database design."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Computer Science",
+                "Faculty": "Faculty of Computers and Artificial Intelligence",
+                "University": "Beni Suef University",
+                "Date": "2020-07-01T00:00:00",
+                "Location": "Beni Suef",
+                "GPA": 3.8,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "seeker21@example.com",
+        "Name": "Yasmine Mahmoud",
+        "PhoneNumber": "01123456789",
+        "Title": "Content Marketing Specialist",
+        "DateOfBirth": "1996-07-22T00:00:00",
+        "Address": "New Cairo, Egypt",
+        "CV_Url": "cv/Yasmine_Mahmoud.pdf",
+        "Gender": "Female",
+        "Summary": "Creative content marketing specialist with 3+ years of experience in digital marketing, social media management, and brand storytelling. Skilled in creating engaging content across multiple platforms and analyzing campaign performance.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 25, 26, 27, 28 ],
+        "seekerCertificates": [
+            { "CertificateName": "Google Ads Certified" },
+            { "CertificateName": "HubSpot Content Marketing Certification" },
+            { "CertificateName": "Facebook Blueprint Certification" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "Digital Marketing Strategy" },
+            { "TrainingName": "SEO and Content Optimization" },
+            { "TrainingName": "Social Media Analytics" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Content Creation" },
+            { "InterestName": "Brand Strategy" },
+            { "InterestName": "Digital Marketing Trends" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Content Marketing Specialist",
+                "CompanyName": "Digital Edge Agency",
+                "Location": "New Cairo",
+                "StartDate": "2022-01-15T00:00:00",
+                "EndDate": "2024-11-01T00:00:00",
+                "Description": "Developed and executed content marketing strategies for 15+ clients, increased social media engagement by 40%, managed blog content calendar, and created video marketing campaigns."
+            },
+            {
+                "JobTitle": "Social Media Coordinator",
+                "CompanyName": "Brand Builders",
+                "Location": "Cairo",
+                "StartDate": "2021-03-01T00:00:00",
+                "EndDate": "2021-12-31T00:00:00",
+                "Description": "Managed social media accounts for multiple brands, created visual content using Canva and Adobe Creative Suite, and analyzed campaign performance metrics."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Marketing",
+                "Faculty": "Faculty of Commerce",
+                "University": "Cairo University",
+                "Date": "2020-07-01T00:00:00",
+                "Location": "Cairo",
+                "GPA": 3.6,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "seeker22@example.com",
+        "Name": "Omar Hassan",
+        "PhoneNumber": "01098765432",
+        "Title": "Public Relations Specialist",
+        "DateOfBirth": "1995-11-08T00:00:00",
+        "Address": "Maadi, Cairo, Egypt",
+        "CV_Url": "cv/Omar_Hassan_pr.pdf",
+        "Gender": "Male",
+        "Summary": "Experienced public relations specialist with strong communication skills and expertise in media relations, crisis management, and corporate communications. Proven track record in building positive brand image and managing stakeholder relationships.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 29, 30, 31, 32 ],
+        "seekerCertificates": [
+            { "CertificateName": "APR (Accreditation in Public Relations)" },
+            { "CertificateName": "PRSA Certificate in PR Principles" },
+            { "CertificateName": "Crisis Communication Management" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "Media Relations Workshop" },
+            { "TrainingName": "Corporate Communications Strategy" },
+            { "TrainingName": "Digital PR and Influencer Relations" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Media Relations" },
+            { "InterestName": "Corporate Communications" },
+            { "InterestName": "Crisis Management" },
+            { "InterestName": "Public Speaking" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Public Relations Specialist",
+                "CompanyName": "Strategic Communications Group",
+                "Location": "Cairo",
+                "StartDate": "2021-06-01T00:00:00",
+                "EndDate": "2024-10-01T00:00:00",
+                "Description": "Managed media relations for corporate clients, organized press conferences and events, handled crisis communications for 3 major incidents, and maintained relationships with key journalists and influencers."
+            },
+            {
+                "JobTitle": "Communications Assistant",
+                "CompanyName": "Orascom Group",
+                "Location": "Cairo",
+                "StartDate": "2020-02-01T00:00:00",
+                "EndDate": "2021-05-01T00:00:00",
+                "Description": "Assisted in internal and external communications, drafted press releases and corporate announcements, managed company social media presence, and coordinated with media outlets."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Mass Communication",
+                "Faculty": "Faculty of Mass Communication",
+                "University": "Cairo University",
+                "Date": "2019-07-01T00:00:00",
+                "Location": "Cairo",
+                "GPA": 3.7,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "samehmahmoud@example.com",
+        "Name": "Sameh Mahmoud",
+        "PhoneNumber": "010633778810",
+        "Title": "Content Writer",
+        "DateOfBirth": "1997-04-15T00:00:00",
+        "Address": "Nasr City, Cairo, Egypt",
+        "CV_Url": "cv/sameh_mahmoud_cv.pdf",
+        "Gender": "Male",
+        "Summary": "Creative and detail-oriented content writer with experience in producing engaging articles, blog posts, and social media content. Skilled in research, storytelling, and tailoring messages to different audiences. Passionate about digital media and brand communication.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 48, 51, 50, 33, 35, 37, 39 ],
+        "seekerCertificates": [
+            { "CertificateName": "Content Marketing Certification - HubSpot" },
+            { "CertificateName": "SEO Fundamentals - SEMrush" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "Creative Writing Workshop" },
+            { "TrainingName": "Digital Content Strategy" },
+            { "TrainingName": "Social Media Storytelling" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Creative Writing" },
+            { "InterestName": "Content Marketing" },
+            { "InterestName": "Storytelling" },
+            { "InterestName": "Digital Media" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Junior Content Writer",
+                "CompanyName": "Bright Media",
+                "Location": "Cairo",
+                "StartDate": "2021-06-01T00:00:00",
+                "EndDate": "2023-03-01T00:00:00",
+                "Description": "Wrote blog posts, articles, and social media content for clients in various industries. Conducted keyword research and collaborated with the marketing team to develop content calendars."
+            },
+            {
+                "JobTitle": "Freelance Writer",
+                "CompanyName": "Self-Employed",
+                "Location": "Remote",
+                "StartDate": "2019-01-01T00:00:00",
+                "EndDate": "2021-05-01T00:00:00",
+                "Description": "Provided writing services including web content, product descriptions, and creative copy. Worked with startups and small businesses to enhance their online presence."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "English Literature",
+                "Faculty": "Faculty of Arts",
+                "University": "Ain Shams University",
+                "Date": "2018-07-01T00:00:00",
+                "Location": "Cairo",
+                "GPA": 3.5,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "jason.miller@example.com",
+        "Name": "Jason Miller",
+        "PhoneNumber": "+1 415 987 4521",
+        "Title": "Fitness Trainer",
+        "DateOfBirth": "1990-08-12T00:00:00",
+        "Address": "San Francisco, California, USA",
+        "CV_Url": "cv/jason_miller_fitness_cv.pdf",
+        "Gender": "Male",
+        "Summary": "Certified fitness trainer with over 6 years of experience in personal training, group classes, and wellness coaching. Skilled in strength training, cardio programs, and dietary planning. Dedicated to helping clients achieve their fitness goals through tailored workout plans and motivational support.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 59, 60, 33, 30, 37 ],
+        "seekerCertificates": [
+            { "CertificateName": "NASM Certified Personal Trainer (CPT)" },
+            { "CertificateName": "First Aid & CPR Certification" },
+            { "CertificateName": "Nutrition and Wellness Consultant" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "Strength & Conditioning Workshop" },
+            { "TrainingName": "Functional Training Program" },
+            { "TrainingName": "Sports Nutrition Basics" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Strength Training" },
+            { "InterestName": "Nutrition Coaching" },
+            { "InterestName": "Wellness Programs" },
+            { "InterestName": "Outdoor Fitness" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Personal Trainer",
+                "CompanyName": "FitLife Gym",
+                "Location": "San Francisco, USA",
+                "StartDate": "2018-01-01T00:00:00",
+                "EndDate": "2022-12-01T00:00:00",
+                "Description": "Designed customized training plans, conducted one-on-one sessions, and guided clients in achieving weight loss and muscle gain goals."
+            },
+            {
+                "JobTitle": "Group Fitness Instructor",
+                "CompanyName": "Urban Active Fitness",
+                "Location": "Los Angeles, USA",
+                "StartDate": "2015-06-01T00:00:00",
+                "EndDate": "2017-12-01T00:00:00",
+                "Description": "Led group classes including HIIT, circuit training, and bootcamps. Motivated participants and ensured safe exercise practices."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Kinesiology",
+                "Faculty": "Faculty of Health Sciences",
+                "University": "University of California, Los Angeles (UCLA)",
+                "Date": "2014-07-01T00:00:00",
+                "Location": "Los Angeles, USA",
+                "GPA": 3.6,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "laylaahmed@example.com",
+        "Name": "Layla Ahmed",
+        "PhoneNumber": "01123456789",
+        "Title": "UI/UX Designer",
+        "DateOfBirth": "1995-07-12T00:00:00",
+        "Address": "Alexandria, Egypt",
+        "CV_Url": "cv/laylaahmed.pdf",
+        "Gender": "Female",
+        "Summary": "Creative UI/UX designer with a passion for user-centered design and modern interfaces.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 7, 8, 9 ],
+        "seekerCertificates": [ { "CertificateName": "Adobe Certified Expert" } ],
+        "SeekerTraining": [
+            { "TrainingName": "Figma Advanced Course" },
+            { "TrainingName": "User Experience Bootcamp" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Graphic Design" },
+            { "InterestName": "Web Accessibility" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Junior Designer",
+                "CompanyName": "DesignHub",
+                "Location": "Alexandria",
+                "StartDate": "2018-03-01T00:00:00",
+                "EndDate": "2020-09-01T00:00:00",
+                "Description": "Designed wireframes and prototypes for mobile apps, collaborated with developers."
+            },
+            {
+                "JobTitle": "Freelance UI Designer",
+                "CompanyName": "Self-Employed",
+                "Location": "Remote",
+                "StartDate": "2020-10-01T00:00:00",
+                "EndDate": null,
+                "Description": "Created custom interfaces for startups and improved user engagement."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Graphic Design",
+                "Faculty": "Fine Arts",
+                "University": "Alexandria University",
+                "Date": "2017-06-01T00:00:00",
+                "Location": "Alexandria",
+                "GPA": 3.9,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "karimnasser@example.com",
+        "Name": "Karim Nasser",
+        "PhoneNumber": "+201122334455",
+        "Title": "Marketing Specialist",
+        "DateOfBirth": "1992-11-25T00:00:00",
+        "Address": "Dubai, UAE",
+        "CV_Url": "cv/karimnasser.pdf",
+        "Gender": "Male",
+        "Summary": "Experienced marketing specialist skilled in digital campaigns and market analysis.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 10, 11, 12 ],
+        "seekerCertificates": [
+            { "CertificateName": "Google Analytics Certified" },
+            { "CertificateName": "HubSpot Inbound Marketing" }
+        ],
+        "SeekerTraining": [ { "TrainingName": "SEO Masterclass" } ],
+        "seekerInterests": [
+            { "InterestName": "Digital Marketing" },
+            { "InterestName": "Social Media Strategy" },
+            { "InterestName": "Content Creation" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Marketing Coordinator",
+                "CompanyName": "MarketPro",
+                "Location": "Dubai",
+                "StartDate": "2016-05-01T00:00:00",
+                "EndDate": "2019-12-01T00:00:00",
+                "Description": "Managed social media campaigns and analyzed performance metrics."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Business Administration",
+                "Faculty": "Commerce",
+                "University": "American University in Dubai",
+                "Date": "2015-07-01T00:00:00",
+                "Location": "Dubai",
+                "GPA": 3.5,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "emilyjohnson@example.com",
+        "Name": "Emily Johnson",
+        "PhoneNumber": "+1 555 123 4567",
+        "Title": "Data Scientist",
+        "DateOfBirth": "1989-04-18T00:00:00",
+        "Address": "New York, USA",
+        "CV_Url": "cv/emilyjohnson.pdf",
+        "Gender": "Female",
+        "Summary": "Data scientist with expertise in machine learning and big data analytics.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 13, 14, 15 ],
+        "seekerCertificates": [ { "CertificateName": "Coursera Machine Learning" } ],
+        "SeekerTraining": [
+            { "TrainingName": "Python for Data Science" },
+            { "TrainingName": "Big Data Hadoop" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "AI Ethics" },
+            { "InterestName": "Predictive Analytics" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Data Analyst",
+                "CompanyName": "TechData Inc.",
+                "Location": "New York",
+                "StartDate": "2014-08-01T00:00:00",
+                "EndDate": "2018-02-01T00:00:00",
+                "Description": "Analyzed datasets to provide business insights and built predictive models."
+            },
+            {
+                "JobTitle": "Senior Data Scientist",
+                "CompanyName": "InnoTech",
+                "Location": "New York",
+                "StartDate": "2018-03-01T00:00:00",
+                "EndDate": null,
+                "Description": "Led ML projects and optimized algorithms for efficiency."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Statistics",
+                "Faculty": "Science",
+                "University": "Columbia University",
+                "Date": "2013-05-01T00:00:00",
+                "Location": "New York",
+                "GPA": 4.0,
+                "EducationLevel": "Master"
+            }
+        ]
+    },
+    {
+        "UserEmail": "omarfarouk@example.com",
+        "Name": "Omar Farouk",
+        "PhoneNumber": "01234567890",
+        "Title": "Accountant",
+        "DateOfBirth": "1993-02-09T00:00:00",
+        "Address": "Mansoura, Egypt",
+        "CV_Url": "cv/omarfarouk.pdf",
+        "Gender": "Male",
+        "Summary": "Detail-oriented accountant with strong financial reporting skills.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 16, 17 ],
+        "seekerCertificates": [ { "CertificateName": "CPA Certified" } ],
+        "SeekerTraining": [ { "TrainingName": "QuickBooks Training" } ],
+        "seekerInterests": [
+            { "InterestName": "Financial Planning" },
+            { "InterestName": "Taxation" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Junior Accountant",
+                "CompanyName": "FinanceCorp",
+                "Location": "Mansoura",
+                "StartDate": "2017-01-01T00:00:00",
+                "EndDate": "2021-04-01T00:00:00",
+                "Description": "Prepared financial statements and handled audits."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Accounting",
+                "Faculty": "Commerce",
+                "University": "Mansoura University",
+                "Date": "2016-06-01T00:00:00",
+                "Location": "Mansoura",
+                "GPA": 3.4,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "sophiabrown@example.com",
+        "Name": "Sophia Brown",
+        "PhoneNumber": "+44 20 1234 5678",
+        "Title": "Teacher",
+        "DateOfBirth": "1987-06-30T00:00:00",
+        "Address": "London, UK",
+        "CV_Url": "cv/sophiabrown.pdf",
+        "Gender": "Female",
+        "Summary": "Dedicated teacher specializing in elementary education and curriculum development.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 18, 19, 20 ],
+        "seekerCertificates": [ { "CertificateName": "Teaching License" } ],
+        "SeekerTraining": [
+            { "TrainingName": "Classroom Management Workshop" },
+            { "TrainingName": "Online Teaching Certification" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Education Technology" },
+            { "InterestName": "Child Psychology" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Classroom Teacher",
+                "CompanyName": "London Primary School",
+                "Location": "London",
+                "StartDate": "2012-09-01T00:00:00",
+                "EndDate": "2019-06-01T00:00:00",
+                "Description": "Taught math and science to grades 3-5, developed lesson plans."
+            },
+            {
+                "JobTitle": "Curriculum Coordinator",
+                "CompanyName": "EduGlobal",
+                "Location": "London",
+                "StartDate": "2019-07-01T00:00:00",
+                "EndDate": null,
+                "Description": "Designed educational programs and trained teachers."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Education",
+                "Faculty": "Education",
+                "University": "University of London",
+                "Date": "2011-07-01T00:00:00",
+                "Location": "London",
+                "GPA": 3.8,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "alihassan@example.com",
+        "Name": "Ali Hassan",
+        "PhoneNumber": "01098765432",
+        "Title": "Network Engineer",
+        "DateOfBirth": "1994-08-14T00:00:00",
+        "Address": "Riyadh, Saudi Arabia",
+        "CV_Url": "cv/alihassan.pdf",
+        "Gender": "Male",
+        "Summary": "Network engineer experienced in configuring routers and ensuring network security.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 21, 22, 23 ],
+        "seekerCertificates": [
+            { "CertificateName": "Cisco CCNA" },
+            { "CertificateName": "CompTIA Security+" }
+        ],
+        "SeekerTraining": [ { "TrainingName": "Cybersecurity Essentials" } ],
+        "seekerInterests": [
+            { "InterestName": "Cloud Networking" },
+            { "InterestName": "IoT" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Network Administrator",
+                "CompanyName": "NetSecure",
+                "Location": "Riyadh",
+                "StartDate": "2018-02-01T00:00:00",
+                "EndDate": null,
+                "Description": "Maintained network infrastructure and resolved connectivity issues."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Information Technology",
+                "Faculty": "Engineering",
+                "University": "King Saud University",
+                "Date": "2017-05-01T00:00:00",
+                "Location": "Riyadh",
+                "GPA": 3.6,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "norasmith@example.com",
+        "Name": "Nora Smith",
+        "PhoneNumber": "+1 415 555 7890",
+        "Title": "HR Manager",
+        "DateOfBirth": "1985-10-05T00:00:00",
+        "Address": "San Francisco, USA",
+        "CV_Url": "cv/norasmith.pdf",
+        "Gender": "Female",
+        "Summary": "HR professional with expertise in recruitment and employee relations.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 24, 25 ],
+        "seekerCertificates": [ { "CertificateName": "SHRM Certified Professional" } ],
+        "SeekerTraining": [
+            { "TrainingName": "Talent Acquisition Workshop" },
+            { "TrainingName": "Diversity Training" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Employee Wellness" },
+            { "InterestName": "Organizational Development" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "HR Specialist",
+                "CompanyName": "PeopleFirst",
+                "Location": "San Francisco",
+                "StartDate": "2010-11-01T00:00:00",
+                "EndDate": "2016-07-01T00:00:00",
+                "Description": "Handled recruitment processes and employee onboarding."
+            },
+            {
+                "JobTitle": "HR Manager",
+                "CompanyName": "GlobalHR",
+                "Location": "San Francisco",
+                "StartDate": "2016-08-01T00:00:00",
+                "EndDate": null,
+                "Description": "Managed team performance and implemented HR policies."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Human Resources",
+                "Faculty": "Business",
+                "University": "Stanford University",
+                "Date": "2009-06-01T00:00:00",
+                "Location": "Stanford",
+                "GPA": 3.7,
+                "EducationLevel": "Master"
+            }
+        ]
+    },
+    {
+        "UserEmail": "youssefali@example.com",
+        "Name": "Youssef Ali",
+        "PhoneNumber": "01567890123",
+        "Title": "Sales Executive",
+        "DateOfBirth": "1996-03-22T00:00:00",
+        "Address": "Cairo, Egypt",
+        "CV_Url": "cv/youssefali.pdf",
+        "Gender": "Male",
+        "Summary": "Dynamic sales executive with a track record of exceeding targets.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 26, 27, 28 ],
+        "seekerCertificates": [ { "CertificateName": "Salesforce Certified" } ],
+        "SeekerTraining": [ { "TrainingName": "Negotiation Skills Course" } ],
+        "seekerInterests": [
+            { "InterestName": "B2B Sales" },
+            { "InterestName": "Customer Relationship Management" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Sales Representative",
+                "CompanyName": "SalesPro",
+                "Location": "Cairo",
+                "StartDate": "2019-04-01T00:00:00",
+                "EndDate": null,
+                "Description": "Generated leads and closed deals in the tech sector."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Marketing",
+                "Faculty": "Commerce",
+                "University": "Ain Shams University",
+                "Date": "2018-07-01T00:00:00",
+                "Location": "Cairo",
+                "GPA": 3.3,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "lindawilson@example.com",
+        "Name": "Linda Wilson",
+        "PhoneNumber": "+49 30 1234567",
+        "Title": "Project Manager",
+        "DateOfBirth": "1991-12-15T00:00:00",
+        "Address": "Berlin, Germany",
+        "CV_Url": "cv/lindawilson.pdf",
+        "Gender": "Female",
+        "Summary": "Certified project manager experienced in agile methodologies and team leadership.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 29, 30, 31 ],
+        "seekerCertificates": [
+            { "CertificateName": "PMP Certified" },
+            { "CertificateName": "Scrum Master" }
+        ],
+        "SeekerTraining": [ { "TrainingName": "Agile Project Management" } ],
+        "seekerInterests": [
+            { "InterestName": "Risk Management" },
+            { "InterestName": "Team Building" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Assistant Project Manager",
+                "CompanyName": "ProjLead",
+                "Location": "Berlin",
+                "StartDate": "2015-06-01T00:00:00",
+                "EndDate": "2018-11-01T00:00:00",
+                "Description": "Coordinated projects and ensured timely delivery."
+            },
+            {
+                "JobTitle": "Project Manager",
+                "CompanyName": "InnoProjects",
+                "Location": "Berlin",
+                "StartDate": "2019-01-01T00:00:00",
+                "EndDate": null,
+                "Description": "Led cross-functional teams in software development projects."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Business Management",
+                "Faculty": "Economics",
+                "University": "Technical University of Berlin",
+                "Date": "2014-05-01T00:00:00",
+                "Location": "Berlin",
+                "GPA": 3.9,
+                "EducationLevel": "Master"
+            }
+        ]
+    },
+    {
+        "UserEmail": "hassanelmasry@example.com",
+        "Name": "Hassan Elmasry",
+        "PhoneNumber": "01011223344",
+        "Title": "Civil Engineer",
+        "DateOfBirth": "1990-09-07T00:00:00",
+        "Address": "Giza, Egypt",
+        "CV_Url": "cv/hassanelmasry.pdf",
+        "Gender": "Male",
+        "Summary": "Civil engineer specializing in structural design and construction management.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 32, 33, 34 ],
+        "seekerCertificates": [ { "CertificateName": "PE Licensed Engineer" } ],
+        "SeekerTraining": [
+            { "TrainingName": "AutoCAD Advanced" },
+            { "TrainingName": "Construction Safety" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Sustainable Building" },
+            { "InterestName": "Infrastructure Development" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Site Engineer",
+                "CompanyName": "BuildCorp",
+                "Location": "Giza",
+                "StartDate": "2014-07-01T00:00:00",
+                "EndDate": "2019-03-01T00:00:00",
+                "Description": "Oversaw construction sites and ensured compliance with standards."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Civil Engineering",
+                "Faculty": "Engineering",
+                "University": "Cairo University",
+                "Date": "2013-06-01T00:00:00",
+                "Location": "Giza",
+                "GPA": 3.2,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "fatimamohamed@example.com",
+        "Name": "Fatima Mohamed",
+        "PhoneNumber": "01298765432",
+        "Title": "Software Developer",
+        "DateOfBirth": "1997-03-15T00:00:00",
+        "Address": "Cairo, Egypt",
+        "CV_Url": "cv/fatimamohamed.pdf",
+        "Gender": "Female",
+        "Summary": "Passionate software developer with expertise in building scalable web applications.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 1, 2, 3, 5 ],
+        "seekerCertificates": [ { "CertificateName": "Microsoft Certified: Azure Developer" } ],
+        "SeekerTraining": [
+            { "TrainingName": "Advanced C# Programming" },
+            { "TrainingName": "REST API Design" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Cloud Computing" },
+            { "InterestName": "Web Development" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Junior Developer",
+                "CompanyName": "TechSolutions",
+                "Location": "Cairo",
+                "StartDate": "2019-06-01T00:00:00",
+                "EndDate": "2021-12-01T00:00:00",
+                "Description": "Developed backend services using ASP.NET Core and SQL Server."
+            },
+            {
+                "JobTitle": "Software Developer",
+                "CompanyName": "InnovateTech",
+                "Location": "Cairo",
+                "StartDate": "2022-01-01T00:00:00",
+                "EndDate": null,
+                "Description": "Built and maintained RESTful APIs for enterprise applications."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Computer Science",
+                "Faculty": "Engineering",
+                "University": "Cairo University",
+                "Date": "2019-05-01T00:00:00",
+                "Location": "Cairo",
+                "GPA": 3.7,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "jamesthompson@example.com",
+        "Name": "James Thompson",
+        "PhoneNumber": "+1 202 555 1234",
+        "Title": "Graphic Designer",
+        "DateOfBirth": "1994-11-22T00:00:00",
+        "Address": "Los Angeles, USA",
+        "CV_Url": "cv/jamesthompson.pdf",
+        "Gender": "Male",
+        "Summary": "Creative graphic designer skilled in branding and visual storytelling.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 17, 18, 29 ],
+        "seekerCertificates": [ { "CertificateName": "Adobe Photoshop Certified" } ],
+        "SeekerTraining": [ { "TrainingName": "Branding Masterclass" } ],
+        "seekerInterests": [
+            { "InterestName": "Visual Design" },
+            { "InterestName": "Illustration" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Graphic Designer",
+                "CompanyName": "CreativeStudio",
+                "Location": "Los Angeles",
+                "StartDate": "2017-09-01T00:00:00",
+                "EndDate": "2020-03-01T00:00:00",
+                "Description": "Designed logos and marketing materials for clients."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Graphic Design",
+                "Faculty": "Arts",
+                "University": "UCLA",
+                "Date": "2017-06-01T00:00:00",
+                "Location": "Los Angeles",
+                "GPA": 3.8,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "sarahkhalid@example.com",
+        "Name": "Sarah Khalid",
+        "PhoneNumber": "+966 50 123 4567",
+        "Title": "Nurse",
+        "DateOfBirth": "1990-05-10T00:00:00",
+        "Address": "Jeddah, Saudi Arabia",
+        "CV_Url": "cv/sarahkhalid.pdf",
+        "Gender": "Female",
+        "Summary": "Compassionate nurse with experience in patient care and emergency response.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 13, 14, 59 ],
+        "seekerCertificates": [ { "CertificateName": "Registered Nurse (RN)" } ],
+        "SeekerTraining": [
+            { "TrainingName": "Emergency Care Training" },
+            { "TrainingName": "Patient Safety Workshop" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Healthcare Innovation" },
+            { "InterestName": "Patient Advocacy" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Staff Nurse",
+                "CompanyName": "Jeddah General Hospital",
+                "Location": "Jeddah",
+                "StartDate": "2015-07-01T00:00:00",
+                "EndDate": null,
+                "Description": "Provided patient care in ICU and managed medical records."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Nursing",
+                "Faculty": "Health Sciences",
+                "University": "King Abdulaziz University",
+                "Date": "2014-06-01T00:00:00",
+                "Location": "Jeddah",
+                "GPA": 3.6,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "michaelyoung@example.com",
+        "Name": "Michael Young",
+        "PhoneNumber": "+44 20 9876 5432",
+        "Title": "Lawyer",
+        "DateOfBirth": "1988-09-03T00:00:00",
+        "Address": "Manchester, UK",
+        "CV_Url": "cv/michaelyoung.pdf",
+        "Gender": "Male",
+        "Summary": "Experienced lawyer specializing in corporate law and contract negotiation.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 43, 44, 38 ],
+        "seekerCertificates": [ { "CertificateName": "Bar Professional Training Course" } ],
+        "SeekerTraining": [ { "TrainingName": "Contract Law Workshop" } ],
+        "seekerInterests": [
+            { "InterestName": "Corporate Governance" },
+            { "InterestName": "Legal Tech" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Associate Lawyer",
+                "CompanyName": "LawFirm UK",
+                "Location": "Manchester",
+                "StartDate": "2013-04-01T00:00:00",
+                "EndDate": "2018-12-01T00:00:00",
+                "Description": "Drafted contracts and represented clients in negotiations."
+            },
+            {
+                "JobTitle": "Senior Lawyer",
+                "CompanyName": "GlobalLaw",
+                "Location": "Manchester",
+                "StartDate": "2019-01-01T00:00:00",
+                "EndDate": null,
+                "Description": "Led legal teams in corporate mergers and acquisitions."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Law",
+                "Faculty": "Law",
+                "University": "University of Manchester",
+                "Date": "2012-07-01T00:00:00",
+                "Location": "Manchester",
+                "GPA": 3.9,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "hananibrahim@example.com",
+        "Name": "Hanan Ibrahim",
+        "PhoneNumber": "01134567890",
+        "Title": "Content Writer",
+        "DateOfBirth": "1996-12-01T00:00:00",
+        "Address": "Amman, Jordan",
+        "CV_Url": "cv/hananibrahim.pdf",
+        "Gender": "Female",
+        "Summary": "Creative content writer with a knack for crafting engaging blogs and social media posts.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 48, 51, 52 ],
+        "seekerCertificates": [ { "CertificateName": "Content Marketing Certified" } ],
+        "SeekerTraining": [ { "TrainingName": "SEO Writing Course" } ],
+        "seekerInterests": [
+            { "InterestName": "Blogging" },
+            { "InterestName": "Copywriting" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Content Creator",
+                "CompanyName": "MediaHouse",
+                "Location": "Amman",
+                "StartDate": "2019-02-01T00:00:00",
+                "EndDate": null,
+                "Description": "Wrote blogs and managed social media content for brands."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Journalism",
+                "Faculty": "Media",
+                "University": "University of Jordan",
+                "Date": "2018-06-01T00:00:00",
+                "Location": "Amman",
+                "GPA": 3.5,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "davidmartinez@example.com",
+        "Name": "David Martinez",
+        "PhoneNumber": "+1 305 555 6789",
+        "Title": "DevOps Engineer",
+        "DateOfBirth": "1993-07-20T00:00:00",
+        "Address": "Miami, USA",
+        "CV_Url": "cv/davidmartinez.pdf",
+        "Gender": "Male",
+        "Summary": "DevOps engineer experienced in CI/CD pipelines and cloud infrastructure.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 10, 31, 55 ],
+        "seekerCertificates": [ { "CertificateName": "AWS Certified DevOps Engineer" } ],
+        "SeekerTraining": [ { "TrainingName": "Docker and Kubernetes Bootcamp" } ],
+        "seekerInterests": [
+            { "InterestName": "Cloud Automation" },
+            { "InterestName": "Infrastructure as Code" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "DevOps Engineer",
+                "CompanyName": "CloudTech",
+                "Location": "Miami",
+                "StartDate": "2018-05-01T00:00:00",
+                "EndDate": null,
+                "Description": "Automated deployments using Jenkins and managed AWS infrastructure."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Computer Engineering",
+                "Faculty": "Engineering",
+                "University": "University of Miami",
+                "Date": "2017-05-01T00:00:00",
+                "Location": "Miami",
+                "GPA": 3.4,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "nooramahmoud@example.com",
+        "Name": "Noor Mahmoud",
+        "PhoneNumber": "01023456789",
+        "Title": "Pharmacist",
+        "DateOfBirth": "1992-04-18T00:00:00",
+        "Address": "Giza, Egypt",
+        "CV_Url": "cv/nooramahmoud.pdf",
+        "Gender": "Female",
+        "Summary": "Licensed pharmacist with expertise in medication dispensing and patient counseling.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 13, 14, 33 ],
+        "seekerCertificates": [ { "CertificateName": "Pharmacy Practice License" } ],
+        "SeekerTraining": [ { "TrainingName": "Clinical Pharmacy Course" } ],
+        "seekerInterests": [
+            { "InterestName": "Pharmaceutical Research" },
+            { "InterestName": "Patient Education" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Pharmacist",
+                "CompanyName": "HealthCare Pharmacy",
+                "Location": "Giza",
+                "StartDate": "2016-08-01T00:00:00",
+                "EndDate": null,
+                "Description": "Dispensed medications and provided patient consultations."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Pharmacy",
+                "Faculty": "Pharmacy",
+                "University": "Cairo University",
+                "Date": "2015-06-01T00:00:00",
+                "Location": "Giza",
+                "GPA": 3.8,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "lucasfernandez@example.com",
+        "Name": "Lucas Fernandez",
+        "PhoneNumber": "+34 91 234 5678",
+        "Title": "Event Planner",
+        "DateOfBirth": "1989-02-25T00:00:00",
+        "Address": "Madrid, Spain",
+        "CV_Url": "cv/lucasfernandez.pdf",
+        "Gender": "Male",
+        "Summary": "Organized event planner with a focus on corporate and private events.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 52, 53, 37 ],
+        "seekerCertificates": [ { "CertificateName": "Certified Meeting Professional" } ],
+        "SeekerTraining": [ { "TrainingName": "Event Management Masterclass" } ],
+        "seekerInterests": [
+            { "InterestName": "Event Logistics" },
+            { "InterestName": "Creative Event Design" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Event Coordinator",
+                "CompanyName": "EventPro",
+                "Location": "Madrid",
+                "StartDate": "2014-03-01T00:00:00",
+                "EndDate": "2019-07-01T00:00:00",
+                "Description": "Planned and executed corporate conferences and weddings."
+            },
+            {
+                "JobTitle": "Senior Event Planner",
+                "CompanyName": "GlobalEvents",
+                "Location": "Madrid",
+                "StartDate": "2019-08-01T00:00:00",
+                "EndDate": null,
+                "Description": "Managed large-scale events and coordinated with vendors."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Business Administration",
+                "Faculty": "Business",
+                "University": "Complutense University of Madrid",
+                "Date": "2013-06-01T00:00:00",
+                "Location": "Madrid",
+                "GPA": 3.5,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "aymansaleh@example.com",
+        "Name": "Ayman Saleh",
+        "PhoneNumber": "+201234567890",
+        "Title": "Mechanical Engineer",
+        "DateOfBirth": "1991-08-12T00:00:00",
+        "Address": "Alexandria, Egypt",
+        "CV_Url": "cv/aymansaleh.pdf",
+        "Gender": "Male",
+        "Summary": "Mechanical engineer with expertise in HVAC systems and project coordination.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 19, 20, 31 ],
+        "seekerCertificates": [ { "CertificateName": "HVAC Design Certification" } ],
+        "SeekerTraining": [
+            { "TrainingName": "AutoCAD Mechanical" },
+            { "TrainingName": "Project Coordination Workshop" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Energy Efficiency" },
+            { "InterestName": "Mechanical Design" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Mechanical Engineer",
+                "CompanyName": "CoolTech",
+                "Location": "Alexandria",
+                "StartDate": "2015-09-01T00:00:00",
+                "EndDate": null,
+                "Description": "Designed HVAC systems for commercial buildings."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Mechanical Engineering",
+                "Faculty": "Engineering",
+                "University": "Alexandria University",
+                "Date": "2014-06-01T00:00:00",
+                "Location": "Alexandria",
+                "GPA": 3.3,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "claireadams@example.com",
+        "Name": "Claire Adams",
+        "PhoneNumber": "+1 617 555 4321",
+        "Title": "Business Analyst",
+        "DateOfBirth": "1995-06-30T00:00:00",
+        "Address": "Boston, USA",
+        "CV_Url": "cv/claireadams.pdf",
+        "Gender": "Female",
+        "Summary": "Detail-oriented business analyst with a focus on process optimization and data-driven decisions.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 35, 50, 39 ],
+        "seekerCertificates": [ { "CertificateName": "CBAP Certified" } ],
+        "SeekerTraining": [ { "TrainingName": "Agile Business Analysis" } ],
+        "seekerInterests": [
+            { "InterestName": "Business Intelligence" },
+            { "InterestName": "Process Improvement" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Junior Business Analyst",
+                "CompanyName": "DataCorp",
+                "Location": "Boston",
+                "StartDate": "2018-07-01T00:00:00",
+                "EndDate": "2021-05-01T00:00:00",
+                "Description": "Analyzed business processes and created requirement documents."
+            },
+            {
+                "JobTitle": "Business Analyst",
+                "CompanyName": "TechConsult",
+                "Location": "Boston",
+                "StartDate": "2021-06-01T00:00:00",
+                "EndDate": null,
+                "Description": "Led stakeholder meetings and optimized workflows."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Business Analytics",
+                "Faculty": "Business",
+                "University": "Boston University",
+                "Date": "2018-05-01T00:00:00",
+                "Location": "Boston",
+                "GPA": 3.9,
+                "EducationLevel": "Master"
+            }
+        ]
+    },
+    {
+        "UserEmail": "mohamed.said@example.com",
+        "Name": "Mohamed Said",
+        "PhoneNumber": "01098765433",
+        "Title": "Software Developer",
+        "DateOfBirth": "1996-01-12T00:00:00",
+        "Address": "Cairo, Egypt",
+        "CV_Url": "cv/defaultcv.pdf",
+        "Gender": "Male",
+        "Summary": "Software developer with expertise in building scalable web applications using .NET Core and React. Passionate about clean code and agile methodologies.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 1, 3, 60 ],
+        "seekerCertificates": [
+            { "CertificateName": "Microsoft Certified: Azure Developer Associate" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "Advanced .NET Core Development" },
+            { "TrainingName": "React for Web Development" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Web Development" },
+            { "InterestName": "Cloud Computing" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Software Developer",
+                "CompanyName": "TechTrend Innovations",
+                "Location": "Cairo",
+                "StartDate": "2021-07-01T00:00:00",
+                "EndDate": null,
+                "Description": "Developed RESTful APIs using ASP.NET Core, integrated front-end with React, and optimized database performance with SQL Server."
+            },
+            {
+                "JobTitle": "Junior Developer",
+                "CompanyName": "CodeZap Solutions",
+                "Location": "Cairo",
+                "StartDate": "2020-01-01T00:00:00",
+                "EndDate": "2021-06-01T00:00:00",
+                "Description": "Assisted in building microservices and maintained legacy systems."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Computer Science",
+                "Faculty": "Faculty of Computers and Information",
+                "University": "Ain Shams University",
+                "Date": "2019-07-01T00:00:00",
+                "Location": "Cairo",
+                "GPA": 3.6,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "layan.khalid@example.com",
+        "Name": "Layan Khalid",
+        "PhoneNumber": "+971501234567",
+        "Title": "Digital Marketing Specialist",
+        "DateOfBirth": "1994-05-20T00:00:00",
+        "Address": "Dubai, UAE",
+        "CV_Url": "cv/defaultcv.pdf",
+        "Gender": "Female",
+        "Summary": "Digital marketing specialist with experience in SEO, PPC campaigns, and social media strategy. Skilled in driving brand engagement and analyzing performance metrics.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 25, 26, 61 ],
+        "seekerCertificates": [
+            { "CertificateName": "Google Ads Certification" },
+            { "CertificateName": "HubSpot Inbound Marketing" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "Advanced SEO Strategies" },
+            { "TrainingName": "Social Media Marketing Bootcamp" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Digital Advertising" },
+            { "InterestName": "Content Marketing" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Digital Marketing Specialist",
+                "CompanyName": "GrowEasy Agency",
+                "Location": "Dubai",
+                "StartDate": "2021-03-01T00:00:00",
+                "EndDate": null,
+                "Description": "Managed Google Ads campaigns, increased website traffic by 35%, and developed social media content for multiple clients."
+            },
+            {
+                "JobTitle": "Marketing Coordinator",
+                "CompanyName": "BrandVibe",
+                "Location": "Dubai",
+                "StartDate": "2019-06-01T00:00:00",
+                "EndDate": "2021-02-01T00:00:00",
+                "Description": "Created email marketing campaigns and analyzed performance using Google Analytics."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Marketing",
+                "Faculty": "Business",
+                "University": "American University in Dubai",
+                "Date": "2018-07-01T00:00:00",
+                "Location": "Dubai",
+                "GPA": 3.7,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "esraa.mohamed@example.com",
+        "Name": "Esraa Mohamed",
+        "PhoneNumber": "01055667799",
+        "Title": "Data Analyst",
+        "DateOfBirth": "1997-09-15T00:00:00",
+        "Address": "Alexandria, Egypt",
+        "CV_Url": "cv/defaultcv.pdf",
+        "Gender": "Female",
+        "Summary": "Data analyst skilled in Python, SQL, and Tableau for data visualization and insights generation. Experienced in analyzing business data to support decision-making.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 7, 10, 62 ],
+        "seekerCertificates": [
+            { "CertificateName": "Google Data Analytics Professional Certificate" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "Data Visualization with Tableau" },
+            { "TrainingName": "Python for Data Analysis" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Business Intelligence" },
+            { "InterestName": "Data Storytelling" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Data Analyst",
+                "CompanyName": "Insight Analytics",
+                "Location": "Alexandria",
+                "StartDate": "2022-01-01T00:00:00",
+                "EndDate": null,
+                "Description": "Developed dashboards with Tableau, performed data cleaning with Python, and optimized SQL queries for faster reporting."
+            },
+            {
+                "JobTitle": "Junior Data Analyst",
+                "CompanyName": "DataCore Solutions",
+                "Location": "Cairo",
+                "StartDate": "2020-05-01T00:00:00",
+                "EndDate": "2021-12-01T00:00:00",
+                "Description": "Assisted in data preprocessing and created reports for business stakeholders."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Statistics",
+                "Faculty": "Faculty of Science",
+                "University": "Alexandria University",
+                "Date": "2020-07-01T00:00:00",
+                "Location": "Alexandria",
+                "GPA": 3.8,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "adam.wilson@example.com",
+        "Name": "Adam Wilson",
+        "PhoneNumber": "+442071234567",
+        "Title": "DevOps Engineer",
+        "DateOfBirth": "1993-03-10T00:00:00",
+        "Address": "London, UK",
+        "CV_Url": "cv/defaultcv.pdf",
+        "Gender": "Male",
+        "Summary": "DevOps engineer with expertise in automating CI/CD pipelines and managing cloud infrastructure on AWS and Azure. Skilled in Docker and Kubernetes.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 9, 15, 63 ],
+        "seekerCertificates": [
+            { "CertificateName": "AWS Certified DevOps Engineer" },
+            { "CertificateName": "Certified Kubernetes Administrator" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "Infrastructure as Code with Terraform" },
+            { "TrainingName": "CI/CD with Jenkins" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Cloud Automation" },
+            { "InterestName": "Container Orchestration" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "DevOps Engineer",
+                "CompanyName": "CloudSync Technologies",
+                "Location": "London",
+                "StartDate": "2021-09-01T00:00:00",
+                "EndDate": null,
+                "Description": "Automated deployments with Jenkins, managed Kubernetes clusters, and optimized AWS infrastructure for scalability."
+            },
+            {
+                "JobTitle": "Junior DevOps Engineer",
+                "CompanyName": "TechCore Solutions",
+                "Location": "London",
+                "StartDate": "2019-06-01T00:00:00",
+                "EndDate": "2021-08-01T00:00:00",
+                "Description": "Assisted in containerization with Docker and configured CI/CD pipelines."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Computer Science",
+                "Faculty": "Engineering",
+                "University": "Imperial College London",
+                "Date": "2018-07-01T00:00:00",
+                "Location": "London",
+                "GPA": 3.9,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "rana.adel@example.com",
+        "Name": "Rana Adel",
+        "PhoneNumber": "01122334455",
+        "Title": "UI/UX Designer",
+        "DateOfBirth": "1998-06-25T00:00:00",
+        "Address": "Giza, Egypt",
+        "CV_Url": "cv/defaultcv.pdf",
+        "Gender": "Female",
+        "Summary": "Creative UI/UX designer with a passion for crafting intuitive interfaces using Figma and Adobe XD. Experienced in user research and prototyping.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 11, 17, 64 ],
+        "seekerCertificates": [
+            { "CertificateName": "Google UX Design Professional Certificate" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "Figma for UI/UX Design" },
+            { "TrainingName": "User-Centered Design Principles" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "User Experience" },
+            { "InterestName": "Interaction Design" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "UI/UX Designer",
+                "CompanyName": "CreativePixel Studio",
+                "Location": "Giza",
+                "StartDate": "2022-02-01T00:00:00",
+                "EndDate": null,
+                "Description": "Designed user-friendly interfaces for web and mobile apps, conducted usability testing, and collaborated with developers for implementation."
+            },
+            {
+                "JobTitle": "Junior Designer",
+                "CompanyName": "DesignWave Agency",
+                "Location": "Cairo",
+                "StartDate": "2020-08-01T00:00:00",
+                "EndDate": "2022-01-01T00:00:00",
+                "Description": "Created wireframes and prototypes using Adobe XD and assisted in user research."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Graphic Design",
+                "Faculty": "Faculty of Fine Arts",
+                "University": "Helwan University",
+                "Date": "2020-07-01T00:00:00",
+                "Location": "Giza",
+                "GPA": 3.7,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "emma.jackson@example.com",
+        "Name": "Emma Jackson",
+        "PhoneNumber": "+14155556789",
+        "Title": "Machine Learning Engineer",
+        "DateOfBirth": "1992-11-08T00:00:00",
+        "Address": "San Francisco, USA",
+        "CV_Url": "cv/defaultcv.pdf",
+        "Gender": "Female",
+        "Summary": "Machine learning engineer with expertise in building and deploying deep learning models using TensorFlow and PyTorch. Skilled in NLP and computer vision.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 6, 12, 65 ],
+        "seekerCertificates": [
+            { "CertificateName": "DeepLearning.AI Deep Learning Specialization" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "Natural Language Processing with TensorFlow" },
+            { "TrainingName": "Computer Vision with PyTorch" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Deep Learning" },
+            { "InterestName": "AI Research" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Machine Learning Engineer",
+                "CompanyName": "AI Innovate Labs",
+                "Location": "San Francisco",
+                "StartDate": "2021-05-01T00:00:00",
+                "EndDate": null,
+                "Description": "Developed deep learning models for NLP tasks, optimized model performance, and deployed solutions on AWS."
+            },
+            {
+                "JobTitle": "Data Scientist",
+                "CompanyName": "TechData Solutions",
+                "Location": "San Francisco",
+                "StartDate": "2019-03-01T00:00:00",
+                "EndDate": "2021-04-01T00:00:00",
+                "Description": "Built predictive models and performed data analysis using Python and R."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Computer Science",
+                "Faculty": "Engineering",
+                "University": "Stanford University",
+                "Date": "2018-06-01T00:00:00",
+                "Location": "Stanford",
+                "GPA": 3.9,
+                "EducationLevel": "Master"
+            }
+        ]
+    },
+    {
+        "UserEmail": "khalid.nasser@example.com",
+        "Name": "Khalid Nasser",
+        "PhoneNumber": "+966501234568",
+        "Title": "Cybersecurity Analyst",
+        "DateOfBirth": "1995-02-14T00:00:00",
+        "Address": "Riyadh, Saudi Arabia",
+        "CV_Url": "cv/defaultcv.pdf",
+        "Gender": "Male",
+        "Summary": "Cybersecurity analyst with experience in threat detection, penetration testing, and incident response. Proficient in tools like Splunk and Wireshark.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 4, 10, 66 ],
+        "seekerCertificates": [
+            { "CertificateName": "Certified Ethical Hacker (CEH)" },
+            { "CertificateName": "CompTIA Security+" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "Advanced Penetration Testing" },
+            { "TrainingName": "Network Security Fundamentals" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Threat Intelligence" },
+            { "InterestName": "Incident Response" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Cybersecurity Analyst",
+                "CompanyName": "SecureNet Solutions",
+                "Location": "Riyadh",
+                "StartDate": "2021-08-01T00:00:00",
+                "EndDate": null,
+                "Description": "Monitored network traffic, conducted penetration tests, and implemented security protocols using Splunk."
+            },
+            {
+                "JobTitle": "Security Intern",
+                "CompanyName": "CyberGuard Systems",
+                "Location": "Riyadh",
+                "StartDate": "2020-03-01T00:00:00",
+                "EndDate": "2021-07-01T00:00:00",
+                "Description": "Assisted in vulnerability assessments and configured firewalls."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Information Security",
+                "Faculty": "Engineering",
+                "University": "King Saud University",
+                "Date": "2019-07-01T00:00:00",
+                "Location": "Riyadh",
+                "GPA": 3.6,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "ahmed.gamal@example.com",
+        "Name": "Ahmed Gamal",
+        "PhoneNumber": "01033445577",
+        "Title": "Mobile App Developer",
+        "DateOfBirth": "1997-12-01T00:00:00",
+        "Address": "Mansoura, Egypt",
+        "CV_Url": "cv/defaultcv.pdf",
+        "Gender": "Male",
+        "Summary": "Mobile app developer with expertise in Flutter and Swift for building cross-platform and iOS applications. Passionate about creating seamless mobile experiences.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 5, 11, 67 ],
+        "seekerCertificates": [
+            { "CertificateName": "Google Associate Android Developer" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "Flutter Advanced Development" },
+            { "TrainingName": "Swift for iOS Development" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Mobile UI/UX" },
+            { "InterestName": "Cross-Platform Development" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Mobile App Developer",
+                "CompanyName": "AppVibe Solutions",
+                "Location": "Mansoura",
+                "StartDate": "2021-06-01T00:00:00",
+                "EndDate": null,
+                "Description": "Developed cross-platform apps using Flutter, integrated REST APIs, and optimized app performance."
+            },
+            {
+                "JobTitle": "Junior Mobile Developer",
+                "CompanyName": "TechTrend Innovations",
+                "Location": "Cairo",
+                "StartDate": "2020-02-01T00:00:00",
+                "EndDate": "2021-05-01T00:00:00",
+                "Description": "Assisted in building iOS apps with Swift and collaborated on UI/UX improvements."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Computer Science",
+                "Faculty": "Faculty of Computers and Information",
+                "University": "Mansoura University",
+                "Date": "2019-07-01T00:00:00",
+                "Location": "Mansoura",
+                "GPA": 3.5,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "sara.omar@example.com",
+        "Name": "Sara Omar",
+        "PhoneNumber": "+962799876543",
+        "Title": "Content Writer",
+        "DateOfBirth": "1996-04-18T00:00:00",
+        "Address": "Amman, Jordan",
+        "CV_Url": "cv/defaultcv.pdf",
+        "Gender": "Female",
+        "Summary": "Creative content writer with expertise in crafting engaging blogs, articles, and social media content. Skilled in SEO and storytelling.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 48, 51, 68 ],
+        "seekerCertificates": [
+            { "CertificateName": "HubSpot Content Marketing Certification" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "SEO Writing Masterclass" },
+            { "TrainingName": "Creative Writing Workshop" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Content Marketing" },
+            { "InterestName": "Copywriting" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Content Writer",
+                "CompanyName": "MediaHouse",
+                "Location": "Amman",
+                "StartDate": "2021-03-01T00:00:00",
+                "EndDate": null,
+                "Description": "Wrote SEO-optimized blogs and social media content for various clients, increasing engagement by 25%."
+            },
+            {
+                "JobTitle": "Freelance Writer",
+                "CompanyName": "Self-Employed",
+                "Location": "Remote",
+                "StartDate": "2019-07-01T00:00:00",
+                "EndDate": "2021-02-01T00:00:00",
+                "Description": "Provided content writing services for startups, including web content and product descriptions."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Journalism",
+                "Faculty": "Media",
+                "University": "University of Jordan",
+                "Date": "2019-06-01T00:00:00",
+                "Location": "Amman",
+                "GPA": 3.6,
+                "EducationLevel": "Bachelor"
+            }
+        ]
+    },
+    {
+        "UserEmail": "john.davis@example.com",
+        "Name": "John Davis",
+        "PhoneNumber": "+12125554321",
+        "Title": "Project Manager",
+        "DateOfBirth": "1990-08-22T00:00:00",
+        "Address": "New York, USA",
+        "CV_Url": "cv/defaultcv.pdf",
+        "Gender": "Male",
+        "Summary": "Certified project manager with experience in leading cross-functional teams and delivering software projects using Agile and Scrum methodologies.",
+        "ProfileImageUrl": "images/profilepic/user.jpg",
+        "Skills": [ 29, 30, 69 ],
+        "seekerCertificates": [
+            { "CertificateName": "PMP Certified" },
+            { "CertificateName": "Certified ScrumMaster (CSM)" }
+        ],
+        "SeekerTraining": [
+            { "TrainingName": "Agile Project Management" },
+            { "TrainingName": "Risk Management Fundamentals" }
+        ],
+        "seekerInterests": [
+            { "InterestName": "Project Leadership" },
+            { "InterestName": "Team Collaboration" }
+        ],
+        "SeekerExperiences": [
+            {
+                "JobTitle": "Project Manager",
+                "CompanyName": "InnoProjects",
+                "Location": "New York",
+                "StartDate": "2021-04-01T00:00:00",
+                "EndDate": null,
+                "Description": "Led software development projects, managed budgets, and ensured timely delivery using Scrum."
+            },
+            {
+                "JobTitle": "Assistant Project Manager",
+                "CompanyName": "TechConsult",
+                "Location": "New York",
+                "StartDate": "2018-06-01T00:00:00",
+                "EndDate": "2021-03-01T00:00:00",
+                "Description": "Coordinated project tasks and facilitated communication between stakeholders."
+            }
+        ],
+        "SeekerEducations": [
+            {
+                "Major": "Business Management",
+                "Faculty": "Business",
+                "University": "New York University",
+                "Date": "2017-05-01T00:00:00",
+                "Location": "New York",
+                "GPA": 3.8,
+                "EducationLevel": "Master"
+            }
+        ]
+    }
 
 
 ]
