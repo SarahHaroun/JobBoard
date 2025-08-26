@@ -317,25 +317,38 @@ namespace JobBoard.Services.SeekerService
 
 		private async Task UpdateSkills(List<string>? skills, SeekerProfile seeker)
 		{
-			if (skills == null) return;
+            if (skills == null) return;
 
-			var updatedSkills = skills.Distinct().ToList();
-			seeker.Skills.Clear();
+            // remove duplicates ignoring case
+            var updatedSkills = skills
+                .Distinct(StringComparer.OrdinalIgnoreCase)
+                .ToList();
 
-			var existingSkillsInDb = await _context.Skills
-				.Where(s => updatedSkills.Contains(s.SkillName))
-				.ToDictionaryAsync(s => s.SkillName, s => s);
+            seeker.Skills.Clear();
 
-			foreach (var skillName in updatedSkills)
-			{
-				if (existingSkillsInDb.ContainsKey(skillName))
-					seeker.Skills.Add(existingSkillsInDb[skillName]);
-				else
-					seeker.Skills.Add(new Skill { SkillName = skillName });
-			}
-		}
+            // get existing skills from DB (case-insensitive comparison)
+            var existingSkillsInDb = await _context.Skills
+                .Where(s => updatedSkills.Contains(s.SkillName))
+                .ToDictionaryAsync(s => s.SkillName.ToLower(), s => s);
 
-		private void UpdateInterests(List<string>? interests, SeekerProfile seeker)
+            foreach (var skillName in updatedSkills)
+            {
+                var key = skillName.ToLower();
+                if (existingSkillsInDb.ContainsKey(key))
+                {
+                    seeker.Skills.Add(existingSkillsInDb[key]);
+                }
+                else
+                {
+                    var newSkill = new Skill { SkillName = skillName };
+                    seeker.Skills.Add(newSkill);
+                    existingSkillsInDb[key] = newSkill; 
+                }
+            }
+
+        }
+
+        private void UpdateInterests(List<string>? interests, SeekerProfile seeker)
 		{
 			if (interests == null) return;
 

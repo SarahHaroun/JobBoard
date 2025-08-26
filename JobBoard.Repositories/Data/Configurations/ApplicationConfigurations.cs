@@ -17,12 +17,12 @@ namespace JobBoard.Repositories.Data.Configurations
 			builder.HasOne(a => a.Job)
 				.WithMany(j => j.JobApplications)
 				.HasForeignKey(a => a.JobId)
-				.OnDelete(DeleteBehavior.Cascade);
+				.OnDelete(DeleteBehavior.Restrict);
 
 			builder.HasOne(a => a.Applicant)
 				.WithMany(s => s.UserApplications)
 				.HasForeignKey(a => a.ApplicantId)
-				.OnDelete(DeleteBehavior.Restrict);
+				.OnDelete(DeleteBehavior.Cascade);
 		}
 	}
 }

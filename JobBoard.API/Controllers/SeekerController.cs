@@ -10,7 +10,6 @@ namespace JobBoard.API.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
-	[Authorize(Roles = "Seeker")]
 	public class SeekerController : ControllerBase
 	{
 		private readonly ISeekerService seekerService;
@@ -23,7 +22,9 @@ namespace JobBoard.API.Controllers
 
         /*------------------------ Get All Profiles --------------------------*/
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+		[Authorize(Roles = "Admin")]
+
+		public async Task<IActionResult> GetAll()
         {
             var seekers = await seekerService.GetAllAsync();
             return Ok(seekers);
@@ -31,7 +32,8 @@ namespace JobBoard.API.Controllers
 
         /*------------------------ Get My Profile --------------------------*/
         [HttpGet("GetMyProfile")]
-        public async Task<IActionResult> GetMyProfile()
+		[Authorize(Roles = "Seeker")]
+		public async Task<IActionResult> GetMyProfile()
         {
             if (userId == null)
                 return Unauthorized(new ResultDto(false, "User not authenticated"));
@@ -46,7 +48,8 @@ namespace JobBoard.API.Controllers
 
         /*------------------------ Update Profile --------------------------*/
         [HttpPut]
-        public async Task<IActionResult> Update([FromBody] SeekerProfileUpdateDto dto)
+		[Authorize(Roles = "Seeker")]
+		public async Task<IActionResult> Update([FromBody] SeekerProfileUpdateDto dto)
         {
             if (userId == null)
                 return Unauthorized(new ResultDto(false, "User not authenticated"));
@@ -65,6 +68,7 @@ namespace JobBoard.API.Controllers
 
 		/*------------------------ Upload Files (Profile Image & CV) --------------------------*/
 		[HttpPost("upload-files")]
+		[Authorize(Roles = "Seeker")]
 		public async Task<IActionResult> UploadFiles([FromForm] SeekerFileUploadDto dto)
 		{
 			if (userId == null)
@@ -84,7 +88,8 @@ namespace JobBoard.API.Controllers
 
 		/*------------------------ Delete Profile by Id --------------------------*/
 		[HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteById(int id)
+		[Authorize(Roles = "Admin")]
+		public async Task<IActionResult> DeleteById(int id)
         {
             var result = await seekerService.DeleteAsync(id);
             if (!result)

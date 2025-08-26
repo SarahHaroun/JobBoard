@@ -93,9 +93,14 @@ namespace JobBoard.Services.AdminService
         ////////////////////////delete job by id///////////////////////
         public async Task<bool> DeleteJob(int id)
         {
-            var job = await _unitOfWork.Repository<Job>().GetByIdAsync(id);
+            var job = await _unitOfWork.Repository<Job>().GetByIdAsync(new JobByIdWithApplication(id));
             if (job == null)
                 return false;
+
+            foreach (var app in job.JobApplications)
+            {
+                _unitOfWork.Repository<Application>().Delete(app);
+            }
 
             _unitOfWork.Repository<Job>().Delete(job);
             await _unitOfWork.CompleteAsync();
@@ -174,10 +179,45 @@ namespace JobBoard.Services.AdminService
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null) return false;
 
-            var result = await _userManager.DeleteAsync(user);
-            return result.Succeeded;
-        }
+            if (user.User_Type == UserType.Seeker)
+            {
+                var result = await _userManager.DeleteAsync(user);
+                return result.Succeeded;
+            }
 
+            else if (user.User_Type == UserType.Employer)
+            {
+                var employerSpec = new EmployerByUserIdSpecification(userId);
+                var employer = await _unitOfWork.Repository<EmployerProfile>().GetByIdAsync(employerSpec);
+
+                if (employer != null)
+                {
+                    employer.IsDeleted = true;
+
+                    var jobs = await _unitOfWork.Repository<Job>()
+                        .GetAllAsync(new JobsByEmployerIdSpecification(employer.Id));
+
+                    foreach (var job in jobs)
+                    {
+                        job.IsDeleted = true;
+                        await _aiEmbeddingService.DeleteEmbeddingForJobAsync(job.Id);
+
+                        foreach (var app in job.JobApplications)
+                        {
+                            _unitOfWork.Repository<Application>().Delete(app);  
+                        }
+                    }
+
+                    _unitOfWork.Repository<EmployerProfile>().Update(employer);
+                    await _unitOfWork.CompleteAsync();
+                }
+
+                var deleteResult = await _userManager.DeleteAsync(user);
+                return deleteResult.Succeeded;
+            }
+
+            return false;
+        }
 
         //////////////////////get stats///////////////////////
         public async Task<StatsDto> GetStatsAsync()
@@ -199,6 +239,36 @@ namespace JobBoard.Services.AdminService
                 PendingJobs = pendingJobsCount
             };
         }
+
+		
+        //////////////////////get public stats for home page///////////////////////
+        public async Task<PublicStatsDto> GetPublicStatsAsync()
+        {
+            var fullStats = await GetStatsAsync();
+			var approvedJobsCount = await _unitOfWork.Repository<Job>()
+					.CountAsync(new ApprovedJobsCountSpecification());
+            var activeJobsCount = await _unitOfWork.Repository<Job>()
+					.CountAsync(new ActiveJobsCountSpecification());
+
+			return new PublicStatsDto()
+            {
+                TotalSeekers = fullStats.TotalSeekers,
+                TotalEmployers = fullStats.TotalEmployers,
+                TotalJobs = fullStats.TotalJobs,
+                ApprovedJobs = approvedJobsCount,
+                ActiveJobs = activeJobsCount
+            };
+        }
+
+
+		//////////////////////get active users count (seekers + employers)///////////////////////
+		public async Task<int> GetActiveUsersCountAsync()
+		{
+			var stats = await GetStatsAsync();
+			return stats.TotalSeekers + stats.TotalEmployers;
+		}
+
+      
 
     }
 }

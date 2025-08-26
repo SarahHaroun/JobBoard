@@ -18,8 +18,10 @@ namespace JobBoard.Repositories.Data.Configurations
 			builder.HasOne(e => e.User)
 			   .WithOne(u=>u.employerProfile)
 			   .HasForeignKey<EmployerProfile>(e => e.UserId)
-			   .OnDelete(DeleteBehavior.Cascade);
+			   .OnDelete(DeleteBehavior.Restrict);
 
+            builder.Property(e => e.IsDeleted).HasDefaultValue(false);
+            builder.HasQueryFilter(e => !e.IsDeleted);
         }
     }
 }

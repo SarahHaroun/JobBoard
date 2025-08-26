@@ -58,6 +58,15 @@ namespace JobBoard.Repositories.Specifications
 			
         }
 	}
+
+	////////////////////////get jobs related employer//////////////////////////
+    public class JobsByEmployerIdSpecification : BaseSpecifications<Job>
+	{
+		public JobsByEmployerIdSpecification(int employerId) : base(j => j.EmployerId == employerId)
+		{
+			AddIncludes(j => j.JobApplications);
+		}
+    }
     /////////////////////////get all jobs///////////////////////
 
     public class AllJobsSpecification : BaseSpecifications<Job>
@@ -78,8 +87,6 @@ namespace JobBoard.Repositories.Specifications
 		public PendingJobsSpecification() : base(j => !j.IsApproved)
 		{
 			AddIncludes(j => j.Employer.User);
-			AddIncludes(j => j.Categories);
-			AddIncludes(j => j.Skills);
 			AddOrderByDesc(j => j.PostedDate);
 		}
 	}
@@ -94,4 +101,30 @@ namespace JobBoard.Repositories.Specifications
 			AddIncludes(j => j.Skills);
 		}
 	}
+
+	public class ApprovedJobsCountSpecification : BaseSpecifications<Job>
+	{
+		public ApprovedJobsCountSpecification() : base(j => j.IsApproved == true)
+		{
+		}
+	}
+
+	public class ActiveJobsCountSpecification : BaseSpecifications<Job>
+	{
+		public ActiveJobsCountSpecification() : base(j => j.IsActive == true)
+		{
+		}
+	}
+	}
+
+    //////////////////job applications///////////////////////
+	public class JobByIdWithApplication : BaseSpecifications<Job>
+	{
+		public JobByIdWithApplication(int jobId) : base(a => a.Id == jobId)
+		{
+			AddIncludes(a => a.JobApplications);
+		}
+    }
+
+
 }

@@ -20,6 +20,9 @@ namespace JobBoard.Services.AdminService
         Task<bool> RejectJobAsync(int jobId);
         Task<bool> DeleteUserAsync(string userId);
         Task<StatsDto> GetStatsAsync();
-    }
+        Task<PublicStatsDto> GetPublicStatsAsync();
+        Task<int> GetActiveUsersCountAsync();
+
+	}
 
 }

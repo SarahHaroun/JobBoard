@@ -40,6 +40,9 @@ namespace JobBoard.Repositories.Data.Configurations
 				   .WithMany(s => s.Jobs)
 				   .UsingEntity(j => j.ToTable("JobCategories"));
 
-		}
+            builder.Property(j => j.IsDeleted).HasDefaultValue(false);
+            builder.HasQueryFilter(j => !j.IsDeleted);
+
+        }
 	}
 }
