@@ -14,6 +14,9 @@ namespace JobBoard.Services.EmployerService
         //Task<string> Create(EmpProfileUpdateDto empProfile);
         Task<bool> Update(int id, EmpProfileUpdateDto empProfile);
         Task<bool> DeleteById(int id);
+        Task<AnalyticsEmployerDto> GetDashboardStats(int employerId);
+        public Task<HiringPipelineOverviewDto> GetHiringPipelineOverview(int employerId);
 
-	}
+
+    }
 }
