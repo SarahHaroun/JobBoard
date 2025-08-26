@@ -61,7 +61,7 @@ namespace JobBoard.API.Controllers
 		// GET: api/application/my-applications
 		[HttpGet("my-applications")]
 		[Authorize(Roles = "Seeker")]
-		public async Task<ActionResult<IEnumerable<ApplicationDto>>> GetMyApplications()
+		public async Task<ActionResult<IEnumerable<SeekerApplicationListDto>>> GetMyApplications()
 		{
 			if (userId == null)
 				return Unauthorized();

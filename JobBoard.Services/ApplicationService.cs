@@ -84,11 +84,11 @@ namespace JobBoard.Services
 		}
 
 		/// Gets all applications of a specific seeker
-		public async Task<IEnumerable<ApplicationDto>> GetApplicationsByApplicantIdAsync(int applicantId)
+		public async Task<IEnumerable<SeekerApplicationListDto>> GetApplicationsByApplicantIdAsync(int applicantId)
 		{
 			var spec = new ApplicationWithFilterSpecification(applicantId, isApplicantId: true);
 			var applications = await _unitOfWork.Repository<Application>().GetAllAsync(spec);
-			var mappedApplications = _mapper.Map<IEnumerable<ApplicationDto>>(applications);
+			var mappedApplications = _mapper.Map<IEnumerable<SeekerApplicationListDto>>(applications);
 			return mappedApplications;
 		}
 
