@@ -21,6 +21,7 @@ namespace JobBoard.API.Controllers
 
         /////////////////////////get all seekers///////////////////////
         [HttpGet("seekers")]
+        [Cached(600, "admin:")]
         public async Task<IActionResult> GetSeekers()
         {
             var seekers = await _adminService.GetAllSeekersAsync();
@@ -47,6 +48,7 @@ namespace JobBoard.API.Controllers
 
         /////////////////////////get all employers//////////////////////
         [HttpGet("employers")]
+        [Cached(600, "admin:")]
         public async Task<IActionResult> GetEmployers()
         {
             var employers = await _adminService.GetAllEmployersAsync();

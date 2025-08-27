@@ -31,7 +31,7 @@ namespace JobBoard.API.Controllers
 		//Get: api/jobs
 		[HttpGet]
 		[AllowAnonymous]
-		//[Cached(300,"jobs:")]
+		[Cached(600,"jobs:")]
 		//[OutputCache(PolicyName = "JobsCache")]
         public async Task<IActionResult> GetAllJobs([FromQuery] JobFilterParams filterParams)
 		{
