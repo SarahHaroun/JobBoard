@@ -1,4 +1,5 @@
 ﻿using JobBoard.Domain.Entities;
+using JobBoard.Repositories.Specifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -115,7 +116,6 @@ namespace JobBoard.Repositories.Specifications
 		{
 		}
 	}
-	}
 
     //////////////////job applications///////////////////////
 	public class JobByIdWithApplication : BaseSpecifications<Job>
@@ -126,5 +126,5 @@ namespace JobBoard.Repositories.Specifications
 		}
     }
 
-
 }
+

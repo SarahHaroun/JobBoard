@@ -6,13 +6,8 @@ using System.Threading.Tasks;
 
 namespace JobBoard.Domain.DTO.AdminDto
 {
-	public class PublicStatsDto
+	public class GrowthStatsDto
 	{
-		public int TotalSeekers { get; set; }
-		public int TotalEmployers { get; set; }
-		public int TotalJobs { get; set; }
-		public int ApprovedJobs { get; set; }
-		public int ActiveJobs { get; set; }
 		public double JobsGrowth { get; set; }
 		public double ApprovalGrowth { get; set; }
 		public double ActiveJobsGrowth { get; set; }

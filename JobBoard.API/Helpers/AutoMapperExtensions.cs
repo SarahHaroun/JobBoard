@@ -17,6 +17,8 @@ namespace JobBoard.API.Extensions
 				cfg.AddProfile<SeekerProfileMapping>();
 				cfg.AddProfile<SavedJobProfile>();
                 cfg.AddProfile<NotificationProfile>();
+                //cfg.AddProfile<AdminProfile>();
+
             });
 
 			services.AddScoped<CompanyImageUrlResolver>();
