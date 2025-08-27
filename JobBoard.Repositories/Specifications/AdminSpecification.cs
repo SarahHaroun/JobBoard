@@ -116,6 +116,7 @@ namespace JobBoard.Repositories.Specifications
 		{
 		}
 	}
+	}
 
     //////////////////job applications///////////////////////
 	public class JobByIdWithApplication : BaseSpecifications<Job>
@@ -123,8 +124,8 @@ namespace JobBoard.Repositories.Specifications
 		public JobByIdWithApplication(int jobId) : base(a => a.Id == jobId)
 		{
 			AddIncludes(a => a.JobApplications);
-		}
+            AddIncludes(a => a.Employer.User);
+        }
     }
 
-}
 

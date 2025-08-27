@@ -1,5 +1,6 @@
 ﻿using JobBoard.API.Hubs;
 using Microsoft.AspNetCore.Http;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace JobBoard.API.Extensions
@@ -12,7 +13,8 @@ namespace JobBoard.API.Extensions
 				.AddJsonOptions(options =>
 				{
 					options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-				});
+                    options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase; // Ensure camelCase
+                });
 
 			services.AddEndpointsApiExplorer();
 			services.AddSwaggerGen();
@@ -28,13 +30,16 @@ namespace JobBoard.API.Extensions
 				app.UseSwaggerUI();
 			}
 
-			app.UseCors("AllowAngularApp");
-			app.UseHttpsRedirection();
-			app.UseRouting();
+
+            
+            app.UseCors("AllowAngularApp");
+            app.UseHttpsRedirection();
+            app.UseRouting();
             app.UseAuthentication();
 			app.UseAuthorization();
 			app.UseStaticFiles();
-			app.MapControllers();
+            app.UseOutputCache(); // Enable Output Caching Middleware
+            app.MapControllers();
 
 
             /* -----------SignalR MiddlWare------------ */

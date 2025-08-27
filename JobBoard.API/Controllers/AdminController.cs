@@ -32,7 +32,7 @@ namespace JobBoard.API.Controllers
         }
 
         /////////////////////////get seeker by id///////////////////////
-        [CachedAttribute(5000)]
+        
         [HttpGet("seeker/{seekerId}")]
         public async Task<IActionResult> GetSeekerById(string seekerId)
         {
@@ -131,7 +131,7 @@ namespace JobBoard.API.Controllers
 
 
         ////////////////////////get stats///////////////////////
-        [CachedAttribute(5000)]
+        
         [HttpGet("stats")]
         public async Task<IActionResult> GetStats()
         {

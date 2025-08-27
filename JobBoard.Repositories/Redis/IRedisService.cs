@@ -23,6 +23,7 @@ namespace JobBoard.Repositories.Redis
         //removes the value from Redis using the key.
         Task<bool> RemoveAsync(string key);
 
+        public Task DeleteByPrefixAsync(string prefix);
         // List operations
         Task AddToListAsync<T>(string key, T value); // Push to list
         Task<List<T>> GetListAsync<T>(string key);   // Get all items from list
