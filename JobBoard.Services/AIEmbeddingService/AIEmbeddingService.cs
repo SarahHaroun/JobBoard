@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using GenerativeAI;
+using Google.Cloud.Iam.V1;
 using JobBoard.Domain.DTO.AIEmbeddingDto;
 using JobBoard.Domain.DTO.JobDto;
 using JobBoard.Domain.Entities;
@@ -42,7 +43,7 @@ namespace JobBoard.Services.AIEmbeddingService
         }
 
 
-       
+
         /*-------------------------------Gemini Replay-----------------------------------------*/
 
         //public async Task<string> GetJobAnswerFromGeminiAsync(string userQuestion)
@@ -145,7 +146,6 @@ namespace JobBoard.Services.AIEmbeddingService
             await _unitOfWork.CompleteAsync();
 
         }
-
         // update and generate emebedding for a specific job
         public async Task GenerateEmbeddingForJobAsync(Job job)
         {

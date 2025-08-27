@@ -19,6 +19,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using JobBoard.Repositories.Redis;
+using Microsoft.AspNetCore.OutputCaching;
 
 namespace JobBoard.Services.AdminService
 {
@@ -30,13 +31,15 @@ namespace JobBoard.Services.AdminService
         private readonly IAIEmbeddingService _aiEmbeddingService;
         private readonly INotificationService _notificationService;
         private readonly IRedisService _redisService;
+        private readonly IOutputCacheStore _outputCacheStore;
 
         public AdminService(IUnitOfWork unitOfWork, 
 			UserManager<ApplicationUser> userManager,
 			IMapper mapper, 
 			IAIEmbeddingService aiEmbeddingService,
 			INotificationService notificationService,
-            IRedisService redisService)
+            IRedisService redisService,
+            IOutputCacheStore outputCacheStore)
 		{
 			_unitOfWork = unitOfWork;
 			_userManager = userManager;
@@ -44,6 +47,7 @@ namespace JobBoard.Services.AdminService
 			_aiEmbeddingService = aiEmbeddingService;
 			_notificationService = notificationService;
             _redisService = redisService;
+            _outputCacheStore = outputCacheStore;
         }
 
         ///////////////////////get all seekers///////////////////////
@@ -106,6 +110,7 @@ namespace JobBoard.Services.AdminService
             await _unitOfWork.CompleteAsync();
             await _aiEmbeddingService.DeleteEmbeddingForJobAsync(id);
             //await _redisService.DeleteByPrefixAsync("jobs:");
+            //await _outputCacheStore.EvictByTagAsync("jobs", default);
 
             return true;
         }
@@ -145,6 +150,7 @@ namespace JobBoard.Services.AdminService
             //remove job from redis cache
             await _aiEmbeddingService.GenerateEmbeddingForJobAsync(job);
             //await _redisService.DeleteByPrefixAsync("jobs:");
+            await _outputCacheStore.EvictByTagAsync("jobs", default);
 
 
             await _notificationService.AddNotificationAsync(job.Employer.UserId,notificationMessage,jobLink);
@@ -156,22 +162,26 @@ namespace JobBoard.Services.AdminService
         //////////////////////reject job by id///////////////////////
         public async Task<bool> RejectJobAsync(int jobId)
         {
-            var spec = new JobByIdSpecification(jobId);
-            var job = await _unitOfWork.Repository<Job>().GetByIdAsync(spec);
+            var job = await _unitOfWork.Repository<Job>().GetByIdAsync(new JobByIdWithApplication(jobId));
 
             if (job == null) return false;
+            foreach (var app in job.JobApplications)
+            {
+                _unitOfWork.Repository<Application>().Delete(app);
+            }
 
             _unitOfWork.Repository<Job>().Delete(job);
 
-			var result = await _unitOfWork.CompleteAsync();
+            var result = await _unitOfWork.CompleteAsync();
+            if (job.Employer != null)
+            {
+                var notificationMessage = $"Your job {job.Title} has been rejected!";
+                await _notificationService.AddNotificationAsync(job.Employer.UserId, notificationMessage);
+            }
 
-			var notificationMessage = $"Your job {job.Title} has been rejected!";
-
-			await _notificationService.AddNotificationAsync(job.Employer.UserId, notificationMessage);
-			await _aiEmbeddingService.DeleteEmbeddingForJobAsync(jobId);
-			return result > 0;
-		}
-
+            await _aiEmbeddingService.DeleteEmbeddingForJobAsync(jobId);
+            return result > 0;
+        }
 
         //////////////////////delete user by id///////////////////////
         public async Task<bool> DeleteUserAsync(string userId)
