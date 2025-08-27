@@ -31,8 +31,8 @@ namespace JobBoard.API.Controllers
 		//Get: api/jobs
 		[HttpGet]
 		[AllowAnonymous]
-        //[Cached(300,"jobs:")]
-        //[OutputCache(PolicyName = "JobsCache")]
+		//[Cached(300,"jobs:")]
+		//[OutputCache(PolicyName = "JobsCache")]
         public async Task<IActionResult> GetAllJobs([FromQuery] JobFilterParams filterParams)
 		{
 			var result = await _jobService.GetAllJobsAsync(filterParams);

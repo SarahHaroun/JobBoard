@@ -31,10 +31,10 @@ namespace JobBoard.API.Extensions
 			}
 
 
-            app.UseRouting();
+            
             app.UseCors("AllowAngularApp");
-			app.UseHttpsRedirection();
-			
+            app.UseHttpsRedirection();
+            app.UseRouting();
             app.UseAuthentication();
 			app.UseAuthorization();
 			app.UseStaticFiles();
