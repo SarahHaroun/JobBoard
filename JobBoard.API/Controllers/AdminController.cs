@@ -153,14 +153,6 @@ namespace JobBoard.API.Controllers
 			}
 			return Ok(stats);
 		}
-
-		[HttpGet("active-users")]
-		[AllowAnonymous]
-		public async Task<IActionResult> GetActiveUsers()
-		{
-			var stats = await _adminService.GetActiveUsersCountAsync();
-			return Ok(stats);
-		}
 	}
 
 }

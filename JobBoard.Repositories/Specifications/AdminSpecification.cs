@@ -116,7 +116,7 @@ namespace JobBoard.Repositories.Specifications
 		{
 		}
 	}
-	
+	}
 
     //////////////////job applications///////////////////////
 	public class JobByIdWithApplication : BaseSpecifications<Job>
@@ -129,4 +129,3 @@ namespace JobBoard.Repositories.Specifications
     }
 
 
-}

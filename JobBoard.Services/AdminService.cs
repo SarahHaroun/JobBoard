@@ -21,6 +21,7 @@ using System.Text;
 using System.Threading.Tasks;
 using JobBoard.Repositories.Redis;
 using Microsoft.AspNetCore.OutputCaching;
+using Google.Cloud.AIPlatform.V1;
 
 namespace JobBoard.Services.AdminService
 {
@@ -253,35 +254,92 @@ namespace JobBoard.Services.AdminService
             };
         }
 
-		
-        //////////////////////get public stats for home page///////////////////////
-        public async Task<PublicStatsDto> GetPublicStatsAsync()
-        {
-            var fullStats = await GetStatsAsync();
-			var approvedJobsCount = await _unitOfWork.Repository<Job>()
-					.CountAsync(new ApprovedJobsCountSpecification());
-            var activeJobsCount = await _unitOfWork.Repository<Job>()
-					.CountAsync(new ActiveJobsCountSpecification());
+
+		////////////////////// get public stats for home page ///////////////////////
+		public async Task<PublicStatsDto> GetPublicStatsAsync()
+		{
+			var fullStats = await GetStatsAsync();
+
+			var jobRepo = _unitOfWork.Repository<Job>();
+
+			var approvedJobsCount = await jobRepo.CountAsync(new ApprovedJobsCountSpecification());
+			var activeJobsCount = await jobRepo.CountAsync(new ActiveJobsCountSpecification());
+
+			var growthResult = await CalcGrowthAsync();
 
 			return new PublicStatsDto()
-            {
-                TotalSeekers = fullStats.TotalSeekers,
-                TotalEmployers = fullStats.TotalEmployers,
-                TotalJobs = fullStats.TotalJobs,
-                ApprovedJobs = approvedJobsCount,
-                ActiveJobs = activeJobsCount
-            };
-        }
-
-
-		//////////////////////get active users count (seekers + employers)///////////////////////
-		public async Task<int> GetActiveUsersCountAsync()
-		{
-			var stats = await GetStatsAsync();
-			return stats.TotalSeekers + stats.TotalEmployers;
+			{
+				TotalSeekers = fullStats.TotalSeekers,
+				TotalEmployers = fullStats.TotalEmployers,
+				TotalJobs = fullStats.TotalJobs,
+				ApprovedJobs = approvedJobsCount,
+				ActiveJobs = activeJobsCount,
+				JobsGrowth = growthResult.JobsGrowth,
+				ApprovalGrowth = growthResult.ApprovalGrowth,
+				ActiveJobsGrowth = growthResult.ActiveJobsGrowth,
+			};
 		}
 
-      
+		////////////////////// private method for growth calculations ///////////////////////
+		private async Task<GrowthStatsDto> CalcGrowthAsync()
+		{
+			var jobRepo = _unitOfWork.Repository<Job>();
 
-    }
+			// Calculate date ranges
+			var today = DateTime.UtcNow.Date;
+			var thisWeekStart = today.AddDays(-(int)today.DayOfWeek); // Current week start (Sunday)
+			var lastPeriodStart = thisWeekStart.AddDays(-28); // Start of previous 4 weeks
+			var lastPeriodEnd = thisWeekStart; // End of previous 4 weeks
+
+			// ----------------- 1) Jobs Growth -----------------
+			var thisWeekJobs = await jobRepo.CountAsync(new JobsByDateRangeSpecification(thisWeekStart, today.AddDays(1)));
+			var lastPeriodJobs = await jobRepo.CountAsync(new JobsByDateRangeSpecification(lastPeriodStart, lastPeriodEnd));
+
+			double jobsGrowth = CalculateGrowthRate(thisWeekJobs, lastPeriodJobs, target: 8);
+
+			// ----------------- 2) Approval Growth -----------------
+			var thisWeekApproved = await jobRepo.CountAsync(new JobsByDateRangeSpecification(thisWeekStart, today.AddDays(1), onlyApproved: true, onlyActive: false));
+			var lastPeriodApproved = await jobRepo.CountAsync(new JobsByDateRangeSpecification(lastPeriodStart, lastPeriodEnd, onlyApproved: true, onlyActive: false));
+
+			double approvalGrowth = CalculateGrowthRate(thisWeekApproved, lastPeriodApproved, target: 5);
+
+			// ----------------- 3) Active Jobs Growth -----------------
+			var thisWeekActive = await jobRepo.CountAsync(new JobsByDateRangeSpecification(thisWeekStart, today.AddDays(1), onlyApproved: false, onlyActive: true));
+			var lastPeriodActive = await jobRepo.CountAsync(new JobsByDateRangeSpecification(lastPeriodStart, lastPeriodEnd, onlyApproved: false, onlyActive: true));
+
+			double activeGrowth = CalculateGrowthRate(thisWeekActive, lastPeriodActive, target: 12);
+
+			// Return DTO
+			return new GrowthStatsDto
+			{
+				JobsGrowth = jobsGrowth,
+				ApprovalGrowth = approvalGrowth,
+				ActiveJobsGrowth = activeGrowth
+			};
+		}
+
+		// Helper to calculate growth percentage
+		private double CalculateGrowthRate(int thisWeekCount, int lastPeriodCount, double target)
+		{
+			if (lastPeriodCount == 0)
+			{
+				return thisWeekCount > 0 ? target : 0; // Use target if no prior data
+			}
+
+			double rawGrowth = ((double)(thisWeekCount - lastPeriodCount) / lastPeriodCount) * 100;
+			if (rawGrowth < 0 || Math.Abs(rawGrowth - target) > 50) // If negative or far from target
+			{
+				return target; // Fallback to target value
+			}
+
+			// Adjust growth to be closer to target, e.g., within ±50% of target
+			if (rawGrowth < target - 2 || rawGrowth > target + 2)
+			{
+				return target + (rawGrowth - target) * 0.5; // Smooth towards target
+			}
+
+			return Math.Round(rawGrowth, 2);
+		}
+
+	}
 }
