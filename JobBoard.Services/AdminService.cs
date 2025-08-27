@@ -151,7 +151,7 @@ namespace JobBoard.Services.AdminService
             //remove job from redis cache
             await _aiEmbeddingService.GenerateEmbeddingForJobAsync(job);
             //await _redisService.DeleteByPrefixAsync("jobs:");
-            await _outputCacheStore.EvictByTagAsync("jobs", default);
+            //await _outputCacheStore.EvictByTagAsync("jobs", default);
 
 
             await _notificationService.AddNotificationAsync(job.Employer.UserId,notificationMessage,jobLink);
