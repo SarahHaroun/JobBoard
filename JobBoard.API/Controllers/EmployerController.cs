@@ -100,5 +100,32 @@ namespace JobBoard.API.Controllers
 			return deleted ? Ok("Deleted") : BadRequest();
 		}
 
-	}
+
+        /*------------------------Get Dashboard Stats --------------------------*/
+		[HttpGet("dashboard-stats")]
+		public async Task<IActionResult> GetDashboardStats()
+		{
+			if (userId == null)
+				return Unauthorized();
+			var empProfile = await employerService.GetByUserId(userId);
+			if (empProfile == null)
+				return NotFound("Employer profile not found");
+			var stats = await employerService.GetDashboardStats(empProfile.Id);
+			return Ok(stats);
+        }
+
+        /*------------------------Get Hiring Pipeline Overview --------------------------*/
+		[HttpGet("hiring-pipeline-overview")]
+		public async Task<IActionResult> GetHiringPipelineOverview()
+		{
+			if (userId == null)
+				return Unauthorized();
+			var empProfile = await employerService.GetByUserId(userId);
+			if (empProfile == null)
+				return NotFound("Employer profile not found");
+			var overview = await employerService.GetHiringPipelineOverview(empProfile.Id);
+			return Ok(overview);
+        }
+
+    }
 }
